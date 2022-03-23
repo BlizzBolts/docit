@@ -3,7 +3,7 @@
   "version": "0.4.0-beta0",
   "license": "MIT",
   "bin": {
-    "docgen": "bin/docgen.js"
+    "docit": "bin/docit.js"
   },
   "types": "./build/index.d.ts",
   "main": "./build/node/index.js",
@@ -19,12 +19,19 @@
     "build-client": "tsc -p src/client",
     "build-node": "tsc -p src/node",
     "docs": "run-p dev docs-dev",
-    "docs-dev": "node ./bin/docgen start",
-    "docs-build": "node ./bin/docgen build docs",
+    "docs-dev": "node ./bin/docit start",
+    "docs-build": "node ./bin/docit build docs",
     "clean": "rm -rf node_modules build docs-dist",
     "test": "vitest"
   },
-  "files": ["build", "src", "bin", "client", "scripts", "docs-dist"],
+  "files": [
+    "build",
+    "src",
+    "bin",
+    "client",
+    "scripts",
+    "docs-dist"
+  ],
   "engines": {
     "install-node": "16.14.1"
   },

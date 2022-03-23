@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "../../build/client",
+    "lib": ["ESNext", "DOM"],
+    "jsx": "react",
+    "types": ["vite/client"]
+  }
+}

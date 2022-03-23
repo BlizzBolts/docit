@@ -1,0 +1,10 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "../../build/node",
+    "types": ["node"],
+    "jsx": "react"
+  },
+  "include": ["."]
+}
