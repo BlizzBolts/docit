@@ -1,6 +1,6 @@
 {
   "name": "@blizzbolts/docit",
-  "version": "0.5.0-beta0",
+  "version": "0.5.0-beta1",
   "license": "MIT",
   "bin": {
     "docit": "bin/docit.js"
@@ -33,7 +33,7 @@
     "docs-dist"
   ],
   "engines": {
-    "node": "14"
+    "node": ">=14"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
