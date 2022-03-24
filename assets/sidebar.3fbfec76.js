@@ -5,7 +5,7 @@ import{j as s,R as e}from"./vendor.51078ebd.js";function r(t={}){const{wrapper:a
 \u251C\u2500\u2500 index.mdx
 \u2514\u2500\u2500 \u4F7F\u7528\u6307\u5357
    \u251C\u2500\u2500 `,e.createElement(n.span,{className:"hljs-type"},"static"),`-resources.mdx
-   \u251C\u2500\u2500 `,e.createElement(n.span,{className:"hljs-keyword"},"using"),`-components-in-docgen.mdx
+   \u251C\u2500\u2500 `,e.createElement(n.span,{className:"hljs-keyword"},"using"),`-components-in-docit.mdx
    \u2514\u2500\u2500 \u9875\u9762\u914D\u7F6E
       \u251C\u2500\u2500 index.mdx
       \u2514\u2500\u2500 \u4FA7\u8FB9\u680F.mdx
