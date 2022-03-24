@@ -22,7 +22,8 @@
     "docs-dev": "node ./bin/docit start",
     "docs-build": "node ./bin/docit build docs",
     "clean": "rm -rf node_modules build docs-dist",
-    "test": "vitest"
+    "test": "vitest",
+    "publish:pages": "node scripts/gh.js"
   },
   "files": [
     "build",
