@@ -1,27 +1,27 @@
-import React, { useMemo, useState } from 'react';
-import { CodeBlockProps } from './types';
-import hljs from 'highlight.js';
+import React, { useMemo, useState } from "react";
+import { CodeBlockProps } from "./types";
+import hljs from "highlight.js";
 import {
   RenderWindow,
   ShowCodeContainer,
   ButtonContainer,
   CodeWindow,
-} from './styled';
-
+} from "./styled";
+import { IFrame } from "../IFrame";
 const ShowCode: React.FC<CodeBlockProps> = (props) => {
   const { children, code, lang } = props;
 
   const [isShowing, setIsShowing] = useState(!Boolean(children));
 
   const display = useMemo(() => {
-    return hljs.highlight(code.replace(/\n\n/g, '\n'), {
-      language: lang || 'bash',
+    return hljs.highlight(code.replace(/\n\n/g, "\n"), {
+      language: lang || "bash",
     });
   }, [code]);
 
   const renderCode = () => {
     return (
-      <pre style={{ display: isShowing ? 'block' : 'none', margin: 0 }}>
+      <pre style={{ display: isShowing ? "block" : "none", margin: 0 }}>
         <code
           style={{ margin: 0 }}
           className="docit-code"
@@ -38,7 +38,7 @@ const ShowCode: React.FC<CodeBlockProps> = (props) => {
   return (
     <ShowCodeContainer>
       <RenderWindow>
-        <>{children}</>
+        <IFrame>{children}</IFrame>
       </RenderWindow>
       <ButtonContainer>
         <button

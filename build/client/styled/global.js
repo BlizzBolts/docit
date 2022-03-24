@@ -1,5 +1,5 @@
-import { createGlobalStyle } from 'styled-components';
-import 'normalize.css';
+import { createGlobalStyle } from "styled-components";
+import "normalize.css";
 export const GlobalStyle = createGlobalStyle `
   html, body, #app {
     margin: 0;

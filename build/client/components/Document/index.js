@@ -1,12 +1,12 @@
-import React, { Suspense } from 'react';
-import { routes } from 'virtual:routes';
-import { renderRoutes } from 'react-router-config';
-import { MDXProvider } from '@mdx-js/react';
-import { ShowCode } from '../ShowCode';
-import { StyledMarkdown } from './styled';
-import { ApiTable } from '../ApiTable';
-import { useDefaultRoute } from '../../hooks/useDefaultRoute';
-import { ErrorBoundary } from '../ErrorBoundary';
+import React, { Suspense } from "react";
+import { routes } from "virtual:routes";
+import { renderRoutes } from "react-router-config";
+import { MDXProvider } from "@mdx-js/react";
+import { ShowCode } from "../ShowCode";
+import { StyledMarkdown } from "./styled";
+import { ApiTable } from "../ApiTable";
+import { useDefaultRoute } from "../../hooks/useDefaultRoute";
+import { ErrorBoundary } from "../ErrorBoundary";
 const Document = () => {
     useDefaultRoute();
     return (React.createElement(ErrorBoundary, null,
@@ -22,7 +22,7 @@ const Document = () => {
                         }
                         return (
                         // TODO
-                        React.createElement("code", { className: `${[props.className, 'docit-code'].join(' ')}`, "data-lang": RegExp.$1 }, props.children));
+                        React.createElement("code", { className: `${[props.className, "docit-code"].join(" ")}`, "data-lang": RegExp.$1 }, props.children));
                     },
                 } },
                 React.createElement(Suspense, { fallback: React.createElement(React.Fragment, null) }, renderRoutes(routes))))));

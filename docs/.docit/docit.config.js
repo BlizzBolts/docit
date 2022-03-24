@@ -34,13 +34,13 @@ const config = {
         },
       ],
     },
-    // {
-    //   title: "Test",
-    //   children: [
-    //     { title: "Editor.md", path: "/Test/GFM" },
-    //     { title: "Demo", path: "/Test/demo" },
-    //   ],
-    // },
+    {
+      title: "Test",
+      children: [
+        { title: "Editor.md", path: "/Test/GFM" },
+        { title: "Demo", path: "/Test/demo" },
+      ],
+    },
     { title: "FAQ", path: "/FAQ" },
     { title: "Feature Request List", path: "/feature-request" },
   ],
