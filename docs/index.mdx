@@ -1,5 +1,5 @@
 ---
-title: 介绍
+title: Introduction
 ---
 
 # Docgen
@@ -13,29 +13,28 @@ title: 介绍
 
 ## Get Started
 
-```bash
-yarn add @alife/cnfe-docgen -D
+```sh
+yarn add @blizzbolts/docit -D
 ```
 
-## Usage
+### Usage
+
+1. Make your first markdown file under `docs`
 
 ```sh
-./node_modules/.bin/docgen start
+mkdir docs
+
+echo "# Introudction" > docs/index.md
 ```
 
-or add to your package.json file
+2. Start your doc local dev server by
 
-```json
-{
-  "scripts": {
-    "docs:start": "docgen start",
-    "docs:build": "docgen build"
-  }
-}
+```sh
+docit start
 ```
 
-## Dependencies
+For build
 
-- Vite
-- MDX
-- react-docgen-typescript
+```sh
+docit build
+```
