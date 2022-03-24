@@ -1,6 +1,6 @@
 {
   "name": "@blizzbolts/docit",
-  "version": "0.5.0-beta1",
+  "version": "0.5.0-beta0",
   "license": "MIT",
   "bin": {
     "docit": "bin/docit.js"
@@ -96,6 +96,7 @@
     "react-is": "16.13.1"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+    "registry": "https://registry.npmjs.org",
+    "access": "public"
   }
 }
