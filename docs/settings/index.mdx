@@ -1,6 +1,6 @@
 # 页面配置
 
-可以在文档文件夹下添加 docgen.config.js 对项目进行更丰富的配置，以下为支持的配置项：
+在.docit 文件夹下添加 docit.config.js 对项目进行更丰富的配置，以下为支持的配置项：
 
 ```ts
 export interface UserFileConfig {
@@ -24,7 +24,7 @@ export interface SidebarNode {
 ```
 |-[Root]
   |-docs
-    |-docgen.config.js
+    |-docit.config.js
 ```
 
 示例
@@ -32,7 +32,7 @@ export interface SidebarNode {
 ```js
 const config = {
   // 显示在文档左上角的主标题
-  title: "Docgen",
+  title: "Docit",
 
   // 侧边栏配置示例
   sidebars: [
@@ -46,7 +46,7 @@ const config = {
         { title: "静态资源", path: "/使用指南/static-resources" },
         {
           title: "如何书写使用 Components",
-          path: "/使用指南/using-components-in-docgen",
+          path: "/使用指南/using-components-in-docit",
         },
       ],
     },

@@ -17,6 +17,5 @@ coverage
 .rax
 template.yml
 
-src/client/routes.ts
-src/client/sidebar.ts
 docs-dist
+build

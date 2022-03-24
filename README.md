@@ -1,4 +1,4 @@
-# Docgen
+# Docit
 
 > Simple and Rapid React Documentation
 

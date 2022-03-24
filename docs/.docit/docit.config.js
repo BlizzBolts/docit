@@ -1,5 +1,6 @@
 const config = {
-  title: "Docgen",
+  title: "Docit",
+  publicPath: "https://phshy0607.github.io/docit/",
   sidebars: [
     { title: "Intro", path: "/index" },
     {
@@ -29,7 +30,7 @@ const config = {
         },
         {
           title: "How to use components in Docit",
-          path: "/tutorials/using-components-in-docgen",
+          path: "/tutorials/using-components-in-docit",
         },
       ],
     },
@@ -43,6 +44,5 @@ const config = {
     { title: "FAQ", path: "/FAQ" },
     { title: "Feature Request List", path: "/feature-request" },
   ],
-  publicPath: `https://unpkg.alibaba-inc.com/@alife/cnfe-docgen@1.1.1/docs-dist/`,
 };
 export default config;

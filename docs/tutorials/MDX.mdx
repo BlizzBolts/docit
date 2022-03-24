@@ -6,7 +6,7 @@
 
 ## JSX 与 import export
 
-Docgen 使用 React 的 Jsx 实现，支持展示 React Component。
+Docit 使用 React 的 Jsx 实现，支持展示 React Component。
 
 例如
 
@@ -36,10 +36,10 @@ import { Button } from "../components/Button";
 > 注意：只有 export 开头的 js 定义才能被解析成定义，否则视为文本处理
 
 ```js
-export const text = "Hello Docgen";
+export const text = "Hello Docit";
 ```
 
-export const text = "Hello Docgen";
+export const text = "Hello Docit";
 
 该变量可在 jsx 内使用，例如
 
@@ -56,15 +56,15 @@ export const text = "Hello Docgen";
 使用 export 定义变量
 
 ```js
-export const text = "Hello Docgen";
+export const text = "Hello Docit";
 ```
 
 使用 `{}` 调用变量
 
 ```
-{text.replace(/Docgen/g, 'World!')}
+{text.replace(/Docit/g, 'World!')}
 ```
 
 以上代码会渲染成
 
-{text.replace(/Docgen/g, 'World!')}
+{text.replace(/Docit/g, 'World!')}
