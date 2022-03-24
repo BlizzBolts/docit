@@ -38,3 +38,7 @@ For build
 ```sh
 docit build
 ```
+
+## Credits
+
+This project is inspired by [Vitepress](https://vitepress.vuejs.org/) and [Storybook](https://storybook.js.org/), powered by [Vite](https://vitejs.dev/) and [MDX](https://mdxjs.com/)
