@@ -1,12 +1,12 @@
-import { Plugin } from 'vite';
+import { Plugin } from "vite";
 import Virtual, {
   updateVirtualModule,
   VirtualModule,
-} from 'vite-plugin-virtual';
+} from "vite-plugin-virtual";
 // @ts-ignore
-const viteVirtual = Virtual['default'];
+const viteVirtual = Virtual["default"];
 
-export * from './provider.js';
+export * from "./provider.js";
 
 export type VirtualUpdater = () => Promise<void>;
 
