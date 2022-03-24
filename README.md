@@ -7,6 +7,8 @@
 - :chart: Out of the Box Api & Component Props Table Generation
 - :heart: Emoji Support https://github.com/wooorm/emoticon/blob/HEAD/support.md
 
+> For More, Please check out https://phshy0607.github.io/docit/#/index
+
 ## Get Started
 
 ```sh
