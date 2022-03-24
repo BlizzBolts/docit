@@ -1,16 +1,16 @@
-import path from 'path';
-import chokidar from 'chokidar';
-import { ResolvedUserConfig, SidebarNode } from '../types.js';
+import path from "path";
+import chokidar from "chokidar";
+import { ResolvedUserConfig, SidebarNode } from "../types.js";
 import {
   MD_PATTERN,
   VIRTUAL_APP_DATA_ID,
   VIRTUAL_ROUTER_CONFIG_ID,
   VIRTUAL_SIDEBARS_CONFIG_ID,
-} from '../constants.js';
-import { MarkdownCache } from './MarkdownCache.js';
-import { isEmpty } from 'lodash-es';
-import { Markdown } from './Markdown.js';
-import { withVirtual, VirtualUpdater } from '../plugins/virtual/index.js';
+} from "../constants.js";
+import { MarkdownCache } from "./MarkdownCache.js";
+import { isEmpty } from "lodash-es";
+import { Markdown } from "./Markdown.js";
+import { withVirtual, VirtualUpdater } from "../plugins/virtual/index.js";
 
 class Core {
   private static instance: Core;
@@ -33,7 +33,7 @@ class Core {
       binaryInterval: 300,
       disableGlobbing: false,
       followSymlinks: true,
-      ignored: ['**/node_modules/**', '**/.git/**'],
+      ignored: ["**/node_modules/**", "**/.git/**"],
       ignoreInitial: true,
       ignorePermissionErrors: true,
       interval: 100,
@@ -50,21 +50,21 @@ class Core {
   }
 
   private watch() {
-    this.watcher.addListener('all', async (eventType: string, file: string) => {
+    this.watcher.addListener("all", async (eventType: string, file: string) => {
       switch (eventType) {
-        case 'add': {
+        case "add": {
           this.markdownCache.add(file);
           await this.updater.updateRoutes();
           await this.updater.updateSidebars();
           break;
         }
-        case 'unlink': {
+        case "unlink": {
           await this.markdownCache.update();
           await this.updater.updateRoutes();
           await this.updater.updateSidebars();
           break;
         }
-        case 'change': {
+        case "change": {
           this.markdownCache.update();
           // await this.updater.updateSidebars();
           break;
@@ -125,7 +125,7 @@ class Core {
             }
           `
           )
-          .join(',')}
+          .join(",")}
       ]
     `;
 
@@ -141,11 +141,11 @@ class Core {
         const parsed = this.getMarkdowns().map((o) => {
           return {
             markdown: o,
-            transformedPaths: o.relativePath.split('/').filter((o) => o !== ''),
+            transformedPaths: o.relativePath.split("/").filter((o) => o !== ""),
           };
         });
         const root: SidebarNode = {
-          title: 'ROOT',
+          title: "ROOT",
           children: [],
         };
 
@@ -213,6 +213,10 @@ class Core {
     };
   }
 
+  private setConfig(config: ResolvedUserConfig) {
+    this.config = config;
+  }
+
   getMarkdowns() {
     return this.markdownCache.getMarkdowns();
   }
@@ -231,6 +235,10 @@ class Core {
   static getInstance(config?: ResolvedUserConfig) {
     if (!Core.instance) {
       Core.instance = new Core(config);
+    } else {
+      if (config) {
+        Core.instance.setConfig(config);
+      }
     }
     return Core.instance;
   }

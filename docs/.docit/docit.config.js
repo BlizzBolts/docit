@@ -2,7 +2,7 @@ const config = {
   title: "Docit",
   publicPath: "https://phshy0607.github.io/docit/",
   sidebars: [
-    { title: "Intro", path: "/index" },
+    { title: "Get Started", path: "/index" },
     {
       title: "Configuration",
       children: [
