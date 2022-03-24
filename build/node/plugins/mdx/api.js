@@ -1,16 +1,17 @@
-import { visit } from 'unist-util-visit';
-import { parseMdxToTree } from '../../utils/index.js';
-import { select } from 'unist-util-select';
-import resolve from 'resolve';
+import { visit } from "unist-util-visit";
+import { parseMdxToTree } from "../../utils/index.js";
+import { select } from "unist-util-select";
+import resolve from "resolve";
+const { sync } = resolve;
 export const api = (config) => {
     return (ast) => {
-        visit(ast, 'link', (link, _, parent) => {
-            const text = select('text', link);
+        visit(ast, "link", (link, _, parent) => {
+            const text = select("text", link);
             if (!link || !text) {
                 return;
             }
-            if (text.value.toLowerCase() === 'props' && link.url) {
-                const componentPath = resolve.sync(link.url, {
+            if (text.value.toLowerCase() === "props" && link.url) {
+                const componentPath = sync(link.url, {
                     basedir: config.docs,
                 });
                 const result = parseMdxToTree(`

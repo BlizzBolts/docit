@@ -1,0 +1,195 @@
+// Vitest Snapshot v1
+
+exports[`Props And Api Parsing > generates correct table 1`] = `
+"| 属性 | 类型 | 默认值 | 必填 | 描述 |
+| -- | -- | --- | -- | -- |
+
+| 属性      | 类型                | 默认值          | 必填 | 描述 |
+| ------- | ----------------- | ------------ | -- | -- |
+| color   | string            | grene        | 否  | -  |
+| length  | Length            | Length.Large | 否  | -  |
+| variant | \\"A\\" \\\\| \\"B\\" \\\\| \\"C\\" | -            | 是  | -  |
+"
+`;
+
+exports[`Props And Api Parsing > matctes raw parsed result 1`] = `
+[
+  {
+    "description": "",
+    "displayName": "StyledButton",
+    "filePath": "/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/test/props/Button.tsx",
+    "methods": [],
+    "props": {},
+    "tags": {},
+  },
+  {
+    "description": "",
+    "displayName": "Button",
+    "filePath": "/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/test/props/Button.tsx",
+    "methods": [],
+    "props": {
+      "color": {
+        "declarations": [
+          {
+            "fileName": "docgen/test/props/Button.tsx",
+            "name": "ButtonProps",
+          },
+        ],
+        "defaultValue": {
+          "value": "grene",
+        },
+        "description": "一种颜色",
+        "name": "color",
+        "parent": {
+          "fileName": "docgen/test/props/Button.tsx",
+          "name": "ButtonProps",
+        },
+        "required": false,
+        "type": {
+          "name": "string",
+        },
+      },
+      "length": {
+        "declarations": [
+          {
+            "fileName": "docgen/test/props/Button.tsx",
+            "name": "ButtonProps",
+          },
+        ],
+        "defaultValue": {
+          "value": "Length.Large",
+        },
+        "description": "",
+        "name": "length",
+        "parent": {
+          "fileName": "docgen/test/props/Button.tsx",
+          "name": "ButtonProps",
+        },
+        "required": false,
+        "type": {
+          "name": "enum",
+          "raw": "Length",
+          "value": [
+            {
+              "description": "大",
+              "fullComment": "大",
+              "tags": {},
+              "value": "5",
+            },
+            {
+              "description": "中",
+              "fullComment": "中",
+              "tags": {},
+              "value": "3",
+            },
+            {
+              "description": "小",
+              "fullComment": "小",
+              "tags": {},
+              "value": "1",
+            },
+          ],
+        },
+      },
+      "variant": {
+        "declarations": [
+          {
+            "fileName": "docgen/test/props/Button.tsx",
+            "name": "ButtonProps",
+          },
+        ],
+        "defaultValue": null,
+        "description": "",
+        "name": "variant",
+        "parent": {
+          "fileName": "docgen/test/props/Button.tsx",
+          "name": "ButtonProps",
+        },
+        "required": true,
+        "type": {
+          "name": "enum",
+          "raw": "\\"A\\" | \\"B\\" | \\"C\\"",
+          "value": [
+            {
+              "value": "\\"A\\"",
+            },
+            {
+              "value": "\\"B\\"",
+            },
+            {
+              "value": "\\"C\\"",
+            },
+          ],
+        },
+      },
+    },
+    "tags": {},
+  },
+]
+`;
+
+exports[`Props And Api Parsing > parses result 1`] = `
+[
+  {
+    "componentName": "StyledButton",
+    "filePath": "/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/test/props/Button.tsx",
+    "props": [],
+  },
+  {
+    "componentName": "Button",
+    "filePath": "/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/test/props/Button.tsx",
+    "props": [
+      {
+        "defaultValue": "grene",
+        "enums": undefined,
+        "isEnum": false,
+        "isRequired": false,
+        "name": "color",
+        "type": "string",
+      },
+      {
+        "defaultValue": "Length.Large",
+        "enums": [
+          {
+            "description": "大",
+            "value": "5",
+          },
+          {
+            "description": "中",
+            "value": "3",
+          },
+          {
+            "description": "小",
+            "value": "1",
+          },
+        ],
+        "isEnum": true,
+        "isRequired": false,
+        "name": "length",
+        "type": "Length",
+      },
+      {
+        "defaultValue": undefined,
+        "enums": [
+          {
+            "description": undefined,
+            "value": "\\"A\\"",
+          },
+          {
+            "description": undefined,
+            "value": "\\"B\\"",
+          },
+          {
+            "description": undefined,
+            "value": "\\"C\\"",
+          },
+        ],
+        "isEnum": true,
+        "isRequired": true,
+        "name": "variant",
+        "type": "\\"A\\" | \\"B\\" | \\"C\\"",
+      },
+    ],
+  },
+]
+`;

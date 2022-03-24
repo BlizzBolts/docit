@@ -1,0 +1,44 @@
+# 如何书写使用 Components
+
+## 外部组件引入
+
+### 引入组件
+
+```js
+import { Button } from "./components/Button";
+```
+
+### 组件调用
+
+```jsx live
+import { Button } from "../components/Button";
+
+<Button />;
+```
+
+## 在 MDX 文件内定义一个组件 （俗称内联组件）
+
+### 书写组件内容
+
+> 注意 export 关键字
+
+```jsx live
+export const HelloWorld = () => {
+  return (
+    <div
+      style={{
+        color: "red",
+        background: "blue",
+      }}
+    >
+      I'm rendered from a inline declaring component
+    </div>
+  );
+};
+
+<HelloWorld />;
+```
+
+### 组件调用
+
+内联组件与外部引入的调用方式一致

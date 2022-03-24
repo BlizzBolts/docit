@@ -1,0 +1,16 @@
+# Feature Request
+
+- [ ] code block 支持 line number, highlight specfic line, success and error code blocks
+- [x] Support custom sidebar configs
+- [ ] sandbox
+- [ ] 404 且 为/ 且没有 markdown 文件的时候，提示引导。 否则跳转到第一个 markdown
+
+## code live Sandbox
+
+- 把 js live 的代码块抽成一个虚拟模块，以 mdx 结尾
+- 抽成 string，塞入 conext
+- 用 viteplugin 读取 context, 将 import path 与 模块内容对应
+- 由于 path 以 mdx 结尾，期望 mdx loader 可以处理
+- 若不处理，手动 Parse 成 mdx react component
+- 把 js live 的代码节点直接删除，用`<SandBoxHashCode/>` 替换
+- 在 ast 头部，加入 n 个 import SandBoxHashCode 的 import 节点

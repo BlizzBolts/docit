@@ -1,0 +1,70 @@
+# MDX
+
+[MDX](https://mdxjs.com/docs/what-is-mdx/) 是 Markdown 的拓展
+
+支持在 Markdown 内书写 Jsx 语法、import export、和 Js 表达式
+
+## JSX 与 import export
+
+Docgen 使用 React 的 Jsx 实现，支持展示 React Component。
+
+例如
+
+```
+# 目录结构
+|-docs
+  |-components
+    |-Button.jsx
+  |-ReadMe.md
+```
+
+```js
+// ReadMe.md
+import { Button } from "./components/Button";
+
+<Button />;
+```
+
+以上代码会渲染成
+
+import { Button } from "../components/Button";
+
+<Button />
+
+当然你可以在 mdx 文件内使用`export`进行定义
+
+> 注意：只有 export 开头的 js 定义才能被解析成定义，否则视为文本处理
+
+```js
+export const text = "Hello Docgen";
+```
+
+export const text = "Hello Docgen";
+
+该变量可在 jsx 内使用，例如
+
+```jsx
+<Button>{text}</Button>
+```
+
+以上代码会渲染成
+
+<Button>{text}</Button>
+
+## Js 表达式
+
+使用 export 定义变量
+
+```js
+export const text = "Hello Docgen";
+```
+
+使用 `{}` 调用变量
+
+```
+{text.replace(/Docgen/g, 'World!')}
+```
+
+以上代码会渲染成
+
+{text.replace(/Docgen/g, 'World!')}

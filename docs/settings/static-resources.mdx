@@ -1,0 +1,31 @@
+# 静态资源
+
+## 简介
+
+静态资源可放置在 docs 文件夹下的 assets 文件夹下
+
+```
+|-docs
+  |-assets
+    |-tree-house-ipa.jpeg
+    |-dump-beer.gif
+  |-ReadMe.md
+```
+
+这些资源会默认打包到 `build` 文件夹, Docgen 会帮你处理一切的资源路径
+
+## 引用资源
+
+使用以下语法可正确引入图片并展示
+
+```md
+![树屋精酿](/tree-house-ipa.jpeg)
+```
+
+![树屋精酿](/tree-house-ipa.jpeg)
+
+```md
+![大口喝啤酒](/dump-beer.gif)
+```
+
+![大口喝啤酒](/dump-beer.gif)

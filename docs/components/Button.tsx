@@ -1,0 +1,33 @@
+import React from "react";
+import styled from "styled-components";
+interface ButtonProps {
+  /**
+   * 一个颜色
+   * @default red
+   */
+  color?: string;
+}
+
+const StyledButton = styled.button`
+  outline: none;
+  background: white;
+  border: 1px solid #525ee9;
+  border-radius: 4px;
+  color: #525ee9;
+  cursor: pointer;
+`;
+
+const Button: React.FC<ButtonProps> = (props) => {
+  const { children } = props;
+  return (
+    <StyledButton
+      onClick={() => {
+        alert("Hello World");
+      }}
+    >
+      {children || "我是按钮"}
+    </StyledButton>
+  );
+};
+
+export { Button };

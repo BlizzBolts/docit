@@ -1,0 +1,56 @@
+# 页面配置
+
+可以在文档文件夹下添加 docgen.config.js 对项目进行更丰富的配置，以下为支持的配置项：
+
+```ts
+export interface UserFileConfig {
+  title?: string;
+  sidebars?: SidebarNode[];
+}
+```
+
+```ts
+export interface SidebarNode {
+  title: string;
+  path?: string;
+  children?: SidebarNode[];
+}
+```
+
+## 配置示例
+
+配置位置：
+
+```
+|-[Root]
+  |-docs
+    |-docgen.config.js
+```
+
+示例
+
+```js
+const config = {
+  // 显示在文档左上角的主标题
+  title: "Docgen",
+
+  // 侧边栏配置示例
+  sidebars: [
+    { title: "介绍", path: "/index" },
+    { title: "FAQ", path: "/FAQ" },
+    { title: "Feature Request", path: "/feature-request" },
+    {
+      title: "使用指南",
+      children: [
+        { title: "文档配置", path: "/使用指南/page-config" },
+        { title: "静态资源", path: "/使用指南/static-resources" },
+        {
+          title: "如何书写使用 Components",
+          path: "/使用指南/using-components-in-docgen",
+        },
+      ],
+    },
+  ],
+};
+export default config;
+```

@@ -1,0 +1,147 @@
+// Vitest Snapshot v1
+
+exports[`core test suite > makes routes correctly 1`] = `
+"
+      import React from 'react';
+
+      export const routes = [
+        
+          {
+            path: \\"/FAQ\\",
+            exact: true,
+            component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/docs/FAQ.mdx')),
+          }
+        ,
+          {
+            path: \\"/feature-request\\",
+            exact: true,
+            component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/docs/feature-request.mdx')),
+          }
+        ,
+          {
+            path: \\"/index\\",
+            exact: true,
+            component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/docs/index.mdx')),
+          }
+        ,
+          {
+            path: \\"/Test/GFM\\",
+            exact: true,
+            component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/docs/Test/GFM.md')),
+          }
+        ,
+          {
+            path: \\"/Test/demo\\",
+            exact: true,
+            component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/docs/Test/demo.mdx')),
+          }
+        ,
+          {
+            path: \\"/settings/index\\",
+            exact: true,
+            component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/docs/settings/index.mdx')),
+          }
+        ,
+          {
+            path: \\"/settings/sidebar\\",
+            exact: true,
+            component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/docs/settings/sidebar.mdx')),
+          }
+        ,
+          {
+            path: \\"/settings/static-resources\\",
+            exact: true,
+            component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/docs/settings/static-resources.mdx')),
+          }
+        ,
+          {
+            path: \\"/tutorials/GFM\\",
+            exact: true,
+            component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/docs/tutorials/GFM.mdx')),
+          }
+        ,
+          {
+            path: \\"/tutorials/MDX\\",
+            exact: true,
+            component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/docs/tutorials/MDX.mdx')),
+          }
+        ,
+          {
+            path: \\"/tutorials/using-components-in-docgen\\",
+            exact: true,
+            component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/docs/tutorials/using-components-in-docgen.mdx')),
+          }
+        ,
+            {
+              path: \\"*\\",
+              exact: true,
+              component: React.lazy(() => import('/Users/hao/local/projj/gitlab.alibaba-inc.com/cnfe-framework/docgen/src/client/404.js')),
+            }
+          
+      ]
+    "
+`;
+
+exports[`core test suite > makes sidebars correctly 1`] = `
+[
+  {
+    "path": "/FAQ",
+    "title": "FAQ",
+  },
+  {
+    "path": "/feature-request",
+    "title": "Feature Request",
+  },
+  {
+    "path": "/index",
+    "title": "介绍",
+  },
+  {
+    "children": [
+      {
+        "path": "/Test/GFM",
+        "title": "Editor.md",
+      },
+      {
+        "path": "/Test/demo",
+        "title": "Demo23345",
+      },
+    ],
+    "title": "Test",
+  },
+  {
+    "children": [
+      {
+        "path": "/settings/index",
+        "title": "页面配置",
+      },
+      {
+        "path": "/settings/sidebar",
+        "title": "侧边栏",
+      },
+      {
+        "path": "/settings/static-resources",
+        "title": "静态资源",
+      },
+    ],
+    "title": "settings",
+  },
+  {
+    "children": [
+      {
+        "path": "/tutorials/GFM",
+        "title": "GFM",
+      },
+      {
+        "path": "/tutorials/MDX",
+        "title": "MDX",
+      },
+      {
+        "path": "/tutorials/using-components-in-docgen",
+        "title": "如何书写使用 Components",
+      },
+    ],
+    "title": "tutorials",
+  },
+]
+`;
