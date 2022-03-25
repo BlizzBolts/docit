@@ -17,22 +17,6 @@ export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
   const instance = Core.getInstance(config);
   const { sidebars, routes, appData } = await instance.prepare();
 
-  const plugin2: Plugin = {
-    name: "vite-plugin-docit-sandbox",
-    transform(_, id) {
-      const reg = /__needSandBox=(\d*)/g;
-      const result = reg.exec(id);
-      if (result) {
-        const content = Core.getInstance().getTmp().get(id);
-        const compiled = compileSync(
-          content.content,
-          getCompilerOptions(config)
-        );
-        return compiled.value as string;
-      }
-    },
-  };
-
   const plugin: Plugin = {
     name: "vite-plugin-docit",
     enforce: "pre",
@@ -82,6 +66,17 @@ export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
           parseApi(id.replace("?needParse", ""))
         )}`;
       }
+
+      const reg = /__needSandBox=(\d*)/g;
+      const result = reg.exec(id);
+      if (result) {
+        const content = Core.getInstance().getTmp().get(id);
+        const compiled = compileSync(
+          content.content,
+          getCompilerOptions(config)
+        );
+        return compiled.value as string;
+      }
     },
   };
 
@@ -92,7 +87,6 @@ export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
     sidebars,
     provider,
     ...(await mdx(config)),
-    plugin2,
     ...(react({
       jsxRuntime: "classic",
     }) as Plugin[]),

@@ -4,11 +4,13 @@ import { Link, Text } from "mdast";
 import { ResolvedUserConfig } from "../../types.js";
 import { parseMdxToTree } from "../../utils/index.js";
 import { select } from "unist-util-select";
+import { VFile } from "vfile";
 import resolve from "resolve";
+import path from "path";
 const { sync } = resolve;
 
 export const api = (config: ResolvedUserConfig): Plugin => {
-  return (ast) => {
+  return (ast, file: VFile) => {
     visit(ast, "link", (link: Link, _, parent) => {
       const text = select("text", link) as Text;
 
@@ -18,7 +20,7 @@ export const api = (config: ResolvedUserConfig): Plugin => {
 
       if (text.value.toLowerCase() === "props" && link.url) {
         const componentPath = sync(link.url, {
-          basedir: config.docs,
+          basedir: path.dirname(file.path),
         });
         const result = parseMdxToTree(`
 <ApiTable get={() => import('${componentPath}?needParse')} path="${componentPath}"/>

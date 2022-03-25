@@ -3,9 +3,9 @@ import {
   withCompilerOptions,
   PropItem,
   ComponentDoc,
-} from 'react-docgen-typescript';
-import { ResolvedComponentProps } from '../types.js';
-import ts from 'typescript';
+} from "react-docgen-typescript";
+import { ResolvedComponentProps } from "../types.js";
+import ts from "typescript";
 
 const getParser = () => {
   const defaultCompilerOptions: ts.CompilerOptions = {
@@ -18,16 +18,16 @@ const getParser = () => {
     shouldExtractValuesFromUnion: true,
     propFilter: (props: PropItem, component) => {
       const fromNode = props.declarations?.some((o) =>
-        o.fileName.includes('@types/node')
+        o.fileName.includes("@types/node")
       );
       const fromLibDom = props.declarations?.some((o) =>
-        o.fileName.includes('typescript/lib/lib.dom.d.ts')
+        o.fileName.includes("typescript/lib/lib.dom.d.ts")
       );
       const isReactType = props.declarations?.some((o) =>
-        o.fileName.includes('@types/react')
+        o.fileName.includes("@types/react")
       );
       const isStyledComponents = props.declarations?.some((o) =>
-        o.fileName.includes('@types/styled-components')
+        o.fileName.includes("@types/styled-components")
       );
       return !fromNode && !fromLibDom && !isReactType && !isStyledComponents;
     },
@@ -54,8 +54,9 @@ export const transformProps = (
           name: propItem.name,
           type: resolvePropType(propItem),
           isRequired: propItem.required,
+          description: propItem.description,
           defaultValue: propItem.defaultValue?.value,
-          isEnum: propItem.type.name === 'enum',
+          isEnum: propItem.type.name === "enum",
           enums: propItem.type.value?.map(
             (o: { description?: string; value?: string }) => {
               return {
