@@ -2,3 +2,4 @@ node_modules
 build
 *.log
 docs-dist
+package-lock.json
