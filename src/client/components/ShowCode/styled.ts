@@ -66,6 +66,12 @@ export const ShowCodeContainer = styled.div<MobileView>`
 
     border-left: ${(props) => props.mobileView && '1px solid var(--c-border)'};
     padding: ${(props) => props.mobileView && '0'};
+
+
+    @media (max-width: 768px) {
+      width: 100%;
+      min-width: auto;
+    }
   }
 
   ${ButtonContainer} {
@@ -75,7 +81,7 @@ export const ShowCodeContainer = styled.div<MobileView>`
   display: ${(props) => (props.mobileView ? 'flex' : 'block')};
   flex-flow: ${(props) => props.mobileView && 'row-reverse'};
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     flex-flow: ${(props) => props.mobileView && 'column'};
   }
 `;

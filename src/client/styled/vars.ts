@@ -3,6 +3,8 @@ import { createGlobalStyle } from 'styled-components';
 export const CssVariables = createGlobalStyle`
   :root {
     --sidebar-width: 20em;
+    --header-height: 4rem;
+
     --font-size: 16px;
     --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     --font-family-code: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;

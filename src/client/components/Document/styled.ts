@@ -1,8 +1,6 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const StyledMarkdown = styled.div`
-  margin-bottom: 5rem;
-
   h1,
   h2,
   h3,

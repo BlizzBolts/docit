@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import "normalize.css";
+import { createGlobalStyle } from 'styled-components';
+import 'normalize.css';
 
 export const GlobalStyle = createGlobalStyle`
   html, body, #app {
@@ -16,7 +16,10 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     direction: var(--direction);
-
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    
     * {
       box-sizing: border-box;
     }

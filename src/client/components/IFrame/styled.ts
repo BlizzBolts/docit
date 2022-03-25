@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Frame from "react-frame-component";
-import { IFrameProps } from "./types";
+import styled from 'styled-components';
+import Frame from 'react-frame-component';
+import { IFrameProps } from './types';
 
 export const StyledFrame = styled(Frame)<IFrameProps>`
   border: none;
