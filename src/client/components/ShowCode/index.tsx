@@ -40,7 +40,7 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
 
   const renderCode = () => {
     return (
-      <pre style={{ display: isShowing ? "block" : "none", margin: 0 }}>
+      <pre>
         <code
           style={{ margin: 0 }}
           className="docit-code"
@@ -52,7 +52,7 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
 
   return (
     <Loading loading={isLoading}>
-      <ShowCodeContainer>
+      <ShowCodeContainer mobileView={mobileView}>
         <RenderWindow>
           <IFrame mobileView={mobileView}>
             <ComponentRef.current />
@@ -67,7 +67,7 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
             Show Code
           </button>
         </ButtonContainer>
-        <CodeWindow>{renderCode()}</CodeWindow>
+        <CodeWindow show={isShowing}>{renderCode()}</CodeWindow>
       </ShowCodeContainer>
     </Loading>
   );

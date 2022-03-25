@@ -7,13 +7,21 @@ export const Hello = () => <div>123</div>;
 export const color = "red";
 ```
 
-```jsx live
+```jsx live mobile
 import { Button } from "../components/Button";
 
-export const Hello = () => <div>123</div>
-export const color = 'red'
+export const Hello = () => <div>123</div>;
+export const color = "red";
 
-<Button color={color} />;
+export const Block = () => {
+  return <div style={{ width: "100%", height: "400px", background: '#ececec', marginBottom: '24px' }}></div>;
+};
+
+<Block/>
+<Block/>
+<Block/>
+<Block/>
+
 ```
 
 ## Props
