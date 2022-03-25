@@ -2,8 +2,8 @@
 
 - [ ] code block 支持 line number, highlight specfic line, success and error code blocks
 - [x] Support custom sidebar configs
-- [ ] sandbox
-- [ ] 404 且 为/ 且没有 markdown 文件的时候，提示引导。 否则跳转到第一个 markdown
+- [x] sandbox
+- [x] 404 且 为/ 且没有 markdown 文件的时候，提示引导。 否则跳转到第一个 markdown
 
 ## code live Sandbox
 
@@ -14,3 +14,11 @@
 - 若不处理，手动 Parse 成 mdx react component
 - 把 js live 的代码节点直接删除，用`<SandBoxHashCode/>` 替换
 - 在 ast 头部，加入 n 个 import SandBoxHashCode 的 import 节点
+
+## Bug List
+
+- [ ] jsx live but with error code or error rendering
+
+* [ ] highlightjs removed from client
+
+* [ ] highlightjs safe mode
