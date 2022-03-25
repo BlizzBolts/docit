@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledMarkdown = styled.div`
   margin-bottom: 5rem;
@@ -169,6 +169,10 @@ export const StyledMarkdown = styled.div`
 
   p .docit-code {
     margin: 0 0.25em;
+  }
+
+  hr {
+    border-top: 1px dashed var(--c-brand);
   }
 
   pre {
