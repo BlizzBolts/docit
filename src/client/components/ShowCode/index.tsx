@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { CodeBlockProps } from "./types";
 import hljs from "highlight.js";
 import {
@@ -8,10 +8,28 @@ import {
   CodeWindow,
 } from "./styled";
 import { IFrame } from "../IFrame";
-const ShowCode: React.FC<CodeBlockProps> = (props) => {
-  const { children, code, lang } = props;
 
-  const [isShowing, setIsShowing] = useState(!Boolean(children));
+const ShowCode: React.FC<CodeBlockProps> = (props) => {
+  const { get, code, lang } = props;
+
+  const ComponentRef = useRef<React.FC>();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isShowing, setIsShowing] = useState(!Boolean(ComponentRef.current));
+  const [_, update] = useState({});
+
+  useEffect(() => {
+    setIsLoading(true);
+    get()
+      .then((res) => {
+        setIsLoading(false);
+        const { default: Component } = res;
+        ComponentRef.current = Component;
+        update({});
+      })
+      .catch(() => {
+        setIsLoading(false);
+      });
+  }, []);
 
   const display = useMemo(() => {
     return hljs.highlight(code.replace(/\n\n/g, "\n"), {
@@ -31,14 +49,20 @@ const ShowCode: React.FC<CodeBlockProps> = (props) => {
     );
   };
 
-  if (!children) {
+  if (isLoading) {
+    return <div>loading</div>;
+  }
+
+  if (!Boolean(ComponentRef.current)) {
     return renderCode();
   }
 
   return (
     <ShowCodeContainer>
       <RenderWindow>
-        <IFrame>{children}</IFrame>
+        <IFrame>
+          <ComponentRef.current />
+        </IFrame>
       </RenderWindow>
       <ButtonContainer>
         <button

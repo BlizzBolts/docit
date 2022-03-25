@@ -18,6 +18,7 @@ class Core {
   private config: ResolvedUserConfig;
   private watcher: chokidar.FSWatcher;
   private markdownCache: MarkdownCache;
+  private tmp: Map<string, any>;
 
   private updater: {
     updateSidebars: VirtualUpdater;
@@ -47,6 +48,8 @@ class Core {
       updateRoutes: () => null,
       updateAppData: () => null,
     };
+
+    this.tmp = new Map();
   }
 
   private watch() {
@@ -215,6 +218,10 @@ class Core {
 
   private setConfig(config: ResolvedUserConfig) {
     this.config = config;
+  }
+
+  getTmp() {
+    return this.tmp;
   }
 
   getMarkdowns() {

@@ -18,9 +18,10 @@ const StyledButton = styled.button`
 `;
 
 const Button: React.FC<ButtonProps> = (props) => {
-  const { children } = props;
+  const { children, color } = props;
   return (
     <StyledButton
+      style={{ color }}
       onClick={() => {
         alert("Hello World");
       }}
