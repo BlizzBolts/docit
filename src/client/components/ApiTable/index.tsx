@@ -1,5 +1,6 @@
-import { isEmpty } from 'lodash-es';
-import React, { useEffect, useMemo, useState } from 'react';
+import { Loading } from "../Loading";
+import { isEmpty } from "lodash-es";
+import React, { useEffect, useMemo, useState } from "react";
 interface ApiTableProps {
   get: () => Promise<any>;
   path: string;
@@ -10,17 +11,22 @@ type Enums = {
 };
 
 const ApiTable: React.FC<ApiTableProps> = (props) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [data, setData] = useState<ResolvedComponentProps[]>(null);
 
   useEffect(() => {
     setLoading(true);
-    props.get().then((data) => {
-      setLoading(false);
-      setData(data.default);
+    props
+      .get()
+      .then((data) => {
+        setLoading(false);
+        setData(data.default);
 
-      console.log(data.default);
-    });
+        console.log(data.default);
+      })
+      .catch(() => {
+        setLoading(false);
+      });
   }, []);
 
   const enums: Enums = useMemo(() => {
@@ -43,12 +49,8 @@ const ApiTable: React.FC<ApiTableProps> = (props) => {
     }, {}) as Enums;
   }, [data]);
 
-  if (loading) {
-    return <div>loading...</div>;
-  }
-
   return (
-    <>
+    <Loading loading={loading}>
       {data
         ?.filter((o) => !isEmpty(o.props))
         .map((o) => {
@@ -71,13 +73,13 @@ const ApiTable: React.FC<ApiTableProps> = (props) => {
                       <tr key={p.name}>
                         <td>{p.name}</td>
                         <td>
-                          <span style={{ color: p.isEnum ? 'red' : 'inherit' }}>
+                          <span style={{ color: p.isEnum ? "red" : "inherit" }}>
                             {p.type}
                           </span>
                         </td>
                         <td>{p.defaultValue}</td>
-                        <td>{p.isRequired ? '是' : '否'}</td>
-                        <td>{p.description || '-'}</td>
+                        <td>{p.isRequired ? "是" : "否"}</td>
+                        <td>{p.description || "-"}</td>
                       </tr>
                     );
                   })}
@@ -112,7 +114,7 @@ const ApiTable: React.FC<ApiTableProps> = (props) => {
           );
         })}
       </div> */}
-    </>
+    </Loading>
   );
 };
 

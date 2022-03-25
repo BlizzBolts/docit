@@ -8,13 +8,14 @@ import {
   CodeWindow,
 } from "./styled";
 import { IFrame } from "../IFrame";
+import { Loading } from "../Loading";
 
 const ShowCode: React.FC<CodeBlockProps> = (props) => {
   const { get, code, lang } = props;
 
   const ComponentRef = useRef<React.FC>();
   const [isLoading, setIsLoading] = useState(false);
-  const [isShowing, setIsShowing] = useState(!Boolean(ComponentRef.current));
+  const [isShowing, setIsShowing] = useState(Boolean(ComponentRef.current));
   const [_, update] = useState({});
 
   useEffect(() => {
@@ -49,32 +50,26 @@ const ShowCode: React.FC<CodeBlockProps> = (props) => {
     );
   };
 
-  if (isLoading) {
-    return <div>loading</div>;
-  }
-
-  if (!Boolean(ComponentRef.current)) {
-    return renderCode();
-  }
-
   return (
-    <ShowCodeContainer>
-      <RenderWindow>
-        <IFrame>
-          <ComponentRef.current />
-        </IFrame>
-      </RenderWindow>
-      <ButtonContainer>
-        <button
-          onClick={() => {
-            setIsShowing((v) => !v);
-          }}
-        >
-          Show Code
-        </button>
-      </ButtonContainer>
-      <CodeWindow>{renderCode()}</CodeWindow>
-    </ShowCodeContainer>
+    <Loading loading={isLoading}>
+      <ShowCodeContainer>
+        <RenderWindow>
+          <IFrame>
+            <ComponentRef.current />
+          </IFrame>
+        </RenderWindow>
+        <ButtonContainer>
+          <button
+            onClick={() => {
+              setIsShowing((v) => !v);
+            }}
+          >
+            Show Code
+          </button>
+        </ButtonContainer>
+        <CodeWindow>{renderCode()}</CodeWindow>
+      </ShowCodeContainer>
+    </Loading>
   );
 };
 
