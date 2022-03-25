@@ -8,11 +8,14 @@ import { VFile } from "vfile";
 export const live = (config: ResolvedUserConfig): Plugin => {
   return (ast, file: VFile) => {
     visit(ast, (node, index) => {
+      const meta = node?.meta?.split(" ");
       if (
         node.type === "code" &&
-        node.meta === "live" &&
+        meta?.includes("live") &&
         ["js", "ts", "jsx", "tsx"].includes(node.lang)
       ) {
+        const mobileView = meta.includes("mobile");
+
         const lang = node.lang;
         const content = node.value.replace(/\n/g, "\n\n").replace(/;/g, "");
         const tmp = Core.getInstance().getTmp();
@@ -24,7 +27,7 @@ export const live = (config: ResolvedUserConfig): Plugin => {
         });
 
         const result = parseMdxToTree(
-          `<ShowCode get={() => import('${moduleId}')} lang={\`${lang}\`} code={\`${content}\`}></ShowCode>`
+          `<ShowCode get={() => import('${moduleId}')} lang={\`${lang}\`} code={\`${content}\`} mobileView={${mobileView}}></ShowCode>`
         );
         ast.children.splice(index, 1, result);
       }

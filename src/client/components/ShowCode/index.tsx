@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import { CodeBlockProps } from "./types";
+import { ShowCodeProps } from "./types";
 import hljs from "highlight.js";
 import {
   RenderWindow,
@@ -10,12 +10,12 @@ import {
 import { IFrame } from "../IFrame";
 import { Loading } from "../Loading";
 
-const ShowCode: React.FC<CodeBlockProps> = (props) => {
-  const { get, code, lang } = props;
+const ShowCode: React.FC<ShowCodeProps> = (props) => {
+  const { get, code, lang, mobileView } = props;
 
-  const ComponentRef = useRef<React.FC>();
+  const ComponentRef = useRef<React.FC>(() => <></>);
   const [isLoading, setIsLoading] = useState(false);
-  const [isShowing, setIsShowing] = useState(Boolean(ComponentRef.current));
+  const [isShowing, setIsShowing] = useState(false);
   const [_, update] = useState({});
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const ShowCode: React.FC<CodeBlockProps> = (props) => {
     <Loading loading={isLoading}>
       <ShowCodeContainer>
         <RenderWindow>
-          <IFrame>
+          <IFrame mobileView={mobileView}>
             <ComponentRef.current />
           </IFrame>
         </RenderWindow>

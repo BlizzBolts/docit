@@ -3,19 +3,22 @@ import { StyleSheetManager } from "styled-components";
 import { useFrame } from "react-frame-component";
 import { StyledFrame } from "./styled";
 import { uniqueId } from "lodash-es";
+import { IFrameProps } from "./types";
 
 const IFRAME_MOUNT_ID = "iframe-root";
 
-const FrameChild: React.FC<{ id: string }> = (props) => {
-  const { children, id } = props;
+const FrameChild: React.FC<IFrameProps & { id: string }> = (props) => {
+  const { children, id, mobileView } = props;
   const { document: innerDocument } = useFrame();
 
   useEffect(() => {
-    const targetIframe = document.getElementById(id);
+    if (!mobileView) {
+      const targetIframe = document.getElementById(id);
 
-    const innerBody = innerDocument.getElementById(IFRAME_MOUNT_ID);
+      const innerBody = innerDocument.getElementById(IFRAME_MOUNT_ID);
 
-    targetIframe.style.height = `${innerBody.clientHeight + 30}px`;
+      targetIframe.style.height = `${innerBody.clientHeight + 30}px`;
+    }
   }, []);
 
   return (
@@ -25,8 +28,8 @@ const FrameChild: React.FC<{ id: string }> = (props) => {
   );
 };
 
-export const IFrame: React.FC = (props) => {
-  const { children } = props;
+export const IFrame: React.FC<IFrameProps> = (props) => {
+  const { children, mobileView } = props;
 
   const id = useRef(uniqueId("iframe"));
 
@@ -57,7 +60,9 @@ export const IFrame: React.FC = (props) => {
       initialContent={`<!DOCTYPE html><html><head></head><body><div id="${IFRAME_MOUNT_ID}"></div></body></html>`}
       mountTarget={`#${IFRAME_MOUNT_ID}`}
     >
-      <FrameChild id={id.current}>{children}</FrameChild>
+      <FrameChild id={id.current} mobileView={mobileView}>
+        {children}
+      </FrameChild>
     </StyledFrame>
   );
 };
