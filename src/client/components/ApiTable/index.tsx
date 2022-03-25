@@ -56,6 +56,7 @@ const ApiTable: React.FC<ApiTableProps> = (props) => {
         .map((o) => {
           return (
             <div key={o.componentName}>
+              <strong>{o.componentName}</strong>
               <table>
                 <thead>
                   <tr>
