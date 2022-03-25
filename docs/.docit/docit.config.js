@@ -18,19 +18,23 @@ const config = {
       ],
     },
     {
-      title: "Syntax",
+      title: "Features",
       children: [
         {
           title: "MDX",
-          path: "/tutorials/MDX",
+          path: "/features/MDX",
         },
         {
           title: "GFM",
-          path: "/tutorials/GFM",
+          path: "/features/GFM",
+        },
+        {
+          title: "API Generation",
+          path: "/features/API",
         },
         {
           title: "How to use components in Docit",
-          path: "/tutorials/using-components-in-docit",
+          path: "/features/using-components-in-docit",
         },
       ],
     },
