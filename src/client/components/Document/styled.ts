@@ -77,6 +77,7 @@ export const StyledMarkdown = styled.div`
   }
 
   a {
+    white-space: nowrap;
     text-decoration: none;
     color: var(--c-brand);
     transition: all 0.3 linear;
