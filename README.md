@@ -1,15 +1,13 @@
 > This Project is still under development. Use with caution.
 
-# Docit
+# Docit https://phshy0607.github.io/docit
 
 > Simple and Rapid React Documentation
 
 - :stuck_out_tongue: MDX & MD Syntax oriented.
 - :tornado: Fast HMR
 - :chart: Out of the Box Api & Component Props Table Generation
-- :heart: Emoji Support https://github.com/wooorm/emoticon/blob/HEAD/support.md
-
-> For More, Please check out https://phshy0607.github.io/docit/#/index
+- :heart: Emoji Support
 
 ## Get Started
 

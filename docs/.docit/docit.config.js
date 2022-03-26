@@ -1,52 +1,44 @@
 const config = {
-  title: "Docit",
-  publicPath: "https://phshy0607.github.io/docit/",
+  title: 'Docit',
+  publicPath: 'https://phshy0607.github.io/docit/',
   sidebars: [
-    { title: "Get Started", path: "/index" },
+    { title: 'Get Started', path: '/index' },
     {
-      title: "Configuration",
+      title: 'Usage',
       children: [
         {
-          title: "Sidebars",
-          path: "/settings/sidebar",
+          title: 'Syntax',
+          path: '/usage/Syntax',
         },
         {
-          title: "Config File",
-          path: "/settings/index",
-        },
-        { title: "Assets", path: "/settings/static-resources" },
-      ],
-    },
-    {
-      title: "Features",
-      children: [
-        {
-          title: "MDX",
-          path: "/features/MDX",
+          title: 'API Generation',
+          path: '/usage/API',
         },
         {
-          title: "GFM",
-          path: "/features/GFM",
+          title: 'Sidebars',
+          path: '/usage/sidebar',
         },
+        { title: 'Static Resources', path: '/usage/static-resources' },
+
         {
-          title: "API Generation",
-          path: "/features/API",
-        },
-        {
-          title: "How to use components in Docit",
-          path: "/features/using-components-in-docit",
+          title: 'How to use components in Docit',
+          path: '/usage/using-components-in-docit',
         },
       ],
     },
     {
-      title: "Test",
+      title: 'Test',
       children: [
-        { title: "Editor.md", path: "/Test/GFM" },
-        { title: "Demo", path: "/Test/demo" },
+        { title: 'Editor.md', path: '/Test/GFM' },
+        { title: 'Demo', path: '/Test/demo' },
       ],
     },
-    { title: "FAQ", path: "/FAQ" },
-    { title: "Feature Request List", path: "/feature-request" },
+    {
+      title: 'Config File',
+      path: '/Configs',
+    },
+    { title: 'FAQ', path: '/FAQ' },
+    { title: 'Feature Request List', path: '/feature-request' },
   ],
 };
 export default config;
