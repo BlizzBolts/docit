@@ -1,12 +1,12 @@
-import React, { Suspense } from 'react';
-import { routes } from 'virtual:routes';
-import { renderRoutes } from 'react-router-config';
-import { MDXProvider } from '@mdx-js/react';
-import { ShowCode } from '../ShowCode';
-import { StyledMarkdown } from './styled';
-import { ApiTable } from '../ApiTable';
-import { useDefaultRoute } from '../../hooks/useDefaultRoute';
-import { ErrorBoundary } from '../ErrorBoundary';
+import React, { Suspense } from "react";
+import { routes } from "virtual:routes";
+import { renderRoutes } from "react-router-config";
+import { MDXProvider } from "@mdx-js/react";
+import { ShowCode } from "../../built-in/ShowCode";
+import { StyledMarkdown } from "./styled";
+import { ApiTable } from "../../built-in/ApiTable";
+import { useDefaultRoute } from "../../hooks/useDefaultRoute";
+import { ErrorBoundary } from "../ErrorBoundary";
 
 const Document = () => {
   useDefaultRoute();
@@ -27,7 +27,7 @@ const Document = () => {
               return (
                 // TODO
                 <code
-                  className={`${[props.className, 'docit-code'].join(' ')}`}
+                  className={`${[props.className, "docit-code"].join(" ")}`}
                   data-lang={RegExp.$1}
                 >
                   {props.children}

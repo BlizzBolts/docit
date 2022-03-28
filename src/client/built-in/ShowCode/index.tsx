@@ -7,8 +7,8 @@ import {
   ButtonContainer,
   CodeWindow,
 } from "./styled";
-import { IFrame } from "../IFrame";
-import { Loading } from "../Loading";
+import { IFrame } from "../../components/IFrame";
+import { Loading } from "../../components/Loading";
 
 const ShowCode: React.FC<ShowCodeProps> = (props) => {
   const { get, code, lang, mobileView } = props;

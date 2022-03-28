@@ -1,4 +1,4 @@
-import { Loading } from "../Loading";
+import { Loading } from "../../components/Loading";
 import { isEmpty } from "lodash-es";
 import React, { useEffect, useMemo, useState } from "react";
 interface ApiTableProps {
