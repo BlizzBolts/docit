@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 export const CssVariables = createGlobalStyle`
   :root {
@@ -32,10 +32,11 @@ export const CssVariables = createGlobalStyle`
     --c-code-bg: #ececec;
     --c-code-keyword: #89b482;
     --c-code-function: #a9b665;
-    --c-code-attr: #d8a657;
+    --c-code-attr: #fff;
+    --c-code-string: #D8A657;
     --c-code-built-in: #7DAEA3;
-
     --c-code-name: #e78a4e;
+    --c-code-doctag: #EA6962;
     --c-code-link: var(--c-code-keyword);
     --c-code-comments: #938374;
   }

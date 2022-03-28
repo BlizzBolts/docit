@@ -1,56 +1,90 @@
-# 页面配置
+# Config File
 
-在.docit 文件夹下添加 docit.config.js 对项目进行更丰富的配置，以下为支持的配置项：
+> Docit will watch your config file in dev mode, if config file changes, dev server will restart.
 
-```ts
-export interface UserFileConfig {
-  title?: string;
-  sidebars?: SidebarNode[];
-}
-```
+Docit also support more configs via config file.
 
-```ts
-export interface SidebarNode {
-  title: string;
-  path?: string;
-  children?: SidebarNode[];
-}
-```
-
-## 配置示例
-
-配置位置：
+A valid config file need to be placed under `.docit` folder, and named as `docit.config.js`.
 
 ```
-|-[Root]
+|-[your-project-root]
   |-docs
-    |-docit.config.js
+    |-.docit
+      |-docit.config.js
+    |- your-doc.md
 ```
 
-示例
+## Example
 
 ```js
 const config = {
-  // 显示在文档左上角的主标题
-  title: 'Docit',
+  /**
+   * Your document title, will show at the left top corner and also `document.title`
+   *
+   * @Default 'Docit'
+   */
+  title: "Docit",
 
-  // 侧边栏配置示例
+  /**
+   * Public path for your assets, also check out https://vitejs.dev/config/#base
+   *
+   * @Default '/'
+   */
+  publicPath: "https://phshy0607.github.io/docit/",
+
+  /**
+   * A path to your provider, need to be an absolute path.
+   *
+   * @Default path.resolve(CLIENT_PATH, './components/DefaultProvider/index.js'),
+   */
+  providerPath: "https://phshy0607.github.io/docit/",
+
+  /**
+   * Custom Sidebar Configs
+   *
+   * @Default undefined
+   */
   sidebars: [
-    { title: '介绍', path: '/index' },
-    { title: 'FAQ', path: '/FAQ' },
-    { title: 'Feature Request', path: '/feature-request' },
+    { title: "Get Started", path: "/index" },
     {
-      title: '使用指南',
+      title: "Usage",
       children: [
-        { title: '文档配置', path: '/使用指南/page-config' },
-        { title: '静态资源', path: '/使用指南/static-resources' },
         {
-          title: '如何书写使用 Components',
-          path: '/使用指南/using-components-in-docit',
+          title: "Syntax",
+          path: "/usage/Syntax",
         },
+        {
+          title: "Sidebars",
+          path: "/usage/sidebar",
+        },
+        { title: "Static Resources", path: "/usage/static-resources" },
       ],
     },
+    {
+      title: "Config File",
+      path: "/Configs",
+    },
+    { title: "FAQ", path: "/FAQ" },
+    { title: "Feature Request List", path: "/feature-request" },
   ],
 };
 export default config;
+```
+
+## Provider
+
+If you need a `Provider` to wrap the document up. You can provider a `providePath` via config file.
+
+For Example.
+
+```jsx
+import React from "react";
+import { ThemeProvider } from "../src/theme/Provider";
+
+const Provider = (props) => {
+  const { children } = props;
+  return <ThemeProvider>{children}</ThemeProvider>;
+};
+
+export default Provider;
 ```

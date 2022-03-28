@@ -2,9 +2,7 @@
 
 ## Introduction
 
-静态资源可放置在 docs 文件夹下的 assets 文件夹下
-
-Make a `assets` folder, and put all your assets under it.
+Make a `assets` folder, and put all your static resources under it.
 
 ```
 |-docs
@@ -14,24 +12,22 @@ Make a `assets` folder, and put all your assets under it.
   |-ReadMe.md
 ```
 
-这些资源会默认打包到 `build` 文件夹, Docit 会帮你处理一切的资源路径
-
-All these assets will move to your `build` folder, Docit will handle `public path` for you.
+All these resources will move to your `docs-dist` folder, Docit will handle `public path` for you.
 
 ## Usage
 
-使用以下语法可正确引入图片并展示
+To use assets
 
-To use these assets
+> Don't put `/` before image path
 
 ```md
 ![Tree House IPA](tree-house-ipa.jpeg)
 ```
 
-![Tree House IPA](/tree-house-ipa.jpeg)
+![Tree House IPA](tree-house-ipa.jpeg)
 
 ```md
 ![Dump Beer](dump-beer.gif)
 ```
 
-![Dump Beer](dump-beer.gif)
+![Dump Beer](/dump-beer.gif)

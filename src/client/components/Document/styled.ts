@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const StyledMarkdown = styled.div`
   h1,
@@ -223,14 +223,25 @@ export const StyledMarkdown = styled.div`
       .hljs-link {
         color: var(--c-code-link);
       }
+
       .hljs-string {
         color: var(--c-code-name);
       }
+
       .hljs-comment {
         color: var(--c-code-comments);
       }
+
       .hljs-property {
         color: var(--c-code-function);
+      }
+
+      .hljs-doctag {
+        color: var(--c-code-doctag);
+      }
+
+      .hljs-string {
+        color: var(--c-code-string);
       }
     }
   }
