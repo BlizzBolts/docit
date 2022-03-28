@@ -1,8 +1,8 @@
 > This Project is still under development. Use with caution.
 
-# Docit https://phshy0607.github.io/docit
+# Docit 
 
-> Simple and Rapid React Documentation
+> Simple and Rapid React Documentation https://phshy0607.github.io/docit
 
 - :stuck_out_tongue: MDX & MD Syntax oriented.
 - :tornado: Fast HMR
