@@ -18,12 +18,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Now respect docit.config.js#title field, update document.title
+- More docs on Syntax
 
 ### Changed
 - Using English as first language, fix api table doc
+- Document style tuning
 
 ### Fixed
 - Fix wrong doc paths
+
 
 
 
