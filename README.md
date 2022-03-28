@@ -44,4 +44,5 @@ This project is inspired by [Vitepress](https://vitepress.vuejs.org/) and [Story
 
 ## Changelog
 
+checkout https://github.com/phshy0607/docit/blob/master/CHANGELOG.md
 
