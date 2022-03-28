@@ -19,8 +19,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Now respect docit.config.js#title field, update document.title
 
+### Changed
+- Using English as first language, fix api table doc
+
 ### Fixed
 - Fix wrong doc paths
+
 
 
 ## [0.6.0] - 2022-03-28
