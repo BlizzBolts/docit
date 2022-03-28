@@ -12,6 +12,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
+
+## [Unreleased]
+
+### Added
+
+- Now respect docit.config.js#title field, update document.title
+
+### Fixed
+- Fix wrong doc paths
+
+
 ## [0.6.0] - 2022-03-28
 
 ### Added

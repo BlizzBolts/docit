@@ -60,11 +60,11 @@ const ApiTable: React.FC<ApiTableProps> = (props) => {
               <table>
                 <thead>
                   <tr>
-                    <th>属性</th>
-                    <th>类型</th>
-                    <th>默认值</th>
-                    <th>必填</th>
-                    <th>描述</th>
+                    <th>Property</th>
+                    <th>Type</th>
+                    <th>DefaulValue</th>
+                    <th>Required</th>
+                    <th>Description</th>
                   </tr>
                 </thead>
 
