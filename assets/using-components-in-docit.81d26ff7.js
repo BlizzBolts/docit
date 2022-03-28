@@ -1,0 +1,1 @@
+import{k as r,R as t}from"./vendor.1f95e102.js";import{B as a}from"./Button.960e4357.js";function s(e={}){const{wrapper:n}=Object.assign({},r(),e.components);return n?t.createElement(n,e,t.createElement(o)):o();function o(){return t.createElement(a)}}export{s as default};
