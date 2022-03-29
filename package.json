@@ -1,6 +1,6 @@
 {
   "name": "@blizzbolts/docit",
-  "version": "0.6.2",
+  "version": "0.6.4",
   "license": "MIT",
   "bin": {
     "docit": "bin/docit.js"
@@ -23,7 +23,8 @@
     "docs-build": "node ./bin/docit build docs",
     "clean": "rm -rf node_modules build docs-dist",
     "test": "vitest",
-    "publish:pages": "node scripts/gh.js"
+    "publish:pages": "node scripts/gh.js",
+    "release": "yarn build && yarn publish && yarn publish:pages"
   },
   "files": [
     "build",
