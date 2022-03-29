@@ -23,6 +23,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 - Using English as first language, fix api table doc
 - Document style tuning
+- rewrite sidebar style
+- rewrite mobile view style
 
 ### Fixed
 - Fix wrong doc paths

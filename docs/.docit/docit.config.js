@@ -21,7 +21,7 @@ const config = {
       title: "Config File",
       path: "/Configs",
     },
-    { title: "FAQ", path: "/FAQ" },
+    { title: "Troubleshooting", path: "/troubleshooting" },
   ],
 };
 export default config;
