@@ -1,4 +1,4 @@
-import{k as c,R as e}from"./vendor.1f95e102.js";function l(t={}){const{wrapper:s}=Object.assign({},c(),t.components);return s?e.createElement(s,t,e.createElement(a)):a();function a(){const n=Object.assign({h1:"h1",p:"p",pre:"pre",code:"code",span:"span",h2:"h2",a:"a"},c(),t.components);return e.createElement(e.Fragment,null,e.createElement(n.h1,null,"Sidebars"),`
+import{g as c,R as e}from"./vendor.d396be56.js";function l(t={}){const{wrapper:s}=Object.assign({},c(),t.components);return s?e.createElement(s,t,e.createElement(a)):a();function a(){const n=Object.assign({h1:"h1",p:"p",pre:"pre",code:"code",span:"span",h2:"h2",a:"a"},c(),t.components);return e.createElement(e.Fragment,null,e.createElement(n.h1,null,"Sidebars"),`
 `,e.createElement(n.p,null,"Docit will use system file structure as sidebars."),`
 `,e.createElement(n.pre,null,e.createElement(n.code,{className:"hljs language-arduino"},`\u251C\u2500\u2500 FAQ.mdx
 \u251C\u2500\u2500 feature-request.mdx

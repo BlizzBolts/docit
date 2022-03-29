@@ -1,4 +1,4 @@
-import{k as c,R as e}from"./vendor.1f95e102.js";function o(t={}){const{wrapper:l}=Object.assign({},c(),t.components);return l?e.createElement(l,t,e.createElement(a)):a();function a(){const n=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",ul:"ul",li:"li",h2:"h2",pre:"pre",code:"code",h3:"h3",ol:"ol",span:"span",a:"a"},c(),t.components);return e.createElement(e.Fragment,null,e.createElement(n.h1,null,"Docit"),`
+import{g as c,R as e}from"./vendor.d396be56.js";function o(l={}){const{wrapper:t}=Object.assign({},c(),l.components);return t?e.createElement(t,l,e.createElement(a)):a();function a(){const n=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",ul:"ul",li:"li",h2:"h2",pre:"pre",code:"code",h3:"h3",ol:"ol",span:"span",a:"a"},c(),l.components);return e.createElement(e.Fragment,null,e.createElement(n.h1,null,"Docit"),`
 `,e.createElement(n.blockquote,null,`
 `,e.createElement(n.p,null,"Simple and Rapid React Documentation"),`
 `),`
@@ -28,4 +28,4 @@ import{k as c,R as e}from"./vendor.1f95e102.js";function o(t={}){const{wrapper:l
 `,e.createElement(n.pre,null,e.createElement(n.code,{className:"hljs language-sh"},`docit build
 `)),`
 `,e.createElement(n.h2,null,"Usage"),`
-`,e.createElement(n.p,null,"Checkout ",e.createElement(n.a,{href:"#/features/syntax"},"Syntax")))}}export{o as default};
+`,e.createElement(n.p,null,"Checkout ",e.createElement(n.a,{href:"#/usage/syntax"},"Syntax")))}}export{o as default};
