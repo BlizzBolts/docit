@@ -23,22 +23,27 @@ interface SidebarNode {
   children?: SidebarNode[];
 }
 
-declare module 'virtual:routes' {
+interface Overrides {
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+declare module "virtual:routes" {
   const routes: Route[];
   export { routes };
 }
 
-declare module 'virtual:appData' {
+declare module "virtual:appData" {
   const title: string;
   export default { title };
 }
 
-declare module 'virtual:sidebars' {
+declare module "virtual:sidebars" {
   const sidebars: SidebarNode[];
   export default sidebars;
 }
 
-declare module 'virtual:provider' {
+declare module "virtual:provider" {
   const provider: React.FC;
   export default provider;
 }

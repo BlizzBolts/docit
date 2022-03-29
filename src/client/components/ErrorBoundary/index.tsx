@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class ErrorBoundary extends React.Component {
     if (this.state.hasError) {
       // 你可以自定义降级后的 UI 并渲染
       // @ts-ignore
-      return <h1>{this.state.a || 'Something went wrong.'}</h1>;
+      return <h1>{this.state.a || "Something went wrong."}</h1>;
     }
 
     return this.props.children;

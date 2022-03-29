@@ -16,9 +16,7 @@ export const CssVariables = createGlobalStyle`
     --c-white: #ffffff;
     --c-black: #000000;
     --c-brand: #9B1D30;
-    --c-1: #2c3e50;
-    --c-2: #476582;
-    --c-3: #90a4b7;
+    --c-1: #3c2828;
 
     --c-bg: var(--c-white);
     --c-divider: rgba(60, 60, 67, .12);

@@ -6,22 +6,21 @@ import { Header } from "./components/Header";
 import { StyledAside, StyledDocument, StyledMain } from "./styled";
 import { GlobalStyle, CssVariables } from "./styled";
 import Provider from "virtual:provider";
-import { Sidebar } from "./components/Sidebar";
 import appData from "virtual:appData";
+import { sidebarVisible } from "./model";
 
 const App = () => {
   useEffect(() => {
     document.title = appData.title;
   }, []);
+  const visible = sidebarVisible.use();
   return (
     <Provider>
       <CssVariables />
       <GlobalStyle />
       <StyledMain>
         <Header />
-        <StyledAside>
-          <Sidebar />
-        </StyledAside>
+        <StyledAside visible={`${visible}`} />
         <StyledDocument>
           <Document />
         </StyledDocument>

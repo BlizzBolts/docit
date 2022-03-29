@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const StyledMarkdown = styled.div`
+  color: var(--c-1);
+
   h1,
   h2,
   h3,

@@ -1,66 +1,45 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { useLocation } from 'react-router';
-import {
-  ProSidebar,
-  Menu,
-  MenuItem,
-  SubMenu,
-  SidebarContent,
-} from 'react-pro-sidebar';
-import sidebars from 'virtual:sidebars';
-import 'react-pro-sidebar/dist/scss/styles.scss';
-import { sidebarVisible, setSidebarVisible } from '../../model';
+import React from "react";
+import { Link, useLocation } from "react-router-dom";
+import { isEmpty } from "lodash-es";
+import sidebars from "virtual:sidebars";
+import { StyledSidebarItem } from "./styled";
+import { setSidebarVisible } from "../../model";
 
-export interface SidebarProps {
-  className?: string;
-}
-
-const Sidebar: React.FC<SidebarProps> = (props) => {
+const Sidebar: React.FC<Overrides> = (props) => {
   const location = useLocation();
-  const { className } = props;
-  const visible = sidebarVisible.use();
-
-  const parse = (item: any, level = 0) => {
-    if (!item.children) {
+  const parse = (o: SidebarNode, level?: number) => {
+    if (isEmpty(o.children)) {
       return (
-        <MenuItem
-          key={item.path}
-          active={item.path === location.pathname}
-          onClick={() => {
-            setSidebarVisible(false);
-          }}
+        <StyledSidebarItem
+          key={o.path}
+          level={level}
+          active={o.path === location.pathname}
         >
-          {item.title}
-          <Link to={item.path} />
-        </MenuItem>
+          <Link
+            to={o.path}
+            onClick={() => {
+              setSidebarVisible(false);
+            }}
+          >
+            {o.title}
+          </Link>
+        </StyledSidebarItem>
       );
     } else {
       return (
-        <SubMenu key={item.title} title={item.title} defaultOpen>
-          {item.children.map((o: any) => {
-            return parse(o, level + 1);
-          })}
-        </SubMenu>
+        <StyledSidebarItem level={level} active={false} key={o.title}>
+          {o.title}
+          <div style={{ marginTop: "16px" }}>
+            {o.children.map((o: any) => {
+              return parse(o, level + 1);
+            })}
+          </div>
+        </StyledSidebarItem>
       );
     }
   };
-  return (
-    <ProSidebar
-      breakPoint="md"
-      toggled={visible}
-      onToggle={(v) => {
-        setSidebarVisible(v);
-      }}
-      className={className}
-      width="20em"
-      collapsedWidth="0px"
-    >
-      <SidebarContent>
-        <Menu>{sidebars.map((o: any) => parse(o))}</Menu>
-      </SidebarContent>
-    </ProSidebar>
-  );
+
+  return <aside {...props}>{sidebars.map((o) => parse(o, 0))}</aside>;
 };
 
 export { Sidebar };

@@ -19,16 +19,9 @@ const Document = () => {
             ApiTable,
             Suspense,
             code: (props) => {
-              if (props.className) {
-                const regexp = new RegExp(/language-(.*)/g);
-                props.className.match(regexp);
-              }
-
               return (
-                // TODO
                 <code
                   className={`${[props.className, "docit-code"].join(" ")}`}
-                  data-lang={RegExp.$1}
                 >
                   {props.children}
                 </code>

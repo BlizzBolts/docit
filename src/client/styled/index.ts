@@ -1,12 +1,9 @@
-import styled from 'styled-components';
-export * from './global';
-export * from './vars';
+import styled from "styled-components";
+export * from "./global";
+export * from "./vars";
+import { Sidebar } from "../components/Sidebar";
 
 export const StyledHeader = styled.header`
-  // z-index: 10;
-  // position: fixed;
-  // top: 0;
-  // left: 0;
   height: var(--header-height);
   width: 100%;
   background: var(--c-bg);
@@ -17,31 +14,21 @@ export const StyledHeader = styled.header`
   padding: 0 1rem;
 `;
 
-export const StyledAside = styled.aside`
+export const StyledAside = styled(Sidebar)<{ visible: string }>`
+  padding: 1.5rem 1rem;
   width: var(--sidebar-width);
   height: calc(100vh - var(--header-height));
   overflow-y: auto;
   display: inline-block;
-
-  .pro-sidebar {
-    width: 100% !important;
-    height: 100% !important;
-    min-width: 100% !important;
-  }
+  border-right: 1px solid var(--c-divider);
+  background: white;
 
   @media (max-width: 768px) {
-    width: 0px;
-    .pro-sidebar.md {
-      position: fixed;
-      left: calc(var(--sidebar-width) * -1);
-      width: auto !important;
-      min-width: auto !important;
-    }
-    .pro-sidebar.md.toggled {
-      position: fixed;
-      left: 0em;
-      width: 100% !important;
-    }
+    position: fixed;
+    left: ${(props) =>
+      props.visible === "true" ? 0 : "calc(-1 * var(--sidebar-width))"};
+
+    transition: left 250ms ease-in-out;
   }
 `;
 
