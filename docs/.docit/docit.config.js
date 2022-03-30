@@ -7,24 +7,73 @@ const config = defineConfig({
     Github: "https://github.com/phshy0607/docit",
   },
   sidebars: [
-    { title: "Get Started", path: "/index" },
     {
-      title: "Usage",
+      title: "Get Started",
       children: [
         {
-          title: "Syntax",
-          path: "/usage/Syntax",
+          title: "Introduction",
+          path: "/get-started/introduction",
         },
-        {
-          title: "Sidebars",
-          path: "/usage/sidebar",
-        },
-        { title: "Static Resources", path: "/usage/static-resources" },
       ],
     },
     {
-      title: "Config File",
-      path: "/Configs",
+      title: "Document",
+      children: [
+        {
+          title: "MDX",
+          path: "/document/MDX",
+        },
+        {
+          title: "Live Block",
+          path: "/document/live-block",
+        },
+        {
+          title: "API Generation",
+          path: "/document/api-generation",
+        },
+        {
+          title: "Front Matter",
+          path: "/document/front-matter",
+        },
+      ],
+    },
+    {
+      title: "Explaination",
+      children: [
+        {
+          title: "Routes",
+          path: "/explaination/routes",
+        },
+        {
+          title: "Title",
+          path: "/explaination/title",
+        },
+      ],
+    },
+    {
+      title: "Configure",
+      children: [
+        {
+          title: "Config File",
+          path: "/configure/config-file",
+        },
+        {
+          title: "Sidebar",
+          path: "/configure/sidebar",
+        },
+        {
+          title: "Provider",
+          path: "/configure/provider",
+        },
+        {
+          title: "Static Resources",
+          path: "/configure/static-resources",
+        },
+        {
+          title: "Socials",
+          path: "/configure/socials",
+        },
+      ],
     },
     { title: "Troubleshooting", path: "/troubleshooting" },
   ],

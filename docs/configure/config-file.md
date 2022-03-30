@@ -67,24 +67,16 @@ const config = {
     { title: "FAQ", path: "/FAQ" },
     { title: "Feature Request List", path: "/feature-request" },
   ],
+
+  /**
+   * Custom Social Info
+   * 
+   * @Default undefined
+   */
+  socials: {
+    Twitter: 'xxx',
+    Github: 'xxx'
+  }
 };
 export default config;
-```
-
-## Provider
-
-If you need a `Provider` to wrap the document up. You can provider a `providePath` via config file.
-
-For Example.
-
-```jsx
-import React from "react";
-import { ThemeProvider } from "../src/theme/Provider";
-
-const Provider = (props) => {
-  const { children } = props;
-  return <ThemeProvider>{children}</ThemeProvider>;
-};
-
-export default Provider;
 ```
