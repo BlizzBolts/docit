@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
-## [0.6.5]
+## [0.6.5] - 2022-03-30
 
 ### Added
 - add `defineConfig`, to help write config file.
