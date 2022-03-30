@@ -1,7 +1,26 @@
 import styled from "styled-components";
 
+export const StyledDocument = styled.main`
+  width: calc(100vw - var(--sidebar-width));
+  height: calc(100vh - var(--header-height));
+  display: inline-block;
+  overflow-y: auto;
+
+  @media (max-width: 768px) {
+    width: 100vw;
+    padding-left: 0rem;
+  }
+`;
+
 export const StyledMarkdown = styled.div`
   color: var(--c-1);
+  padding: 0 4em;
+  word-break: break-all;
+  margin-bottom: 100px;
+
+  @media (max-width: 768px) {
+    padding: 0 1em;
+  }
 
   h1,
   h2,
