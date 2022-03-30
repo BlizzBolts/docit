@@ -1,4 +1,6 @@
-const config = {
+import { defineConfig } from "../../src/node/index";
+
+const config = defineConfig({
   title: "Docit",
   publicPath: "https://phshy0607.github.io/docit/",
   sidebars: [
@@ -23,5 +25,5 @@ const config = {
     },
     { title: "Troubleshooting", path: "/troubleshooting" },
   ],
-};
+});
 export default config;
