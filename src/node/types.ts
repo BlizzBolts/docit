@@ -2,48 +2,41 @@ export interface UserFileConfig {
   title?: string;
   sidebars?: SidebarNode[];
   publicPath?: string;
+  socials?: {
+    Twitter?: string;
+    Github?: string;
+  };
 }
 
 export interface UserConfig {
-  /**
-   * docs path
-   * @description the path that your md/mdx file locates
-   */
   root: string;
-
   title?: string;
-
   sidebars?: SidebarNode[];
-
   providerPath?: string;
   publicPath?: string;
+  socials?: {
+    Twitter?: string;
+    Github?: string;
+  };
 }
 
 export interface ResolvedUserConfig {
-  /**
-   * client project location
-   * @description full path
-   */
   base: string;
-  /**
-   * docs location
-   * @description full path
-   */
   docs: string;
-
   title?: string;
-
   sidebars?: SidebarNode[];
-
   providerPath?: string;
-
   publicPath?: string;
+  socials?: {
+    Twitter?: string;
+    Github?: string;
+  };
 }
 
 export type DepsMapper = Map<string, DepsItem>;
 
 export type DepsItem = Map<
-  'default' | 'nonDefault' | 'namespace',
+  "default" | "nonDefault" | "namespace",
   Set<string> | string
 >;
 export interface SidebarNode {

@@ -2,10 +2,11 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { isEmpty } from "lodash-es";
 import sidebars from "virtual:sidebars";
-import { StyledSidebarItem } from "./styled";
-import { setSidebarVisible } from "../../model";
+import { StyledSidebarItem, StyledAside } from "./styled";
+import { setSidebarVisible, sidebarVisible } from "../../model";
 
-const Sidebar: React.FC<Overrides> = (props) => {
+const Sidebar: React.FC = () => {
+  const visible = sidebarVisible.use();
   const location = useLocation();
   const parse = (o: SidebarNode, level?: number) => {
     if (isEmpty(o.children)) {
@@ -39,7 +40,11 @@ const Sidebar: React.FC<Overrides> = (props) => {
     }
   };
 
-  return <aside {...props}>{sidebars.map((o) => parse(o, 0))}</aside>;
+  return (
+    <StyledAside visible={`${visible}`} className="docit-sidebar">
+      {sidebars.map((o) => parse(o, 0))}
+    </StyledAside>
+  );
 };
 
 export { Sidebar };

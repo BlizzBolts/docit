@@ -1,4 +1,15 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+
+export const StyledHeader = styled.header`
+  height: var(--header-height);
+  width: 100%;
+  background: var(--c-bg);
+  border-bottom: 1px solid var(--c-divider);
+
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+`;
 
 export const StyledTitle = styled.p`
   font-weight: bold;

@@ -1,0 +1,75 @@
+# Live Block
+
+Live Block is a way to speed up your doc writing by rendering and showing code at the same time.
+
+Just add `live` keyword after code block language
+
+Docit only respect `live` keyword for `js` `jsx` `ts` and `tsx` languages
+
+> The code you writing is rendered in a sandbox(iframe), and also a JavaScript sandbox (serving as an independent dynamic import).
+
+### Syntax
+
+````md
+```jsx live
+import { DemoBlock } from "../components/DemoBlock";
+<DemoBlock />;
+```
+````
+
+This will render as
+
+```jsx live
+import { DemoBlock } from "../components/DemoBlock";
+<DemoBlock />;
+```
+
+### Why?
+
+Markdown naturally has code block syntax
+
+For Example:
+
+````md
+```jsx
+import { DemoBlock } from "../components/DemoBlock";
+<DemoBlock />;
+```
+````
+
+Your markdown might look like
+
+````md
+import { DemoBlock } from "../components/DemoBlock";
+
+<DemoBlock />;
+
+```jsx
+import { DemoBlock } from "../components/DemoBlock";
+<DemoBlock />;
+```
+````
+
+You will find that you write the statement twice.
+
+And if your code has changes, you need to apply the changes twice.
+
+## For Mobile
+
+### Syntax
+
+````md
+```jsx live mobile
+import { DemoBlock } from "../components/DemoBlock";
+<DemoBlock />;
+```
+````
+
+Docit also support live mobile block. Add a `mobile` keyword after `live` to enable it.
+
+```jsx live mobile
+import { DemoBlock } from "../components/DemoBlock";
+<DemoBlock />;
+```
+
+Docit provides a `360 * 640` mobile view to help you display responsive component
