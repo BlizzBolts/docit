@@ -4,7 +4,6 @@ import { StyledSidebarBtn, StyledTitle, StyledHeader } from "./styled";
 import { setSidebarVisible, sidebarVisible } from "../../model";
 import { Socials } from "../Socials";
 import { Svgs } from "../Svgs";
-
 import appData from "virtual:appData";
 
 const Header = () => {

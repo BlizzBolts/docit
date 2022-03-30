@@ -35,7 +35,11 @@ declare module "virtual:routes" {
 
 declare module "virtual:appData" {
   const title: string;
-  export default { title };
+  const socials: {
+    twitter?: string;
+    github?: string;
+  };
+  export default { title, socials };
 }
 
 declare module "virtual:sidebars" {

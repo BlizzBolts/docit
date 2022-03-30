@@ -213,6 +213,7 @@ class Core {
   private async makeAppData() {
     return {
       title: this.config.title,
+      socials: this.config.socials,
     };
   }
 
