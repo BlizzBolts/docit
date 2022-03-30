@@ -1,0 +1,1 @@
+import{g as c,R as t}from"./vendor.d396be56.js";function r(e={}){const{wrapper:n}=Object.assign({},c(),e.components);return n?t.createElement(n,e,t.createElement(o)):o();function o(){const s=Object.assign({h1:"h1"},c(),e.components);return t.createElement(s.h1,null,"Prerequisites")}}export{r as default};

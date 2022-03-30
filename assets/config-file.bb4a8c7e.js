@@ -61,19 +61,16 @@ import{g as l,R as e}from"./vendor.d396be56.js";function r(t={}){const{wrapper:s
     { `,e.createElement(a.span,{className:"hljs-attr"},"title"),": ",e.createElement(a.span,{className:"hljs-string"},'"FAQ"'),", ",e.createElement(a.span,{className:"hljs-attr"},"path"),": ",e.createElement(a.span,{className:"hljs-string"},'"/FAQ"'),` },
     { `,e.createElement(a.span,{className:"hljs-attr"},"title"),": ",e.createElement(a.span,{className:"hljs-string"},'"Feature Request List"'),", ",e.createElement(a.span,{className:"hljs-attr"},"path"),": ",e.createElement(a.span,{className:"hljs-string"},'"/feature-request"'),` },
   ],
+
+  `,e.createElement(a.span,{className:"hljs-comment"},`/**
+   * Custom Social Info
+   * 
+   * `,e.createElement(a.span,{className:"hljs-doctag"},"@Default")," ",e.createElement(a.span,{className:"hljs-variable"},"undefined"),`
+   */`),`
+  `,e.createElement(a.span,{className:"hljs-attr"},"socials"),`: {
+    `,e.createElement(a.span,{className:"hljs-title hljs-class"},"Twitter"),": ",e.createElement(a.span,{className:"hljs-string"},"'xxx'"),`,
+    `,e.createElement(a.span,{className:"hljs-title hljs-class"},"Github"),": ",e.createElement(a.span,{className:"hljs-string"},"'xxx'"),`
+  }
 };
 `,e.createElement(a.span,{className:"hljs-keyword"},"export")," ",e.createElement(a.span,{className:"hljs-keyword"},"default"),` config;
-`)),`
-`,e.createElement(a.h2,null,"Provider"),`
-`,e.createElement(a.p,null,"If you need a ",e.createElement(a.code,null,"Provider")," to wrap the document up. You can provider a ",e.createElement(a.code,null,"providePath")," via config file."),`
-`,e.createElement(a.p,null,"For Example."),`
-`,e.createElement(a.pre,null,e.createElement(a.code,{className:"hljs language-jsx"},e.createElement(a.span,{className:"hljs-keyword"},"import")," ",e.createElement(a.span,{className:"hljs-title hljs-class"},"React")," ",e.createElement(a.span,{className:"hljs-keyword"},"from")," ",e.createElement(a.span,{className:"hljs-string"},'"react"'),`;
-`,e.createElement(a.span,{className:"hljs-keyword"},"import")," { ",e.createElement(a.span,{className:"hljs-title hljs-class"},"ThemeProvider")," } ",e.createElement(a.span,{className:"hljs-keyword"},"from")," ",e.createElement(a.span,{className:"hljs-string"},'"../src/theme/Provider"'),`;
-
-`,e.createElement(a.span,{className:"hljs-keyword"},"const")," ",e.createElement(a.span,{className:"hljs-title hljs-function"},"Provider")," = (",e.createElement(a.span,{className:"hljs-params"},"props"),`) => {
-  `,e.createElement(a.span,{className:"hljs-keyword"},"const"),` { children } = props;
-  `,e.createElement(a.span,{className:"hljs-keyword"},"return")," ",e.createElement(a.span,{className:"xml"},e.createElement(a.span,{className:"hljs-tag"},"<",e.createElement(a.span,{className:"hljs-name"},"ThemeProvider"),">"),"{children}",e.createElement(a.span,{className:"hljs-tag"},"</",e.createElement(a.span,{className:"hljs-name"},"ThemeProvider"),">")),`;
-};
-
-`,e.createElement(a.span,{className:"hljs-keyword"},"export")," ",e.createElement(a.span,{className:"hljs-keyword"},"default")," ",e.createElement(a.span,{className:"hljs-title hljs-class"},"Provider"),`;
 `)))}}export{r as default};
