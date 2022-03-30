@@ -12,10 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
+## [UNRELEASED]
+
+### Added
+- add `defineConfig`, to help write config file.
+- add `ESM` info in `ReadMe` and `docs`
+
 
 ## [0.6.4] - 2022-03-29
 
-### added
+### Added
 - use `yarn release` to publish packages
 
 ## [0.6.2] - 2022-03-29
