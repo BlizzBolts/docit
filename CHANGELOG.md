@@ -17,6 +17,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - add `defineConfig`, to help write config file.
 - add `ESM` info in `ReadMe` and `docs`
+- now support `socials` in `docit.config.js` file.
+- export more types
 
 
 ## [0.6.4] - 2022-03-29
