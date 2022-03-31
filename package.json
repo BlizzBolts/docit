@@ -5,12 +5,22 @@
   "bin": {
     "docit": "bin/docit.js"
   },
-  "types": "./build/index.d.ts",
+  "author": {
+    "name": "phshy0607",
+    "email": "phshy0607@126.com"
+  },
+  "type": "module",
   "main": "./build/node/index.js",
   "module": "./build/node/index.js",
-  "type": "module",
+  "types": "./build/node/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./build/node/index.js",
+      "types": "./build/node/index.d.ts"
+    }
+  },
   "scripts": {
-    "dev": "rm -rf build && run-p dev-node entry-prepare dev-client",
+    "dev": "rimraf -rf build && run-p dev-node entry-prepare dev-client",
     "dev-node": "tsc -w -p src/node",
     "dev-client": "tsc -w -p src/client",
     "entry-prepare": "node scripts/cpEntryFile.js",
@@ -21,10 +31,8 @@
     "docs": "run-p dev docs-dev",
     "docs-dev": "node ./bin/docit start",
     "docs-build": "node ./bin/docit build docs",
-    "clean": "rm -rf node_modules build docs-dist",
     "test": "vitest",
-    "publish:pages": "node scripts/gh.js",
-    "release": "yarn build && yarn publish && yarn publish:pages"
+    "release": "yarn build && yarn publish && node scripts/gh.js"
   },
   "files": [
     "build",
@@ -34,9 +42,6 @@
     "scripts",
     "docs-dist"
   ],
-  "engines": {
-    "node": ">=14"
-  },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
     "@types/lodash-es": "^4.17.6",
@@ -96,6 +101,9 @@
   },
   "resolutions": {
     "react-is": "16.13.1"
+  },
+  "engines": {
+    "node": ">=14"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
