@@ -29,21 +29,20 @@ export const StyledSidebarItem = styled.div.attrs<StyledSidebarItemProps>(
   font-size: 16px;
   margin-bottom: 16px;
   padding-left: ${(props) => (props.level === 0 ? "0" : "12px")};
-
   font-weight: 600;
-
-  color: ${(props) => (props.active ? "blue" : "inherit")};
 
   a {
     font-weight: 400;
-    display: flex;
-    align-items: center;
+    display: inline-flex;
     text-decoration: none;
     cursor: pointer;
-    color: var(--c-1);
+    color: ${(props) => {
+      return props.active ? "var(--c-brand)" : "var(--c-1)";
+    }};
 
     :hover {
-      color: var(--c-brand);
+      opacity: 0.6;
+      transition: opacity 200ms linear;
     }
   }
 `;

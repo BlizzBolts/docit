@@ -17,6 +17,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - Not web console will print out docit version
 
+### Fixed
+- sidebar anchors now have hover and active style
+
 ## [0.6.6] - 2022-03-31
 
 ### Fix
