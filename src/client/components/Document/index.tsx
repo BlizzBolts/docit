@@ -28,6 +28,9 @@ const Document = () => {
                   </code>
                 );
               },
+              p: (props) => {
+                return <div className="docit-paragraph">{props.children}</div>;
+              },
             }}
           >
             <Suspense fallback={<></>}>{renderRoutes(routes)}</Suspense>

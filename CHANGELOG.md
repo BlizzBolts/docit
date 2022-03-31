@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fixed
 - sidebar anchors now have hover and active style
+- using `div` instead of `p`
 
 ## [0.6.6] - 2022-03-31
 

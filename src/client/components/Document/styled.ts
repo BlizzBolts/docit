@@ -77,6 +77,7 @@ export const StyledMarkdown = styled.div`
   }
 
   p,
+  .docit-paragraph,
   ol,
   ul {
     margin: 1rem 0;
