@@ -41,6 +41,7 @@ export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
             "react-live",
             "core-js",
             "highlight.js",
+            "react-frame-component",
           ],
         },
         build: {
