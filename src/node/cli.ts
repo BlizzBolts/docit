@@ -2,11 +2,8 @@ import minimist from "minimist";
 import chalk from "chalk";
 import chokidar from "chokidar";
 import path from "path";
-import fsx from "fs-extra";
 import { ViteDevServer } from "vite";
 import { merge } from "lodash-es";
-import { PKG_JSON_PATH } from "./constants.js";
-import { UserConfig } from "./types.js";
 import { start } from "./start.js";
 import { build } from "./build.js";
 import {
@@ -14,12 +11,11 @@ import {
   readUserConfigFile,
   resolveAbsPath,
 } from "./utils/index.js";
+import { pkg } from "./constants.js";
 
 const argv: any = minimist(process.argv.slice(2));
 const command: string = argv._[0];
 const root: string = argv._[1] || "docs";
-
-const pkg = fsx.readJSONSync(PKG_JSON_PATH);
 
 console.log(chalk.greenBright(`Running Docit@${pkg.version}`));
 

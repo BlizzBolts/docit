@@ -14,6 +14,8 @@ import appData from "virtual:appData";
 const App = () => {
   useEffect(() => {
     document.title = appData.title;
+
+    console.log(`%cDocit@${appData.version}`, `color: #9B1D30;`);
   }, []);
 
   return (

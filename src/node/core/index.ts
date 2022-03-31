@@ -11,6 +11,7 @@ import { MarkdownCache } from "./MarkdownCache.js";
 import { isEmpty } from "lodash-es";
 import { Markdown } from "./Markdown.js";
 import { withVirtual, VirtualUpdater } from "../plugins/virtual/index.js";
+import { pkg } from "../constants.js";
 
 class Core {
   private static instance: Core;
@@ -214,6 +215,7 @@ class Core {
     return {
       title: this.config.title,
       socials: this.config.socials,
+      version: pkg.version,
     };
   }
 

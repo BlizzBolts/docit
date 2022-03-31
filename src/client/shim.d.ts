@@ -39,7 +39,8 @@ declare module "virtual:appData" {
     twitter?: string;
     github?: string;
   };
-  export default { title, socials };
+  const version: string;
+  export default { title, socials, version };
 }
 
 declare module "virtual:sidebars" {
