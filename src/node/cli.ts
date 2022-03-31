@@ -32,12 +32,9 @@ let server: ViteDevServer = null;
 const bootstrap = () => {
   readUserConfigFile(configFilePath).then((userConfig) => {
     if (command === "start") {
-      start(merge({ root }, userConfig))
-        .then((s) => s.listen())
-        .then((s) => {
-          server = s;
-          s.printUrls();
-        });
+      start(merge({ root }, userConfig)).then((s) => {
+        server = s;
+      });
     }
     if (command === "build") {
       build(merge({ root }, userConfig));

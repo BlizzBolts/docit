@@ -16,9 +16,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Fix
 - fix `types` is missing in `package.json`
+- fix react-frame-component does not provide an export named `default`
 
 ### Added
 - add `exports` in `package.json`
+
+### Changed
+- `start` api will start server
 
 ## [0.6.5] - 2022-03-30
 
