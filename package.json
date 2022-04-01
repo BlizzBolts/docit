@@ -85,6 +85,7 @@
     "react-router-config": "^5.1.1",
     "react-router-dom": "^5.3.0",
     "rehype-highlight": "^5.0.2",
+    "rehype-slug": "^5.0.1",
     "remark-emoji": "^3.0.2",
     "remark-frontmatter": "^4.0.1",
     "remark-gfm": "^3.0.1",
