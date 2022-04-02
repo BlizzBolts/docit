@@ -178,6 +178,10 @@ export const StyledMarkdown = styled.div`
     margin: 0;
   }
 
+  blockquote > .docit-paragraph {
+    margin: 0;
+  }
+
   form {
     margin: 0;
   }
