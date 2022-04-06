@@ -1,6 +1,6 @@
 {
   "name": "@blizzbolts/docit",
-  "version": "0.6.6",
+  "version": "0.7.0",
   "license": "MIT",
   "bin": {
     "docit": "bin/docit.js"
