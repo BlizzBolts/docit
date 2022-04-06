@@ -1,13 +1,13 @@
-import { ResolvedUserConfig } from '../types.js';
-import path from 'path';
-import fsx from 'fs-extra';
-import grayMatter from 'gray-matter';
-import { Text } from 'mdast';
-import { select } from 'unist-util-select';
-import { toRoutePath } from '../utils/index.js';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-
+import { ResolvedUserConfig } from "../types.js";
+import path from "path";
+import fsx from "fs-extra";
+import grayMatter from "gray-matter";
+import { Text } from "mdast";
+import { select } from "unist-util-select";
+import { toRoutePath, parseToc } from "../utils/index.js";
+import { unified } from "unified";
+import remarkParse from "remark-parse";
+import { toc as generateToc } from "mdast-util-toc";
 class Markdown {
   private config: ResolvedUserConfig;
 
@@ -43,7 +43,7 @@ class Markdown {
   get title() {
     const h1Title = (
       select(
-        'heading[depth=1] > text',
+        "heading[depth=1] > text",
         unified().use(remarkParse).parse(this.content)
       ) as Text
     )?.value;
@@ -60,7 +60,18 @@ class Markdown {
   }
 
   get transformedPaths() {
-    return this.relativePath.split('/').filter((o) => o !== '');
+    return this.relativePath.split("/").filter((o) => o !== "");
+  }
+
+  get toc() {
+    const tree = unified().use(remarkParse).parse(this.content);
+    const nodes = generateToc(tree, {
+      maxDepth: 3,
+      tight: true,
+      ordered: true,
+    });
+
+    return parseToc(nodes.map, {});
   }
 }
 

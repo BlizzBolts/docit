@@ -8,9 +8,10 @@ import {
   VIRTUAL_SIDEBARS_CONFIG_ID,
 } from "../constants.js";
 import { MarkdownCache } from "./MarkdownCache.js";
-import { isEmpty } from "lodash-es";
+import { isEmpty, pick } from "lodash-es";
 import { Markdown } from "./Markdown.js";
 import { withVirtual, VirtualUpdater } from "../plugins/virtual/index.js";
+import { pkg } from "../constants.js";
 
 class Core {
   private static instance: Core;
@@ -69,7 +70,7 @@ class Core {
         }
         case "change": {
           this.markdownCache.update();
-          // await this.updater.updateSidebars();
+          await this.updater.updateAppData();
           break;
         }
       }
@@ -214,6 +215,8 @@ class Core {
     return {
       title: this.config.title,
       socials: this.config.socials,
+      version: pkg.version,
+      markdowns: this.getMarkdowns().map((o) => pick(o, ["toc", "routePath"])),
     };
   }
 

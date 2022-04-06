@@ -1,11 +1,11 @@
-import { createLogger } from 'vite';
-import { bundleRequire } from 'bundle-require';
-import fsx from 'fs-extra';
-import path from 'path';
-import { UserFileConfig } from '../types.js';
+import { createLogger } from "vite";
+import { bundleRequire } from "bundle-require";
+import fsx from "fs-extra";
+import path from "path";
+import { UserFileConfig } from "../types.js";
 
-export const logger = createLogger('info', {
-  prefix: '[docit]',
+export const logger = createLogger("info", {
+  prefix: "[docit]",
 });
 
 /**
@@ -13,12 +13,12 @@ export const logger = createLogger('info', {
  * `index` to slush.
  */
 export const removeExtention = (path: string): string => {
-  return path.replace(/(\.mdx|\.md)$/g, '');
+  return path.replace(/(\.mdx|\.md)$/g, "");
 };
 
 export const toRoutePath = (p: string) => {
   const result = removeExtention(p);
-  if (result.startsWith('/')) {
+  if (result.startsWith("/")) {
     return result;
   } else {
     return `/${result}`;
@@ -61,5 +61,5 @@ export const resolveAbsPath = (p: string, base = process.cwd()) => {
   return path.isAbsolute(p) ? p : path.resolve(base, p);
 };
 
-export * from './ast.js';
-export * from './api.js';
+export * from "./ast.js";
+export * from "./api.js";

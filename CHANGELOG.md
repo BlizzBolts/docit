@@ -12,6 +12,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
+
+## [0.7.0] - Unreleased
+### Added
+- Not web console will print out docit version
+- Add `TOC` section
+
+### Fixed
+- sidebar anchors now have hover and active style
+- using `div` instead of `p`
+
 ## [0.6.6] - 2022-03-31
 
 ### Fix

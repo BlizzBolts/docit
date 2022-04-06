@@ -58,3 +58,9 @@ export interface ResolvedComponentProps {
     description?: string;
   }[];
 }
+
+export interface ParsedTocItem {
+  title?: string;
+  url?: string;
+  items?: ParsedTocItem[];
+}
