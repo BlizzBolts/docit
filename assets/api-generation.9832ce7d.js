@@ -1,9 +1,9 @@
-import{_ as r}from"./index.83b5ce7c.js";import{g as c,R as e}from"./vendor.d396be56.js";function h(a={}){const{wrapper:s}=Object.assign({},c(),a.components);return s?e.createElement(s,a,e.createElement(l)):l();function l(){const t=Object.assign({h1:"h1",p:"p",blockquote:"blockquote",h3:"h3",pre:"pre",code:"code",span:"span",a:"a",hr:"hr"},c(),a.components),{ApiTable:n}=t;return n||m("ApiTable",!0),e.createElement(e.Fragment,null,e.createElement(t.h1,null,"API Generation"),`
+import{_ as r}from"./index.abe9f35c.js";import{g as c,R as e}from"./vendor.d396be56.js";function h(a={}){const{wrapper:s}=Object.assign({},c(),a.components);return s?e.createElement(s,a,e.createElement(n)):n();function n(){const t=Object.assign({h1:"h1",p:"p",blockquote:"blockquote",h3:"h3",pre:"pre",code:"code",span:"span",a:"a",hr:"hr"},c(),a.components),{ApiTable:l}=t;return l||m("ApiTable",!0),e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"api-generation"},"API Generation"),`
 `,e.createElement(t.p,null,"Docit provides a simple syntax to handle auto API parsing."),`
 `,e.createElement(t.blockquote,null,`
 `,e.createElement(t.p,null,"Currently only support React Typescript API Tables. Functions and Interface support might not work as you expected."),`
 `),`
-`,e.createElement(t.h3,null,"Syntax"),`
+`,e.createElement(t.h3,{id:"syntax"},"Syntax"),`
 `,e.createElement(t.pre,null,e.createElement(t.code,{className:"hljs language-md"},"[",e.createElement(t.span,{className:"hljs-string"},"Props"),"](",e.createElement(t.span,{className:"hljs-link"},"../components/Button.tsx"),`)
 `)),`
 `,e.createElement(t.p,null,"Inside Docit, it will check the text name to be ",e.createElement(t.code,null,"Props")," and resolve your component path using ",e.createElement(t.a,{href:"https://www.npmjs.com/package/resolve"},"resolve")),`
@@ -49,7 +49,7 @@ interface `,e.createElement(t.span,{className:"hljs-title hljs-class"},"ButtonPr
 `,e.createElement(t.span,{className:"hljs-keyword"},"export")," { ",e.createElement(t.span,{className:"hljs-title hljs-class"},"Button"),` };
 `)),`
 `,e.createElement(t.p,null,"The API table will look like:"),`
-`,e.createElement(t.p,null,e.createElement(e.Fragment,null,e.createElement(n,{get:()=>r(()=>import("./ApiTest.bcb105f8.js"),[]),path:"/Users/hao/local/projj/github.com/phshy0607/docit/docs/components/ApiTest.tsx"}))),`
+`,e.createElement(t.p,null,e.createElement(e.Fragment,null,e.createElement(l,{get:()=>r(()=>import("./ApiTest.bcb105f8.js"),[]),path:"/Users/hao/local/projj/github.com/phshy0607/docit/docs/components/ApiTest.tsx"}))),`
 `,e.createElement(t.p,null,"You will notice ",e.createElement(t.code,null,"StyledButton")," get exported, but the api table does not appear, thats because the type parser got nothing from parsing it."),`
 `,e.createElement(t.hr),`
 `,e.createElement(t.p,null,"since Docit using ",e.createElement(t.code,null,"resolve"),", you can actually parsing some third party types like"),`

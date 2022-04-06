@@ -1,4 +1,4 @@
-import{g as l,R as e}from"./vendor.d396be56.js";function r(t={}){const{wrapper:s}=Object.assign({},l(),t.components);return s?e.createElement(s,t,e.createElement(n)):n();function n(){const a=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",code:"code",pre:"pre",h2:"h2",span:"span"},l(),t.components);return e.createElement(e.Fragment,null,e.createElement(a.h1,null,"Config File"),`
+import{g as l,R as e}from"./vendor.d396be56.js";function r(t={}){const{wrapper:s}=Object.assign({},l(),t.components);return s?e.createElement(s,t,e.createElement(n)):n();function n(){const a=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",code:"code",pre:"pre",h2:"h2",span:"span"},l(),t.components);return e.createElement(e.Fragment,null,e.createElement(a.h1,{id:"config-file"},"Config File"),`
 `,e.createElement(a.blockquote,null,`
 `,e.createElement(a.p,null,"Docit will watch your config file in dev mode, if config file changes, dev server will restart."),`
 `),`
@@ -10,7 +10,7 @@ import{g as l,R as e}from"./vendor.d396be56.js";function r(t={}){const{wrapper:s
       |-docit.config.js
     |- your-doc.md
 `)),`
-`,e.createElement(a.h2,null,"Example"),`
+`,e.createElement(a.h2,{id:"example"},"Example"),`
 `,e.createElement(a.pre,null,e.createElement(a.code,{className:"hljs language-js"},e.createElement(a.span,{className:"hljs-keyword"},"const"),` config = {
   `,e.createElement(a.span,{className:"hljs-comment"},`/**
    * Your document title, will show at the left top corner and also \`document.title\`
