@@ -6,11 +6,12 @@ import { ShowCode } from "../../built-in/ShowCode";
 import { StyledMarkdown, StyledDocument } from "./styled";
 import { ApiTable } from "../../built-in/ApiTable";
 import { useDefaultRoute } from "../../hooks/useDefaultRoute";
-import { usePositioning } from "../../hooks/usePositioning";
+import { useAnchors } from "../../hooks/useAnchors";
+import { Toc } from "../Toc";
 
 const Document = () => {
   useDefaultRoute();
-  usePositioning();
+  useAnchors();
 
   return (
     <StyledDocument className="docit-document">
@@ -37,6 +38,7 @@ const Document = () => {
           <Suspense fallback={<></>}>{renderRoutes(routes)}</Suspense>
         </MDXProvider>
       </StyledMarkdown>
+      <Toc />
     </StyledDocument>
   );
 };

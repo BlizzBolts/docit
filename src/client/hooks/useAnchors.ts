@@ -3,7 +3,7 @@ import { useHistory, useLocation } from "react-router";
 import { parseQueryToSearch } from "../utils/url";
 import { useQuery } from "./useQuery";
 
-export const usePositioning = () => {
+export const useAnchors = () => {
   const history = useHistory();
   const location = useLocation();
   const query = useQuery();

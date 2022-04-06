@@ -4,6 +4,7 @@ export const CssVariables = createGlobalStyle`
   :root {
     --sidebar-width: 20em;
     --header-height: 4rem;
+    --toc-width: 280px;
 
     --font-size: 16px;
     --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;

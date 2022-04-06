@@ -1,5 +1,5 @@
 import { isEmpty } from "lodash-es";
-
+import { History, Location } from "history";
 export const parseSearchToQuery = (search: string) => {
   if (!search) {
     return null;

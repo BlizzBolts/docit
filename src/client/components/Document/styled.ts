@@ -5,6 +5,7 @@ export const StyledDocument = styled.main`
   height: calc(100vh - var(--header-height));
   display: inline-block;
   overflow-y: auto;
+  position: relative;
 
   @media (max-width: 768px) {
     width: 100vw;
@@ -15,11 +16,14 @@ export const StyledDocument = styled.main`
 export const StyledMarkdown = styled.div`
   color: var(--c-1);
   padding: 0 4em;
+  padding-right: calc(4em - 20px);
   word-break: break-all;
   margin-bottom: 100px;
+  width: calc(100% - var(--toc-width));
 
   @media (max-width: 768px) {
     padding: 0 1em;
+    width: 100%;
   }
 
   h1,

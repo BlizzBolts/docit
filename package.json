@@ -73,6 +73,7 @@
     "lodash-es": "^4.17.21",
     "mdast-util-gfm-table": "^1.0.4",
     "mdast-util-mdx": "1.1.0",
+    "mdast-util-toc": "^6.1.0",
     "minimist": "^1.2.5",
     "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",

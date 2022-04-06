@@ -28,6 +28,17 @@ interface Overrides {
   style?: React.CSSProperties;
 }
 
+interface ParsedTocItem {
+  title?: string;
+  url?: string;
+  items?: ParsedTocItem[];
+}
+
+interface Markdown {
+  routePath: string;
+  toc: ParsedTocItem;
+}
+
 declare module "virtual:routes" {
   const routes: Route[];
   export { routes };
@@ -40,7 +51,11 @@ declare module "virtual:appData" {
     github?: string;
   };
   const version: string;
-  export default { title, socials, version };
+  const markdowns: {
+    routePath: string;
+    toc: ParsedTocItem;
+  }[];
+  export default { title, socials, version, markdowns };
 }
 
 declare module "virtual:sidebars" {
