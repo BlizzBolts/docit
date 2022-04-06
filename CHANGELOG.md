@@ -13,7 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Security` in case of vulnerabilities.
 
 
-## [0.7.1] - Unreleased
+## [0.7.1] - 2022-04-06
 ### Fixed
 - js error when parsing toc
 
