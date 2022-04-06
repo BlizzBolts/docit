@@ -32,17 +32,17 @@ const Toc = () => {
   };
 
   const parse = (o: ParsedTocItem, level?: number) => {
-    if (isEmpty(o.items)) {
+    if (isEmpty(o?.items)) {
       return (
-        <StyledTocItem key={o.title} level={level} empty={true}>
+        <StyledTocItem key={o?.title} level={level} empty={true}>
           <StyledTocItemTitle onClick={() => onClick(o)}>
-            {o.title}
+            {o?.title}
           </StyledTocItemTitle>
         </StyledTocItem>
       );
     } else {
       return (
-        <StyledTocItem level={level} empty={false}>
+        <StyledTocItem level={level} empty={false} key={o.title}>
           <StyledTocItemTitle onClick={() => onClick(o)}>
             {o.title}
           </StyledTocItemTitle>

@@ -13,6 +13,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Security` in case of vulnerabilities.
 
 
+## [0.7.1] - Unreleased
+### Fixed
+- js error when parsing toc
+
 ## [0.7.0] - 2022-04-06
 ### Added
 - Not web console will print out docit version

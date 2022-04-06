@@ -24,6 +24,10 @@ export const StyledToc = styled.div`
 export const StyledTocItemTitle = styled.div`
   margin-bottom: 12px;
   cursor: pointer;
+  :hover {
+    opacity: 0.6;
+    transition: opacity 200ms linear;
+  }
 `;
 
 export const StyledTocItem = styled.div.attrs<{ level: number }>((props) => {
