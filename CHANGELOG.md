@@ -13,6 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Security` in case of vulnerabilities.
 
 
+## [0.8.0] - Unreleased
+
+### Changed
+
+- Bump vite version to 2.9.5
+- live block now render mobile view in an isolated iframe
+
 ## [0.7.1] - 2022-04-06
 ### Fixed
 - js error when parsing toc

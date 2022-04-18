@@ -16,6 +16,7 @@ export const StyledAside = styled.aside<{ visible: string }>`
       props.visible === "true" ? 0 : "calc(-1 * var(--sidebar-width))"};
 
     transition: left 250ms ease-in-out;
+    z-index: 777;
   }
 `;
 
@@ -43,6 +44,9 @@ export const StyledSidebarItem = styled.div.attrs<StyledSidebarItemProps>(
     :hover {
       opacity: 0.6;
       transition: opacity 200ms linear;
+      color: ${(props) => {
+        return props.active ? "var(--c-brand)" : "var(--c-1)";
+      }};
     }
   }
 `;

@@ -44,6 +44,10 @@ declare module "virtual:routes" {
   export { routes };
 }
 
+declare module "virtual:sandboxes" {
+  export default any;
+}
+
 declare module "virtual:appData" {
   const title: string;
   const socials: {

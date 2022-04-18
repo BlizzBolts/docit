@@ -15,6 +15,7 @@ export const StyledTitle = styled.p`
   font-weight: bold;
   font-size: 1.5em;
   color: var(--c-brand);
+  margin: 0;
 `;
 
 export const StyledSidebarBtn = styled.button`

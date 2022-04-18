@@ -15,7 +15,7 @@ const pkg = fsx.readJSONSync(PKG_JSON_PATH);
 export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
   const provider = await virtualProvider(config);
   const instance = Core.getInstance(config);
-  const { sidebars, routes, appData } = await instance.prepare();
+  const { sidebars, routes, appData, sandboxes } = await instance.prepare();
 
   const plugin: Plugin = {
     name: "vite-plugin-docit",
@@ -68,14 +68,12 @@ export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
         )}`;
       }
 
-      const reg = /__needSandBox=(\d*)/g;
+      const reg = /\?SandBox@(\d*)/g;
       const result = reg.exec(id);
+
       if (result) {
-        const content = Core.getInstance().getTmp().get(id);
-        const compiled = compileSync(
-          content.content,
-          getCompilerOptions(config)
-        );
+        const content = instance.getSandBoxMapper().get(result.input);
+        const compiled = compileSync(content, getCompilerOptions(config));
         return compiled.value as string;
       }
     },
@@ -87,6 +85,7 @@ export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
     routes,
     sidebars,
     provider,
+    sandboxes,
     ...(await mdx(config)),
     ...(react({
       jsxRuntime: "classic",
