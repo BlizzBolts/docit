@@ -16,6 +16,7 @@ export const StyledAside = styled.aside<{ visible: string }>`
       props.visible === "true" ? 0 : "calc(-1 * var(--sidebar-width))"};
 
     transition: left 250ms ease-in-out;
+    z-index: 777;
   }
 `;
 
