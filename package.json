@@ -1,6 +1,6 @@
 {
   "name": "@blizzbolts/docit",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "license": "MIT",
   "bin": {
     "docit": "bin/docit.js"
@@ -102,7 +102,9 @@
     "vite-plugin-virtual": "^0.1.1"
   },
   "resolutions": {
-    "react-is": "16.13.1"
+    "react-is": "16.13.1",
+    "@types/react": "17.0.38",
+    "@types/react-dom": "17.0.11"
   },
   "engines": {
     "node": ">=14"

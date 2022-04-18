@@ -13,6 +13,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Security` in case of vulnerabilities.
 
 
+## [0.8.1] - 2022-04-18
+
+### Fixed
+
+- Decode moduleId to get the correct module
+
+
+
 ## [0.8.0] - 2022-04-18
 
 ### Changed
