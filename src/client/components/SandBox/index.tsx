@@ -8,8 +8,9 @@ const Sandbox: React.FC = () => {
   const ComponentRef = useRef<React.FC>(() => <></>);
 
   useEffect(() => {
-    if (sandboxes[query.moduleId]) {
-      sandboxes[query.moduleId]().then((res) => {
+    const getter = sandboxes[decodeURI(query.moduleId)];
+    if (getter) {
+      getter().then((res) => {
         const { default: Component } = res;
         ComponentRef.current = Component;
         update({});
