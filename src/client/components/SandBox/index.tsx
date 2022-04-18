@@ -1,17 +1,27 @@
-import React, { useEffect } from "react";
+import { useQuery } from "../../hooks/useQuery";
+import React, { useEffect, useRef, useState } from "react";
 import sandboxes from "virtual:sandboxes";
 
 const Sandbox: React.FC = () => {
-  useEffect(() => {
-    // Object.entries(a).forEach(([key, value]) => {
-    //   console.log(key);
-    //   console.log(typeof value);
+  const query = useQuery();
+  const [_, update] = useState({});
+  const ComponentRef = useRef<React.FC>(() => <></>);
 
-    //   // value().then(console.log);
-    // });
-    console.log(sandboxes);
+  useEffect(() => {
+    if (sandboxes[query.moduleId]) {
+      sandboxes[query.moduleId]().then((res) => {
+        const { default: Component } = res;
+        ComponentRef.current = Component;
+        update({});
+      });
+    }
   }, []);
-  return <div>123</div>;
+
+  return (
+    <div>
+      <ComponentRef.current />
+    </div>
+  );
 };
 
 export default Sandbox;

@@ -73,10 +73,7 @@ export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
 
       if (result) {
         const content = instance.getSandBoxMapper().get(result.input);
-        const compiled = compileSync(
-          content.content,
-          getCompilerOptions(config)
-        );
+        const compiled = compileSync(content, getCompilerOptions(config));
         return compiled.value as string;
       }
     },

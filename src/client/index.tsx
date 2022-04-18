@@ -30,10 +30,8 @@ const App = () => {
 };
 
 ReactDOM.render(
-  <React.StrictMode>
-    <HashRouter>
-      <App />
-    </HashRouter>
-  </React.StrictMode>,
+  <HashRouter>
+    <App />
+  </HashRouter>,
   document.getElementById("app")
 );

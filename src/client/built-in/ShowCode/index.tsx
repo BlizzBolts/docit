@@ -9,9 +9,10 @@ import {
 } from "./styled";
 import { IFrame } from "../../components/IFrame";
 import { Loading } from "../../components/Loading";
+import sandboxes from "virtual:sandboxes";
 
 const ShowCode: React.FC<ShowCodeProps> = (props) => {
-  const { code, lang, mobileView } = props;
+  const { code, lang, mobileView, moduleId } = props;
 
   const ComponentRef = useRef<React.FC>(() => <></>);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,17 +20,14 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
   const [_, update] = useState({});
 
   useEffect(() => {
-    // setIsLoading(true);
-    // get()
-    //   .then((res) => {
-    //     setIsLoading(false);
-    //     const { default: Component } = res;
-    //     ComponentRef.current = Component;
-    //     update({});
-    //   })
-    //   .catch(() => {
-    //     setIsLoading(false);
-    //   });
+    if (sandboxes[moduleId] && !mobileView) {
+      sandboxes[moduleId]().then((res) => {
+        const { default: Component } = res;
+        ComponentRef.current = Component;
+        console.log(Component);
+        update({});
+      });
+    }
   }, []);
 
   const display = useMemo(() => {
@@ -54,9 +52,13 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
     <Loading loading={isLoading}>
       <ShowCodeContainer mobileView={mobileView}>
         <RenderWindow>
-          <IFrame>
-            <ComponentRef.current />
-          </IFrame>
+          {mobileView ? (
+            <iframe src={`#sandbox?moduleId=${moduleId}`}></iframe>
+          ) : (
+            <IFrame>
+              <ComponentRef.current />
+            </IFrame>
+          )}
         </RenderWindow>
         <ButtonContainer>
           <button

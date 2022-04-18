@@ -76,6 +76,7 @@ class Core {
         }
         case "change": {
           this.markdownCache.update();
+          await this.updater.updateSandBoxes();
           await this.updater.updateAppData();
           break;
         }
