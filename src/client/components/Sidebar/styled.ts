@@ -43,6 +43,9 @@ export const StyledSidebarItem = styled.div.attrs<StyledSidebarItemProps>(
     :hover {
       opacity: 0.6;
       transition: opacity 200ms linear;
+      color: ${(props) => {
+        return props.active ? "var(--c-brand)" : "var(--c-1)";
+      }};
     }
   }
 `;

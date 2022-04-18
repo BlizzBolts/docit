@@ -21,12 +21,16 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
 
   useEffect(() => {
     if (sandboxes[moduleId] && !mobileView) {
-      sandboxes[moduleId]().then((res) => {
-        const { default: Component } = res;
-        ComponentRef.current = Component;
-        console.log(Component);
-        update({});
-      });
+      setIsLoading(true);
+      sandboxes[moduleId]()
+        .then((res) => {
+          const { default: Component } = res;
+          ComponentRef.current = Component;
+          update({});
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   }, []);
 
