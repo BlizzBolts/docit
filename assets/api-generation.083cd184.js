@@ -1,4 +1,4 @@
-import{_ as r}from"./index.41ed2f7b.js";import{g as c,R as e}from"./vendor.d396be56.js";function h(a={}){const{wrapper:s}=Object.assign({},c(),a.components);return s?e.createElement(s,a,e.createElement(n)):n();function n(){const t=Object.assign({h1:"h1",p:"p",blockquote:"blockquote",h3:"h3",pre:"pre",code:"code",span:"span",a:"a",hr:"hr"},c(),a.components),{ApiTable:l}=t;return l||m("ApiTable",!0),e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"api-generation"},"API Generation"),`
+import{u as c,R as e,_ as r}from"./index.6ba64270.js";function p(a={}){const{wrapper:s}=Object.assign({},c(),a.components);return s?e.createElement(s,a,e.createElement(n)):n();function n(){const t=Object.assign({h1:"h1",p:"p",blockquote:"blockquote",h3:"h3",pre:"pre",code:"code",span:"span",a:"a",hr:"hr"},c(),a.components),{ApiTable:l}=t;return l||m("ApiTable",!0),e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"api-generation"},"API Generation"),`
 `,e.createElement(t.p,null,"Docit provides a simple syntax to handle auto API parsing."),`
 `,e.createElement(t.blockquote,null,`
 `,e.createElement(t.p,null,"Currently only support React Typescript API Tables. Functions and Interface support might not work as you expected."),`
@@ -54,4 +54,4 @@ interface `,e.createElement(t.span,{className:"hljs-title hljs-class"},"ButtonPr
 `,e.createElement(t.hr),`
 `,e.createElement(t.p,null,"since Docit using ",e.createElement(t.code,null,"resolve"),", you can actually parsing some third party types like"),`
 `,e.createElement(t.pre,null,e.createElement(t.code,{className:"hljs language-md"},"[",e.createElement(t.span,{className:"hljs-string"},"Props"),"](",e.createElement(t.span,{className:"hljs-link"},"antd-mobile/es/index.d.ts"),`)
-`)))}}function m(a,s){throw new Error("Expected "+(s?"component":"object")+" `"+a+"` to be defined: you likely forgot to import, pass, or provide it.")}export{h as default};
+`)))}}function m(a,s){throw new Error("Expected "+(s?"component":"object")+" `"+a+"` to be defined: you likely forgot to import, pass, or provide it.")}export{p as default};

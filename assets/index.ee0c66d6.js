@@ -1,0 +1,1 @@
+import{a as c,r as t,R as e,s}from"./index.6ba64270.js";const m=()=>{const n=c(),[l,o]=t.exports.useState({}),r=t.exports.useRef(()=>e.createElement(e.Fragment,null));return t.exports.useEffect(()=>{s[n.moduleId]&&s[n.moduleId]().then(a=>{const{default:u}=a;r.current=u,o({})})},[]),e.createElement("div",null,e.createElement(r.current,null))};export{m as default};

@@ -1,0 +1,1 @@
+import{u as s,R as t}from"./index.6ba64270.js";function a(e={}){const{wrapper:n}=Object.assign({},s(),e.components);return n?t.createElement(n,e,t.createElement(o)):o();function o(){const r=Object.assign({h1:"h1"},s(),e.components);return t.createElement(r.h1,{id:"prerequisites"},"Prerequisites")}}export{a as default};
