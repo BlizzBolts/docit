@@ -11,7 +11,7 @@ import { IFrame } from "../../components/IFrame";
 import { Loading } from "../../components/Loading";
 
 const ShowCode: React.FC<ShowCodeProps> = (props) => {
-  const { get, code, lang, mobileView } = props;
+  const { code, lang, mobileView } = props;
 
   const ComponentRef = useRef<React.FC>(() => <></>);
   const [isLoading, setIsLoading] = useState(false);
@@ -19,17 +19,17 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
   const [_, update] = useState({});
 
   useEffect(() => {
-    setIsLoading(true);
-    get()
-      .then((res) => {
-        setIsLoading(false);
-        const { default: Component } = res;
-        ComponentRef.current = Component;
-        update({});
-      })
-      .catch(() => {
-        setIsLoading(false);
-      });
+    // setIsLoading(true);
+    // get()
+    //   .then((res) => {
+    //     setIsLoading(false);
+    //     const { default: Component } = res;
+    //     ComponentRef.current = Component;
+    //     update({});
+    //   })
+    //   .catch(() => {
+    //     setIsLoading(false);
+    //   });
   }, []);
 
   const display = useMemo(() => {
@@ -54,7 +54,7 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
     <Loading loading={isLoading}>
       <ShowCodeContainer mobileView={mobileView}>
         <RenderWindow>
-          <IFrame mobileView={mobileView}>
+          <IFrame>
             <ComponentRef.current />
           </IFrame>
         </RenderWindow>

@@ -2,12 +2,13 @@ import { ResolvedUserConfig } from "../types.js";
 import path from "path";
 import fsx from "fs-extra";
 import grayMatter from "gray-matter";
-import { Text } from "mdast";
-import { select } from "unist-util-select";
+import { Text, Code } from "mdast";
+import { select, selectAll } from "unist-util-select";
 import { toRoutePath, parseToc } from "../utils/index.js";
 import { unified } from "unified";
 import remarkParse from "remark-parse";
 import { toc as generateToc } from "mdast-util-toc";
+
 class Markdown {
   private config: ResolvedUserConfig;
 
@@ -72,6 +73,31 @@ class Markdown {
     });
 
     return parseToc(nodes.map, {});
+  }
+
+  get sandboxes() {
+    const tree = unified().use(remarkParse).parse(this.content);
+    const nodes = selectAll("code", tree)
+      .filter((o: Code) => {
+        return (
+          o.meta?.includes("live") &&
+          ["js", "ts", "jsx", "tsx"].includes(o.lang)
+        );
+      })
+      .map((o: Code, index) => {
+        return {
+          [`${this.fullPath}?SandBox@${index}`]: o.value
+            .replace(/\n/g, "\n\n")
+            .replace(/;/g, ""),
+        };
+      })
+      .reduce((acc, curr) => {
+        return {
+          ...acc,
+          ...curr,
+        };
+      }, {});
+    return nodes;
   }
 }
 

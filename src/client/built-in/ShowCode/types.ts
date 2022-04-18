@@ -1,7 +1,7 @@
 export interface ShowCodeProps extends MobileView {
   code: string;
   lang: string;
-  get: () => any;
+  moduleId: string;
 }
 
 export interface MobileView {

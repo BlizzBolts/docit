@@ -6,6 +6,8 @@ import {
   VIRTUAL_APP_DATA_ID,
   VIRTUAL_ROUTER_CONFIG_ID,
   VIRTUAL_SIDEBARS_CONFIG_ID,
+  CLIENT_PATH,
+  VIRTUAL_SANDBOXES_ID,
 } from "../constants.js";
 import { MarkdownCache } from "./MarkdownCache.js";
 import { isEmpty, pick } from "lodash-es";
@@ -20,11 +22,13 @@ class Core {
   private watcher: chokidar.FSWatcher;
   private markdownCache: MarkdownCache;
   private tmp: Map<string, any>;
+  private sandBoxMapper: Map<string, any>;
 
   private updater: {
     updateSidebars: VirtualUpdater;
     updateRoutes: VirtualUpdater;
     updateAppData: VirtualUpdater;
+    updateSandBoxes: VirtualUpdater;
   };
 
   private constructor(config: ResolvedUserConfig) {
@@ -48,9 +52,11 @@ class Core {
       updateSidebars: () => null,
       updateRoutes: () => null,
       updateAppData: () => null,
+      updateSandBoxes: () => null,
     };
 
     this.tmp = new Map();
+    this.sandBoxMapper = new Map();
   }
 
   private watch() {
@@ -90,15 +96,21 @@ class Core {
       VIRTUAL_APP_DATA_ID,
       this.makeAppData.bind(this)
     );
+    const [sandboxes, updateSandboxes] = await withVirtual(
+      VIRTUAL_SANDBOXES_ID,
+      this.makeSandboxes.bind(this)
+    );
 
     this.updater.updateSidebars = updateSidebars;
     this.updater.updateAppData = updateAppData;
     this.updater.updateRoutes = updateRoutes;
+    this.updater.updateSandBoxes = updateSandboxes;
 
     return {
       sidebars,
       routes,
       appData,
+      sandboxes,
     };
   }
 
@@ -117,6 +129,18 @@ class Core {
           }
         `;
           })
+          .concat(
+            `
+            {
+              path: "/sandbox",
+              exact: true,
+              component: React.lazy(() => import('${path.resolve(
+                CLIENT_PATH,
+                `./components/SandBox/index.js`
+              )}')),
+            }
+            `
+          )
           .concat(
             `
             {
@@ -220,6 +244,33 @@ class Core {
     };
   }
 
+  private makeSandboxes() {
+    const mapper = this.getMarkdowns()
+      .map((o) => {
+        return o.sandboxes;
+      })
+      .reduce((acc, curr) => {
+        return {
+          ...acc,
+          ...curr,
+        };
+      }, {});
+
+    Object.entries(mapper).forEach(([key, value]) => {
+      this.sandBoxMapper.set(key, value);
+    });
+
+    return `
+      const sandboxes = {${Object.entries(mapper)
+        .map(([key, value]) => {
+          return `'${key}': () => import('${key}')`;
+        })
+        .join(",")}}
+        
+      export default sandboxes;
+    `;
+  }
+
   private setConfig(config: ResolvedUserConfig) {
     this.config = config;
   }
@@ -228,18 +279,26 @@ class Core {
     return this.tmp;
   }
 
+  getSandBoxMapper() {
+    return this.sandBoxMapper;
+  }
+
   getMarkdowns() {
     return this.markdownCache.getMarkdowns();
   }
 
   async prepare() {
     await this.markdownCache.prepare();
-    const { sidebars, routes, appData } = await this.makeViteVirtualPlugin();
+    const { sidebars, routes, appData, sandboxes } =
+      await this.makeViteVirtualPlugin();
+
     this.watch();
+
     return {
       sidebars,
       routes,
       appData,
+      sandboxes,
     };
   }
 
