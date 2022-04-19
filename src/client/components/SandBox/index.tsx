@@ -23,7 +23,7 @@ const Sandbox: React.FC = () => {
 
   return (
     <>
-      <ComponentRef.current />;
+      <ComponentRef.current />
     </>
   );
 };
