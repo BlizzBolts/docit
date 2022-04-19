@@ -1,4 +1,4 @@
-import{u as a,R as e}from"./index.187b2366.js";function s(l={}){const{wrapper:o}=Object.assign({},a(),l.components);return o?e.createElement(o,l,e.createElement(c)):c();function c(){const n=Object.assign({h1:"h1",p:"p",code:"code",blockquote:"blockquote",h3:"h3",pre:"pre",span:"span",h2:"h2"},a(),l.components),{ShowCode:t}=n;return t||m("ShowCode",!0),e.createElement(e.Fragment,null,e.createElement(n.h1,{id:"live-block"},"Live Block"),`
+import{u as a,R as e}from"./index.56e1f40e.js";function s(l={}){const{wrapper:o}=Object.assign({},a(),l.components);return o?e.createElement(o,l,e.createElement(c)):c();function c(){const n=Object.assign({h1:"h1",p:"p",code:"code",blockquote:"blockquote",h3:"h3",pre:"pre",span:"span",h2:"h2"},a(),l.components),{ShowCode:t}=n;return t||m("ShowCode",!0),e.createElement(e.Fragment,null,e.createElement(n.h1,{id:"live-block"},"Live Block"),`
 `,e.createElement(n.p,null,"Live Block is a way to speed up your doc writing by rendering and showing code at the same time."),`
 `,e.createElement(n.p,null,"Just add ",e.createElement(n.code,null,"live")," keyword after code block language"),`
 `,e.createElement(n.p,null,"Docit only respect ",e.createElement(n.code,null,"live")," keyword for ",e.createElement(n.code,null,"js")," ",e.createElement(n.code,null,"jsx")," ",e.createElement(n.code,null,"ts")," and ",e.createElement(n.code,null,"tsx")," languages"),`
@@ -32,6 +32,8 @@ import{u as a,R as e}from"./index.187b2366.js";function s(l={}){const{wrapper:o}
 `)),`
 `,e.createElement(n.p,null,"Docit also support live mobile block. Add a ",e.createElement(n.code,null,"mobile")," keyword after ",e.createElement(n.code,null,"live")," to enable it."),`
 `,e.createElement(e.Fragment,null,e.createElement(t,{moduleId:"/Users/hao/local/projj/github.com/phshy0607/docit/docs/document/live-block.mdx?SandBox@1",lang:"jsx",code:`import { DemoBlock } from "../components/DemoBlock"
+
+
 
 <DemoBlock />`,mobileView:!0})),`
 `,e.createElement(n.p,null,"Docit provides a ",e.createElement(n.code,null,"360 * 640")," mobile view to help you display responsive component"))}}function m(l,o){throw new Error("Expected "+(o?"component":"object")+" `"+l+"` to be defined: you likely forgot to import, pass, or provide it.")}export{s as default};
