@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 - changed toc and sidebar style
+- adjust mobile view sandbox code height to 640px
 
 
 ## [0.8.1] - 2022-04-18
