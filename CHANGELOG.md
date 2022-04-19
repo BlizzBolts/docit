@@ -21,6 +21,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixes
 - remove outer div of sandbox
 
+### Changed
+- changed toc and sidebar style
+
 
 ## [0.8.1] - 2022-04-18
 
