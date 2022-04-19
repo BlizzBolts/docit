@@ -13,6 +13,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Security` in case of vulnerabilities.
 
 
+## [0.8.2] - Unreleased
+
+### Added
+- console more info for unmatched sandbox
+
+### Fixes
+- remove outer div of sandbox
+
+
 ## [0.8.1] - 2022-04-18
 
 ### Fixed
