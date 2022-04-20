@@ -31,7 +31,7 @@ export const CssVariables = createGlobalStyle`
     --c-code-bg: #ececec;
     --c-code-keyword: #89b482;
     --c-code-function: #a9b665;
-    --c-code-attr: #fff;
+    --c-code-attr: #D8A657;
     --c-code-string: #D8A657;
     --c-code-built-in: #7DAEA3;
     --c-code-name: #e78a4e;
