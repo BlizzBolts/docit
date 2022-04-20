@@ -56,7 +56,9 @@ const Toc = () => {
     }
   };
 
-  return <StyledToc>{parse(curr?.toc, 0)}</StyledToc>;
+  return isEmpty(curr?.toc) ? null : (
+    <StyledToc>{parse(curr?.toc, 0)}</StyledToc>
+  );
 };
 
 export { Toc };
