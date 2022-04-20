@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - console more info for unmatched sandbox
+- `docit.config.js` now supports `vite` options
 
 ### Fixes
 - remove outer div of sandbox

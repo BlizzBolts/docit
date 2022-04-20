@@ -17,5 +17,6 @@ export const resolveConfig = async (
       : path.resolve(CLIENT_PATH, "./components/DefaultProvider/index.js"),
     publicPath: command === "build" ? config.publicPath : "/",
     socials: config.socials,
+    vite: config.vite,
   };
 };

@@ -1,4 +1,4 @@
-import { Plugin, defineConfig, UserConfig } from "vite";
+import { Plugin, defineConfig, mergeConfig } from "vite";
 import fsx from "fs-extra";
 import path from "path";
 import react from "@vitejs/plugin-react";
@@ -59,7 +59,7 @@ export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
         clearScreen: false,
         publicDir: path.resolve(config.docs, "./assets"),
       });
-      return baseConfig as UserConfig;
+      return mergeConfig(baseConfig, config.vite);
     },
     transform(_, id) {
       if (id.endsWith("?needParse")) {
