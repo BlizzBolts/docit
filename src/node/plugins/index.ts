@@ -41,6 +41,7 @@ export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
             "core-js",
             "highlight.js",
             "react-frame-component",
+            "qrcode",
           ],
         },
         build: {
