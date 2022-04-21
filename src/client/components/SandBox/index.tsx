@@ -17,6 +17,9 @@ const Sandbox: React.FC = () => {
         ComponentRef.current = Component;
         update({});
       });
+    } else {
+      console.warn("No Matching Sandbox!", sandboxes);
+      console.log({ query, sandboxes });
     }
   }, []);
 

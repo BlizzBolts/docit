@@ -16,14 +16,21 @@ export const StyledToc = styled.div`
     color: var(--c-brand);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: none;
   }
+`;
+
+export const StyledTocTitle = styled.div`
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--c-brand);
 `;
 
 export const StyledTocItemTitle = styled.div`
   margin-bottom: 12px;
   cursor: pointer;
+  font-size: 14px;
   :hover {
     opacity: 0.6;
     transition: opacity 200ms linear;
@@ -35,5 +42,5 @@ export const StyledTocItem = styled.div.attrs<{ level: number }>((props) => {
     "data-level": props.level,
   };
 })<{ level: number; empty: boolean }>`
-  padding-left: ${(props) => (props.empty ? "12px" : "0")};
+  padding-left: ${(props) => (props.empty ? "8px" : "0")};
 `;

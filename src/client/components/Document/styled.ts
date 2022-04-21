@@ -25,7 +25,7 @@ export const StyledMarkdown = styled.div`
     width: 100%;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     padding: 0 1em;
     width: 100%;
   }

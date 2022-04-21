@@ -4,7 +4,12 @@ import { useHistory, useLocation } from "react-router";
 import { useQuery } from "../../hooks/useQuery";
 import { parseQueryToSearch } from "../../utils/url";
 import appData from "virtual:appData";
-import { StyledToc, StyledTocItem, StyledTocItemTitle } from "./styled";
+import {
+  StyledToc,
+  StyledTocItem,
+  StyledTocItemTitle,
+  StyledTocTitle,
+} from "./styled";
 
 const { markdowns } = appData;
 
@@ -57,7 +62,10 @@ const Toc = () => {
   };
 
   return isEmpty(curr?.toc) ? null : (
-    <StyledToc>{parse(curr?.toc, 0)}</StyledToc>
+    <StyledToc>
+      <StyledTocTitle>Table of Content</StyledTocTitle>
+      {parse(curr?.toc, 0)}
+    </StyledToc>
   );
 };
 
