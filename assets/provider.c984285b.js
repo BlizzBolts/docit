@@ -1,4 +1,4 @@
-import{u as l,R as e}from"./index.c5d0e702.js";function c(s={}){const{wrapper:n}=Object.assign({},l(),s.components);return n?e.createElement(n,s,e.createElement(t)):t();function t(){const a=Object.assign({h1:"h1",p:"p",code:"code",h2:"h2",pre:"pre",span:"span"},l(),s.components);return e.createElement(e.Fragment,null,e.createElement(a.h1,{id:"provider"},"Provider"),`
+import{u as l,R as e}from"./index.3dfb0311.js";function c(s={}){const{wrapper:n}=Object.assign({},l(),s.components);return n?e.createElement(n,s,e.createElement(t)):t();function t(){const a=Object.assign({h1:"h1",p:"p",code:"code",h2:"h2",pre:"pre",span:"span"},l(),s.components);return e.createElement(e.Fragment,null,e.createElement(a.h1,{id:"provider"},"Provider"),`
 `,e.createElement(a.p,null,"If you need a ",e.createElement(a.code,null,"Provider")," to wrap the document up. You can provider a ",e.createElement(a.code,null,"providePath")," via config file."),`
 `,e.createElement(a.h2,{id:"example"},"Example"),`
 `,e.createElement(a.pre,null,e.createElement(a.code,{className:"hljs language-js"},e.createElement(a.span,{className:"hljs-comment"},"// docit.config.js"),`
