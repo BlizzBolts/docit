@@ -21,6 +21,10 @@ export const StyledMarkdown = styled.div`
   margin-bottom: 100px;
   width: calc(100% - var(--toc-width));
 
+  :last-child {
+    width: 100%;
+  }
+
   @media (max-width: 768px) {
     padding: 0 1em;
     width: 100%;

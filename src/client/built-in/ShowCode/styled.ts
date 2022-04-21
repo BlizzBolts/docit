@@ -57,6 +57,10 @@ export const ShowCodeContainer = styled.div<MobileView>`
         height: ${(props) => props.mobileView && "100%"};
       }
     }
+    @media (max-width: 1024px) {
+      margin-right: 0;
+      margin-top: 2em;
+    }
   }
 
   ${RenderWindow} {
