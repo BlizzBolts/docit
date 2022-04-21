@@ -1,0 +1,1 @@
+import{u as r,R as e}from"./index.4fe3c007.js";import{D as a}from"./DemoBlock.5d2e817c.js";function s(t={}){const{wrapper:n}=Object.assign({},r(),t.components);return n?e.createElement(n,t,e.createElement(o)):o();function o(){return e.createElement(a)}}export{s as default};
