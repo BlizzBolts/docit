@@ -24,7 +24,6 @@ export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
       const baseConfig = defineConfig({
         root: config.base,
         base: config.publicPath,
-        cacheDir: "node_modules/.docit",
         optimizeDeps: {
           include: [
             "react",
