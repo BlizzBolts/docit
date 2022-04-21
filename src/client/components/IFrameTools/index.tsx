@@ -8,7 +8,7 @@ const IFrameTools: React.FC<IFrameToolsProps> = (props) => {
   const { moduleId } = props;
   const [qrCodeSrc, setQrCodeSrc] = useState(null);
   const url = useMemo(() => {
-    return `${window.location.origin}/#sandbox?moduleId=${moduleId}`;
+    return `${import.meta.env.BASE_URL}#sandbox?moduleId=${moduleId}`;
   }, [moduleId]);
 
   useEffect(() => {
