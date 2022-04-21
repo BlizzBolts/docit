@@ -9,17 +9,17 @@ export const StyledBottomTools = styled.div`
   align-items: center;
   width: 100%;
   padding: 12px;
-  background-color: #e8e8e8;
 `;
 
 export const StyledQrCode = styled.div<{ src: string }>`
   position: relative;
-  width: 20px;
-  height: 20px;
-  .icon-wrapper {
+  margin-right: 12px;
+  .qrcode-wrapper {
     position: relative;
+    display: flex;
+    align-items: center;
   }
-  .icon-wrapper:hover:after {
+  .qrcode-wrapper:hover:after {
     content: "";
     position: absolute;
     top: -100px;
@@ -30,4 +30,10 @@ export const StyledQrCode = styled.div<{ src: string }>`
     background-repeat: no-repeat;
     background-size: contain;
   }
+`;
+
+export const StyledIconWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
 `;
