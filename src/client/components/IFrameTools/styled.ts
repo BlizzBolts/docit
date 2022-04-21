@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledBottomTools = styled.div`
+export const StyledIFrameTools = styled.div`
   visibility: hidden;
   position: fixed;
   left: 0;

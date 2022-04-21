@@ -1,7 +1,7 @@
 import { useQuery } from "../../hooks/useQuery";
 import React, { useEffect, useRef, useState } from "react";
 import sandboxes from "virtual:sandboxes";
-import BottomTools from "../BottomTools/index";
+import IFrameTools from "../IFrameTools/index";
 import { StyledSandBox } from "./styled";
 
 const Sandbox: React.FC = () => {
@@ -25,7 +25,7 @@ const Sandbox: React.FC = () => {
       <div style={{ height: "100vh" }}>
         <ComponentRef.current />
       </div>
-      <BottomTools moduleId={query.moduleId} />
+      <IFrameTools moduleId={query.moduleId} />
     </StyledSandBox>
   );
 };

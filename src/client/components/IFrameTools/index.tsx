@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useMemo } from "react";
-import { BottomToolsProps } from "./types";
-import { StyledBottomTools, StyledQrCode, StyledIconWrapper } from "./styled";
+import { IFrameToolsProps } from "./types";
+import { StyledIFrameTools, StyledQrCode, StyledIconWrapper } from "./styled";
 import qrcode from "qrcode";
 import { Svgs } from "../Svgs/index";
 
-const BottomTools: React.FC<BottomToolsProps> = (props) => {
+const IFrameTools: React.FC<IFrameToolsProps> = (props) => {
   const { moduleId } = props;
   const [qrCodeSrc, setQrCodeSrc] = useState(null);
   const url = useMemo(() => {
@@ -22,7 +22,7 @@ const BottomTools: React.FC<BottomToolsProps> = (props) => {
   }, [url]);
 
   return (
-    <StyledBottomTools className="bottom-tools">
+    <StyledIFrameTools className="bottom-tools">
       {qrCodeSrc && (
         <StyledQrCode src={qrCodeSrc}>
           <div className="qrcode-wrapper">
@@ -31,14 +31,14 @@ const BottomTools: React.FC<BottomToolsProps> = (props) => {
         </StyledQrCode>
       )}
       <StyledIconWrapper onClick={() => window.open(url)}>
-        <Svgs.OpenInNewTab
+        <Svgs.Forward
           style={{ cursor: "pointer" }}
           height="20px"
           width="20px"
         />
       </StyledIconWrapper>
-    </StyledBottomTools>
+    </StyledIFrameTools>
   );
 };
 
-export default BottomTools;
+export default IFrameTools;

@@ -101,7 +101,7 @@ const QRCode: React.FC<SvgProps> = (props) => {
   );
 };
 
-export const OpenInNewTab: React.FC<SvgProps> = (props) => {
+export const Forward: React.FC<SvgProps> = (props) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
@@ -118,5 +118,5 @@ export const Svgs = {
   ToggleBtn,
   AnimatedLoading,
   QRCode,
-  OpenInNewTab,
+  Forward,
 };
