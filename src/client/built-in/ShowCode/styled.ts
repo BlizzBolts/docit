@@ -47,6 +47,7 @@ export const ShowCodeContainer = styled.div<MobileView>`
     flex: ${(props) => props.mobileView && "1 1 auto"};
     overflow: ${(props) => props.mobileView && "auto"};
     margin-right: ${(props) => props.mobileView && "2em"};
+    max-height: ${(props) => props.mobileView && "640px"};
 
     pre {
       height: ${(props) => props.mobileView && "100%"};
@@ -56,6 +57,10 @@ export const ShowCodeContainer = styled.div<MobileView>`
       code {
         height: ${(props) => props.mobileView && "100%"};
       }
+    }
+    @media (max-width: 1024px) {
+      margin-right: 0;
+      margin-top: 2em;
     }
   }
 

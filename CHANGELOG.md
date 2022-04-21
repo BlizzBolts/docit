@@ -13,6 +13,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Security` in case of vulnerabilities.
 
 
+## [0.8.2] - Unreleased
+
+### Added
+- console more info for unmatched sandbox
+- `docit.config.js` now supports `vite` options
+- Iframe now has a tool bar which can view qrcode and open in new tab
+
+### Fixes
+- remove outer div of sandbox
+
+### Changed
+- changed toc and sidebar style
+- adjust mobile view sandbox code height to 640px
+- hide toc when no toc at all
+
+
 ## [0.8.1] - 2022-04-18
 
 ### Fixed

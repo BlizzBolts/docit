@@ -1,3 +1,4 @@
+import { UserConfigExport } from "vite";
 export interface UserFileConfig {
   title?: string;
   sidebars?: SidebarNode[];
@@ -6,6 +7,7 @@ export interface UserFileConfig {
     Twitter?: string;
     Github?: string;
   };
+  vite?: Partial<UserConfigExport>;
 }
 
 export interface UserConfig {
@@ -18,6 +20,7 @@ export interface UserConfig {
     Twitter?: string;
     Github?: string;
   };
+  vite?: Partial<UserConfigExport>;
 }
 
 export interface ResolvedUserConfig {
@@ -31,6 +34,7 @@ export interface ResolvedUserConfig {
     Twitter?: string;
     Github?: string;
   };
+  vite?: Partial<UserConfigExport>;
 }
 
 export type DepsMapper = Map<string, DepsItem>;

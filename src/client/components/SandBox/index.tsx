@@ -1,6 +1,8 @@
 import { useQuery } from "../../hooks/useQuery";
 import React, { useEffect, useRef, useState } from "react";
 import sandboxes from "virtual:sandboxes";
+import IFrameTools from "../IFrameTools/index";
+import { StyledSandBox } from "./styled";
 
 const Sandbox: React.FC = () => {
   const query = useQuery();
@@ -15,13 +17,19 @@ const Sandbox: React.FC = () => {
         ComponentRef.current = Component;
         update({});
       });
+    } else {
+      console.warn("No Matching Sandbox!", sandboxes);
+      console.log({ query, sandboxes });
     }
   }, []);
 
   return (
-    <div>
-      <ComponentRef.current />
-    </div>
+    <StyledSandBox>
+      <div style={{ height: "100vh" }}>
+        <ComponentRef.current />
+      </div>
+      <IFrameTools moduleId={query.moduleId} />
+    </StyledSandBox>
   );
 };
 
