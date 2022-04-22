@@ -2,6 +2,12 @@
 
 # Docit 
 
+![Download](https://img.shields.io/npm/dw/@blizzbolts/docit)
+![Node](https://img.shields.io/node/v/@blizzbolts/docit)
+![Version](https://img.shields.io/npm/v/@blizzbolts/docit)
+![Vite Verson](https://img.shields.io/github/package-json/dependency-version/phshy0607/docit/vite)
+
+
 > Simple and Rapid React Documentation https://phshy0607.github.io/docit
 
 - :stuck_out_tongue: MDX & MD Syntax oriented.
