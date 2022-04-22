@@ -13,29 +13,13 @@ describe("skipped suite", () => {
   it("resolve correct path", () => {
     const suite = "../components/ApiTest.tsx";
     const baseDir =
-      "/Users/hao/local/projj/github.com/phshy0607/docit/docs/features/API.mdx";
+      "/Users/hao/local/projj/github.com/blizzbolts/docit/docs/features/API.mdx";
 
     assert(
       sync(suite, {
         basedir: path.dirname(baseDir),
       }),
-      "/Users/hao/local/projj/github.com/phshy0607/docit/docs/components/ApiTest.tsx"
-    );
-  });
-
-  it("resolve correct path for node_modules", () => {
-    const suite = "antd-mobile/es/index.d.ts";
-    const baseDir =
-      "/Users/hao/local/projj/github.com/phshy0607/docit/docs/features/API.mdx";
-
-    const result = sync(suite, {
-      basedir: path.dirname(baseDir),
-    });
-
-    console.log(result);
-    assert(
-      result,
-      "/Users/hao/local/projj/github.com/phshy0607/docit/docs/components/ApiTest.tsx"
+      "/Users/hao/local/projj/github.com/blizzbolts/docit/docs/components/ApiTest.tsx"
     );
   });
 });
