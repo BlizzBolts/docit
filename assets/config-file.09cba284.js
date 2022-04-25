@@ -1,4 +1,4 @@
-import{u as l,R as e}from"./index.28c0ef3c.js";function r(t={}){const{wrapper:s}=Object.assign({},l(),t.components);return s?e.createElement(s,t,e.createElement(n)):n();function n(){const a=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",code:"code",pre:"pre",h2:"h2",span:"span"},l(),t.components);return e.createElement(e.Fragment,null,e.createElement(a.h1,{id:"config-file"},"Config File"),`
+import{u as l,R as e}from"./index.894467ef.js";function r(t={}){const{wrapper:s}=Object.assign({},l(),t.components);return s?e.createElement(s,t,e.createElement(n)):n();function n(){const a=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",code:"code",pre:"pre",h2:"h2",span:"span"},l(),t.components);return e.createElement(e.Fragment,null,e.createElement(a.h1,{id:"config-file"},"Config File"),`
 `,e.createElement(a.blockquote,null,`
 `,e.createElement(a.p,null,"Docit will watch your config file in dev mode, if config file changes, dev server will restart."),`
 `),`
@@ -24,14 +24,14 @@ import{u as l,R as e}from"./index.28c0ef3c.js";function r(t={}){const{wrapper:s}
    *
    * `,e.createElement(a.span,{className:"hljs-doctag"},"@Default"),` '/'
    */`),`
-  `,e.createElement(a.span,{className:"hljs-attr"},"publicPath"),": ",e.createElement(a.span,{className:"hljs-string"},'"https://phshy0607.github.io/docit/"'),`,
+  `,e.createElement(a.span,{className:"hljs-attr"},"publicPath"),": ",e.createElement(a.span,{className:"hljs-string"},'"https://blizzbolts.github.io/docit/"'),`,
 
   `,e.createElement(a.span,{className:"hljs-comment"},`/**
    * A path to your provider, need to be an absolute path.
    *
    * `,e.createElement(a.span,{className:"hljs-doctag"},"@Default"),` path.resolve(CLIENT_PATH, './components/DefaultProvider/index.js'),
    */`),`
-  `,e.createElement(a.span,{className:"hljs-attr"},"providerPath"),": ",e.createElement(a.span,{className:"hljs-string"},'"https://phshy0607.github.io/docit/"'),`,
+  `,e.createElement(a.span,{className:"hljs-attr"},"providerPath"),": ",e.createElement(a.span,{className:"hljs-string"},'"https://blizzbolts.github.io/docit/"'),`,
 
   `,e.createElement(a.span,{className:"hljs-comment"},`/**
    * Custom Sidebar Configs
