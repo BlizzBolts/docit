@@ -1,6 +1,8 @@
 import { UserConfigExport } from "vite";
-export interface UserFileConfig {
+
+interface SharedConfig {
   title?: string;
+  favicon?: string;
   sidebars?: SidebarNode[];
   publicPath?: string;
   socials?: {
@@ -8,32 +10,24 @@ export interface UserFileConfig {
     Github?: string;
   };
   vite?: Partial<UserConfigExport>;
-}
-
-export interface UserConfig {
-  root: string;
-  title?: string;
-  sidebars?: SidebarNode[];
   providerPath?: string;
-  publicPath?: string;
-  socials?: {
-    Twitter?: string;
-    Github?: string;
-  };
-  vite?: Partial<UserConfigExport>;
 }
 
-export interface ResolvedUserConfig {
+/**
+ * Types for config file - docit.config.js
+ */
+export interface UserFileConfig extends SharedConfig {}
+
+/**
+ * types for node api
+ */
+export interface UserConfig extends SharedConfig {
+  root: string;
+}
+
+export interface ResolvedUserConfig extends SharedConfig {
   base: string;
   docs: string;
-  title?: string;
-  sidebars?: SidebarNode[];
-  providerPath?: string;
-  publicPath?: string;
-  socials?: {
-    Twitter?: string;
-    Github?: string;
-  };
   vite?: Partial<UserConfigExport>;
 }
 
