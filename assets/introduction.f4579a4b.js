@@ -1,4 +1,4 @@
-import{u as r,R as e}from"./index.894467ef.js";function o(n={}){const{wrapper:l}=Object.assign({},r(),n.components);return l?e.createElement(l,n,e.createElement(a)):a();function a(){const t=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",a:"a",ul:"ul",li:"li",h2:"h2",pre:"pre",code:"code",h3:"h3",ol:"ol",span:"span"},r(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"docit"},"Docit"),`
+import{u as r,R as e}from"./index.f000219d.js";function o(n={}){const{wrapper:l}=Object.assign({},r(),n.components);return l?e.createElement(l,n,e.createElement(a)):a();function a(){const t=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",a:"a",ul:"ul",li:"li",h2:"h2",pre:"pre",code:"code",h3:"h3",ol:"ol",span:"span"},r(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"docit"},"Docit"),`
 `,e.createElement(t.blockquote,null,`
 `,e.createElement(t.p,null,"Simple and Rapid React Documentation ",e.createElement(t.a,{href:"https://blizzbolts.github.io/docit"},"https://blizzbolts.github.io/docit")),`
 `),`
