@@ -22,7 +22,7 @@ const IFrameTools: React.FC<IFrameToolsProps> = (props) => {
   }, [url]);
 
   return (
-    <StyledIFrameTools className="bottom-tools">
+    <StyledIFrameTools className="iframe-tools">
       {qrCodeSrc && (
         <StyledQrCode src={qrCodeSrc}>
           <div className="qrcode-wrapper">

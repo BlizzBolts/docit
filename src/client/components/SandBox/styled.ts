@@ -1,8 +1,7 @@
-
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const StyledSandBox = styled.div`
-  :hover .bottom-tools {
+  :hover .iframe-tools {
     visibility: visible;
   }
-`
+`;
