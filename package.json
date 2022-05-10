@@ -29,7 +29,7 @@
     "build-client": "tsc -p src/client",
     "build-node": "tsc -p src/node",
     "docs": "run-p dev docs-dev",
-    "docs-dev": "node ./bin/docit start",
+    "docs-dev": "LOG_LEVEL=VERBOSE node ./bin/docit start",
     "docs-build": "node ./bin/docit build docs",
     "test": "vitest",
     "release": "yarn build && yarn publish && node scripts/gh.js"
