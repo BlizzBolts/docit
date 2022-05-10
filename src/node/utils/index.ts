@@ -47,6 +47,10 @@ export const readUserConfigFile = async (
     const { mod } = await bundleRequire({
       filepath: p,
     });
+
+    if (process.env?.LOG_LEVEL === "VERBOSE") {
+      console.log(mod.default);
+    }
     return mod.default;
   } catch (e) {
     return {};

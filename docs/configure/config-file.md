@@ -30,14 +30,14 @@ const config = {
    *
    * @Default '/'
    */
-  publicPath: "https://phshy0607.github.io/docit/",
+  publicPath: "https://blizzbolts.github.io/docit/",
 
   /**
    * A path to your provider, need to be an absolute path.
    *
    * @Default path.resolve(CLIENT_PATH, './components/DefaultProvider/index.js'),
    */
-  providerPath: "https://phshy0607.github.io/docit/",
+  providerPath: "https://blizzbolts.github.io/docit/",
 
   /**
    * Custom Sidebar Configs

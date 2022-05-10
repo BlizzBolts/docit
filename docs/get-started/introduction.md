@@ -1,6 +1,6 @@
 # Docit 
 
-> Simple and Rapid React Documentation https://phshy0607.github.io/docit
+> Simple and Rapid React Documentation https://blizzbolts.github.io/docit
 
 - :stuck_out_tongue: MDX & MD Syntax oriented.
 - :tornado: Fast HMR
@@ -44,11 +44,11 @@ This project is inspired by [Vitepress](https://vitepress.vuejs.org/) and [Story
 
 ## Changelog
 
-[CHANGELOG.md](https://github.com/phshy0607/docit/blob/master/CHANGELOG.md)
+[CHANGELOG.md](https://github.com/blizzbolts/docit/blob/master/CHANGELOG.md)
 
 
 ## Examples
 
-[Docit](https://phshy0607.github.io/docit/)
+[Docit](https://blizzbolts.github.io/docit/)
 
 

@@ -16,7 +16,7 @@ Your social info will displayed at the right side of header
 
 export default {
   socials: {
-    Github: 'https://github.com/phshy0607/docit'
+    Github: 'https://github.com/blizzbolts/docit'
   }
 }
 ```

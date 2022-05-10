@@ -9,11 +9,13 @@ export const StyledIFrameTools = styled.div`
   align-items: center;
   width: 100%;
   padding: 12px;
+  pointer-events: none;
 `;
 
 export const StyledQrCode = styled.div<{ src: string }>`
   position: relative;
   margin-right: 12px;
+  pointer-events: all;
   .qrcode-wrapper {
     position: relative;
     display: flex;
@@ -36,4 +38,5 @@ export const StyledIconWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-right: 12px;
+  pointer-events: all;
 `;

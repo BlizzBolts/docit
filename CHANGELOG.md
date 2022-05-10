@@ -13,7 +13,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Security` in case of vulnerabilities.
 
 
-## [0.8.2] - Unreleased
+## Unreleased
+
+
+### Added
+- add LOG_LEVEL=VERBOSE to node env will print more info
+### Changed
+- extract `SharedConfig` to share type between `UserConfig` `UserFileConfig` `ResolvedUserConfig`
+
+### Fixes
+- fix iframe tools cannot be click through issue
+
+## [0.8.2] - 2022-04-21
 
 ### Added
 - console more info for unmatched sandbox

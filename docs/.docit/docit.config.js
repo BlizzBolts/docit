@@ -2,9 +2,9 @@ import { defineConfig } from "../../src/node/index";
 
 const config = defineConfig({
   title: "Docit",
-  publicPath: "https://phshy0607.github.io/docit/",
+  publicPath: "https://blizzbolts.github.io/docit/",
   socials: {
-    Github: "https://github.com/phshy0607/docit",
+    Github: "https://github.com/blizzbolts/docit",
   },
   sidebars: [
     {
