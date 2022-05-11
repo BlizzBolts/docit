@@ -48,11 +48,10 @@ export const readUserConfigFile = async (
       filepath: p,
     });
 
-    if (process.env?.LOG_LEVEL === "VERBOSE") {
-      console.log(mod.default);
-    }
     return mod.default;
   } catch (e) {
+    logger.error("Something wrong happens while reading config file.");
+    console.error(e);
     return {};
   }
 };

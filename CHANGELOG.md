@@ -12,6 +12,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
+## Unreleased
+
+### Fixes
+- Fix `package.json#exports` path
+- Remove useless LOG_LEVEL design, need add more cli options
+
+### Added
+- Add error logging in config reading
 
 ## [0.8.3] - 2022-05-10
 
