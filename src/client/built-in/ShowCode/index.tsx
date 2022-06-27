@@ -7,7 +7,6 @@ import {
   ButtonContainer,
   CodeWindow,
 } from "./styled";
-import { IFrame } from "../../components/IFrame";
 import { Loading } from "../../components/Loading";
 import sandboxes from "virtual:sandboxes";
 
@@ -56,16 +55,10 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
     <Loading loading={isLoading}>
       <ShowCodeContainer mobileView={mobileView}>
         <RenderWindow>
-          {mobileView ? (
-            <iframe
-              src={`#sandbox?moduleId=${moduleId}`}
-              style={{ border: 0, width: "100%", height: "100%" }}
-            ></iframe>
-          ) : (
-            <IFrame>
-              <ComponentRef.current />
-            </IFrame>
-          )}
+          <iframe
+            src={`#sandbox?moduleId=${moduleId}`}
+            style={{ border: 0, width: "100%", height: "100%" }}
+          ></iframe>
         </RenderWindow>
         <ButtonContainer>
           <button
