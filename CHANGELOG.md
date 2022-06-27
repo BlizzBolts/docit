@@ -12,7 +12,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
-## [0.9.0] - Unreleased
+## [0.9.0] - 2022-06-27
 
 ### Changed
 - Now use iframe for pc sandboxes.
