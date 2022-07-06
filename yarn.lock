@@ -554,15 +554,6 @@
   dependencies:
     "@types/react" "^17"
 
-"@types/react-router-config@^5.0.6":
-  version "5.0.6"
-  resolved "https://registry.npm.alibaba-inc.com/@types/react-router-config/download/@types/react-router-config-5.0.6.tgz#87c5c57e72d241db900d9734512c50ccec062451"
-  integrity sha512-db1mx37a1EJDf1XeX8jJN7R3PZABmJQXR8r28yUjVMFSjkmnQo6X6pOEEmNl+Tp2gYQOGPdYbFIipBtdElZ3Yg==
-  dependencies:
-    "@types/history" "^4.7.11"
-    "@types/react" "*"
-    "@types/react-router" "*"
-
 "@types/react-router-dom@5.3.0":
   version "5.3.0"
   resolved "https://registry.npm.alibaba-inc.com/@types/react-router-dom/download/@types/react-router-dom-5.3.0.tgz#8c4e0aa0ccaf638ba965829ad29a10ac3cbe2212"
