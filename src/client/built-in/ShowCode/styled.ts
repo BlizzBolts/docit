@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { MobileView } from "./types";
 
-export const ButtonContainer = styled.div<MobileView>`
+export const StyledButtonContainer = styled.div<MobileView>`
   clear: both;
   overflow: auto;
   padding: 0 1em 1em 0;
@@ -24,15 +24,15 @@ export const ButtonContainer = styled.div<MobileView>`
   }
 `;
 
-export const CodeWindow = styled.div<{ show: boolean }>`
+export const StyledCodeWindow = styled.div<{ show: boolean }>`
   display: ${(props) => (props.show ? "block" : "none")};
 `;
 
-export const RenderWindow = styled.div<MobileView>`
+export const StyledRenderWindow = styled.div<MobileView>`
   padding: 1em;
 `;
 
-export const ShowCodeContainer = styled.div<MobileView>`
+export const StyledShowCodeContainer = styled.div<MobileView>`
   margin: 1rem 0;
   border-radius: 4px;
   border-color: var(--c-border);
@@ -42,7 +42,7 @@ export const ShowCodeContainer = styled.div<MobileView>`
   display: ${(props) => (props.mobileView ? "flex" : "block")};
   flex-flow: ${(props) => props.mobileView && "row-reverse"};
 
-  ${CodeWindow} {
+  ${StyledCodeWindow} {
     display: ${(props) => props.mobileView && "block"};
     flex: ${(props) => props.mobileView && "1 1 auto"};
     overflow: ${(props) => props.mobileView && "auto"};
@@ -64,7 +64,7 @@ export const ShowCodeContainer = styled.div<MobileView>`
     }
   }
 
-  ${RenderWindow} {
+  ${StyledRenderWindow} {
     flex: ${(props) => props.mobileView && "0 0 360px"};
     width: ${(props) => props.mobileView && "360px"};
     min-width: ${(props) => props.mobileView && "360px"};
@@ -86,7 +86,7 @@ export const ShowCodeContainer = styled.div<MobileView>`
     }
   }
 
-  ${ButtonContainer} {
+  ${StyledButtonContainer} {
     display: ${(props) => props.mobileView && "none"};
   }
 

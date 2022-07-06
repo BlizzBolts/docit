@@ -2,10 +2,10 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { ShowCodeProps } from "./types";
 import hljs from "highlight.js";
 import {
-  RenderWindow,
-  ShowCodeContainer,
-  ButtonContainer,
-  CodeWindow,
+  StyledRenderWindow,
+  StyledShowCodeContainer,
+  StyledButtonContainer,
+  StyledCodeWindow,
 } from "./styled";
 import { Loading } from "../../components/Loading";
 import sandboxes from "virtual:sandboxes";
@@ -53,14 +53,14 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
 
   return (
     <Loading loading={isLoading}>
-      <ShowCodeContainer mobileView={mobileView}>
-        <RenderWindow>
+      <StyledShowCodeContainer mobileView={mobileView}>
+        <StyledRenderWindow>
           <iframe
-            src={`#sandbox?moduleId=${moduleId}`}
+            src={`#/__sandbox__?moduleId=${moduleId}`}
             style={{ border: 0, width: "100%", height: "100%" }}
           ></iframe>
-        </RenderWindow>
-        <ButtonContainer>
+        </StyledRenderWindow>
+        <StyledButtonContainer>
           <button
             onClick={() => {
               setIsShowing((v) => !v);
@@ -68,9 +68,9 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
           >
             Show Code
           </button>
-        </ButtonContainer>
-        <CodeWindow show={isShowing}>{renderCode()}</CodeWindow>
-      </ShowCodeContainer>
+        </StyledButtonContainer>
+        <StyledCodeWindow show={isShowing}>{renderCode()}</StyledCodeWindow>
+      </StyledShowCodeContainer>
     </Loading>
   );
 };

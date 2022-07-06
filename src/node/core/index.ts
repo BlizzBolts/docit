@@ -133,7 +133,7 @@ class Core {
           .concat(
             `
             {
-              path: "/sandbox",
+              path: "/__sandbox__",
               exact: true,
               component: React.lazy(() => import('${path.resolve(
                 CLIENT_PATH,

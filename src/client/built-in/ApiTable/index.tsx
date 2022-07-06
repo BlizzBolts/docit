@@ -74,7 +74,11 @@ const ApiTable: React.FC<ApiTableProps> = (props) => {
                       <tr key={p.name}>
                         <td>{p.name}</td>
                         <td>
-                          <span style={{ color: p.isEnum ? "red" : "inherit" }}>
+                          <span
+                            style={{
+                              fontWeight: p.isEnum ? "bold" : "inherit",
+                            }}
+                          >
                             {p.type}
                           </span>
                         </td>

@@ -9,14 +9,14 @@ import { visit } from "unist-util-visit";
 export const parseMdxToTree = (s: string) => {
   const tree = fromMarkdown(s, {
     extensions: [mdxjs()],
-    mdastExtensions: [mdxFromMarkdown, gfmTableFromMarkdown],
+    mdastExtensions: [mdxFromMarkdown(), gfmTableFromMarkdown],
   });
   return tree;
 };
 
 export const parseTreeToMdx = (ast: Root) => {
   const out = toMarkdown(ast, {
-    extensions: [mdxToMarkdown, gfmTableToMarkdown()],
+    extensions: [mdxToMarkdown(), gfmTableToMarkdown()],
   });
   return out;
 };
