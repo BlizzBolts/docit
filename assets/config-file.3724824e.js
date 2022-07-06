@@ -1,4 +1,4 @@
-import{u as l,R as e}from"./index.17bce6d6.js";function r(t={}){const{wrapper:s}=Object.assign({},l(),t.components);return s?e.createElement(s,t,e.createElement(n)):n();function n(){const a=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",code:"code",pre:"pre",h2:"h2",span:"span"},l(),t.components);return e.createElement(e.Fragment,null,e.createElement(a.h1,{id:"config-file"},"Config File"),`
+import{u as n,R as e}from"./index.a75b6bbe.js";function s(t){const a=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",code:"code",pre:"pre",h2:"h2",span:"span"},n(),t.components);return e.createElement(e.Fragment,null,e.createElement(a.h1,{id:"config-file"},"Config File"),`
 `,e.createElement(a.blockquote,null,`
 `,e.createElement(a.p,null,"Docit will watch your config file in dev mode, if config file changes, dev server will restart."),`
 `),`
@@ -73,4 +73,4 @@ import{u as l,R as e}from"./index.17bce6d6.js";function r(t={}){const{wrapper:s}
   }
 };
 `,e.createElement(a.span,{className:"hljs-keyword"},"export")," ",e.createElement(a.span,{className:"hljs-keyword"},"default"),` config;
-`)))}}export{r as default};
+`)))}function c(t={}){const{wrapper:a}=Object.assign({},n(),t.components);return a?e.createElement(a,t,e.createElement(s,t)):s(t)}export{c as default};

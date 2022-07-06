@@ -1,4 +1,4 @@
-import{u as r,R as e}from"./index.17bce6d6.js";function o(n={}){const{wrapper:l}=Object.assign({},r(),n.components);return l?e.createElement(l,n,e.createElement(a)):a();function a(){const t=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",a:"a",ul:"ul",li:"li",h2:"h2",pre:"pre",code:"code",h3:"h3",ol:"ol",span:"span"},r(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"docit"},"Docit"),`
+import{u as a,R as e}from"./index.a75b6bbe.js";function l(n){const t=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",a:"a",ul:"ul",li:"li",h2:"h2",pre:"pre",code:"code",h3:"h3",ol:"ol",span:"span"},a(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"docit"},"Docit"),`
 `,e.createElement(t.blockquote,null,`
 `,e.createElement(t.p,null,"Simple and Rapid React Documentation ",e.createElement(t.a,{href:"https://blizzbolts.github.io/docit"},"https://blizzbolts.github.io/docit")),`
 `),`
@@ -35,4 +35,4 @@ import{u as r,R as e}from"./index.17bce6d6.js";function o(n={}){const{wrapper:l}
 `,e.createElement(t.h2,{id:"changelog"},"Changelog"),`
 `,e.createElement(t.p,null,e.createElement(t.a,{href:"https://github.com/blizzbolts/docit/blob/master/CHANGELOG.md"},"CHANGELOG.md")),`
 `,e.createElement(t.h2,{id:"examples"},"Examples"),`
-`,e.createElement(t.p,null,e.createElement(t.a,{href:"https://blizzbolts.github.io/docit/"},"Docit")))}}export{o as default};
+`,e.createElement(t.p,null,e.createElement(t.a,{href:"https://blizzbolts.github.io/docit/"},"Docit")))}function c(n={}){const{wrapper:t}=Object.assign({},a(),n.components);return t?e.createElement(t,n,e.createElement(l,n)):l(n)}export{c as default};

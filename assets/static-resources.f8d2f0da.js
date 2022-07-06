@@ -1,4 +1,4 @@
-import{u as s,R as e}from"./index.17bce6d6.js";function r(n={}){const{wrapper:l}=Object.assign({},s(),n.components);return l?e.createElement(l,n,e.createElement(a)):a();function a(){const t=Object.assign({h1:"h1",h2:"h2",p:"p",code:"code",pre:"pre",span:"span",blockquote:"blockquote",img:"img"},s(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"static-resources"},"Static Resources"),`
+import{u as a,R as e}from"./index.a75b6bbe.js";function l(n){const t=Object.assign({h1:"h1",h2:"h2",p:"p",code:"code",pre:"pre",span:"span",blockquote:"blockquote",img:"img"},a(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"static-resources"},"Static Resources"),`
 `,e.createElement(t.h2,{id:"introduction"},"Introduction"),`
 `,e.createElement(t.p,null,"Make a ",e.createElement(t.code,null,"assets")," folder, and put all your static resources under it."),`
 `,e.createElement(t.pre,null,e.createElement(t.code,{className:"hljs language-lua"},`|-docs
@@ -18,4 +18,4 @@ import{u as s,R as e}from"./index.17bce6d6.js";function r(n={}){const{wrapper:l}
 `,e.createElement(t.p,null,e.createElement(t.img,{src:"tree-house-ipa.jpeg",alt:"Tree House IPA"})),`
 `,e.createElement(t.pre,null,e.createElement(t.code,{className:"hljs language-md"},"![",e.createElement(t.span,{className:"hljs-string"},"Dump Beer"),"](",e.createElement(t.span,{className:"hljs-link"},"dump-beer.gif"),`)
 `)),`
-`,e.createElement(t.p,null,e.createElement(t.img,{src:"/dump-beer.gif",alt:"Dump Beer"})))}}export{r as default};
+`,e.createElement(t.p,null,e.createElement(t.img,{src:"/dump-beer.gif",alt:"Dump Beer"})))}function c(n={}){const{wrapper:t}=Object.assign({},a(),n.components);return t?e.createElement(t,n,e.createElement(l,n)):l(n)}export{c as default};
