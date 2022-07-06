@@ -1,4 +1,4 @@
-import{u as a,R as e}from"./index.a75b6bbe.js";function l(n){const t=Object.assign({h1:"h1",p:"p",code:"code",blockquote:"blockquote",a:"a",h2:"h2",pre:"pre",span:"span"},a(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"socials"},"Socials"),`
+import{u as a,R as e}from"./index.c60c0ff8.js";function l(n){const t=Object.assign({h1:"h1",p:"p",code:"code",blockquote:"blockquote",a:"a",h2:"h2",pre:"pre",span:"span"},a(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"socials"},"Socials"),`
 `,e.createElement(t.p,null,"add a ",e.createElement(t.code,null,"socials")," object in your ",e.createElement(t.code,null,"docit.config.js")," file"),`
 `,e.createElement(t.blockquote,null,`
 `,e.createElement(t.p,null,"Checkout ",e.createElement(t.a,{href:"#/configure/config-file"},"Config File")," for Config file setup"),`
