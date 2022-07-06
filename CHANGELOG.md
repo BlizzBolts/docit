@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - Change StyledComponents naming
+- Change enum styling from color red to font-weight bold
 
 ## [0.9.1] - 2022-07-06
 
