@@ -282,10 +282,10 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@mdx-js/mdx@^2.0.0":
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/@mdx-js/mdx/-/mdx-2.1.1.tgz#6d8b9b75456d7685a52c3812b1c3e4830c7458fb"
-  integrity sha512-SXC18cChut3F2zkVXwsb2no0fzTQ1z6swjK13XwFbF5QU/SFQM0orAItPypSdL3GvqYyzVJtz8UofzJhPEQtMw==
+"@mdx-js/mdx@^2.0.0-rc.1":
+  version "2.1.2"
+  resolved "https://registry.npm.alibaba-inc.com/@mdx-js/mdx/download/@mdx-js/mdx-2.1.2.tgz#d13fb811809fda37967dc0eebd5bb36adce89a81"
+  integrity sha512-ASN1GUH0gXsgJ2UD/Td7FzJo1SwFkkQ5V1i9at5o/ROra7brkyMcBsotsOWJWRzmXZaLw2uXWn4aN8B3PMNFMA==
   dependencies:
     "@types/estree-jsx" "^0.0.1"
     "@types/mdx" "^2.0.0"
@@ -305,23 +305,22 @@
     unist-util-visit "^4.0.0"
     vfile "^5.0.0"
 
-"@mdx-js/react@^2.0.0":
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/@mdx-js/react/-/react-2.1.1.tgz#c59d844fd61b776fea8673fb77405d4e14db48c5"
-  integrity sha512-7zlZDf5xmWH8I0kFE4DG91COOkxjaW9DX5f1HWztZpFcVua2gJgMYfIkFaDpO/DH/tWi6Mz+OheW4194r15igg==
+"@mdx-js/react@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.npm.alibaba-inc.com/@mdx-js/react/download/@mdx-js/react-2.0.0.tgz#00a9f5467d2761fe3818222740f50403f83aee2c"
+  integrity sha512-icpMd43xqORnHSVRwALZv3ELN3IS7VS3BL+FyH2FFergQPSQ21FX0lN+OMIs0X+3dGY1L0DLhBCkMfPO+yDG7Q==
   dependencies:
     "@types/mdx" "^2.0.0"
     "@types/react" ">=16"
 
-"@mdx-js/rollup@^2.0.0-rc.1":
-  version "2.1.1"
-  resolved "https://registry.npmjs.org/@mdx-js/rollup/-/rollup-2.1.1.tgz#7ed1530a14d6284c56c50247dd86c322119e554b"
-  integrity sha512-oOWCEpm91ewLeywxeyNmOeaORCosLAQ6O0t/4yvou33z64F14lCx3rIJUZb7K+ZIEp03q46t5mTj37ybBmI1sw==
+"@mdx-js/rollup@2.0.0-rc.1":
+  version "2.0.0-rc.1"
+  resolved "https://registry.npm.alibaba-inc.com/@mdx-js/rollup/download/@mdx-js/rollup-2.0.0-rc.1.tgz#3fa7e5caec9befcf600bb8bda844ebd771804485"
+  integrity sha1-P6flyuyb789gC7i9qETr13GARIU=
   dependencies:
-    "@mdx-js/mdx" "^2.0.0"
+    "@mdx-js/mdx" "^2.0.0-rc.1"
     "@rollup/pluginutils" "^4.0.0"
     source-map "^0.7.0"
-    vfile "^5.0.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -3774,9 +3773,9 @@ vite-plugin-virtual@^0.1.1:
   resolved "https://registry.npmjs.org/vite-plugin-virtual/-/vite-plugin-virtual-0.1.1.tgz#34fff2d2816ebaad0d53fdcd3500d12ec9c5fa0e"
   integrity sha512-JnEbO2AOIfpMfL/uSz7snJ4HzTxCbJFtw7xX413UrYY0IiZjAnY78Ie/Kd7k03iBlyQsFpdzdKQu+ULxu0UXMg==
 
-vite@^2.8.6, vite@^2.9.5:
+vite@2.9.5, vite@^2.8.6:
   version "2.9.5"
-  resolved "https://registry.npmjs.org/vite/-/vite-2.9.5.tgz#08ef37ac7a6d879c96f328b791732c9a00ea25ea"
+  resolved "https://registry.npm.alibaba-inc.com/vite/download/vite-2.9.5.tgz#08ef37ac7a6d879c96f328b791732c9a00ea25ea"
   integrity sha512-dvMN64X2YEQgSXF1lYabKXw3BbN6e+BL67+P3Vy4MacnY+UzT1AfkHiioFSi9+uiDUiaDy7Ax/LQqivk6orilg==
   dependencies:
     esbuild "^0.14.27"
