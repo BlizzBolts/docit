@@ -1,6 +1,6 @@
 import { isEmpty } from "lodash-es";
 import React, { useMemo } from "react";
-import { useHistory, useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { useQuery } from "../../hooks/useQuery";
 import { parseQueryToSearch } from "../../utils/url";
 import appData from "virtual:appData";
@@ -16,7 +16,7 @@ const { markdowns } = appData;
 const Toc = () => {
   const location = useLocation();
   const query = useQuery();
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const curr = useMemo(() => {
     return markdowns.find((o) => o.routePath === location.pathname);
@@ -29,10 +29,13 @@ const Toc = () => {
     });
 
     if (search !== location.search) {
-      history.replace({
-        pathname: location.pathname,
-        search,
-      });
+      navigate(
+        {
+          pathname: location.pathname,
+          search,
+        },
+        { replace: true }
+      );
     }
   };
 

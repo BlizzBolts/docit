@@ -1,16 +1,13 @@
 import React, { Suspense } from "react";
-import { routes } from "virtual:routes";
-import { renderRoutes } from "react-router-config";
 import { MDXProvider } from "@mdx-js/react";
-import { ShowCode } from "../../built-in/ShowCode";
 import { StyledMarkdown, StyledDocument } from "./styled";
+import { ShowCode } from "../../built-in/ShowCode";
 import { ApiTable } from "../../built-in/ApiTable";
-import { useDefaultRoute } from "../../hooks/useDefaultRoute";
 import { useAnchors } from "../../hooks/useAnchors";
 import { Toc } from "../Toc";
 
-const Document = () => {
-  useDefaultRoute();
+const Document: React.FC = (props) => {
+  const { children } = props;
   useAnchors();
 
   return (
@@ -35,7 +32,7 @@ const Document = () => {
             },
           }}
         >
-          <Suspense fallback={<></>}>{renderRoutes(routes)}</Suspense>
+          {children}
         </MDXProvider>
       </StyledMarkdown>
       <Toc />

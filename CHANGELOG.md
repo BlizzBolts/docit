@@ -20,6 +20,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Change StyledComponents naming
 - Change enum styling from color red to font-weight bold
+- Update react-router to v6
 
 ## [0.9.1] - 2022-07-06
 

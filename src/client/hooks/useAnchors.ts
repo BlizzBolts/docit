@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { useHistory, useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { parseQueryToSearch } from "../utils/url";
 import { useQuery } from "./useQuery";
 
 export const useAnchors = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const location = useLocation();
   const query = useQuery();
 
@@ -34,10 +34,13 @@ export const useAnchors = () => {
         });
 
         if (search !== location.search) {
-          history.replace({
-            pathname: location.pathname,
-            search,
-          });
+          navigate(
+            {
+              pathname: location.pathname,
+              search,
+            },
+            { replace: true }
+          );
         }
       }
     };

@@ -56,7 +56,7 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
       <StyledShowCodeContainer mobileView={mobileView}>
         <StyledRenderWindow>
           <iframe
-            src={`#sandbox?moduleId=${moduleId}`}
+            src={`#/__sandbox__?moduleId=${moduleId}`}
             style={{ border: 0, width: "100%", height: "100%" }}
           ></iframe>
         </StyledRenderWindow>
