@@ -1,4 +1,4 @@
-import{u as l,R as e,_ as c}from"./index.da418050.js";function n(a){const t=Object.assign({h1:"h1",p:"p",blockquote:"blockquote",h3:"h3",pre:"pre",code:"code",span:"span",a:"a",hr:"hr"},l(),a.components),{ApiTable:s}=t;return s||r("ApiTable",!0),e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"api-generation"},"API Generation"),`
+import{u as l,R as e,_ as c}from"./index.f6c9da86.js";function n(a){const t=Object.assign({h1:"h1",p:"p",blockquote:"blockquote",h3:"h3",pre:"pre",code:"code",span:"span",a:"a",hr:"hr"},l(),a.components),{ApiTable:s}=t;return s||r("ApiTable",!0),e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"api-generation"},"API Generation"),`
 `,e.createElement(t.p,null,"Docit provides a simple syntax to handle auto API parsing."),`
 `,e.createElement(t.blockquote,null,`
 `,e.createElement(t.p,null,"Currently only support React Typescript API Tables. Functions and Interface support might not work as you expected."),`
