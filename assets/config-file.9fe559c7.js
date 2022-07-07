@@ -1,4 +1,4 @@
-import{u as n,R as e}from"./index.9e28b7ea.js";function s(t){const a=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",code:"code",pre:"pre",h2:"h2",span:"span"},n(),t.components);return e.createElement(e.Fragment,null,e.createElement(a.h1,{id:"config-file"},"Config File"),`
+import{u as n,R as e}from"./index.c96f0782.js";function s(t){const a=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",code:"code",pre:"pre",h2:"h2",span:"span"},n(),t.components);return e.createElement(e.Fragment,null,e.createElement(a.h1,{id:"config-file"},"Config File"),`
 `,e.createElement(a.blockquote,null,`
 `,e.createElement(a.p,null,"Docit will watch your config file in dev mode, if config file changes, dev server will restart."),`
 `),`
