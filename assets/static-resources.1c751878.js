@@ -1,4 +1,4 @@
-import{u as a,R as e}from"./index.f6c9da86.js";function l(n){const t=Object.assign({h1:"h1",h2:"h2",p:"p",code:"code",pre:"pre",span:"span",blockquote:"blockquote",img:"img"},a(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"static-resources"},"Static Resources"),`
+import{u as a,R as e}from"./index.9e28b7ea.js";function l(n){const t=Object.assign({h1:"h1",h2:"h2",p:"p",code:"code",pre:"pre",span:"span",blockquote:"blockquote",img:"img"},a(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"static-resources"},"Static Resources"),`
 `,e.createElement(t.h2,{id:"introduction"},"Introduction"),`
 `,e.createElement(t.p,null,"Make a ",e.createElement(t.code,null,"assets")," folder, and put all your static resources under it."),`
 `,e.createElement(t.pre,null,e.createElement(t.code,{className:"hljs language-lua"},`|-docs

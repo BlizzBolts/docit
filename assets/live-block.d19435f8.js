@@ -1,4 +1,4 @@
-import{u as c,R as e}from"./index.f6c9da86.js";function t(l){const n=Object.assign({h1:"h1",p:"p",code:"code",blockquote:"blockquote",h3:"h3",pre:"pre",span:"span",h2:"h2"},c(),l.components),{ShowCode:o}=n;return o||a("ShowCode",!0),e.createElement(e.Fragment,null,e.createElement(n.h1,{id:"live-block"},"Live Block"),`
+import{u as c,R as e}from"./index.9e28b7ea.js";function t(l){const n=Object.assign({h1:"h1",p:"p",code:"code",blockquote:"blockquote",h3:"h3",pre:"pre",span:"span",h2:"h2"},c(),l.components),{ShowCode:o}=n;return o||a("ShowCode",!0),e.createElement(e.Fragment,null,e.createElement(n.h1,{id:"live-block"},"Live Block"),`
 `,e.createElement(n.p,null,"Live Block is a way to speed up your doc writing by rendering and showing code at the same time."),`
 `,e.createElement(n.p,null,"Just add ",e.createElement(n.code,null,"live")," keyword after code block language"),`
 `,e.createElement(n.p,null,"Docit only respect ",e.createElement(n.code,null,"live")," keyword for ",e.createElement(n.code,null,"js")," ",e.createElement(n.code,null,"jsx")," ",e.createElement(n.code,null,"ts")," and ",e.createElement(n.code,null,"tsx")," languages"),`
