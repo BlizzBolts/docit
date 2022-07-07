@@ -19,9 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Support Chinese as Route path with `encodeURI`
-- Change built-in components to default export
 - exclude @mdx-js/react from vite pre-bundling
-
 
 ## [0.10.0] - 2022-07-06
 

@@ -75,4 +75,4 @@ const ShowCode: React.FC<ShowCodeProps> = (props) => {
   );
 };
 
-export default ShowCode;
+export { ShowCode };

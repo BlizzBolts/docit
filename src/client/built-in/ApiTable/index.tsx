@@ -123,4 +123,4 @@ const ApiTable: React.FC<ApiTableProps> = (props) => {
   );
 };
 
-export default ApiTable;
+export { ApiTable };
