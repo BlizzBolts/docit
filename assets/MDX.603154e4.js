@@ -1,4 +1,4 @@
-import{u as l,R as e}from"./index.c96f0782.js";function t(a){const n=Object.assign({h1:"h1",p:"p",h2:"h2",pre:"pre",code:"code",span:"span",a:"a"},l(),a.components);return e.createElement(e.Fragment,null,e.createElement(n.h1,{id:"mdx"},"MDX"),`
+import{u as l,R as e}from"./index.b4b25b7b.js";function t(a){const n=Object.assign({h1:"h1",p:"p",h2:"h2",pre:"pre",code:"code",span:"span",a:"a"},l(),a.components);return e.createElement(e.Fragment,null,e.createElement(n.h1,{id:"mdx"},"MDX"),`
 `,e.createElement(n.p,null,"MDX is a syntax that enable writing JSX and JavaScript expressions in your Markdown files."),`
 `,e.createElement(n.h2,{id:"syntax"},"Syntax"),`
 `,e.createElement(n.pre,null,e.createElement(n.code,{className:"hljs language-md"},e.createElement(n.span,{className:"hljs-section"},"# Title 1"),`

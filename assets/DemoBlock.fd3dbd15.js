@@ -1,1 +1,0 @@
-import{R as e}from"./index.c96f0782.js";const c=()=>e.createElement("div",{style:{width:"100px",height:"100px",background:"#ececec",display:"flex",alignItems:"center",justifyContent:"center"}},"Demo");export{c as D};
