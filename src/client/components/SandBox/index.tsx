@@ -25,7 +25,7 @@ const Sandbox: React.FC = () => {
 
   return (
     <StyledSandBox>
-      <div style={{ height: "100vh" }}>
+      <div style={{ height: "100vh", overflow: 'auto' }}>
         <ComponentRef.current />
       </div>
       <IFrameTools moduleId={query.moduleId} />
