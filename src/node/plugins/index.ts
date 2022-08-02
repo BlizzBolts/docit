@@ -36,6 +36,7 @@ export const docit = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
             "highlight.js",
             "qrcode",
           ],
+          exclude: ["@mdx-js/react"],
         },
         build: {
           outDir: path.resolve(process.cwd(), "./docs-dist"),

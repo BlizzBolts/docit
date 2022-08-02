@@ -40,7 +40,7 @@ const Root = () => {
           return (
             <Route
               key={route.path}
-              path={route.path}
+              path={encodeURI(route.path)}
               element={
                 route.path !== "/__sandbox__" ? (
                   <App>
