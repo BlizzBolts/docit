@@ -14,6 +14,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
+## [0.11.0] - Unreleased
+
+### Changed
+
+- lock some deps from dependencies list
+
 ## [0.10.2] - 2022-08-02
 
 ### Changed
