@@ -1,23 +1,11 @@
 // Vitest Snapshot v1
 
-exports[`Props And Api Parsing > generates correct table 1`] = `
-"| 属性 | 类型 | 默认值 | 必填 | 描述 |
-| -- | -- | --- | -- | -- |
-
-| 属性      | 类型                | 默认值          | 必填 | 描述   |
-| ------- | ----------------- | ------------ | -- | ---- |
-| color   | string            | grene        | 否  | 一种颜色 |
-| length  | Length            | Length.Large | 否  | -    |
-| variant | \\"A\\" \\\\| \\"B\\" \\\\| \\"C\\" | -            | 是  | -    |
-"
-`;
-
 exports[`Props And Api Parsing > matctes raw parsed result 1`] = `
 [
   {
     "description": "",
     "displayName": "StyledButton",
-    "filePath": "/Users/hao/local/projj/github.com/BlizzBolts/docit/test/props/Button.tsx",
+    "filePath": "/Users/hao/local/projj/github.com/phshy0607/docit/test/props/Button.tsx",
     "methods": [],
     "props": {},
     "tags": {},
@@ -25,7 +13,7 @@ exports[`Props And Api Parsing > matctes raw parsed result 1`] = `
   {
     "description": "",
     "displayName": "Button",
-    "filePath": "/Users/hao/local/projj/github.com/BlizzBolts/docit/test/props/Button.tsx",
+    "filePath": "/Users/hao/local/projj/github.com/phshy0607/docit/test/props/Button.tsx",
     "methods": [],
     "props": {
       "color": {
@@ -132,12 +120,12 @@ exports[`Props And Api Parsing > parses result 1`] = `
 [
   {
     "componentName": "StyledButton",
-    "filePath": "/Users/hao/local/projj/github.com/BlizzBolts/docit/test/props/Button.tsx",
+    "filePath": "/Users/hao/local/projj/github.com/phshy0607/docit/test/props/Button.tsx",
     "props": [],
   },
   {
     "componentName": "Button",
-    "filePath": "/Users/hao/local/projj/github.com/BlizzBolts/docit/test/props/Button.tsx",
+    "filePath": "/Users/hao/local/projj/github.com/phshy0607/docit/test/props/Button.tsx",
     "props": [
       {
         "defaultValue": "grene",

@@ -1,23 +1,27 @@
 import { Root } from "mdast";
-import { fromMarkdown } from "mdast-util-from-markdown";
-import { toMarkdown } from "mdast-util-to-markdown";
-import { mdxjs } from "micromark-extension-mdxjs";
-import { mdxFromMarkdown, mdxToMarkdown } from "mdast-util-mdx";
-import { gfmTableFromMarkdown, gfmTableToMarkdown } from "mdast-util-gfm-table";
 import { visit } from "unist-util-visit";
+import { unified } from "unified";
+import remarkGfm from "remark-gfm";
+import remarkParse from "remark-parse";
+import remarkMdx from "remark-mdx";
+import stringify from "remark-stringify";
 
-export const parseMdxToTree = (s: string) => {
-  const tree = fromMarkdown(s, {
-    extensions: [mdxjs()],
-    mdastExtensions: [mdxFromMarkdown(), gfmTableFromMarkdown],
-  });
+export const parseMdxToTree = (s: string): Root => {
+  const tree = unified()
+    .use(remarkParse)
+    .use(remarkMdx)
+    .use(remarkGfm)
+    .parse(s);
   return tree;
 };
 
-export const parseTreeToMdx = (ast: Root) => {
-  const out = toMarkdown(ast, {
-    extensions: [mdxToMarkdown(), gfmTableToMarkdown()],
-  });
+export const parseTreeToMdx = (ast: Root): string => {
+  const out = unified()
+    .use(remarkParse)
+    .use(remarkMdx)
+    .use(remarkGfm)
+    .use(stringify)
+    .stringify(ast);
   return out;
 };
 

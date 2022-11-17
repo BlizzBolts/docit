@@ -2,7 +2,7 @@ import gfm from "remark-gfm";
 import highlight from "rehype-highlight";
 import mdxRollup, { Options } from "@mdx-js/rollup";
 import { ResolvedUserConfig } from "../../types.js";
-import { Plugin } from "vite";
+import { PluginOption } from "vite";
 import frontMatter from "remark-frontmatter";
 import emoji from "remark-emoji";
 import slug from "rehype-slug";
@@ -18,6 +18,8 @@ export const getCompilerOptions = (config: ResolvedUserConfig): Options => {
   };
 };
 
-export const mdx = async (config: ResolvedUserConfig): Promise<Plugin[]> => {
-  return [mdxRollup(getCompilerOptions(config))];
+export const mdx = async (
+  config: ResolvedUserConfig
+): Promise<PluginOption[]> => {
+  return [mdxRollup(getCompilerOptions(config)) as PluginOption];
 };

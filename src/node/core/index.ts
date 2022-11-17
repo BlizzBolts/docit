@@ -14,6 +14,7 @@ import { isEmpty, pick } from "lodash-es";
 import { Markdown } from "./Markdown.js";
 import { withVirtual, VirtualUpdater } from "../plugins/virtual/index.js";
 import { pkg } from "../constants.js";
+import { PluginOption } from "vite";
 
 class Core {
   private static instance: Core;
@@ -288,19 +289,14 @@ class Core {
     return this.markdownCache.getMarkdowns();
   }
 
-  async prepare() {
+  async prepare(): Promise<PluginOption> {
     await this.markdownCache.prepare();
     const { sidebars, routes, appData, sandboxes } =
       await this.makeViteVirtualPlugin();
 
     this.watch();
 
-    return {
-      sidebars,
-      routes,
-      appData,
-      sandboxes,
-    };
+    return [sidebars, routes, appData, sandboxes];
   }
 
   static getInstance(config?: ResolvedUserConfig) {
