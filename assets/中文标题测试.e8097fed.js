@@ -1,0 +1,1 @@
+import{u as c,R as n}from"./index.0cc171e8.js";function o(e){const t=Object.assign({p:"p"},c(),e.components);return n.createElement(t.p,null,"123123")}function s(e={}){const{wrapper:t}=Object.assign({},c(),e.components);return t?n.createElement(t,e,n.createElement(o,e)):o(e)}export{s as default};

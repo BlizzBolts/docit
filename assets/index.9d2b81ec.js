@@ -1,4 +1,4 @@
-import{s as j,r as _,R as N,S as ht,a as Ft,b as X}from"./index.b4b25b7b.js";const Ut=j.div`
+import{s as j,r as _,R as N,S as ht,a as Ft,b as X}from"./index.0cc171e8.js";const Ut=j.div`
   visibility: hidden;
   position: fixed;
   left: 0;
@@ -44,4 +44,4 @@ Minimum version required to store current data is: `+n+`.
   :hover .iframe-tools {
     visibility: visible;
   }
-`,Pe=()=>{const e=Ft(),[t,i]=_.exports.useState({}),o=_.exports.useRef(()=>N.createElement(N.Fragment,null));return _.exports.useEffect(()=>{const r=X[decodeURI(e.moduleId)];r?r().then(n=>{const{default:s}=n;o.current=s,i({})}):(console.warn("No Matching Sandbox!",X),console.log({query:e,sandboxes:X}))},[]),N.createElement(Te,null,N.createElement("div",{style:{height:"100vh"}},N.createElement(o.current,null)),N.createElement(Se,{moduleId:e.moduleId}))};export{Pe as default};
+`,Pe=()=>{const e=Ft(),[t,i]=_.exports.useState({}),o=_.exports.useRef(()=>N.createElement(N.Fragment,null));return _.exports.useEffect(()=>{const r=X[decodeURI(e.moduleId)];r?r().then(n=>{const{default:s}=n;o.current=s,i({})}):(console.warn("No Matching Sandbox!",X),console.log({query:e,sandboxes:X}))},[]),N.createElement(Te,null,N.createElement("div",{style:{height:"100vh",overflow:"auto"}},N.createElement(o.current,null)),N.createElement(Se,{moduleId:e.moduleId}))};export{Pe as default};
