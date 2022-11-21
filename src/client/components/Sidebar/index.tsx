@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { isEmpty } from "lodash-es";
 import sidebars from "virtual:sidebars";
+import { routes } from "virtual:routes";
+
 import { StyledSidebarItem, StyledAside } from "./styled";
 import { setSidebarVisible, sidebarVisible } from "../../model";
 
@@ -14,10 +16,13 @@ const Sidebar: React.FC = () => {
         <StyledSidebarItem
           key={o.path}
           level={level}
-          active={o.path === location.pathname}
+          active={
+            encodeURI(decodeURI(o.path)) ===
+            encodeURI(decodeURI(location.pathname))
+          }
         >
           <Link
-            to={o.path}
+            to={encodeURI(o.path)}
             onClick={() => {
               setSidebarVisible(false);
             }}

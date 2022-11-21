@@ -26,18 +26,9 @@ export const docit = async (
         root: config.base,
         base: config.publicPath,
         optimizeDeps: {
-          // include: [
-          //   "react",
-          //   "react-dom",
-          //   "styled-components",
-          //   "shallowequal",
-          //   "hoist-non-react-statics",
-          //   "react-is",
-          //   "lodash-es",
-          //   "highlight.js",
-          //   "qrcode",
-          // ],
-          exclude: ["@mdx-js/react"],
+          include: [
+            "@mdx-js/react",
+          ],
         },
         build: {
           outDir: path.resolve(process.cwd(), "./docs-dist"),
@@ -54,7 +45,8 @@ export const docit = async (
         clearScreen: false,
         publicDir: path.resolve(config.docs, "./assets"),
       });
-      return mergeConfig(baseConfig, config.vite);
+      const mergedConfig = mergeConfig(baseConfig, config.vite);
+      return mergedConfig;
     },
     transform(_, id) {
       if (id.endsWith("?needParse")) {
