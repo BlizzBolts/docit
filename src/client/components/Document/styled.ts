@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const StyledDocument = styled.main`
-  width: calc(100vw - var(--sidebar-width));
-  height: calc(100vh - var(--header-height));
+  width: calc(100vw - var(--docit-sidebar-width));
+  height: calc(100vh - var(--docit-header-height));
   display: inline-block;
   overflow-y: auto;
   position: relative;
@@ -14,12 +14,12 @@ export const StyledDocument = styled.main`
 `;
 
 export const StyledMarkdown = styled.div`
-  color: var(--c-1);
+  color: var(--docit-c-1);
   padding: 0 4em;
   padding-right: calc(4em - 20px);
   word-break: break-all;
   margin-bottom: 100px;
-  width: calc(100% - var(--toc-width));
+  width: calc(100% - var(--docit-toc-width));
 
   :last-child {
     width: 100%;
@@ -65,7 +65,7 @@ export const StyledMarkdown = styled.div`
   h2 {
     margin-top: 2.25rem;
     margin-bottom: 1.25rem;
-    border-bottom: 1px solid var(--c-divider);
+    border-bottom: 1px solid var(--docit-c-divider);
     padding-bottom: 0.3rem;
     line-height: 1.25;
     font-size: 1.65rem;
@@ -107,7 +107,7 @@ export const StyledMarkdown = styled.div`
   a {
     white-space: nowrap;
     text-decoration: none;
-    color: var(--c-brand);
+    color: var(--docit-c-brand);
     transition: all 0.3 linear;
     ::before {
       content: "「";
@@ -195,7 +195,7 @@ export const StyledMarkdown = styled.div`
   }
 
   code.docit-code {
-    background: var(--c-code-bg);
+    background: var(--docit-c-code-bg);
     font-weight: bold;
     padding: 0 0.25em;
   }
@@ -205,33 +205,33 @@ export const StyledMarkdown = styled.div`
   }
 
   hr {
-    border-top: 1px dashed var(--c-brand);
+    border-top: 1px dashed var(--docit-c-brand);
   }
 
   pre {
     text-align: left;
-    font-size: var(--code-font-size);
-    line-height: var(--code-line-height);
+    font-size: var(--docit-code-font-size);
+    line-height: var(--docit-code-line-height);
     white-space: pre;
     word-spacing: normal;
     word-break: normal;
     word-wrap: normal;
-    box-shadow: var(--box-shadow);
-    background: var(--c-pre-bg);
-    border-radius: var(--code-border-radius);
+    box-shadow: var(--docit-box-shadow);
+    background: var(--docit-c-pre-bg);
+    border-radius: var(--docit-code-border-radius);
 
     code.docit-code {
       display: block;
       overflow-x: auto;
       background: transparent;
       font-weight: inherit;
-      font-family: var(--font-family-code);
-      color: var(--c-white);
+      font-family: var(--docit-font-family-code);
+      color: var(--docit-c-white);
       padding: 1em;
       margin: 1.5em 0px;
 
       .hljs-keyword {
-        color: var(--c-code-keyword);
+        color: var(--docit-c-code-keyword);
       }
 
       .hljs-class {
@@ -239,43 +239,43 @@ export const StyledMarkdown = styled.div`
       }
 
       .hljs-title.hljs-function {
-        color: var(--c-code-function);
+        color: var(--docit-c-code-function);
       }
 
       .hljs-attr {
-        color: var(--c-code-attr);
+        color: var(--docit-c-code-attr);
       }
 
       .hljs-built_in {
-        color: var(--c-code-built-in);
+        color: var(--docit-c-code-built-in);
       }
 
       .hljs-name {
-        color: var(--c-code-name);
+        color: var(--docit-c-code-name);
       }
 
       .hljs-link {
-        color: var(--c-code-link);
+        color: var(--docit-c-code-link);
       }
 
       .hljs-string {
-        color: var(--c-code-name);
+        color: var(--docit-c-code-name);
       }
 
       .hljs-comment {
-        color: var(--c-code-comments);
+        color: var(--docit-c-code-comments);
       }
 
       .hljs-property {
-        color: var(--c-code-function);
+        color: var(--docit-c-code-function);
       }
 
       .hljs-doctag {
-        color: var(--c-code-doctag);
+        color: var(--docit-c-code-doctag);
       }
 
       .hljs-string {
-        color: var(--c-code-string);
+        color: var(--docit-c-code-string);
       }
     }
   }

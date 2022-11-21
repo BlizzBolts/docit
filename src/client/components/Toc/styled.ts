@@ -1,19 +1,19 @@
 import styled from "styled-components";
 
 export const StyledToc = styled.div`
-  border-left: 1px solid var(--c-divider);
+  border-left: 1px solid var(--docit-c-divider);
   background: white;
   position: fixed;
   /* roughly scorllbar width */
   right: 20px;
-  top: var(--header-height);
-  width: calc(var(--toc-width) - 20px);
+  top: var(--docit-header-height);
+  width: calc(var(--docit-toc-width) - 20px);
   height: 100%;
   padding-top: 1.5rem;
   padding-left: 1rem;
 
   span {
-    color: var(--c-brand);
+    color: var(--docit-c-brand);
   }
 
   @media (max-width: 1024px) {
@@ -24,7 +24,7 @@ export const StyledToc = styled.div`
 export const StyledTocTitle = styled.div`
   font-weight: bold;
   font-size: 18px;
-  color: var(--c-brand);
+  color: var(--docit-c-brand);
 `;
 
 export const StyledTocItemTitle = styled.div`

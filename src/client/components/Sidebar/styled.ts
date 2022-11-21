@@ -3,17 +3,17 @@ import { StyledSidebarItemProps } from "./types";
 
 export const StyledAside = styled.aside<{ visible: string }>`
   padding: 2rem 2rem;
-  width: var(--sidebar-width);
-  height: calc(100vh - var(--header-height));
+  width: var(--docit-sidebar-width);
+  height: calc(100vh - var(--docit-header-height));
   overflow-y: auto;
   display: inline-block;
-  border-right: 1px solid var(--c-divider);
+  border-right: 1px solid var(--docit-c-divider);
   background: white;
 
   @media (max-width: 768px) {
     position: fixed;
     left: ${(props) =>
-      props.visible === "true" ? 0 : "calc(-1 * var(--sidebar-width))"};
+      props.visible === "true" ? 0 : "calc(-1 * var(--docit-sidebar-width))"};
 
     transition: left 250ms ease-in-out;
     z-index: 777;
@@ -38,15 +38,22 @@ export const StyledSidebarItem = styled.div.attrs<StyledSidebarItemProps>(
     text-decoration: none;
     cursor: pointer;
     color: ${(props) => {
-      return props.active ? "var(--c-brand)" : "var(--c-1)";
+      return props.active
+        ? "var(--docit-c-brand) !important"
+        : "var(--docit-c-1) !important";
     }};
 
     :hover {
       opacity: 0.6;
       transition: opacity 200ms linear;
       color: ${(props) => {
-        return props.active ? "var(--c-brand)" : "var(--c-1)";
+        return props.active
+          ? "var(--docit-c-brand) !important"
+          : "var(--docit-c-1) !important";
       }};
+    }
+    :active {
+      text-decoration: none;
     }
   }
 `;

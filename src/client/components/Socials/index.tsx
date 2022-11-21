@@ -4,7 +4,7 @@ import { StyledSocialContainer } from "./styled";
 import appData from "virtual:appData";
 
 const defaultSvgProps = {
-  fill: "var(--c-black)",
+  fill: "var(--docit-c-black)",
   width: "1.5em",
   height: "1.5em",
   cursor: "pointer",

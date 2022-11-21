@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const StyledHeader = styled.header`
-  height: var(--header-height);
+  height: var(--docit-header-height);
   width: 100%;
-  background: var(--c-bg);
-  border-bottom: 1px solid var(--c-divider);
+  background: var(--docit-c-bg);
+  border-bottom: 1px solid var(--docit-c-divider);
 
   display: flex;
   align-items: center;
@@ -14,7 +14,7 @@ export const StyledHeader = styled.header`
 export const StyledTitle = styled.p`
   font-weight: bold;
   font-size: 1.5em;
-  color: var(--c-brand);
+  color: var(--docit-c-brand);
   margin: 0;
 `;
 
@@ -24,10 +24,10 @@ export const StyledSidebarBtn = styled.button`
   }
 
   margin-right: 1em;
-  color: var(--c-black);
+  color: var(--docit-c-black);
   border: 0;
   outline: 0;
-  background: var(--c-divider);
+  background: var(--docit-c-divider);
   border-radius: 9999px;
   width: 2rem;
   height: 2rem;

@@ -1,6 +1,6 @@
 {
   "name": "@blizzbolts/docit",
-  "version": "0.11.0-beta0",
+  "version": "0.11.0-beta2",
   "license": "MIT",
   "bin": {
     "docit": "bin/docit.js"
@@ -51,8 +51,8 @@
     "gh-pages": "^3.2.3",
     "rehype-stringify": "^9.0.3",
     "remark-rehype": "^10.1.0",
-    "vitest": "^0.7.6",
-    "vfile": "^5.3.5"
+    "vfile": "^5.3.5",
+    "vitest": "^0.7.6"
   },
   "dependencies": {
     "@mdx-js/mdx": "2.1.5",

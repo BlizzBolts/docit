@@ -28,6 +28,12 @@ export const docit = async (
         optimizeDeps: {
           include: [
             "@mdx-js/react",
+            "qrcode",
+            "styled-components",
+            "highlight.js",
+            "lodash-es",
+            "react",
+            "react-dom",
           ],
         },
         build: {

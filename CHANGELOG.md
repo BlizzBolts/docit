@@ -20,6 +20,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - lock some deps from dependencies list
 - change mdast related lib to remark ecosystem
+- enforce some styles in case third party style conflicts
+- prefix all css variables
+- optimizeDeps @mdx-js/react
+- sidebar highlight now support zhCN
 
 ## [0.10.2] - 2022-08-02
 
