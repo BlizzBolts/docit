@@ -62,3 +62,5 @@ export interface ParsedTocItem {
   url?: string;
   items?: ParsedTocItem[];
 }
+
+export type Command = "start" | "build";

@@ -7,7 +7,7 @@ export const start = async (userConfig: UserConfig) => {
   const config = await resolveConfig(userConfig, "start");
   return createViteServer({
     base: "/",
-    plugins: [await docit(config)],
+    plugins: [await docit("start", config)],
   })
     .then((s) => s.listen())
     .then((s) => {

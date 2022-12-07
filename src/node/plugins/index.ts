@@ -3,7 +3,7 @@ import fsx from "fs-extra";
 import path from "path";
 import react from "@vitejs/plugin-react";
 import { mdx, getCompilerOptions } from "./mdx/index.js";
-import { ResolvedUserConfig } from "../types.js";
+import { Command, ResolvedUserConfig } from "../types.js";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import { PKG_JSON_PATH } from "../constants.js";
 import { Core } from "../core/index.js";
@@ -13,9 +13,10 @@ import { compileSync } from "@mdx-js/mdx";
 const pkg = fsx.readJSONSync(PKG_JSON_PATH);
 
 export const docit = async (
+  command: Command,
   config: ResolvedUserConfig
 ): Promise<PluginOption> => {
-  const instance = Core.getInstance(config);
+  const instance = Core.getInstance(command, config);
   const virtualPlugins = await instance.prepare();
 
   const docitPlugin: PluginOption = {
@@ -65,12 +66,13 @@ export const docit = async (
       const result = reg.exec(id);
 
       if (result) {
-        const content = instance.getSandBoxMapper().get(result.input);
+        const content = Core.getInstance().getSandBoxMapper().get(result.input);
         const compiled = compileSync(content, getCompilerOptions(config));
         return compiled.value as string;
       }
     },
   };
+
   const mdxPlugin = await mdx(config);
   const nodeResolvePlugin = nodeResolve({
     moduleDirectories: [
