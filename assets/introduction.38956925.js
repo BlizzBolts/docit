@@ -1,4 +1,4 @@
-import{u as a,R as e}from"./index.0cc171e8.js";function l(n){const t=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",a:"a",ul:"ul",li:"li",h2:"h2",pre:"pre",code:"code",h3:"h3",ol:"ol",span:"span"},a(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"docit"},"Docit"),`
+import{u as a,R as e}from"./index.f975152f.js";function l(n){const t=Object.assign({h1:"h1",blockquote:"blockquote",p:"p",a:"a",ul:"ul",li:"li",h2:"h2",pre:"pre",code:"code",h3:"h3",ol:"ol",span:"span"},a(),n.components);return e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"docit"},"Docit"),`
 `,e.createElement(t.blockquote,null,`
 `,e.createElement(t.p,null,"Simple and Rapid React Documentation ",e.createElement(t.a,{href:"https://blizzbolts.github.io/docit"},"https://blizzbolts.github.io/docit")),`
 `),`

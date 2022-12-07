@@ -1,4 +1,4 @@
-import{u as l,R as e,_ as c}from"./index.0cc171e8.js";function n(a){const t=Object.assign({h1:"h1",p:"p",blockquote:"blockquote",h3:"h3",pre:"pre",code:"code",span:"span",a:"a",hr:"hr"},l(),a.components),{ApiTable:s}=t;return s||r("ApiTable",!0),e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"api-generation"},"API Generation"),`
+import{u as l,R as e,_ as c}from"./index.f975152f.js";function n(a){const t=Object.assign({h1:"h1",p:"p",blockquote:"blockquote",h3:"h3",pre:"pre",code:"code",span:"span",a:"a",hr:"hr"},l(),a.components),{ApiTable:s}=t;return s||r("ApiTable",!0),e.createElement(e.Fragment,null,e.createElement(t.h1,{id:"api-generation"},"API Generation"),`
 `,e.createElement(t.p,null,"Docit provides a simple syntax to handle auto API parsing."),`
 `,e.createElement(t.blockquote,null,`
 `,e.createElement(t.p,null,"Currently only support React Typescript API Tables. Functions and Interface support might not work as you expected."),`
@@ -49,7 +49,7 @@ interface `,e.createElement(t.span,{className:"hljs-title class_"},"ButtonProps"
 `,e.createElement(t.span,{className:"hljs-keyword"},"export")," { ",e.createElement(t.span,{className:"hljs-title class_"},"Button"),` };
 `)),`
 `,e.createElement(t.p,null,"The API table will look like:"),`
-`,e.createElement(t.p,null,e.createElement(e.Fragment,null,e.createElement(s,{get:()=>c(()=>import("./ApiTest.bcb105f8.js"),[]),path:"/Users/hao/local/projj/github.com/phshy0607/docit/docs/components/ApiTest.tsx"}))),`
+`,e.createElement(t.p,null,e.createElement(e.Fragment,null,e.createElement(s,{get:()=>c(()=>import("./ApiTest.f9e5b688.js"),[]),path:"/Users/hao/local/projj/github.com/BlizzBolts/docit/docs/components/ApiTest.tsx"}))),`
 `,e.createElement(t.p,null,"You will notice ",e.createElement(t.code,null,"StyledButton")," get exported, but the api table does not appear, thats because the type parser got nothing from parsing it."),`
 `,e.createElement(t.hr),`
 `,e.createElement(t.p,null,"since Docit using ",e.createElement(t.code,null,"resolve"),", you can actually parsing some third party types like"),`
