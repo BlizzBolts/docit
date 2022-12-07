@@ -2,41 +2,41 @@ import { createGlobalStyle } from "styled-components";
 
 export const CssVariables = createGlobalStyle`
   :root {
-    --sidebar-width: 15em;
-    --header-height: 4rem;
-    --toc-width: 15em;
+    --docit-sidebar-width: 15em;
+    --docit-header-height: 4rem;
+    --docit-toc-width: 15em;
 
-    --font-size: 16px;
-    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-    --font-family-code: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-    --font-weight: 400;
+    --docit-font-size: 16px;
+    --docit-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --docit-font-family-code: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    --docit-font-weight: 400;
 
-    --box-shadow: rgb(0 0 0 / 10%) 0px 2px 3px 0px;
-    --direction: ltr;
+    --docit-box-shadow: rgb(0 0 0 / 10%) 0px 2px 3px 0px;
+    --docit-direction: ltr;
 
-    --c-white: #ffffff;
-    --c-black: #000000;
-    --c-brand: #9B1D30;
-    --c-1: #3c2828;
+    --docit-c-white: #ffffff;
+    --docit-c-black: #000000;
+    --docit-c-brand: #9B1D30;
+    --docit-c-1: #3c2828;
 
-    --c-bg: var(--c-white);
-    --c-divider: rgba(60, 60, 67, .12);
-    --c-border: rgba(0, 0, 0, 0.1);
+    --docit-c-bg: var(--docit-c-white);
+    --docit-c-divider: rgba(60, 60, 67, .12);
+    --docit-c-border: rgba(0, 0, 0, 0.1);
 
-    --code-border-radius: 4px;
-    --code-line-height: 1.7;
-    --code-font-size: 14px;
+    --docit-code-border-radius: 4px;
+    --docit-code-line-height: 1.7;
+    --docit-code-font-size: 14px;
 
-    --c-pre-bg: #292828;
-    --c-code-bg: #ececec;
-    --c-code-keyword: #89b482;
-    --c-code-function: #a9b665;
-    --c-code-attr: #D8A657;
-    --c-code-string: #D8A657;
-    --c-code-built-in: #7DAEA3;
-    --c-code-name: #e78a4e;
-    --c-code-doctag: #EA6962;
-    --c-code-link: var(--c-code-keyword);
-    --c-code-comments: #938374;
+    --docit-c-pre-bg: #292828;
+    --docit-c-code-bg: #ececec;
+    --docit-c-code-keyword: #89b482;
+    --docit-c-code-function: #a9b665;
+    --docit-c-code-attr: #D8A657;
+    --docit-c-code-string: #D8A657;
+    --docit-c-code-built-in: #7DAEA3;
+    --docit-c-code-name: #e78a4e;
+    --docit-c-code-doctag: #EA6962;
+    --docit-c-code-link: var(--docit-c-code-keyword);
+    --docit-c-code-comments: #938374;
   }
 `;

@@ -14,6 +14,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
+## [0.11.0] - 2022-12-07
+
+### Changed
+
+- lock some deps from dependencies list
+- change mdast related lib to remark ecosystem
+- enforce some styles in case third party style conflicts
+- prefix all css variables
+- optimizeDeps @mdx-js/react
+- sidebar highlight now support zhCN
+
+### Fixed
+
+- Fix chokidar still watching in build command
+
 ## [0.10.2] - 2022-08-02
 
 ### Changed

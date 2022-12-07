@@ -6,12 +6,12 @@ export const StyledButtonContainer = styled.div<MobileView>`
   overflow: auto;
   padding: 0 1em 1em 0;
   button {
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--docit-box-shadow);
     border-radius: 4px;
     font-size: 0.875em;
     float: right;
-    background: var(--c-white);
-    color: var(--c-1);
+    background: var(--docit-c-white);
+    color: var(--docit-c-1);
     padding: 0.25em 0.5em;
     outline: 0;
     border: 0;
@@ -35,7 +35,7 @@ export const StyledRenderWindow = styled.div<MobileView>`
 export const StyledShowCodeContainer = styled.div<MobileView>`
   margin: 1rem 0;
   border-radius: 4px;
-  border-color: var(--c-border);
+  border-color: var(--docit-c-border);
   border-width: ${(props) => (props.mobileView ? "0px" : "1px")};
   border-style: solid;
 
@@ -74,11 +74,12 @@ export const StyledShowCodeContainer = styled.div<MobileView>`
     min-height: ${(props) => props.mobileView && "640px"};
     max-height: ${(props) => props.mobileView && "640px"};
 
-    border-left: ${(props) => props.mobileView && "1px solid var(--c-border)"};
+    border-left: ${(props) =>
+      props.mobileView && "1px solid var(--docit-c-border)"};
     padding: ${(props) => props.mobileView && "0"};
 
     border: ${(props) =>
-      props.mobileView ? "1px solid var(--c-border);" : "0px"};
+      props.mobileView ? "1px solid var(--docit-c-border);" : "0px"};
 
     @media (max-width: 768px) {
       width: 100%;

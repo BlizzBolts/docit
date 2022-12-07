@@ -1,6 +1,6 @@
 import path from "path";
 import chokidar from "chokidar";
-import { ResolvedUserConfig, SidebarNode } from "../types.js";
+import { Command, ResolvedUserConfig, SidebarNode } from "../types.js";
 import {
   MD_PATTERN,
   VIRTUAL_APP_DATA_ID,
@@ -14,10 +14,12 @@ import { isEmpty, pick } from "lodash-es";
 import { Markdown } from "./Markdown.js";
 import { withVirtual, VirtualUpdater } from "../plugins/virtual/index.js";
 import { pkg } from "../constants.js";
+import { PluginOption } from "vite";
+import { logger } from "../utils/index.js";
 
 class Core {
   private static instance: Core;
-
+  private command: Command;
   private config: ResolvedUserConfig;
   private watcher: chokidar.FSWatcher;
   private markdownCache: MarkdownCache;
@@ -31,22 +33,9 @@ class Core {
     updateSandBoxes: VirtualUpdater;
   };
 
-  private constructor(config: ResolvedUserConfig) {
+  private constructor(command: Command, config: ResolvedUserConfig) {
     this.config = config;
-    this.watcher = chokidar.watch(path.join(config.docs, MD_PATTERN), {
-      atomic: false,
-      awaitWriteFinish: false,
-      binaryInterval: 300,
-      disableGlobbing: false,
-      followSymlinks: true,
-      ignored: ["**/node_modules/**", "**/.git/**"],
-      ignoreInitial: true,
-      ignorePermissionErrors: true,
-      interval: 100,
-      persistent: true,
-      useFsEvents: true,
-    });
-
+    this.command = command;
     this.markdownCache = new MarkdownCache(config);
     this.updater = {
       updateSidebars: () => null,
@@ -60,6 +49,21 @@ class Core {
   }
 
   private watch() {
+    const watchedPath = path.join(this.config.docs, MD_PATTERN);
+    this.watcher = chokidar.watch(watchedPath, {
+      atomic: false,
+      awaitWriteFinish: false,
+      binaryInterval: 300,
+      disableGlobbing: false,
+      followSymlinks: true,
+      ignored: ["**/node_modules/**", "**/.git/**"],
+      ignoreInitial: true,
+      ignorePermissionErrors: true,
+      interval: 100,
+      persistent: true,
+      useFsEvents: true,
+    });
+
     this.watcher.addListener("all", async (eventType: string, file: string) => {
       switch (eventType) {
         case "add": {
@@ -82,6 +86,11 @@ class Core {
         }
       }
     });
+
+    logger.info(`
+Start watching docs at 
+${watchedPath}
+`);
   }
 
   private async makeViteVirtualPlugin() {
@@ -157,7 +166,6 @@ class Core {
           .join(",")}
       ]
     `;
-
     return content;
   }
 
@@ -212,7 +220,7 @@ class Core {
             if (value.length === 1 && value[0].transformedPaths.length === 0) {
               return {
                 title: value[0].markdown.title,
-                path: value[0].markdown.routePath,
+                path: encodeURI(value[0].markdown.routePath),
               };
             }
 
@@ -272,10 +280,6 @@ class Core {
     `;
   }
 
-  private setConfig(config: ResolvedUserConfig) {
-    this.config = config;
-  }
-
   getTmp() {
     return this.tmp;
   }
@@ -288,29 +292,23 @@ class Core {
     return this.markdownCache.getMarkdowns();
   }
 
-  async prepare() {
+  async prepare(): Promise<PluginOption> {
     await this.markdownCache.prepare();
     const { sidebars, routes, appData, sandboxes } =
       await this.makeViteVirtualPlugin();
 
-    this.watch();
+    if (this.command === "start") {
+      this.watch();
+    }
 
-    return {
-      sidebars,
-      routes,
-      appData,
-      sandboxes,
-    };
+    return [sidebars, routes, appData, sandboxes];
   }
 
-  static getInstance(config?: ResolvedUserConfig) {
+  static getInstance(command?: Command, config?: ResolvedUserConfig) {
     if (!Core.instance) {
-      Core.instance = new Core(config);
-    } else {
-      if (config) {
-        Core.instance.setConfig(config);
-      }
+      Core.instance = new Core(command, config);
     }
+
     return Core.instance;
   }
 }
