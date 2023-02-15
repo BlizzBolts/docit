@@ -13,7 +13,6 @@ export const start = async (userConfig: UserConfig) => {
   const config = await resolveConfig(userConfig, "start");
   const app = new Koa();
   const vite = await createViteServer({
-    base: "/",
     plugins: [await docit("start", config)],
     server: {
       middlewareMode: true,

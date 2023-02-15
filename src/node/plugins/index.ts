@@ -1,18 +1,13 @@
 import { defineConfig, mergeConfig, PluginOption } from "vite";
-import fsx from "fs-extra";
 import path from "path";
-// import react from "@vitejs/plugin-react-swc";
-import react from "@vitejs/plugin-react";
-
+import react from "@vitejs/plugin-react-swc";
 import { mdx, getCompilerOptions } from "./mdx/index.js";
 import { Command, ResolvedUserConfig } from "../types.js";
-import { nodeResolve } from "@rollup/plugin-node-resolve";
-import { PKG_JSON_PATH } from "../constants.js";
+import { BUILD_DIST_PATH } from "../constants.js";
 import { Core } from "../core/index.js";
 import { virtualProvider } from "./virtual/index.js";
-import { parseApi } from "../utils/api.js";
 import { compileSync } from "@mdx-js/mdx";
-const pkg = fsx.readJSONSync(PKG_JSON_PATH);
+import { resolveAbsPath, parseApi } from "../utils/index.js";
 
 export const docit = async (
   command: Command,
@@ -42,6 +37,10 @@ export const docit = async (
         build: {
           outDir: path.resolve(process.cwd(), "./docs-dist"),
           emptyOutDir: true,
+          ssr: true,
+          rollupOptions: {
+            input: resolveAbsPath("./client/entry-server.js", BUILD_DIST_PATH)
+          },
         },
         server: {
           watch: {
