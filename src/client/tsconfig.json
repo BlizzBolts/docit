@@ -5,6 +5,7 @@
     "outDir": "../../build/client",
     "lib": ["ESNext", "DOM", "dom.iterable"],
     "jsx": "react",
-    "types": ["vite/client"]
-  }
+    "types": ["vite/client"],
+  },
+  "include": ["."]
 }

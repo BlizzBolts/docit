@@ -3,12 +3,10 @@ import { MDXProvider } from "@mdx-js/react";
 import { StyledMarkdown, StyledDocument } from "./styled";
 import { ApiTable } from "../../built-in/ApiTable";
 import { ShowCode } from "../../built-in/ShowCode";
-import { useAnchors } from "../../hooks/useAnchors";
 import { Toc } from "../Toc";
 
-const Document: React.FC = (props) => {
+const Document = (props) => {
   const { children } = props;
-  useAnchors();
 
   return (
     <StyledDocument className="docit-document">

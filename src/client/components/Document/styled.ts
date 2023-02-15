@@ -104,7 +104,7 @@ export const StyledMarkdown = styled.div`
     touch-action: manipulation;
   }
 
-  a {
+  a:not(.docit-heading-anchor){
     white-space: nowrap;
     text-decoration: none;
     color: var(--docit-c-brand);

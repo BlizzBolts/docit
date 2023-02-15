@@ -1,9 +1,9 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { LoadingProps } from "./types";
 import { StyledLoadingContainer } from "./styled";
 import { Svgs } from "../Svgs";
 
-const Loading: React.FC<LoadingProps> = (props) => {
+const Loading: React.FC<PropsWithChildren<LoadingProps>> = (props) => {
   const { loading, children } = props;
 
   if (!loading) {

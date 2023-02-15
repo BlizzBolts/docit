@@ -68,6 +68,7 @@ declare module "virtual:sidebars" {
 }
 
 declare module "virtual:provider" {
-  const provider: React.FC;
+  import type { PropsWithChildren } from "react";
+  const provider: React.FC<PropsWithChildren>;
   export default provider;
 }

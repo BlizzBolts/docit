@@ -14,6 +14,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `Fixed` for any bug fixes.
 - `Security` in case of vulnerabilities.
 
+## [0.12.0] - Unreleased
+
+### Changed
+- Switch CSR to SSR in dev mode and SSG in build mode
+
 ## [0.11.0] - 2022-12-07
 
 ### Changed

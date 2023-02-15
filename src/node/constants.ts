@@ -1,10 +1,13 @@
 import path from "path";
-import { fileURLToPath } from "url";
 import fsx from "fs-extra";
+import { fileURLToPath } from "url";
+export const isProduction = process.env.NODE_ENV === "production";
 
-const dirname__ = fileURLToPath(import.meta.url);
-export const PKG_JSON_PATH = path.resolve(dirname__, "../../../package.json");
-export const CLIENT_PATH = path.resolve(dirname__, "../../client");
+const filename__ = fileURLToPath(import.meta.url);
+const dirname__ = path.dirname(filename__);
+
+export const PKG_JSON_PATH = path.resolve(dirname__, "../../package.json");
+export const BUILD_DIST_PATH = path.resolve(dirname__, "../");
 export const pkg = fsx.readJSONSync(PKG_JSON_PATH);
 
 export const MD_PATTERN = "**/*.md?(x)";

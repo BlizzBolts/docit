@@ -1,6 +1,6 @@
 import { Loading } from "../../components/Loading";
 import { isEmpty } from "lodash-es";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { PropsWithChildren, useEffect, useMemo, useState } from "react";
 interface ApiTableProps {
   get: () => Promise<any>;
   path: string;
@@ -10,7 +10,7 @@ type Enums = {
   [key: string]: { value: string; description: string }[];
 };
 
-const ApiTable: React.FC<ApiTableProps> = (props) => {
+const ApiTable: React.FC<PropsWithChildren<ApiTableProps>> = (props) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<ResolvedComponentProps[]>(null);
 

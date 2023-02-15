@@ -1,20 +1,23 @@
 import path from "path";
 import { isFileExists } from "./utils/index.js";
 import { UserConfig, ResolvedUserConfig } from "./types.js";
-import { CLIENT_PATH } from "./constants.js";
+import { BUILD_DIST_PATH } from "./constants.js";
 
 export const resolveConfig = async (
   config: UserConfig,
   command: "build" | "start"
 ): Promise<ResolvedUserConfig> => {
   return {
-    base: CLIENT_PATH,
+    base: path.resolve(BUILD_DIST_PATH, "./client"),
     docs: path.resolve(process.cwd(), config.root),
     title: config.title || "Docit",
     sidebars: config.sidebars || [],
     providerPath: isFileExists(config.providerPath)
       ? config.providerPath
-      : path.resolve(CLIENT_PATH, "./components/DefaultProvider/index.js"),
+      : path.resolve(
+          BUILD_DIST_PATH,
+          "./client/components/DefaultProvider/index.js"
+        ),
     publicPath: command === "build" ? config.publicPath : "/",
     socials: config.socials,
     vite: config.vite,

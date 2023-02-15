@@ -12,6 +12,7 @@ import {
   resolveAbsPath,
 } from "./utils/index.js";
 import { pkg } from "./constants.js";
+import Koa from "koa";
 
 const argv: any = minimist(process.argv.slice(2));
 const command: string = argv._[0];
@@ -23,7 +24,7 @@ const configFilePath = path.resolve(
   resolveAbsPath(root),
   "./.docit/docit.config.js"
 );
-let server: ViteDevServer = null;
+let server: Koa = null;
 
 const bootstrap = () => {
   readUserConfigFile(configFilePath).then((userConfig) => {
@@ -38,14 +39,15 @@ const bootstrap = () => {
   });
 };
 
-if (isFileExists(configFilePath) && command === "start") {
-  const watcher = chokidar.watch(configFilePath);
-  watcher.on("change", () => {
-    if (server) {
-      server.close();
-    }
-    bootstrap();
-  });
-}
+// FIXME:
+// if (isFileExists(configFilePath) && command === "start") {
+//   const watcher = chokidar.watch(configFilePath);
+//   watcher.on("change", () => {
+//     if (server) {
+//       server.close();
+//     }
+//     bootstrap();
+//   });
+// }
 
 bootstrap();

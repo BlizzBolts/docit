@@ -2,7 +2,7 @@ import { ResolvedUserConfig } from "../types.js";
 import path from "path";
 import fsx from "fs-extra";
 import grayMatter from "gray-matter";
-import { Text, Code } from "mdast";
+import type { Text, Code } from "mdast";
 import { select, selectAll } from "unist-util-select";
 import { toRoutePath, parseToc } from "../utils/index.js";
 import { unified } from "unified";

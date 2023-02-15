@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { isEmpty } from "lodash-es";
 import sidebars from "virtual:sidebars";
-import { routes } from "virtual:routes";
 
 import { StyledSidebarItem, StyledAside } from "./styled";
 import { setSidebarVisible, sidebarVisible } from "../../model";

@@ -1,29 +1,11 @@
 import { createLogger } from "vite";
 import { bundleRequire } from "bundle-require";
 import fsx from "fs-extra";
-import path from "path";
 import { UserFileConfig } from "../types.js";
 
 export const logger = createLogger("info", {
   prefix: "[docit]",
 });
-
-/**
- * Remove `.md` or `.mdx` or `.html` extention from the given path. It also converts
- * `index` to slush.
- */
-export const removeExtention = (path: string): string => {
-  return path.replace(/(\.mdx|\.md)$/g, "");
-};
-
-export const toRoutePath = (p: string) => {
-  const result = removeExtention(p);
-  if (result.startsWith("/")) {
-    return result;
-  } else {
-    return `/${result}`;
-  }
-};
 
 export const isFileExists = (p: string) => {
   try {
@@ -56,13 +38,6 @@ export const readUserConfigFile = async (
   }
 };
 
-export const resolveAbsPath = (p: string, base = process.cwd()) => {
-  if (!p) {
-    return null;
-  }
-
-  return path.isAbsolute(p) ? p : path.resolve(base, p);
-};
-
+export * from "./paths.js";
 export * from "./ast.js";
 export * from "./api.js";

@@ -54,11 +54,9 @@ const Toc = () => {
           <StyledTocItemTitle onClick={() => onClick(o)}>
             {o.title}
           </StyledTocItemTitle>
-          <div>
-            {o.items.map((o: any) => {
-              return parse(o, level + 1);
-            })}
-          </div>
+          {o.items.map((o: any) => {
+            return parse(o, level + 1);
+          })}
         </StyledTocItem>
       );
     }

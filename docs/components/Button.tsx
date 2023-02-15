@@ -1,4 +1,4 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 interface ButtonProps {
   /**
@@ -17,7 +17,7 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-const Button: React.FC<ButtonProps> = (props) => {
+const Button: React.FC<PropsWithChildren<ButtonProps>> = (props) => {
   const { children, color } = props;
   return (
     <StyledButton

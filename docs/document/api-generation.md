@@ -46,7 +46,7 @@ export const StyledButton = styled.button`
   z-index: 9999;
 `;
 
-const Button: React.FC<ButtonProps> = () => {
+const Button: React.FC<PropsWithChildren<ButtonProps>> = () => {
   return <StyledButton>1</StyledButton>;
 };
 

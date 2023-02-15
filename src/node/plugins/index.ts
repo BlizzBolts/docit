@@ -1,7 +1,9 @@
 import { defineConfig, mergeConfig, PluginOption } from "vite";
 import fsx from "fs-extra";
 import path from "path";
+// import react from "@vitejs/plugin-react-swc";
 import react from "@vitejs/plugin-react";
+
 import { mdx, getCompilerOptions } from "./mdx/index.js";
 import { Command, ResolvedUserConfig } from "../types.js";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
@@ -26,17 +28,17 @@ export const docit = async (
       const baseConfig = defineConfig({
         root: config.base,
         base: config.publicPath,
-        optimizeDeps: {
-          include: [
-            "@mdx-js/react",
-            "qrcode",
-            "styled-components",
-            "highlight.js",
-            "lodash-es",
-            "react",
-            "react-dom",
-          ],
-        },
+        // optimizeDeps: {
+        //   include: [
+        //     "@mdx-js/react",
+        //     "qrcode",
+        //     "styled-components",
+        //     "highlight.js",
+        //     "lodash-es",
+        //     "react",
+        //     "react-dom",
+        //   ],
+        // },
         build: {
           outDir: path.resolve(process.cwd(), "./docs-dist"),
           emptyOutDir: true,
@@ -49,7 +51,7 @@ export const docit = async (
             strict: false,
           },
         },
-        clearScreen: false,
+        clearScreen: true,
         publicDir: path.resolve(config.docs, "./assets"),
       });
       const mergedConfig = mergeConfig(baseConfig, config.vite);
@@ -74,16 +76,14 @@ export const docit = async (
   };
 
   const mdxPlugin = await mdx(config);
-  const nodeResolvePlugin = nodeResolve({
-    moduleDirectories: [
-      "node_modules",
-      `./node_modules/${pkg.name}/node_modules`,
-    ],
-  }) as PluginOption;
+  // const nodeResolvePlugin = nodeResolve({
+  //   moduleDirectories: [
+  //     "node_modules",
+  //     `./node_modules/${pkg.name}/node_modules`,
+  //   ],
+  // }) as PluginOption;
   const providerPlugin = virtualProvider(config);
-  const reactPlugin = react({
-    jsxRuntime: "classic",
-  });
+  const reactPlugin = react();
 
   return [
     docitPlugin,
@@ -91,6 +91,6 @@ export const docit = async (
     providerPlugin,
     reactPlugin,
     mdxPlugin,
-    nodeResolvePlugin,
+    // nodeResolvePlugin,
   ];
 };

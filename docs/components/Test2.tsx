@@ -1,6 +1,6 @@
-import React from "react";
+import React, { PropsWithChildren } from "react";
 
-const Test2: React.FC = () => {
+const Test2: React.FC<PropsWithChildren> = () => {
   return <div>Test2</div>;
 };
 

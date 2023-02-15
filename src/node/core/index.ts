@@ -6,7 +6,6 @@ import {
   VIRTUAL_APP_DATA_ID,
   VIRTUAL_ROUTER_CONFIG_ID,
   VIRTUAL_SIDEBARS_CONFIG_ID,
-  CLIENT_PATH,
   VIRTUAL_SANDBOXES_ID,
 } from "../constants.js";
 import { MarkdownCache } from "./MarkdownCache.js";
@@ -139,18 +138,6 @@ ${watchedPath}
           }
         `;
           })
-          .concat(
-            `
-            {
-              path: "/__sandbox__",
-              exact: true,
-              component: React.lazy(() => import('${path.resolve(
-                CLIENT_PATH,
-                `./components/SandBox/index.js`
-              )}')),
-            }
-            `
-          )
           .concat(
             `
             {

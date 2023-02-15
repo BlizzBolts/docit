@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { PropsWithChildren } from 'react';
 
-const DefaultProvider: React.FC = (props) => {
+const DefaultProvider: React.FC<PropsWithChildren> = (props) => {
   const { children } = props;
   return <>{children}</>;
 };

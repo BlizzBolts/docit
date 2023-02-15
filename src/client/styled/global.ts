@@ -10,7 +10,7 @@ export const GlobalStyle = createGlobalStyle`
     font-size: var(--docit-font-size);
     color: var(--docit-c-1);
     background-color: var(--docit-c-bg);
-    -webkit-text-size-adjust: 100%
+    -webkit-text-size-adjust: 100%;
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
