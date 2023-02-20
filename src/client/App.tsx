@@ -12,14 +12,14 @@ import { Route, Routes } from "react-router-dom";
 
 const App = () => {
   useDefaultRoute();
-  
+
   useEffect(() => {
     document.title = appData.title;
     console.log(`%cDocit@${appData.version}`, `color: #9B1D30;`);
   }, []);
-  
+
   return (
-    <>
+    <React.Fragment>
       <CssVariables />
       <GlobalStyle />
       <Header />
@@ -41,7 +41,7 @@ const App = () => {
           })}
         </Routes>
       </Document>
-    </>
+    </React.Fragment>
   );
 };
 

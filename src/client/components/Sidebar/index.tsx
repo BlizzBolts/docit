@@ -15,13 +15,10 @@ const Sidebar: React.FC = () => {
         <StyledSidebarItem
           key={o.path}
           level={level}
-          active={
-            encodeURI(decodeURI(o.path)) ===
-            encodeURI(decodeURI(location.pathname))
-          }
+          active={location.pathname === o.path}
         >
           <Link
-            to={encodeURI(o.path)}
+            to={o.path}
             onClick={() => {
               setSidebarVisible(false);
             }}

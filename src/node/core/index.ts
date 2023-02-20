@@ -207,7 +207,7 @@ ${watchedPath}
             if (value.length === 1 && value[0].transformedPaths.length === 0) {
               return {
                 title: value[0].markdown.title,
-                path: encodeURI(value[0].markdown.routePath),
+                path: value[0].markdown.routePath,
               };
             }
 

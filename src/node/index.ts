@@ -1,6 +1,6 @@
-import { UserFileConfig } from "./types.js";
+import type { UserFileConfig } from "@/types";
 export const defineConfig = (config: UserFileConfig) => config;
 
-export * from "./start.js";
-export * from "./build.js";
-export { UserConfig } from "./types.js";
+export * from "./start";
+export * from "./build";
+export type { UserConfig } from "./types";

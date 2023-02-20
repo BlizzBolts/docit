@@ -9,7 +9,11 @@
     "esModuleInterop": true,
     "lib": ["ESNext"],
     "strict": false,
-    "sourceMap": true
+    "sourceMap": true,
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["*"],
+    }
   },
-  "include": ["client/**/*.ts", "node/**/*.ts"]
+  "include": ["client/**/*.ts", "node/**/*.ts"],
 }

@@ -4,7 +4,6 @@ import sidebars from "virtual:sidebars";
 import { isEmpty } from "lodash-es";
 import { useEffect } from "react";
 
-console.log(routes)
 const findFirstRoute = () => {
   const find = (data: SidebarNode[]) => {
     for (let i = 0; i < data.length; i++) {

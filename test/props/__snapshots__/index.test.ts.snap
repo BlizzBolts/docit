@@ -4,16 +4,8 @@ exports[`Props And Api Parsing > matctes raw parsed result 1`] = `
 [
   {
     "description": "",
-    "displayName": "StyledButton",
-    "filePath": "/Users/hao/local/projj/github.com/phshy0607/docit/test/props/Button.tsx",
-    "methods": [],
-    "props": {},
-    "tags": {},
-  },
-  {
-    "description": "",
     "displayName": "Button",
-    "filePath": "/Users/hao/local/projj/github.com/phshy0607/docit/test/props/Button.tsx",
+    "filePath": "/Users/hao/spaces/projj/github.com/BlizzBolts/docit/test/props/Button.tsx",
     "methods": [],
     "props": {
       "color": {
@@ -119,13 +111,8 @@ exports[`Props And Api Parsing > matctes raw parsed result 1`] = `
 exports[`Props And Api Parsing > parses result 1`] = `
 [
   {
-    "componentName": "StyledButton",
-    "filePath": "/Users/hao/local/projj/github.com/phshy0607/docit/test/props/Button.tsx",
-    "props": [],
-  },
-  {
     "componentName": "Button",
-    "filePath": "/Users/hao/local/projj/github.com/phshy0607/docit/test/props/Button.tsx",
+    "filePath": "/Users/hao/spaces/projj/github.com/BlizzBolts/docit/test/props/Button.tsx",
     "props": [
       {
         "defaultValue": "grene",
