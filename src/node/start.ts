@@ -63,13 +63,16 @@ export const start = async (userConfig: UserConfig) => {
     }
   });
 
-  console.log('started')
-  app.listen(3000, () => {
+  app.listen(3001, () => {
     console.log(
       colors.green("[React SSR]启动成功, 地址为:"),
       colors.green.underline(`http://localhost:${3000}`)
     );
   });
+
+  app.on('error', (e) => {
+    console.log(e)
+  })
 
   return app;
 };

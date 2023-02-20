@@ -1,5 +1,5 @@
 import { assert, describe, it } from "vitest";
-import { removeExtention } from "../src/node/utils/index.js";
+import { removeExtention } from "../../src/node/utils/index.js";
 import resolve from "resolve";
 import path from "path";
 const { sync } = resolve;
