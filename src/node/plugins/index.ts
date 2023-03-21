@@ -34,14 +34,6 @@ export const docit = async (
         //     "react-dom",
         //   ],
         // },
-        build: {
-          outDir: path.resolve(process.cwd(), "./docs-dist"),
-          emptyOutDir: true,
-          ssr: true,
-          rollupOptions: {
-            input: resolveAbsPath("./client/entry-server.js", BUILD_DIST_PATH)
-          },
-        },
         server: {
           watch: {
             disableGlobbing: false,
@@ -56,22 +48,22 @@ export const docit = async (
       const mergedConfig = mergeConfig(baseConfig, config.vite);
       return mergedConfig;
     },
-    transform(_, id) {
-      if (id.endsWith("?needParse")) {
-        return `export default ${JSON.stringify(
-          parseApi(id.replace("?needParse", ""))
-        )}`;
-      }
+    // transform(_, id) {
+    //   if (id.endsWith("?needParse")) {
+    //     return `export default ${JSON.stringify(
+    //       parseApi(id.replace("?needParse", ""))
+    //     )}`;
+    //   }
 
-      const reg = /\?SandBox@(\d*)/g;
-      const result = reg.exec(id);
+    //   const reg = /\?SandBox@(\d*)/g;
+    //   const result = reg.exec(id);
 
-      if (result) {
-        const content = Core.getInstance().getSandBoxMapper().get(result.input);
-        const compiled = compileSync(content, getCompilerOptions(config));
-        return compiled.value as string;
-      }
-    },
+    //   if (result) {
+    //     const content = Core.getInstance().getSandBoxMapper().get(result.input);
+    //     const compiled = compileSync(content, getCompilerOptions(config));
+    //     return compiled.value as string;
+    //   }
+    // },
   };
 
   const mdxPlugin = await mdx(config);
