@@ -62,6 +62,14 @@ export const StyledMarkdown = styled.div`
     }
   }
 
+  h1,
+  h2 {
+    a {
+      color: var(--docit-c-brand);
+      text-decoration: none;
+    }
+  }
+
   h2 {
     margin-top: 2.25rem;
     margin-bottom: 1.25rem;
@@ -104,7 +112,7 @@ export const StyledMarkdown = styled.div`
     touch-action: manipulation;
   }
 
-  a:not(.docit-heading-anchor){
+  a:not(.docit-heading-anchor) {
     white-space: nowrap;
     text-decoration: none;
     color: var(--docit-c-brand);
@@ -128,6 +136,7 @@ export const StyledMarkdown = styled.div`
     padding-right: 0.23em;
     font-size: 0.85em;
     opacity: 0;
+    color: red;
   }
 
   a.header-anchor:hover,

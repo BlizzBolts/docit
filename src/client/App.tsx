@@ -2,9 +2,7 @@ import React, { useEffect, Suspense } from "react";
 import { Document } from "./components/Document";
 import { Header } from "./components/Header";
 import { Sidebar } from "./components/Sidebar";
-
 import { GlobalStyle, CssVariables } from "./styled";
-
 import appData from "virtual:appData";
 import { routes } from "virtual:routes";
 import { useDefaultRoute } from "./hooks/useDefaultRoute";
@@ -31,11 +29,7 @@ const App = () => {
               <Route
                 key={o.path}
                 path={o.path}
-                element={
-                  <Suspense fallback={<>...</>}>
-                    <o.component />
-                  </Suspense>
-                }
+                element={<o.component />}
               ></Route>
             );
           })}

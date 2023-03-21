@@ -12,6 +12,7 @@ specifiers:
   '@types/node': ~18.13.0
   '@types/react': ^18.0.28
   '@types/react-dom': ^18.0.11
+  '@types/styled-components': ^5.1.26
   '@vitejs/plugin-react': ^3.1.0
   '@vitejs/plugin-react-swc': ^3.1.0
   bundle-require: ^4.0.1
@@ -87,6 +88,7 @@ devDependencies:
   '@types/node': registry.npmmirror.com/@types/node/18.13.0
   '@types/react': registry.npmmirror.com/@types/react/18.0.28
   '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.11
+  '@types/styled-components': registry.npmmirror.com/@types/styled-components/5.1.26
   '@vitejs/plugin-react': registry.npmmirror.com/@vitejs/plugin-react/3.1.0_vite@4.1.1
   '@vitejs/plugin-react-swc': registry.npmmirror.com/@vitejs/plugin-react-swc/3.1.0_vite@4.1.1
   bundle-require: registry.npmmirror.com/bundle-require/4.0.1_esbuild@0.17.5
@@ -1363,6 +1365,15 @@ packages:
       '@types/unist': registry.npmmirror.com/@types/unist/2.0.6
     dev: true
 
+  registry.npmmirror.com/@types/hoist-non-react-statics/3.3.1:
+    resolution: {integrity: sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz}
+    name: '@types/hoist-non-react-statics'
+    version: 3.3.1
+    dependencies:
+      '@types/react': registry.npmmirror.com/@types/react/18.0.28
+      hoist-non-react-statics: registry.npmmirror.com/hoist-non-react-statics/3.3.2
+    dev: true
+
   registry.npmmirror.com/@types/http-assert/1.5.3:
     resolution: {integrity: sha512-FyAOrDuQmBi8/or3ns4rwPno7/9tJTijVW6aQQjK02+kOQ8zmoNg2XJtAuQhvQcy1ASJq38wirX5//9J1EqoUA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/http-assert/-/http-assert-1.5.3.tgz}
     name: '@types/http-assert'
@@ -1514,6 +1525,16 @@ packages:
     dependencies:
       '@types/mime': registry.npmmirror.com/@types/mime/3.0.1
       '@types/node': registry.npmmirror.com/@types/node/18.13.0
+    dev: true
+
+  registry.npmmirror.com/@types/styled-components/5.1.26:
+    resolution: {integrity: sha512-KuKJ9Z6xb93uJiIyxo/+ksS7yLjS1KzG6iv5i78dhVg/X3u5t1H7juRWqVmodIdz6wGVaIApo1u01kmFRdJHVw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@types/styled-components/-/styled-components-5.1.26.tgz}
+    name: '@types/styled-components'
+    version: 5.1.26
+    dependencies:
+      '@types/hoist-non-react-statics': registry.npmmirror.com/@types/hoist-non-react-statics/3.3.1
+      '@types/react': registry.npmmirror.com/@types/react/18.0.28
+      csstype: registry.npmmirror.com/csstype/3.1.1
     dev: true
 
   registry.npmmirror.com/@types/unist/2.0.6:
@@ -3076,7 +3097,6 @@ packages:
     version: 3.3.2
     dependencies:
       react-is: registry.npmmirror.com/react-is/16.13.1
-    dev: false
 
   registry.npmmirror.com/hosted-git-info/2.8.9:
     resolution: {integrity: sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz}
@@ -4840,7 +4860,6 @@ packages:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-is/-/react-is-16.13.1.tgz}
     name: react-is
     version: 16.13.1
-    dev: false
 
   registry.npmmirror.com/react-is/17.0.2:
     resolution: {integrity: sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-is/-/react-is-17.0.2.tgz}

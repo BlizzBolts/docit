@@ -24,7 +24,7 @@ export const getCompilerOptions = (config: ResolvedUserConfig): Options => {
         {
           behavior: "wrap",
           properties: {
-            className: 'docit-heading-anchor'
+            className: "docit-heading-anchor",
           },
         } as RehypeAutoLinkHeadingsOptions,
       ],

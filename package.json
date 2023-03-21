@@ -89,7 +89,8 @@
     "unist-util-visit": "^4.1.2",
     "vfile": "^5.3.7",
     "vite-plugin-virtual": "^0.1.1",
-    "vitest": "^0.28.5"
+    "vitest": "^0.28.5",
+    "@types/styled-components": "^5.1.26"
   },
   "dependencies": {
     "@mdx-js/react": "^2.3.0",

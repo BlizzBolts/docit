@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import { StyledMarkdown, StyledDocument } from "./styled";
 import { ApiTable } from "../../built-in/ApiTable";
@@ -15,7 +15,6 @@ const Document = (props) => {
           components={{
             ShowCode,
             ApiTable,
-            Suspense,
             code: (props) => {
               return (
                 <code

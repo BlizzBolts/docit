@@ -124,6 +124,37 @@ ${watchedPath}
   }
 
   private async makeRoutes(): Promise<string> {
+    const importReact = `
+      import React from 'react'
+    `;
+
+    const importComponents = this.getMarkdowns()
+      .map((o, index) => {
+        return `import ${`Component${index}`} from '${o.fullPath}';`;
+      })
+      .join("\n");
+
+    const exports =
+      "export const routes = [" +
+      this.getMarkdowns()
+        .map(
+          (o, index) => `
+        {
+          path: "${o.routePath}",
+          component: ${`Component${index}`}
+        }`
+        )
+        .join(",\n") +
+      "]";
+
+    return `
+      ${importReact}
+      ${importComponents}
+      ${exports}
+    `;
+  }
+
+  private async _makeRoutes(): Promise<string> {
     const content = `
       import React from 'react';
 
