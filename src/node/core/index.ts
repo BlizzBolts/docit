@@ -15,6 +15,7 @@ import { withVirtual, VirtualUpdater } from "../plugins/virtual/index.js";
 import { pkg } from "../constants.js";
 import { PluginOption } from "vite";
 import { logger } from "../utils/index.js";
+import { resolveSidebars } from "./sidebars.js";
 
 class Core {
   private static instance: Core;
@@ -187,79 +188,8 @@ ${watchedPath}
     return content;
   }
 
-  private async makeSidebars(): Promise<SidebarNode[]> {
-    let result: SidebarNode[] = [];
-    if (!isEmpty(this.config.sidebars)) {
-      result = this.config.sidebars;
-    } else {
-      const resolveSidebarConfig = async () => {
-        const parsed = this.getMarkdowns().map((o) => {
-          return {
-            markdown: o,
-            transformedPaths: o.relativePath.split("/").filter((o) => o !== ""),
-          };
-        });
-        const root: SidebarNode = {
-          title: "ROOT",
-          children: [],
-        };
-
-        function parse(
-          markdowns: { markdown: Markdown; transformedPaths: string[] }[],
-          node: SidebarNode
-        ): SidebarNode[] {
-          let mapper: {
-            [key: string]: {
-              markdown: Markdown;
-              transformedPaths: string[];
-            }[];
-          } = {};
-
-          markdowns.forEach(({ markdown, transformedPaths }) => {
-            if (!transformedPaths[0]) {
-              return;
-            }
-            if (mapper[transformedPaths[0]]) {
-              mapper[transformedPaths[0]].push({
-                markdown,
-                transformedPaths: transformedPaths.slice(1),
-              });
-            } else {
-              mapper[transformedPaths[0]] = [
-                {
-                  markdown,
-                  transformedPaths: transformedPaths.slice(1),
-                },
-              ];
-            }
-          });
-
-          const tmp = Object.entries(mapper).map(([key, value]) => {
-            if (value.length === 1 && value[0].transformedPaths.length === 0) {
-              return {
-                title: value[0].markdown.title,
-                path: value[0].markdown.routePath,
-              };
-            }
-
-            const tmp: SidebarNode = {
-              title: key,
-              children: [],
-            };
-            tmp.children = parse(value, tmp);
-            return tmp;
-          });
-
-          node.children = tmp;
-          return tmp;
-        }
-
-        return parse(parsed, root);
-      };
-
-      result = await resolveSidebarConfig();
-    }
-    return result;
+  async makeSidebars(): Promise<SidebarNode[]> {
+    return resolveSidebars(this.config, this.getMarkdowns());
   }
 
   private async makeAppData() {

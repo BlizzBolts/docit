@@ -1,4 +1,4 @@
-import type { UserFileConfig } from "@/types";
+import type { UserFileConfig } from "./types";
 export const defineConfig = (config: UserFileConfig) => config;
 
 export * from "./start";

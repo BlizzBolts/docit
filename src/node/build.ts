@@ -5,12 +5,18 @@ import { UserConfig } from "./types.js";
 import path from "path";
 import { resolveAbsPath } from "./utils/paths.js";
 import { BUILD_DIST_PATH } from "./constants.js";
+import { logger } from "./utils/index.js";
+import chalk from "chalk";
+import { Core } from "./core/index.js";
+import fsx from "fs-extra";
 
 export const build = async (userConfig: UserConfig) => {
   const config = await resolveConfig(userConfig, "build");
 
   const buildServer = async () => {
-    viteBuild({
+    logger.info(`${chalk.red("[Docit]")} Start building server...`);
+
+    return viteBuild({
       plugins: [await docit("build", config)],
       build: {
         outDir: path.resolve(process.cwd(), "./docs-dist/server"),
@@ -24,7 +30,9 @@ export const build = async (userConfig: UserConfig) => {
   };
 
   const buildClient = async () => {
-    viteBuild({
+    logger.info(`${chalk.red("[Docit]")} Start building client...`);
+
+    return viteBuild({
       plugins: [await docit("build", config)],
       build: {
         outDir: path.resolve(process.cwd(), "./docs-dist/client"),
@@ -33,6 +41,26 @@ export const build = async (userConfig: UserConfig) => {
     });
   };
 
+  const generateStatic = async () => {
+    const sidebarConfigs = await Core.getInstance().makeSidebars();
+    console.log(sidebarConfigs);
+    const routes = sidebarConfigs.map((o) => o.path);
+    const template = await fsx.readFile(
+      path.resolve(process.cwd(), "./docs-dist/client/index.html"),
+      "utf-8"
+    );
+    const { render } = await import(
+      path.resolve(process.cwd(), "./docs-dist/server/entry-server.js")
+    );
+
+    console.log(render);
+  };
+
   await buildServer();
+  logger.info(`${chalk.red("[Docit]")} Server Bundled!`);
+
   await buildClient();
+  logger.info(`${chalk.red("[Docit]")} Client Bundled!`);
+
+  await generateStatic();
 };

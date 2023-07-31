@@ -1,13 +1,11 @@
 import { defineConfig, mergeConfig, PluginOption } from "vite";
 import path from "path";
 import react from "@vitejs/plugin-react-swc";
-import { mdx, getCompilerOptions } from "./mdx/index.js";
+import { mdx } from "./mdx/index.js";
 import { Command, ResolvedUserConfig } from "../types.js";
-import { BUILD_DIST_PATH } from "../constants.js";
 import { Core } from "../core/index.js";
 import { virtualProvider } from "./virtual/index.js";
-import { compileSync } from "@mdx-js/mdx";
-import { resolveAbsPath, parseApi } from "../utils/index.js";
+import { logger } from "../utils/index.js";
 
 export const docit = async (
   command: Command,
@@ -34,6 +32,7 @@ export const docit = async (
         //     "react-dom",
         //   ],
         // },
+        customLogger: logger,
         server: {
           watch: {
             disableGlobbing: false,
@@ -67,21 +66,8 @@ export const docit = async (
   };
 
   const mdxPlugin = await mdx(config);
-  // const nodeResolvePlugin = nodeResolve({
-  //   moduleDirectories: [
-  //     "node_modules",
-  //     `./node_modules/${pkg.name}/node_modules`,
-  //   ],
-  // }) as PluginOption;
   const providerPlugin = virtualProvider(config);
   const reactPlugin = react();
 
-  return [
-    docitPlugin,
-    virtualPlugins,
-    providerPlugin,
-    reactPlugin,
-    mdxPlugin,
-    // nodeResolvePlugin,
-  ];
+  return [docitPlugin, virtualPlugins, providerPlugin, reactPlugin, mdxPlugin];
 };

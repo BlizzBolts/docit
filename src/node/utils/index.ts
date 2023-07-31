@@ -1,11 +1,7 @@
-import { createLogger } from "vite";
 import { bundleRequire } from "bundle-require";
 import fsx from "fs-extra";
 import { UserFileConfig } from "../types.js";
-
-export const logger = createLogger("info", {
-  prefix: "[docit]",
-});
+import { logger } from "./logger.js";
 
 export const isFileExists = (p: string) => {
   try {
@@ -38,6 +34,7 @@ export const readUserConfigFile = async (
   }
 };
 
+export * from "./logger.js";
 export * from "./paths.js";
 export * from "./ast.js";
 export * from "./api.js";

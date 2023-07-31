@@ -11,9 +11,6 @@
     "strict": false,
     "sourceMap": true,
     "baseUrl": "./",
-    "paths": {
-      "@/*": ["*"],
-    }
   },
   "include": ["client/**/*.ts", "node/**/*.ts"],
 }
