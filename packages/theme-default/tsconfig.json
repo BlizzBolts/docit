@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "es2015",
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "esModuleInterop": true, // allow default imports for CommonJS modules
+    "allowJs": true, // allow importing `.js` from `.ts`
+
+    // react
+    "jsx": "react-jsx", // support JSX
+
+    // emit
+    "noEmit": false,
+    "declaration": true,
+    "declarationDir": "./dist",
+    "outDir": "./dist",
+    "sourceMap": true,
+    "emitDeclarationOnly": true,
+
+    // alias
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@styled-system/*": ["./styled-system/*"]
+    },
+
+    // stricts
+    "strict": true,
+    "skipLibCheck": true
+  },
+
+  "include":  ["src", "styled-system"]
+}
