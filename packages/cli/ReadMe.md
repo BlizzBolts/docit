@@ -1,0 +1,2 @@
+- link to global: pnpm link --global
+- unlink: pnpm uninstall @blizzbolts/docit-cli --global

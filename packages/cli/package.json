@@ -2,11 +2,25 @@
   "name": "@blizzbolts/docit-cli",
   "version": "1.0.0",
   "description": "",
+  "bin": {
+    "docit-cli": "./bin/index.mjs"
+  },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run build -- --watch",
+    "build": "tsup src/index.ts --dts --format cjs,esm --no-splitting",
+    "prepublishOnly": "npm run build"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "keywords": [
+    "docit"
+  ],
+  "author": "citrus327",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "vite": "^4.4.9"
+  },
+  "dependencies": {
+    "commander": "^11.0.0"
+  }
 }
