@@ -1,13 +1,11 @@
 import { type ScaffoldOptions, colors, ThemeType } from "@blizzbolts/docit-shared";
-// import { getCurrentPackageJson } from "@blizzbolts/docit-shared/node";
 import { intro, outro, group, text, select, cancel } from "@clack/prompts";
 import { init as docitInit } from "@blizzbolts/docit-core";
 
 export const init = async (destination: string) => {
   intro(colors.bold(colors.cyan("Glad you used Docit!")));
 
-  // const pkg = await getCurrentPackageJson(process.cwd());
-
+  // FIXME: if destination has conflict, read package.json for title and description
   const options: ScaffoldOptions = await group(
     {
       root: () =>
