@@ -1,3 +1,3 @@
 import type { PackageJson } from "type-fest";
 
-export { PackageJson };
+export type { PackageJson };

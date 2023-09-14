@@ -28,6 +28,6 @@ export const getPackageJson = (
       return JSON.parse(content);
     })
     .catch((e) => {
-      console.error("");
+      console.error("cannot find package.json", e);
     });
 };
