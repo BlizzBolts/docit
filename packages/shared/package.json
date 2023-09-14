@@ -1,13 +1,53 @@
 {
   "name": "@blizzbolts/docit-shared",
-  "private": "true",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    "./node": {
+      "require": "./dist/index_node.js",
+      "import": "./dist/index_node.mjs"
+    },
+    "./client": {
+      "require": "./dist/index_client.js",
+      "import": "./dist/index_client.mjs"
+    },
+    "./": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "node": [
+        "./dist/index_node.d.ts"
+      ],
+      "client": [
+        "./dist/index_client.d.ts"
+      ]
+    }
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "run-p \"build:* --watch\"",
+    "build": "run-p build:*",
+    "build:node": "tsup --entry.index_node src/index.node.ts --dts --format cjs,esm --no-splitting",
+    "build:client": "tsup --entry.index_client src/index.client.ts --dts --format cjs,esm --no-splitting",
+    "build:index": "tsup --entry.index src/index.ts --dts --format cjs,esm --no-splitting",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@types/find-package-json": "^1.2.3",
+    "@types/node": "^20.4.5",
+    "type-fest": "^4.3.1"
+  },
+  "dependencies": {
+    "consola": "^3.2.3",
+    "find-package-json": "^1.2.0"
+  }
 }

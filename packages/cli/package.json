@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "dev": "npm run build -- --watch",
+    "dev": "npm run build -- --sourcemap --watch",
     "build": "tsup src/index.ts --dts --format cjs,esm --no-splitting",
     "prepublishOnly": "npm run build"
   },
@@ -18,7 +18,8 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.4.5",
-    "vite": "^4.4.9"
+    "vite": "^4.4.9",
+    "@blizzbolts/docit-shared": "workspace:^"
   },
   "dependencies": {
     "commander": "^11.0.0"

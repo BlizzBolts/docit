@@ -1,3 +1,5 @@
-export const start = (source?: string) => {
-  console.log("start docit at", source);
+import { CLIOptions } from "./types";
+
+export const start = (source?: string, options?: CLIOptions) => {
+  console.log("start docit at", source, options);
 };
