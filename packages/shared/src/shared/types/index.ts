@@ -8,5 +8,5 @@ export interface ScaffoldOptions {
   root?: string;
   title?: string;
   description?: string;
-  theme?: ThemeType;
+  theme?: ThemeType | string;
 }

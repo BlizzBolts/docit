@@ -20,8 +20,13 @@ export const defaultScaffoldOptions: ScaffoldOptions = {
 export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<string> => {
   const templateDir = path.resolve(__dirname, "../template");
   const { root, title, description, theme } = defaultsDeep(scaffoldOptions, defaultScaffoldOptions);
-
   const destination = path.resolve(root!);
+
+  if ((await fsx.readdir(destination)).length !== 0) {
+    const message = `${destination} is not empty. Please remove the folder or choose another one.`;
+    coreLogger.error(message);
+    throw new Error(message);
+  }
 
   coreLogger.debug(`init template to ${destination}`);
 
@@ -39,9 +44,7 @@ export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<string> =
 
   const files = [DEFAULT_DOCIT_CONFIG_FILE_LOCATION, "docs/index.md"];
 
-  for (let i = 0; i < files.length; i++) {
-    await writeFile(files[i]);
-  }
+  await Promise.all(files.map((o) => writeFile(o)));
 
-  return `Done!`;
+  return destination;
 };

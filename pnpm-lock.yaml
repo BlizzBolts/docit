@@ -8,9 +8,6 @@ importers:
 
   .:
     devDependencies:
-      '@types/tmp':
-        specifier: ^0.2.4
-        version: 0.2.4
       '@typescript-eslint/eslint-plugin':
         specifier: ^6.7.0
         version: 6.7.0(@typescript-eslint/parser@6.7.0)(eslint@8.49.0)(typescript@5.2.2)
@@ -35,9 +32,6 @@ importers:
       rollup:
         specifier: ^3.27.0
         version: 3.29.1
-      tmp:
-        specifier: ^0.2.1
-        version: 0.2.1
       tsup:
         specifier: ^7.2.0
         version: 7.2.0(typescript@5.2.2)
@@ -53,6 +47,9 @@ importers:
       '@blizzbolts/docit-shared':
         specifier: workspace:^
         version: link:../shared
+      '@clack/prompts':
+        specifier: ^0.7.0
+        version: 0.7.0
       commander:
         specifier: ^11.0.0
         version: 11.0.0
@@ -60,9 +57,6 @@ importers:
         specifier: ^4.4.9
         version: 4.4.9(@types/node@20.6.0)
     devDependencies:
-      '@clack/prompts':
-        specifier: ^0.7.0
-        version: 0.7.0
       '@types/node':
         specifier: ^20.4.5
         version: 20.6.0
@@ -1053,7 +1047,6 @@ packages:
     dependencies:
       picocolors: 1.0.0
       sisteransi: 1.0.5
-    dev: true
 
   /@clack/prompts@0.6.3:
     resolution: {integrity: sha512-AM+kFmAHawpUQv2q9+mcB6jLKxXGjgu/r2EQjEwujgpCdzrST6BJqYw00GRn56/L/Izw5U7ImoLmy00X/r80Pw==}
@@ -1071,7 +1064,7 @@ packages:
       '@clack/core': 0.3.3
       picocolors: 1.0.0
       sisteransi: 1.0.5
-    dev: true
+    dev: false
     bundledDependencies:
       - is-unicode-supported
 
@@ -2598,10 +2591,6 @@ packages:
 
   /@types/semver@7.5.1:
     resolution: {integrity: sha512-cJRQXpObxfNKkFAZbJl2yjWtJCqELQIdShsogr1d2MilP8dKD9TE/nEKHkJgUNHdGKCQaf9HbIynuV2csLGVLg==}
-    dev: true
-
-  /@types/tmp@0.2.4:
-    resolution: {integrity: sha512-Vq3rwM+2KgiLacq68EjTJD9cuJ/ne5pXntWn8B8Rxj25SLkGAhCgooCZ1lhcIcV5OFveJ+s5Cqpi+XKfFM/xZA==}
     dev: true
 
   /@types/unist@2.0.6:
@@ -8770,7 +8759,6 @@ packages:
 
   /sisteransi@1.0.5:
     resolution: {integrity: sha512-bLGGlR1QxBcynn2d5YmDX4MGjlZvy2MRBDRNHLJ8VI6l6+9FUiyTFNJ0IveOSP0bcXgVDPRcfGqA0pjaqUpfVg==}
-    dev: true
 
   /slash@3.0.0:
     resolution: {integrity: sha512-g9Q1haeby36OSStwb4ntCGGGaKsaVSjQ68fBxoQcutl5fS1vuY18H3wSt3jFyFtrkx+Kz0V1G85A4MyAdDMi2Q==}
@@ -9199,13 +9187,6 @@ packages:
     engines: {node: '>=0.6.0'}
     dependencies:
       os-tmpdir: 1.0.2
-    dev: true
-
-  /tmp@0.2.1:
-    resolution: {integrity: sha512-76SUhtfqR2Ijn+xllcI5P1oyannHNHByD80W1q447gU3mp9G9PSpGdWmjUOHRDPiHYacIk66W7ubDTuPF3BEtQ==}
-    engines: {node: '>=8.17.0'}
-    dependencies:
-      rimraf: 3.0.2
     dev: true
 
   /to-fast-properties@2.0.0:

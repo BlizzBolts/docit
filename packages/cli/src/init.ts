@@ -50,5 +50,7 @@ export const init = async (destination: string) => {
     },
   );
 
-  outro(await docitInit(options));
+  await docitInit(options);
+
+  outro("Done!");
 };
