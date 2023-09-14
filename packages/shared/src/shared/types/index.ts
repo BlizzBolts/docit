@@ -5,8 +5,8 @@ export enum ThemeType {
 }
 
 export interface ScaffoldOptions {
-  root: string;
-  title: string;
-  description: string;
-  theme: ThemeType;
+  root?: string;
+  title?: string;
+  description?: string;
+  theme?: ThemeType;
 }

@@ -1,36 +1,40 @@
-import fs from "node:fs";
-import { promisify } from "node:util";
-import path from "node:path";
 import type { PackageJson } from "type-fest";
+import { pkgUp, pkgUpSync } from "pkg-up";
+import { logger } from "..";
+import fsx from "fs-extra";
 
-/**
- * __dirname comes from getDirname
- * get package.json file content from __dirname
- * @param {string} __dirname
- * @returns
- */
-export const getPackageJsonSync = (
-  __dirname: string,
-  relativePath: string = "../package.json",
-): PackageJson => {
-  const pkg = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, relativePath), {
-      encoding: "utf-8",
-    }),
-  );
+export const getCurrentPackageJsonPath = () => pkgUpSync()!;
 
-  return pkg;
+export const getCurrentPackageJson = async (cwd?: string): Promise<PackageJson | undefined> => {
+  try {
+    const filePath = await pkgUp({ cwd });
+    logger.debug("getCurrentPackageJson:", filePath);
+    if (filePath) {
+      const content = await fsx.readFile(filePath, { encoding: "utf-8" });
+      const pkg: PackageJson = JSON.parse(content);
+      return pkg;
+    } else {
+      return undefined;
+    }
+  } catch (e) {
+    logger.error("PackageJson Not Found", e);
+    return undefined;
+  }
 };
 
-export const getPackageJson = (
-  __dirname: string,
-  relativePath: string = "../package.json",
-): Promise<PackageJson> => {
-  return promisify(fs.readFile)(path.resolve(__dirname, relativePath), { encoding: "utf-8" })
-    .then((content) => {
-      return JSON.parse(content);
-    })
-    .catch((e) => {
-      console.error("cannot find package.json", e);
-    });
+export const getCurrentPackageJsonSync = (cwd?: string) => {
+  try {
+    const filePath = pkgUpSync({ cwd });
+    logger.debug("getCurrentPackageJson:", filePath);
+    if (filePath) {
+      const content = fsx.readFileSync(filePath, { encoding: "utf-8" });
+      const pkg: PackageJson = JSON.parse(content);
+      return pkg;
+    } else {
+      return undefined;
+    }
+  } catch (e) {
+    logger.error("PackageJson Not Found", e);
+    return undefined;
+  }
 };

@@ -1,7 +1,7 @@
 import { describe, it, beforeEach, afterEach, expect } from "vitest";
 import fs from "fs-extra";
 import path from "node:path";
-import { getPackageJson, getPackageJsonSync } from "@/node";
+import { getCurrentPackageJson, getCurrentPackageJsonSync } from "@/node";
 import tmp from "tmp";
 
 const mockedPackageJson = {
@@ -27,14 +27,14 @@ afterEach(() => {
 
 describe("node/utils/packages.ts", () => {
   it("gets correct package.json in dist folder", async () => {
-    const mockDirname = path.resolve(dir.name, "./tmp/dist");
-    const pkg = await getPackageJson(mockDirname, "../package.json");
+    const cwd = path.resolve(dir.name, "./tmp/dist");
+    const pkg = await getCurrentPackageJson(cwd);
     expect(mockedPackageJson).toEqual(pkg);
   });
 
   it("gets correct package.json sync in dist folder", async () => {
-    const mockDirname = path.resolve(dir.name, "./tmp/dist");
-    const pkg = getPackageJsonSync(mockDirname, "../package.json");
+    const cwd = path.resolve(dir.name, "./tmp/dist");
+    const pkg = getCurrentPackageJsonSync(cwd);
     expect(mockedPackageJson).toEqual(pkg);
   });
 });

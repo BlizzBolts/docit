@@ -2,20 +2,19 @@ import { Command } from "commander";
 import { start } from "@/start";
 import { build } from "@/build";
 import { init } from "@/init";
-import { getDirname, getPackageJsonSync } from "@blizzbolts/docit-shared/node";
-import { DEFAULT_DOCIT_CONFIG_FILE_LOCATION } from "@/defaults";
+import { getCurrentPackageJsonSync } from "@blizzbolts/docit-shared/node";
+import { DEFAULT_DOCIT_CONFIG_FILE_LOCATION } from "@blizzbolts/docit-shared";
 
-const dirname__ = typeof __dirname === "undefined" ? getDirname(import.meta.url) : __dirname;
-const pkg = getPackageJsonSync(dirname__);
+const pkg = getCurrentPackageJsonSync();
 const program = new Command();
 
 program
   .name("docit-cli")
   .description("CLI for docit")
   .version(
-    pkg.version ?? "unknown version",
+    pkg?.version ?? "unknown version",
     "-v, --version",
-    `${pkg.name} version is ${pkg.version}`,
+    `${pkg?.name} version is ${pkg?.version}`,
   );
 
 const configOption = program
