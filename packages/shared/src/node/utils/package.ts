@@ -26,7 +26,6 @@ export const getPackageJson = (
   __dirname: string,
   relativePath: string = "../package.json",
 ): Promise<PackageJson> => {
-  console.log(path.resolve(__dirname, relativePath));
   return promisify(fs.readFile)(path.resolve(__dirname, relativePath), { encoding: "utf-8" })
     .then((content) => {
       return JSON.parse(content);
