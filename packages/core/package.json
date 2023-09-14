@@ -1,0 +1,21 @@
+{
+  "name": "@blizzbolts/docit-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "scripts": {
+    "dev": "npm run build -- --watch",
+    "build": "tsup src/index.ts --dts --format cjs,esm --no-splitting",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vite": "^4.4.9"
+  },
+  "devDependencies": {
+    "@blizzbolts/docit-shared": "workspace:^"
+  }
+}

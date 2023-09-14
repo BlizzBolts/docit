@@ -9,9 +9,12 @@ import type { PackageJson } from "type-fest";
  * @param {string} __dirname
  * @returns
  */
-export const getPackageJsonSync = (__dirname: string): PackageJson => {
+export const getPackageJsonSync = (
+  __dirname: string,
+  relativePath: string = "../package.json",
+): PackageJson => {
   const pkg = JSON.parse(
-    fs.readFileSync(path.resolve(__dirname, "../package.json"), {
+    fs.readFileSync(path.resolve(__dirname, relativePath), {
       encoding: "utf-8",
     }),
   );
@@ -21,8 +24,9 @@ export const getPackageJsonSync = (__dirname: string): PackageJson => {
 
 export const getPackageJson = (
   __dirname: string,
-  relativePath: string = "./package.json",
+  relativePath: string = "../package.json",
 ): Promise<PackageJson> => {
+  console.log(path.resolve(__dirname, relativePath));
   return promisify(fs.readFile)(path.resolve(__dirname, relativePath), { encoding: "utf-8" })
     .then((content) => {
       return JSON.parse(content);

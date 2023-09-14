@@ -9,7 +9,8 @@
   },
   "scripts": {
     "lint": "eslint packages/*/src/**/*",
-    "format": "prettier packages/*/src/**/* -w"
+    "format": "prettier packages/*/src/**/* -w",
+    "test": "pnpm -r run test"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
@@ -24,6 +25,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
     "rollup": "^3.27.0",
-    "tsup": "^7.2.0"
+    "tsup": "^7.2.0",
+    "vitest": "^0.34.4"
   }
 }

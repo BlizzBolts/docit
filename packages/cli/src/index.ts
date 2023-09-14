@@ -1,6 +1,7 @@
 import { Command } from "commander";
 import { start } from "@/start";
 import { build } from "@/build";
+import { init } from "@/init";
 import { getDirname, getPackageJsonSync } from "@blizzbolts/docit-shared/node";
 import { DEFAULT_DOCIT_CONFIG_FILE_LOCATION } from "@/defaults";
 
@@ -32,5 +33,7 @@ program
   .description("build a production docit build")
   .addOption(configOption)
   .action(build);
+
+program.command("init [destination]").description("setup docit").action(init);
 
 program.parse(process.argv);

@@ -18,10 +18,12 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.4.5",
-    "vite": "^4.4.9",
-    "@blizzbolts/docit-shared": "workspace:^"
+    "@blizzbolts/docit-core": "workspace:^",
+    "@blizzbolts/docit-shared": "workspace:^",
+    "@clack/prompts": "^0.7.0",
+    "commander": "^11.0.0"
   },
   "dependencies": {
-    "commander": "^11.0.0"
+    "vite": "^4.4.9"
   }
 }

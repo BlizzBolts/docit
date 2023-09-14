@@ -33,14 +33,17 @@
   "scripts": {
     "dev": "run-p \"build --watch\"",
     "build": "tsup --entry.index_node src/index.node.ts --entry.index_client src/index.client.ts --entry.index src/index.ts --dts --format cjs,esm --no-splitting",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "vitest"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/find-package-json": "^1.2.3",
+    "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.4.5",
+    "fs-extra": "^11.1.1",
     "type-fest": "^4.3.1"
   },
   "dependencies": {
