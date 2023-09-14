@@ -1,8 +1,8 @@
 import { Command } from "commander";
-import { start } from "./start";
-import { build } from "./build";
+import { start } from "@/start";
+import { build } from "@/build";
 import { getDirname, getPackageJsonSync } from "@blizzbolts/docit-shared/node";
-import { DEFAULT_DOCIT_CONFIG_FILE_LOCATION } from "./defaults";
+import { DEFAULT_DOCIT_CONFIG_FILE_LOCATION } from "@/defaults";
 
 const dirname__ = typeof __dirname === "undefined" ? getDirname(import.meta.url) : __dirname;
 const pkg = getPackageJsonSync(dirname__);
