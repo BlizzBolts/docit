@@ -47,16 +47,16 @@ importers:
 
   packages/cli:
     dependencies:
-      vite:
-        specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.6.0)
-    devDependencies:
       '@blizzbolts/docit-core':
         specifier: workspace:^
         version: link:../core
       '@blizzbolts/docit-shared':
         specifier: workspace:^
         version: link:../shared
+      vite:
+        specifier: ^4.4.9
+        version: 4.4.9(@types/node@20.6.0)
+    devDependencies:
       '@clack/prompts':
         specifier: ^0.7.0
         version: 0.7.0

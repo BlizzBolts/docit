@@ -4,6 +4,13 @@
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "scripts": {
     "dev": "npm run build -- --sourcemap --watch",
     "build": "tsup src/index.ts --dts --format cjs,esm --no-splitting",
