@@ -17,13 +17,20 @@
   "author": "citrus327",
   "license": "MIT",
   "devDependencies": {
-    "@types/node": "^20.4.5",
-    "@clack/prompts": "^0.7.0",
-    "commander": "^11.0.0"
+    "@types/node": "^20.4.5"
   },
   "dependencies": {
     "vite": "^4.4.9",
     "@blizzbolts/docit-core": "workspace:^",
-    "@blizzbolts/docit-shared": "workspace:^"
+    "@blizzbolts/docit-shared": "workspace:^",
+    "@clack/prompts": "^0.7.0",
+    "commander": "^11.0.0"
+  },
+  "tsup": {
+    "shims": true,
+    "clean": true
+  },
+  "engines": {
+    "node": ">=16"
   }
 }

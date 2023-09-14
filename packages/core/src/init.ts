@@ -4,8 +4,10 @@ import {
   type ScaffoldOptions,
   DEFAULT_DOCIT_CONFIG_FILE_LOCATION,
 } from "@blizzbolts/docit-shared";
-import { getDirname } from "@blizzbolts/docit-shared/node";
-import { defaultsDeep, template } from "lodash-es";
+// import { defaultsDeep, template } from "lodash-es";
+import defaultsDeep from "lodash.defaultsdeep";
+import template from "lodash.template";
+
 import path from "node:path";
 import fsx from "fs-extra";
 
@@ -16,9 +18,8 @@ export const defaultScaffoldOptions: ScaffoldOptions = {
   title: "Docit",
 };
 
-const dirname__ = typeof __dirname === "undefined" ? getDirname(import.meta.url) : __dirname;
 export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<string> => {
-  const templateDir = path.resolve(dirname__, "../template");
+  const templateDir = path.resolve(__dirname, "../template");
   const { root, title, description, theme } = defaultsDeep(scaffoldOptions, defaultScaffoldOptions);
 
   const destination = path.resolve(root!);
