@@ -6,6 +6,10 @@
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
+    },
     "./node": {
       "require": "./dist/index_node.js",
       "import": "./dist/index_node.mjs"
@@ -13,10 +17,6 @@
     "./client": {
       "require": "./dist/index_client.js",
       "import": "./dist/index_client.mjs"
-    },
-    "./": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
     },
     "./package.json": "./package.json"
   },
@@ -31,11 +31,8 @@
     }
   },
   "scripts": {
-    "dev": "run-p \"build:* --watch\"",
-    "build": "run-p build:*",
-    "build:node": "tsup --entry.index_node src/index.node.ts --dts --format cjs,esm --no-splitting",
-    "build:client": "tsup --entry.index_client src/index.client.ts --dts --format cjs,esm --no-splitting",
-    "build:index": "tsup --entry.index src/index.ts --dts --format cjs,esm --no-splitting",
+    "dev": "run-p \"build --watch\"",
+    "build": "tsup --entry.index_node src/index.node.ts --entry.index_client src/index.client.ts --entry.index src/index.ts --dts --format cjs,esm --no-splitting",
     "prepublishOnly": "npm run build"
   },
   "keywords": [],
