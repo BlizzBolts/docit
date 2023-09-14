@@ -5,10 +5,18 @@
   "bin": {
     "docit-cli": "./bin/index.mjs"
   },
-  "main": "index.js",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./build/index.mjs",
+      "require": "./build/index.js"
+    }
+  },
   "scripts": {
-    "dev": "npm run build -- --sourcemap --watch",
-    "build": "tsup src/index.ts --dts --format cjs,esm --no-splitting",
+    "dev": "npm run build -- --sourcemap --watch ./src --watch ../shared/build --watch ../core/build",
+    "build": "tsup",
     "prepublishOnly": "npm run build"
   },
   "keywords": [
@@ -27,8 +35,18 @@
     "commander": "^11.0.0"
   },
   "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "dts": true,
+    "splitting": false,
     "shims": true,
-    "clean": true
+    "clean": true,
+    "outDir": "build",
+    "format": [
+      "cjs",
+      "esm"
+    ]
   },
   "engines": {
     "node": ">=16"

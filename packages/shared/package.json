@@ -2,21 +2,21 @@
   "name": "@blizzbolts/docit-shared",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
+  "types": "./build/index.d.ts",
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "require": "./build/index.js",
+      "import": "./build/index.mjs"
     },
     "./node": {
-      "require": "./dist/index_node.js",
-      "import": "./dist/index_node.mjs"
+      "require": "./build/index.node.js",
+      "import": "./build/index.node.mjs"
     },
     "./client": {
-      "require": "./dist/index_client.js",
-      "import": "./dist/index_client.mjs"
+      "require": "./build/index.client.js",
+      "import": "./build/index.client.mjs"
     },
     "./package.json": "./package.json"
   },
@@ -31,8 +31,8 @@
     }
   },
   "scripts": {
-    "dev": "run-p \"build --watch\"",
-    "build": "tsup --entry.index_node src/index.node.ts --entry.index_client src/index.client.ts --entry.index src/index.ts --dts --format cjs,esm --no-splitting",
+    "dev": "npm run build -- --sourcemap --watch",
+    "build": "tsup",
     "prepublishOnly": "npm run build",
     "test": "CONSOLA_LEVEL=4 vitest"
   },
@@ -52,7 +52,19 @@
     "find-package-json": "^1.2.0"
   },
   "tsup": {
+    "entry": {
+      "index.node": "src/index.node.ts",
+      "index.client": "src/index.client.ts",
+      "index": "src/index.ts"
+    },
+    "dts": true,
+    "splitting": false,
     "shims": true,
-    "clean": true
+    "clean": true,
+    "outDir": "build",
+    "format": [
+      "cjs",
+      "esm"
+    ]
   }
 }

@@ -81,6 +81,8 @@ typings/
 # Nuxt.js build / generate output
 .nuxt
 dist
+build
+
 
 # Gatsby files
 .cache/
@@ -109,4 +111,5 @@ styled-system/
 # bundle-visualizer
 stats.html
 
+# temp folder
 tmp

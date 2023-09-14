@@ -4,7 +4,6 @@ import {
   type ScaffoldOptions,
   DEFAULT_DOCIT_CONFIG_FILE_LOCATION,
 } from "@blizzbolts/docit-shared";
-// import { defaultsDeep, template } from "lodash-es";
 import defaultsDeep from "lodash.defaultsdeep";
 import template from "lodash.template";
 

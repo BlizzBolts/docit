@@ -2,18 +2,18 @@
   "name": "@blizzbolts/docit-core",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "main": "./build/index.js",
+  "module": "./build/index.mjs",
+  "types": "./build/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./package.json": "./package.json"
+      "import": "./build/index.mjs",
+      "require": "./build/index.js"
+    }
   },
   "scripts": {
-    "dev": "npm run build -- --sourcemap --watch",
-    "build": "tsup src/index.ts --dts --format cjs,esm --no-splitting",
+    "dev": "npm run build -- --sourcemap --watch ./src --watch ../shared/build",
+    "build": "tsup",
     "prepublishOnly": "npm run build",
     "test": "CONSOLA_LEVEL=4 vitest"
   },
@@ -33,8 +33,18 @@
     "@types/lodash.template": "^4.5.1"
   },
   "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "dts": true,
+    "splitting": false,
     "shims": true,
-    "clean": true
+    "clean": true,
+    "outDir": "build",
+    "format": [
+      "cjs",
+      "esm"
+    ]
   },
   "engines": {
     "node": ">=16"
