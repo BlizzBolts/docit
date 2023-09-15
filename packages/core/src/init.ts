@@ -1,3 +1,4 @@
+import path from "node:path";
 import {
   coreLogger,
   ThemeType,
@@ -8,7 +9,6 @@ import {
 import { getDirname, getUserPackageJson, isWritable } from "@blizzbolts/docit-shared/node";
 import defaultsDeep from "lodash.defaultsdeep";
 import template from "lodash.template";
-import path from "node:path";
 import fsx from "fs-extra";
 
 export const defaultScaffoldOptions: ScaffoldOptions = {

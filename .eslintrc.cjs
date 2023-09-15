@@ -1,4 +1,5 @@
 module.exports = {
+  root: true,
   settings: {
     react: {
       version: "18.2.0",
@@ -31,11 +32,12 @@ module.exports = {
     sourceType: "module",
     project: ["./tsconfig.node.json", "./tsconfig.json"],
   },
-  plugins: ["@typescript-eslint", "react"],
+  plugins: ["@typescript-eslint", "react", "import"],
   rules: {
     "no-console": [1],
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/consistent-type-exports": "error",
     "@typescript-eslint/no-unused-vars": "warn",
+    "import/order": "warn",
   },
 };

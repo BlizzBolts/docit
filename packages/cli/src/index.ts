@@ -1,9 +1,9 @@
 import { Command } from "commander";
+import { DEFAULT_DOCIT_CONFIG_FILE_LOCATION } from "@blizzbolts/docit-shared";
+import pkg from "../package.json";
 import { start } from "@/start";
 import { build } from "@/build";
 import { init } from "@/init";
-import { DEFAULT_DOCIT_CONFIG_FILE_LOCATION } from "@blizzbolts/docit-shared";
-import pkg from "../package.json";
 
 const program = new Command();
 program.name("docit-cli").description("CLI for docit").version(pkg.version, "-v, --version");

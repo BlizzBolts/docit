@@ -1,6 +1,6 @@
+import path from "node:path";
 import { glob } from "glob";
 import { bundleRequire } from "bundle-require";
-import path from "node:path";
 import { coreLogger } from "@blizzbolts/docit-shared";
 
 export interface Config {}

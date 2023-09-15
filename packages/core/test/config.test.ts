@@ -1,6 +1,6 @@
+import path from "node:path";
 import { describe, it, expect, vi } from "vitest";
 import fsx from "fs-extra";
-import path from "node:path";
 import { coreLogger } from "@blizzbolts/docit-shared";
 import { readConfigFromFile } from "@/config";
 

@@ -1,8 +1,8 @@
 import React from "react";
 import { expect, describe, beforeEach, afterEach, it } from "vitest";
-import { Box } from "../src/Box/index";
 import { cleanup } from "@testing-library/react";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { Box } from "../src/Box/index";
 
 afterEach(() => {
   cleanup();

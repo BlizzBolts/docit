@@ -1,6 +1,6 @@
+import path from "node:path";
 import { describe, it, expect } from "vitest";
 import fsx from "fs-extra";
-import path from "node:path";
 import { isWritable } from "@/node";
 describe("node/utils/files", () => {
   describe("isWritable", () => {

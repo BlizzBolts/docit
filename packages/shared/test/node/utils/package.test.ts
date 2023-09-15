@@ -1,6 +1,6 @@
 // import { getUserPackageJson } from "@/node";
-import { describe, expect, it } from "vitest";
 import path from "node:path";
+import { describe, expect, it } from "vitest";
 import fsx from "fs-extra";
 import { getUserPackageJson } from "@/node";
 
