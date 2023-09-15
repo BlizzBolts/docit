@@ -36,5 +36,6 @@ module.exports = {
     "no-console": [1],
     "@typescript-eslint/consistent-type-imports": "error",
     "@typescript-eslint/consistent-type-exports": "error",
+    "@typescript-eslint/no-unused-vars": "warn",
   },
 };
