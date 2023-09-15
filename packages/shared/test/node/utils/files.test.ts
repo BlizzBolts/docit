@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import fsx from "fs-extra";
 import path from "node:path";
 import { isWritable } from "@/node";
-describe("node/utils", () => {
-  describe("files.ts", () => {
+describe("node/utils/files", () => {
+  describe("isWritable", () => {
     it("should return true when a folder is empty", () => {
       const folderPath = path.resolve(process.cwd(), "./tmp");
       fsx.ensureDirSync(folderPath);
