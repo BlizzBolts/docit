@@ -88,6 +88,9 @@ importers:
       '@types/lodash.template':
         specifier: ^4.5.1
         version: 4.5.1
+      type-fest:
+        specifier: ^4.3.1
+        version: 4.3.1
 
   packages/plugin-docit:
     dependencies:
@@ -109,9 +112,6 @@ importers:
       pkg-up:
         specifier: ^4.0.0
         version: 4.0.0
-      type-fest:
-        specifier: ^4.3.1
-        version: 4.3.1
     devDependencies:
       '@types/find-package-json':
         specifier: ^1.2.3
@@ -122,6 +122,9 @@ importers:
       '@types/node':
         specifier: ^20.4.5
         version: 20.6.0
+      type-fest:
+        specifier: ^4.3.1
+        version: 4.3.1
 
   packages/theme-default:
     devDependencies:
@@ -9413,7 +9416,7 @@ packages:
   /type-fest@4.3.1:
     resolution: {integrity: sha512-pphNW/msgOUSkJbH58x8sqpq8uQj6b0ZKGxEsLKMUnGorRcDjrUaLS+39+/ub41JNTwrrMyJcUB8+YZs3mbwqw==}
     engines: {node: '>=16'}
-    dev: false
+    dev: true
 
   /typed-array-buffer@1.0.0:
     resolution: {integrity: sha512-Y8KTSIglk9OZEr8zywiIHG/kmQ7KWyjseXs1CbSo8vC42w7hg2HgYTxSWwP0+is7bWDc1H+Fo026CpHFwm8tkw==}
