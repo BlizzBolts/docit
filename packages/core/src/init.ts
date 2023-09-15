@@ -4,14 +4,14 @@ import {
   type ScaffoldOptions,
   DEFAULT_DOCIT_CONFIG_FILE_LOCATION,
 } from "@blizzbolts/docit-shared";
+import { isWritable } from "@blizzbolts/docit-shared/node";
 import defaultsDeep from "lodash.defaultsdeep";
 import template from "lodash.template";
-
 import path from "node:path";
 import fsx from "fs-extra";
 
 export const defaultScaffoldOptions: ScaffoldOptions = {
-  description: "my docit project",
+  description: "Docit",
   root: "./",
   theme: ThemeType.Default,
   title: "Docit",
@@ -22,8 +22,17 @@ export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<string> =
   const { root, title, description, theme } = defaultsDeep(scaffoldOptions, defaultScaffoldOptions);
   const destination = path.resolve(root!);
 
-  if ((await fsx.readdir(destination)).length !== 0) {
-    const message = `${destination} is not empty. Please remove the folder or choose another one.`;
+  const docitFolder = path.resolve(destination, "./.docit");
+  const docsFolder = path.resolve(destination, "./docs");
+
+  if (!isWritable(docitFolder)) {
+    const message = `${docitFolder} is not empty. Please remove the folder or choose another one.`;
+    coreLogger.error(message);
+    throw new Error(message);
+  }
+
+  if (!isWritable(docsFolder)) {
+    const message = `${docsFolder} is not empty. Please remove the folder or choose another one.`;
     coreLogger.error(message);
     throw new Error(message);
   }
