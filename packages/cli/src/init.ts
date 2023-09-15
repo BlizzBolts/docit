@@ -3,7 +3,7 @@ import { intro, outro, group, text, select, cancel } from "@clack/prompts";
 import { init as docitInit } from "@blizzbolts/docit-core";
 
 export const init = async (destination: string) => {
-  intro(colors.bold(colors.cyan("Glad you used Docit!")));
+  intro(colors.bold(colors.cyan(`Welcome to Docit!`)));
 
   // FIXME: if destination has conflict, read package.json for title and description
   const options: ScaffoldOptions = await group(
@@ -11,19 +11,20 @@ export const init = async (destination: string) => {
       root: () =>
         text({
           message: "Where do you want to set up Docit?",
+          placeholder: "./",
           initialValue: destination || "./",
         }),
 
       title: () =>
         text({
-          message: "Site title:",
+          message: "Title:",
           placeholder: "Docit",
           defaultValue: "Docit",
         }),
 
       description: () =>
         text({
-          message: "Site description:",
+          message: "Description:",
           placeholder: "Docit",
           defaultValue: "Docit",
         }),
@@ -34,7 +35,6 @@ export const init = async (destination: string) => {
           options: [
             {
               label: "Default Theme",
-              hint: "Out of the box, good-looking docs",
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-ignore
               value: ThemeType.Default,
@@ -50,7 +50,11 @@ export const init = async (destination: string) => {
     },
   );
 
-  await docitInit(options);
-
-  outro("Done!");
+  if (await docitInit(options)) {
+    outro("Done!");
+  } else {
+    outro(
+      colors.bold(colors.red("initialize project failed, please checkout the error messages.")),
+    );
+  }
 };

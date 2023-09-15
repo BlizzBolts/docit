@@ -28,13 +28,13 @@ export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<string> =
   if (!isWritable(docitFolder)) {
     const message = `${docitFolder} is not empty. Please remove the folder or choose another one.`;
     coreLogger.error(message);
-    throw new Error(message);
+    return "";
   }
 
   if (!isWritable(docsFolder)) {
     const message = `${docsFolder} is not empty. Please remove the folder or choose another one.`;
     coreLogger.error(message);
-    throw new Error(message);
+    return "";
   }
 
   coreLogger.debug(`init template to ${destination}`);
