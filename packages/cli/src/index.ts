@@ -20,7 +20,7 @@ program
 
 program
   .command("build [source]")
-  .description("build a production docit build")
+  .description("build docit for production")
   .addOption(configOption)
   .action(build);
 
