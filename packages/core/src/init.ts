@@ -3,8 +3,9 @@ import {
   ThemeType,
   type ScaffoldOptions,
   DEFAULT_DOCIT_CONFIG_FILE_LOCATION,
+  DEFAULT_CONFIG_FILE_NAME,
 } from "@blizzbolts/docit-shared";
-import { isWritable } from "@blizzbolts/docit-shared/node";
+import { getUserPackageJson, isWritable } from "@blizzbolts/docit-shared/node";
 import defaultsDeep from "lodash.defaultsdeep";
 import template from "lodash.template";
 import path from "node:path";
@@ -37,18 +38,29 @@ export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<string> =
     return "";
   }
 
-  coreLogger.debug(`init template to ${destination}`);
+  coreLogger.debug(`copying template to ${destination}`);
+
+  const userPkg = await getUserPackageJson(root);
+  const isESM = userPkg?.type === "module";
 
   const writeFile = async (from: string) => {
     const _from = path.resolve(templateDir, from);
     const _to = path.resolve(root!, from);
 
     let content = await fsx.readFile(_from, { encoding: "utf-8" });
+
     if (from === DEFAULT_DOCIT_CONFIG_FILE_LOCATION) {
       content = template(content)({ title, description, theme });
     }
-
-    await fsx.outputFile(_to, content);
+    if (from === DEFAULT_DOCIT_CONFIG_FILE_LOCATION && isESM) {
+      const newTo = _to.replace(
+        DEFAULT_CONFIG_FILE_NAME,
+        DEFAULT_CONFIG_FILE_NAME.replace(".mjs", ".js"),
+      );
+      await fsx.outputFile(path.resolve(root!, newTo), content);
+    } else {
+      await fsx.outputFile(_to, content);
+    }
   };
 
   const files = [DEFAULT_DOCIT_CONFIG_FILE_LOCATION, "docs/index.md"];

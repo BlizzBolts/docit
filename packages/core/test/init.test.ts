@@ -69,4 +69,11 @@ describe("init", () => {
       expect(e).toBeTruthy();
     }
   });
+
+  it<TmpDir>("should init correctly with option set", async (ctx) => {
+    await fsx.outputFile(path.resolve(ctx.dir, "./package.json"), `{ "type": "module"}`);
+    await init({ root: ctx.dir });
+    const files = fsx.readdirSync(path.resolve(ctx.dir, ".docit"));
+    expect(files).toContain("docit.config.js");
+  });
 });
