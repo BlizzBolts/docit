@@ -2,16 +2,16 @@
   "name": "@blizzbolts/docit-cli",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "bin": {
-    "docit-cli": "./bin/index.mjs"
+    "docit-cli": "./bin/index.js"
   },
   "main": "./build/index.js",
-  "module": "./build/index.mjs",
   "types": "./build/index.d.ts",
   "exports": {
     ".": {
-      "import": "./build/index.mjs",
-      "require": "./build/index.js"
+      "import": "./build/index.js",
+      "default": "./build/index.cjs"
     }
   },
   "scripts": {

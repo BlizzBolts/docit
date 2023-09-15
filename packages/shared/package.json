@@ -3,22 +3,21 @@
   "version": "1.0.0",
   "description": "",
   "main": "./build/index.js",
-  "module": "./build/index.mjs",
   "types": "./build/index.d.ts",
+  "type": "module",
   "exports": {
     ".": {
-      "require": "./build/index.js",
-      "import": "./build/index.mjs"
+      "default": "./build/index.cjs",
+      "import": "./build/index.js"
     },
     "./node": {
-      "require": "./build/index.node.js",
-      "import": "./build/index.node.mjs"
+      "default": "./build/index.node.cjs",
+      "import": "./build/index.node.js"
     },
     "./client": {
-      "require": "./build/index.client.js",
-      "import": "./build/index.client.mjs"
-    },
-    "./package.json": "./package.json"
+      "default": "./build/index.client.cjs",
+      "import": "./build/index.client.js"
+    }
   },
   "typesVersions": {
     "*": {
