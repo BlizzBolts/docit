@@ -9,7 +9,7 @@
     "email": "citrus327@outlook.com"
   },
   "scripts": {
-    "lint": "eslint **/*.{ts,tsx} --fix",
+    "lint": "eslint packages/*/**/*.{ts,tsx} --fix",
     "format": "prettier packages/*/src/**/* -w",
     "test": "pnpm -r run test run"
   },
