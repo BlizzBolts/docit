@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.node.json",
   "compilerOptions": {
-    "jsx": "preserve",
+    "jsx": "react",
     "outDir": "./build",
     // alias
     "baseUrl": ".",
@@ -10,7 +10,7 @@
     },
   },
 
-  "include":  ["src"],
+  "include":  ["src", "index.d.ts"],
   "exclude": [
     "**/dist/**",
     "**/node_modules/**"

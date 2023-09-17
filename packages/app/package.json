@@ -3,19 +3,42 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "npm run build -- --sourcemap -w",
     "build": "rimraf build && tsc -p tsconfig.json"
+  },
+  "//scripts": {
+    "dev": "npm run build -- --sourcemap",
+    "build": "tsup",
+    "prepublishOnly": "npm run build",
+    "test": "CONSOLA_LEVEL=4 vitest"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-hydration-provider": "^2.0.0",
+    "react-router-dom": "^6.16.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7"
+  },
+  "tsup": {
+    "entry": [
+      "src/index.tsx"
+    ],
+    "dts": true,
+    "splitting": true,
+    "shims": true,
+    "clean": true,
+    "outDir": "build",
+    "format": [
+      "cjs",
+      "esm"
+    ]
   }
 }
