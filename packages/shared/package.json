@@ -7,15 +7,15 @@
   "type": "module",
   "exports": {
     ".": {
-      "default": "./build/index.cjs",
+      "require": "./build/index.cjs",
       "import": "./build/index.js"
     },
     "./node": {
-      "default": "./build/index.node.cjs",
+      "require": "./build/index.node.cjs",
       "import": "./build/index.node.js"
     },
     "./client": {
-      "default": "./build/index.client.cjs",
+      "require": "./build/index.client.cjs",
       "import": "./build/index.client.js"
     }
   },
