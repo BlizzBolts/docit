@@ -2,6 +2,7 @@ import type { PluginOption } from "vite";
 // FIXME:
 const APP_PATH = "/Users/hao/spaces/projj/github.com/BlizzBolts/docit/packages/app/build";
 import react from "@vitejs/plugin-react-swc";
+import mdx from "@mdx-js/rollup";
 
 export const createDocitPlugin = (): PluginOption[] => {
   const docitPlugin: PluginOption = {
@@ -43,5 +44,5 @@ export const createDocitPlugin = (): PluginOption[] => {
     },
   };
 
-  return [docitPlugin, react()];
+  return [docitPlugin, mdx(), react()];
 };
