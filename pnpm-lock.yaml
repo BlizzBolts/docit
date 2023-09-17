@@ -59,6 +59,9 @@ importers:
 
   packages/app:
     dependencies:
+      '@blizzbolts/docit-shared':
+        specifier: workspace:*
+        version: link:../shared
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -78,6 +81,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.7
         version: 18.2.7
+      vite:
+        specifier: ^4.4.9
+        version: 4.4.9(@types/node@20.6.0)
 
   packages/cli:
     dependencies:
@@ -164,6 +170,9 @@ importers:
 
   packages/plugin-docit:
     dependencies:
+      '@blizzbolts/docit-shared':
+        specifier: workspace:^
+        version: link:../shared
       '@mdx-js/rollup':
         specifier: ^2.3.0
         version: 2.3.0(rollup@3.29.1)

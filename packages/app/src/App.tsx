@@ -1,8 +1,14 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
+import { logger } from "@blizzbolts/docit-shared/client";
 import Home from "./Home";
 import About from "./About";
-import Test from "./Test.mdx";
+
+const pages = import.meta.glob("/**/*.md", {
+  eager: true,
+});
+
+logger.info(pages);
 
 const routes = [
   {
@@ -14,11 +20,6 @@ const routes = [
     name: "About",
     component: About, //import("./About.js"),
     path: "/about",
-  },
-  {
-    name: "Test",
-    component: Test, //import("./About.js"),
-    path: "/test",
   },
 ];
 

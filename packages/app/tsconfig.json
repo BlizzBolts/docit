@@ -7,10 +7,10 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-    },
+    }
   },
 
-  "include":  ["src", "index.d.ts"],
+  "include":  ["src", "index.d.ts", "shim.d.ts"],
   "exclude": [
     "**/dist/**",
     "**/node_modules/**"

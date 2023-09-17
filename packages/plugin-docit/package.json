@@ -38,6 +38,7 @@
     "node": ">=16"
   },
   "dependencies": {
+    "@blizzbolts/docit-shared": "workspace:^",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "vite": "^4.4.9",
     "@mdx-js/rollup": "^2.3.0"
