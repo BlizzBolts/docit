@@ -9,6 +9,15 @@
     "email": "citrus327@outlook.com"
   },
   "scripts": {
+    "app": "docit-cli start",
+    "build": "pnpm run clean && pnpm -r run build",
+    "dev": "run-p -l -n -c dev:*",
+    "clean": "rimraf -g ./packages/*/build",
+    "dev:shared": "pnpm --filter @blizzbolts/docit-shared dev",
+    "dev:core": "pnpm --filter @blizzbolts/docit-core dev",
+    "dev:app": "pnpm --filter docit-app dev",
+    "dev:cli": "pnpm --filter @blizzbolts/docit-cli dev",
+    "dev:plugin-docit": "pnpm --filter @blizzbolts/vite-plugin-docit dev",
     "lint": "eslint packages/*/**/*.{ts,tsx} --fix",
     "format": "prettier packages/*/src/**/* -w",
     "test": "pnpm -r run test run"
@@ -18,6 +27,8 @@
     "access": "public"
   },
   "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "@typescript-eslint/eslint-plugin": "^6.7.0",
     "@typescript-eslint/parser": "^6.7.0",
     "eslint": "^8.49.0",
@@ -26,8 +37,11 @@
     "eslint-plugin-react": "^7.33.2",
     "npm-run-all": "^4.1.5",
     "prettier": "^3.0.3",
+    "rimraf": "^5.0.1",
     "rollup": "^3.27.0",
     "tsup": "^7.2.0",
-    "vitest": "^0.34.4"
+    "typescript": "5.2.2",
+    "vitest": "^0.34.4",
+    "wait-on": "^7.0.1"
   }
 }
