@@ -1,6 +1,10 @@
-import type { Plugin } from "vite";
-export const createDocitPlugin = (): Plugin => {
-  return {
+import type { PluginOption } from "vite";
+// FIXME:
+const APP_PATH = "/Users/hao/spaces/projj/github.com/BlizzBolts/docit/packages/app/build";
+import react from "@vitejs/plugin-react-swc";
+
+export const createDocitPlugin = (): PluginOption[] => {
+  const docitPlugin: PluginOption = {
     name: "vite-plugin-docit",
     config(config) {
       return config;
@@ -24,8 +28,8 @@ export const createDocitPlugin = (): Plugin => {
                   <meta name="description" content="">
                 </head>
                 <body>
-                  <div id="app">123</div>
-                  <script src="/@fs/index.js"></script>
+                  <div id="docit-root"></div>
+                  <script type="module" src="/@fs/${APP_PATH}/index.jsx"></script>
                 </body>
               </html>`;
 
@@ -38,4 +42,6 @@ export const createDocitPlugin = (): Plugin => {
       };
     },
   };
+
+  return [docitPlugin, react()];
 };

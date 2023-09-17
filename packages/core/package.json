@@ -12,15 +12,16 @@
     }
   },
   "scripts": {
-    "dev": "npm run build -- --sourcemap --watch ./src --watch ../shared/build",
+    "dev": "npm run build -- --sourcemap --watch ./src --watch ../shared/build --watch ../plugin-docit/build",
     "build": "tsup",
     "prepublishOnly": "npm run build",
     "test": "CONSOLA_LEVEL=4 vitest"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
+    "@blizzbolts/vite-plugin-docit": "workspace:^",
     "@blizzbolts/docit-shared": "workspace:^",
     "bundle-require": "^4.0.1",
     "esbuild": "^0.18.20",
