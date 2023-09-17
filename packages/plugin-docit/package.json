@@ -2,17 +2,48 @@
   "name": "@blizzbolts/vite-plugin-docit",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
+  "type": "module",
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./build/index.js",
+      "default": "./build/index.cjs"
+    }
+  },
   "scripts": {
-    "dev": "npm run build -- --watch",
-    "build": "tsup src/index.ts --dts --format cjs,esm --no-splitting",
-    "prepublishOnly": "npm run build"
+    "dev": "npm run build -- --sourcemap --watch ./src --watch ../shared/build",
+    "build": "tsup",
+    "prepublishOnly": "npm run build",
+    "test": "CONSOLA_LEVEL=4 vitest"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "peerDependencies": {
-    "rollup": ">=2.0.0"
+  "license": "MIT",
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "dts": true,
+    "splitting": false,
+    "shims": true,
+    "clean": true,
+    "outDir": "build",
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "vite": "^4.4.9"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.17",
+    "@types/react-dom": "^18.2.7"
   }
 }
