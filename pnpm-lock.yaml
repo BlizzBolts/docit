@@ -57,34 +57,6 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1
 
-  app:
-    dependencies:
-      '@blizzbolts/docit-shared':
-        specifier: workspace:*
-        version: link:../packages/shared
-      react:
-        specifier: ^18.2.0
-        version: 18.2.0
-      react-dom:
-        specifier: ^18.2.0
-        version: 18.2.0(react@18.2.0)
-      react-hydration-provider:
-        specifier: ^2.0.0
-        version: 2.0.0(react@18.2.0)
-      react-router-dom:
-        specifier: ^6.7.0
-        version: 6.16.0(react-dom@18.2.0)(react@18.2.0)
-    devDependencies:
-      '@types/react':
-        specifier: ^18.2.17
-        version: 18.2.21
-      '@types/react-dom':
-        specifier: ^18.2.7
-        version: 18.2.7
-      vite:
-        specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.6.0)
-
   packages/cli:
     dependencies:
       '@blizzbolts/docit-core':
@@ -142,9 +114,6 @@ importers:
       serve-static:
         specifier: ^1.15.0
         version: 1.15.0
-      vite:
-        specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.6.0)
     devDependencies:
       '@types/compression':
         specifier: ^1.7.3
@@ -161,12 +130,33 @@ importers:
       '@types/lodash.template':
         specifier: ^4.5.1
         version: 4.5.1
+      '@types/react':
+        specifier: ^18.2.17
+        version: 18.2.21
+      '@types/react-dom':
+        specifier: ^18.2.7
+        version: 18.2.7
       '@types/serve-static':
         specifier: ^1.15.2
         version: 1.15.2
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-hydration-provider:
+        specifier: ^2.0.0
+        version: 2.0.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.7.0
+        version: 6.16.0(react-dom@18.2.0)(react@18.2.0)
       type-fest:
         specifier: ^4.3.1
         version: 4.3.1
+      vite:
+        specifier: ^4.4.9
+        version: 4.4.9(@types/node@20.6.0)
 
   packages/plugin-docit:
     dependencies:
@@ -2212,7 +2202,7 @@ packages:
   /@remix-run/router@1.9.0:
     resolution: {integrity: sha512-bV63itrKBC0zdT27qYm6SDZHlkXwFL1xMBuhkn+X7l0+IIhNaH5wuuvZKp6eKhCD4KFhujhfhCT1YxXW6esUIA==}
     engines: {node: '>=14.0.0'}
-    dev: false
+    dev: true
 
   /@rollup/plugin-alias@5.0.0(rollup@3.29.1):
     resolution: {integrity: sha512-l9hY5chSCjuFRPsnRm16twWBiSApl2uYFLsepQYwtBuAxNMQ/1dJqADld40P0Jkqm65GRTLy/AC6hnpVebtLsA==}
@@ -6736,6 +6726,7 @@ packages:
 
   /js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
+    dev: true
 
   /js-yaml@3.14.1:
     resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==}
@@ -7030,6 +7021,7 @@ packages:
     hasBin: true
     dependencies:
       js-tokens: 4.0.0
+    dev: true
 
   /loupe@2.3.6:
     resolution: {integrity: sha512-RaPMZKiMy8/JruncMU5Bt6na1eftNoo++R4Y+N2FrxkDVTrGvcyzFTsaGif4QTeKESheMGegbhw6iUAq+5A8zA==}
@@ -8999,6 +8991,7 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: true
 
   /react-hydration-provider@2.0.0(react@18.2.0):
     resolution: {integrity: sha512-Jgd5lu1Fmefks9MNnh+eJ+REbuz54qoVvB25a81idGCaPTDqTqMyj4fqEH7Jroro3Y4x4+e9hBgzt+nfUOyTow==}
@@ -9007,7 +9000,7 @@ packages:
       react: '>=16'
     dependencies:
       react: 18.2.0
-    dev: false
+    dev: true
 
   /react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -9032,7 +9025,7 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       react-router: 6.16.0(react@18.2.0)
-    dev: false
+    dev: true
 
   /react-router@6.16.0(react@18.2.0):
     resolution: {integrity: sha512-VT4Mmc4jj5YyjpOi5jOf0I+TYzGpvzERy4ckNSvSh2RArv8LLoCxlsZ2D+tc7zgjxcY34oTz2hZaeX5RVprKqA==}
@@ -9042,13 +9035,14 @@ packages:
     dependencies:
       '@remix-run/router': 1.9.0
       react: 18.2.0
-    dev: false
+    dev: true
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
     dependencies:
       loose-envify: 1.4.0
+    dev: true
 
   /read-pkg-up@7.0.1:
     resolution: {integrity: sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg==}
@@ -9534,6 +9528,7 @@ packages:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
     dependencies:
       loose-envify: 1.4.0
+    dev: true
 
   /section-matter@1.0.0:
     resolution: {integrity: sha512-vfD3pmTzGpufjScBh50YHKzEu2lxBWhVEHsNGoEXmCmn2hKGfeNLYMzCJpe8cD7gqX7TJluOVpBkAequ6dgMmA==}

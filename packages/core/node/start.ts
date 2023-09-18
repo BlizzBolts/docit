@@ -3,12 +3,11 @@ import { createDocitPlugin } from "@blizzbolts/vite-plugin-docit";
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import { coreLogger } from "@blizzbolts/docit-shared";
+import { getDirname } from "@blizzbolts/docit-shared/node";
 
-// FIXME:
-const APP_PATH = "/Users/hao/spaces/projj/github.com/BlizzBolts/docit/app/build";
-const r = (p: string = "") => path.resolve(APP_PATH, p);
-const ENTRY_CLIENT = r("./entry-client.js");
-const ENTRY_SERVER = r("./entry-server.js");
+const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
+const ENTRY_CLIENT = r("./client/entry-client.js");
+const ENTRY_SERVER = r("./client/entry-server.js");
 
 export const start = async (root: string) => {
   const app = express();

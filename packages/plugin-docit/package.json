@@ -27,7 +27,6 @@
     "dts": true,
     "splitting": false,
     "shims": true,
-    "clean": true,
     "outDir": "build",
     "format": [
       "cjs",
