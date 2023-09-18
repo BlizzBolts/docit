@@ -3,7 +3,7 @@ import fsx from "fs-extra";
 import { describe, it, beforeEach, afterEach, expect, vi } from "vitest";
 import type { ScaffoldOptions } from "@blizzbolts/docit-shared";
 import { DEFAULT_DOCIT_CONFIG_FILE_LOCATION, coreLogger } from "@blizzbolts/docit-shared";
-import { init, defaultScaffoldOptions } from "@/init";
+import { init, defaultScaffoldOptions } from "../../build/node";
 
 interface TmpDir {
   dir: string;
@@ -16,6 +16,7 @@ beforeEach<TmpDir>(async (ctx) => {
 });
 
 afterEach<TmpDir>(async (ctx) => {
+  await fsx.emptyDir(ctx.dir);
   await fsx.remove(ctx.dir);
 });
 

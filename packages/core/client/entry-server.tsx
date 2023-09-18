@@ -1,5 +1,5 @@
 import ReactDOMServer from "react-dom/server";
-import { StaticRouter } from "react-router-dom/server";
+import { StaticRouter } from "react-router-dom/server.js";
 import React from "react";
 import { HydrationProvider, Server } from "react-hydration-provider";
 import { logger } from "@blizzbolts/docit-shared";

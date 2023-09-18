@@ -14,9 +14,9 @@
   "scripts": {
     "dev": "run-p dev:*",
     "dev:client": "npm run build:client -- --sourcemap -w",
-    "dev:node": "npm run build -- --sourcemap --watch ./node --watch ./client --watch ../shared/build --watch ../plugin-docit/build",
+    "dev:node": "NODE_ENV=development tsup",
     "build": "run-s build:* copy:*",
-    "build:node": "tsup",
+    "build:node": "NODE_ENV=production tsup",
     "build:client": "tsc -p ./client/tsconfig.json --outDir ./build/client",
     "copy:entry": "cp client/index.html build/client/index.html",
     "prepublishOnly": "npm run build",

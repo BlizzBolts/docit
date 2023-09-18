@@ -15,4 +15,14 @@ export default defineConfig({
       };
     }
   },
+  // eslint-disable-next-line no-undef
+  sourcemap: process.env.NODE_ENV === "development",
+  watch:
+    // eslint-disable-next-line no-undef
+    process.env.NODE_ENV === "development" && [
+      "./node",
+      "./client",
+      "../shared/build",
+      "../plugin-docit/build",
+    ],
 });

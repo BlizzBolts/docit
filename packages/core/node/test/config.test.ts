@@ -2,7 +2,7 @@ import path from "node:path";
 import { describe, it, expect, vi } from "vitest";
 import fsx from "fs-extra";
 import { coreLogger } from "@blizzbolts/docit-shared";
-import { readConfigFromFile } from "@/config";
+import { readConfigFromFile } from "../config";
 
 const tmpFolder = path.resolve(process.cwd(), "./tmp");
 const r = (p: string) => path.resolve(tmpFolder, p);

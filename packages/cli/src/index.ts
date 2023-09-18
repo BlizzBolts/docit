@@ -1,5 +1,4 @@
 import { Command } from "commander";
-import { DEFAULT_DOCIT_CONFIG_FILE_LOCATION } from "@blizzbolts/docit-shared";
 import pkg from "../package.json";
 import { start } from "@/start";
 import { build } from "@/build";
@@ -10,7 +9,7 @@ program.name("docit-cli").description("CLI for docit").version(pkg.version, "-v,
 
 const configOption = program
   .createOption("-c, --config <config>", "specify config file location")
-  .default(DEFAULT_DOCIT_CONFIG_FILE_LOCATION);
+  .default("./docs/.docit/docit.config.js");
 
 program
   .command("start [source]")

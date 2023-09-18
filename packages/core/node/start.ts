@@ -4,6 +4,7 @@ import express from "express";
 import { createServer as createViteServer } from "vite";
 import { coreLogger } from "@blizzbolts/docit-shared";
 import { getDirname } from "@blizzbolts/docit-shared/node";
+import fsx from "fs-extra";
 
 const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
 const ENTRY_CLIENT = r("./client/entry-client.js");
@@ -22,7 +23,7 @@ export const start = async (root: string) => {
       },
     },
     appType: "custom",
-    plugins: [createDocitPlugin({ root })],
+    plugins: [createDocitPlugin()],
   });
 
   app.use(vite.middlewares);
@@ -30,21 +31,7 @@ export const start = async (root: string) => {
   app.use("*", async (req, res) => {
     const url = req.originalUrl;
     try {
-      let template = `
-        <!DOCTYPE html>
-  <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script>const global = globalThis;</script>
-    <title>Docit</title>
-    <!--preload-links-->
-  </head>
-  <body>
-    <div id="docit-root"><!--app-html--></div>
-  </body>
-  <script type="module" src="/@fs/${ENTRY_CLIENT}"></script>
-  </html>`;
+      let template = await fsx.readFile(r("./client/index.html"), { encoding: "utf-8" });
       template = await vite.transformIndexHtml(url, template);
       const { render } = await vite.ssrLoadModule(ENTRY_SERVER);
       const context: { url?: string } = {};
@@ -52,7 +39,10 @@ export const start = async (root: string) => {
       if (context.url) {
         return res.redirect(301, context.url);
       }
-      const html = template.replace(`<!--ssr-outlet-->`, appHtml);
+
+      const html = template
+        .replace(`<!--entry-point-->`, `/@fs/${ENTRY_CLIENT}`)
+        .replace(`<!--ssr-outlet-->`, appHtml);
       res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
       if (e instanceof Error) {
@@ -66,6 +56,11 @@ export const start = async (root: string) => {
   });
 
   const server = app.listen(3000, () => {
-    console.log("opened server on", server.address());
+    const address = server.address();
+    if (typeof address === "string") {
+      coreLogger.success("Docit dev server started at: ", address);
+    } else {
+      coreLogger.success("Docit dev server started at: ", address?.port);
+    }
   });
 };
