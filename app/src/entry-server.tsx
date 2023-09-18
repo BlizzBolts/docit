@@ -2,9 +2,11 @@ import ReactDOMServer from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
 import React from "react";
 import { HydrationProvider, Server } from "react-hydration-provider";
+import { logger } from "@blizzbolts/docit-shared";
 import { App } from "./App";
 
-export function render(url: string | Partial<Location>) {
+export function render(url: string | Partial<Location>, context: { url?: string }) {
+  logger.info("Server render, visiting", url, context);
   return ReactDOMServer.renderToString(
     <HydrationProvider>
       <Server>

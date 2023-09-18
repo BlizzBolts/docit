@@ -1,27 +1,23 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { logger } from "@blizzbolts/docit-shared/client";
-import Home from "./Home";
-import About from "./About";
 
-const pages = import.meta.glob("/**/*.md", {
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+const docs = import.meta.glob("/**/*.(md|mdx)", {
   eager: true,
 });
 
-logger.info(pages);
+logger.debug("Docs:", docs);
 
-const routes = [
-  {
-    name: "Home",
-    component: Home, //import("./Home.js"),
-    path: "/",
-  },
-  {
-    name: "About",
-    component: About, //import("./About.js"),
-    path: "/about",
-  },
-];
+const routes = Object.keys(docs).map((path) => {
+  const name = path.match(/\/(.*)\.mdx?$/)![1];
+  return {
+    name: name,
+    path: `/${name}`,
+    component: docs[path].default,
+  };
+});
 
 export const App = () => {
   return (

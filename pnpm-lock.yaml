@@ -57,11 +57,11 @@ importers:
         specifier: ^7.0.1
         version: 7.0.1
 
-  packages/app:
+  app:
     dependencies:
       '@blizzbolts/docit-shared':
         specifier: workspace:*
-        version: link:../shared
+        version: link:../packages/shared
       react:
         specifier: ^18.2.0
         version: 18.2.0
@@ -72,7 +72,7 @@ importers:
         specifier: ^2.0.0
         version: 2.0.0(react@18.2.0)
       react-router-dom:
-        specifier: ^6.16.0
+        specifier: ^6.7.0
         version: 6.16.0(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@types/react':
