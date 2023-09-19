@@ -22,6 +22,11 @@ export const start = async (root: string) => {
         interval: 100,
       },
     },
+    resolve: {
+      alias: {
+        "doc-root": path.resolve(process.cwd(), "./", root),
+      },
+    },
     appType: "custom",
     plugins: [createDocitPlugin()],
   });
@@ -41,7 +46,7 @@ export const start = async (root: string) => {
       }
 
       const html = template
-        .replace(`<!--entry-point-->`, `/@fs/${ENTRY_CLIENT}`)
+        // .replace(`<!--entry-point-->`, `/@fs/${ENTRY_CLIENT}`)
         .replace(`<!--ssr-outlet-->`, appHtml);
       res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
