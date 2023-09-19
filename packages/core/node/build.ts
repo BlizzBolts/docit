@@ -1,11 +1,14 @@
 import path from "node:path";
 import { colors, coreLogger, getDirname } from "@blizzbolts/docit-shared/node";
 import fsx from "fs-extra";
+import type { InlineConfig } from "vite";
 import { build as viteBuild } from "vite";
 import { createDocitPlugin } from "@blizzbolts/vite-plugin-docit";
 import { glob } from "glob";
 
 export const build = async (root: string) => {
+  coreLogger.start(colors.cyan(`Start building`));
+
   await buildForSSR(root);
   await generateStatics(root);
   coreLogger.ready(
@@ -17,18 +20,9 @@ export const build = async (root: string) => {
 
 const buildForSSR = async (root: string) => {
   const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
-  const ENTRY_CLIENT = r("./client/entry-client.js");
   const ENTRY_SERVER = r("./client/entry-server.js");
 
-  const template = await fsx.readFile(r("./client/index.html"), { encoding: "utf-8" });
-  const html = template.replace(`<!--entry-point-->`, `/@fs${ENTRY_CLIENT}`);
-
-  await fsx.writeFile(r("./client/index.html"), html);
-
-  coreLogger.log("");
-  coreLogger.box(colors.cyan("Building Docit SSR assets for both client and node..."));
-
-  await viteBuild({
+  const viteConfig: InlineConfig = {
     root: r("./client"),
     resolve: {
       alias: {
@@ -36,50 +30,37 @@ const buildForSSR = async (root: string) => {
       },
     },
     plugins: [createDocitPlugin()],
-    build: {
-      emptyOutDir: true,
-      outDir: path.resolve(process.cwd(), "./.docit", "./build/client"),
-    },
-  });
-
+  };
+  // build client
   await viteBuild({
-    root: r("./client"),
-    plugins: [createDocitPlugin()],
-    resolve: {
-      alias: {
-        "doc-root": path.resolve(process.cwd(), "./", root),
-      },
-    },
-    build: {
-      emptyOutDir: true,
-      ssr: ENTRY_SERVER,
-      outDir: path.resolve(process.cwd(), "./.docit", "./build/node"),
-    },
-  });
-};
-
-const generateStatics = async (root: string) => {
-  const r = (p: string) => path.resolve(process.cwd(), "./.docit/build", p);
-
-  coreLogger.log("");
-  coreLogger.box(colors.cyan("Generating Static HTMLs..."));
-
-  await viteBuild({
-    root: r("./client"),
-    resolve: {
-      alias: {
-        "doc-root": path.resolve(process.cwd(), "./", root),
-      },
-    },
-    plugins: [createDocitPlugin()],
+    ...viteConfig,
     build: {
       emptyOutDir: true,
       outDir: path.resolve(process.cwd(), "./.docit", "./build/static"),
     },
   });
 
-  const template = await fsx.readFile(r("./client/index.html"), "utf-8");
-  const { render } = await import(r("./node/entry-server.js"));
+  // build server
+  await viteBuild({
+    ...viteConfig,
+    build: {
+      emptyOutDir: true,
+      ssr: ENTRY_SERVER,
+      outDir: path.resolve(process.cwd(), "./.docit", "./build/server"),
+    },
+  });
+};
+
+const generateStatics = async (root: string) => {
+  const r = (p: string = "") => path.resolve(process.cwd(), "./.docit/build", p);
+
+  coreLogger.log("");
+  coreLogger.box(colors.cyan("Generating Static HTMLs..."));
+
+  const templatePath = r("./static/index.html");
+
+  const template = await fsx.readFile(templatePath, "utf-8");
+  const { render } = await import(r("./server/entry-server.js"));
   const docs = await glob("./**/*.{md,mdx}", {
     cwd: path.resolve(process.cwd(), root),
   });
