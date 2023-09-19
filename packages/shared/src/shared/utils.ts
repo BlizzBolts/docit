@@ -9,3 +9,13 @@ export const safeParse = <T = Record<string, unknown>>(json: string): T | undefi
     return undefined;
   }
 };
+
+export const markdownPathToRoutePath = (p: string) => {
+  const pattern = /^(?:\.\.\/)+|\/?docs\/?|\.mdx?$/g;
+  const parsed = p.replace(pattern, "").toLowerCase();
+  if (parsed === "index" || parsed === "readme") {
+    return "/";
+  } else {
+    return "/" + parsed;
+  }
+};

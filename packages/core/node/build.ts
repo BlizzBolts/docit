@@ -1,5 +1,10 @@
 import path from "node:path";
-import { colors, coreLogger, getDirname } from "@blizzbolts/docit-shared/node";
+import {
+  colors,
+  coreLogger,
+  getDirname,
+  markdownPathToRoutePath,
+} from "@blizzbolts/docit-shared/node";
 import fsx from "fs-extra";
 import type { InlineConfig } from "vite";
 import { build as viteBuild } from "vite";
@@ -64,13 +69,8 @@ const generateStatics = async (root: string) => {
   const docs = await glob("./**/*.{md,mdx}", {
     cwd: path.resolve(process.cwd(), root),
   });
-  const routesToPrerender = docs.map((path) => {
-    const name = path.match(/(.*)\.mdx?$/)![1];
-    return `/${name}`;
-  });
-  const additional = ["/A", "/B", "/sub/C"];
-
-  for (const url of [...routesToPrerender, ...additional]) {
+  const routesToPrerender = docs.map((path) => markdownPathToRoutePath(path));
+  for (const url of routesToPrerender) {
     const context = {};
     const appHtml = await render(url, context);
     const html = template.replace(`<!--app-html-->`, appHtml);

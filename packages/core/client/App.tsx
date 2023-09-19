@@ -1,47 +1,22 @@
 import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import { logger } from "@blizzbolts/docit-shared/client";
-import { PageA } from "./pages/A";
-import { PageB } from "./pages/B";
-import { PageC } from "./pages/sub/C";
+import { logger, markdownPathToRoutePath } from "@blizzbolts/docit-shared/client";
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 const docs = import.meta.glob("doc-root/**/*.(md|mdx)", {
   eager: true,
 });
 
 logger.info("Docs:", docs);
 
-const docsRoutes = Object.keys(docs).map((path) => {
-  const pattern = /^(?:\.\.\/)+|\/?docs\/?|\.mdx?$/g;
-  const routePath = "/" + path.replace(pattern, "");
+const routes = Object.keys(docs).map((path) => {
+  const routePath = markdownPathToRoutePath(path);
   const name = routePath.split("/")[routePath.split("/").length - 1];
   return {
-    name: name,
+    name: name || "index",
     path: routePath,
-    component: docs[path].default,
+    component: (docs?.[path] as { default: React.ComponentType }).default,
   };
 });
-
-const routes = [
-  {
-    name: "A",
-    path: "/A",
-    component: PageA,
-  },
-  {
-    name: "B",
-    path: "/B",
-    component: PageB,
-  },
-  {
-    name: "C",
-    path: "/sub/C",
-    component: PageC,
-  },
-  ...docsRoutes,
-];
 
 export const App = () => {
   return (
