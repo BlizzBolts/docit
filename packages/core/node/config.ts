@@ -3,8 +3,6 @@ import { glob } from "glob";
 import { bundleRequire } from "bundle-require";
 import { coreLogger } from "@blizzbolts/docit-shared";
 
-export interface Config {}
-
 export interface ConfigFromFile {}
 
 const readConfig = async () => {

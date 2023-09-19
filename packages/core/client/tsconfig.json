@@ -5,7 +5,7 @@
     "types": ["vite/client"]
   },
   "exclude": [
-    "**/dist/**",
+    "**/build/**",
     "**/node_modules/**"
   ]
 }
