@@ -1,12 +1,13 @@
 export type { PackageJson } from "type-fest";
+export * from "./config";
 
-export enum ThemeType {
-  Default = "Default",
+type Link = `http://${string}` | `https://${string}`;
+
+enum SocialEnum {
+  github = "github",
+  twitter = "twitter",
 }
-
-export interface ScaffoldOptions {
-  root?: string;
-  title?: string;
-  description?: string;
-  theme?: ThemeType | string;
+export interface SocialConfig {
+  type: SocialEnum | keyof typeof SocialEnum | string;
+  link: Link;
 }
