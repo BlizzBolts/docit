@@ -6,7 +6,7 @@ import { createDocitPlugin } from "@blizzbolts/vite-plugin-docit";
 import { glob } from "glob";
 
 export const build = async (root: string) => {
-  await buildForSSR();
+  await buildForSSR(root);
   await generateStatics(root);
   coreLogger.ready(
     colors.cyan(
@@ -15,15 +15,26 @@ export const build = async (root: string) => {
   );
 };
 
-const buildForSSR = async () => {
+const buildForSSR = async (root: string) => {
   const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
+  const ENTRY_CLIENT = r("./client/entry-client.js");
   const ENTRY_SERVER = r("./client/entry-server.js");
+
+  const template = await fsx.readFile(r("./client/index.html"), { encoding: "utf-8" });
+  const html = template.replace(`<!--entry-point-->`, `/@fs${ENTRY_CLIENT}`);
+
+  await fsx.writeFile(r("./client/index.html"), html);
 
   coreLogger.log("");
   coreLogger.box(colors.cyan("Building Docit SSR assets for both client and node..."));
 
   await viteBuild({
     root: r("./client"),
+    resolve: {
+      alias: {
+        "doc-root": path.resolve(process.cwd(), "./", root),
+      },
+    },
     plugins: [createDocitPlugin()],
     build: {
       emptyOutDir: true,
@@ -34,6 +45,11 @@ const buildForSSR = async () => {
   await viteBuild({
     root: r("./client"),
     plugins: [createDocitPlugin()],
+    resolve: {
+      alias: {
+        "doc-root": path.resolve(process.cwd(), "./", root),
+      },
+    },
     build: {
       emptyOutDir: true,
       ssr: ENTRY_SERVER,
@@ -50,6 +66,11 @@ const generateStatics = async (root: string) => {
 
   await viteBuild({
     root: r("./client"),
+    resolve: {
+      alias: {
+        "doc-root": path.resolve(process.cwd(), "./", root),
+      },
+    },
     plugins: [createDocitPlugin()],
     build: {
       emptyOutDir: true,
@@ -66,7 +87,9 @@ const generateStatics = async (root: string) => {
     const name = path.match(/(.*)\.mdx?$/)![1];
     return `/${name}`;
   });
-  for (const url of routesToPrerender) {
+  const additional = ["/A", "/B", "/sub/C"];
+
+  for (const url of [...routesToPrerender, ...additional]) {
     const context = {};
     const appHtml = await render(url, context);
     const html = template.replace(`<!--app-html-->`, appHtml);
