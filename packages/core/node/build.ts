@@ -3,6 +3,7 @@ import { colors, coreLogger, getDirname } from "@blizzbolts/docit-shared/node";
 import fsx from "fs-extra";
 import { build as viteBuild } from "vite";
 import { createDocitPlugin } from "@blizzbolts/vite-plugin-docit";
+import { glob } from "glob";
 
 const buildForSSR = async (root: string) => {
   const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
@@ -36,35 +37,37 @@ const buildForSSR = async (root: string) => {
   });
 };
 
-const generateStatics = async () => {
+const generateStatics = async (root: string) => {
   const r = (p: string) => path.resolve(process.cwd(), "./.docit/build", p);
+
+  await viteBuild({
+    root: path.resolve(getDirname(import.meta.url), "../client"),
+    plugins: [createDocitPlugin()],
+    build: {
+      emptyOutDir: true,
+      outDir: path.resolve(process.cwd(), "./.docit", "./build/static"),
+    },
+  });
 
   const template = await fsx.readFile(r("./client/index.html"), "utf-8");
   const { render } = await import(r("./node/entry-server.js"));
-
-  console.log(render);
+  const docs = await glob("./**/*.{md,mdx}", {
+    cwd: path.resolve(process.cwd(), root),
+  });
+  const routesToPrerender = docs.map((path) => {
+    const name = path.match(/(.*)\.mdx?$/)![1];
+    return `/${name}`;
+  });
+  for (const url of routesToPrerender) {
+    const context = {};
+    const appHtml = await render(url, context);
+    const html = template.replace(`<!--app-html-->`, appHtml);
+    const filePath = `./.docit/build/static${url === "/" ? "/index" : url}.html`;
+    await fsx.outputFile(path.resolve(process.cwd(), filePath), html);
+  }
 };
 
 export const build = async (root: string) => {
   await buildForSSR(root);
-
-  await generateStatics();
-
-  // const template = fs.readFileSync(toAbsolute("dist/static/index.html"), "utf-8");
-  // const { render } = await import("./dist/server/entry-server.js");
-
-  // const docs = await glob("./**/*.(mdx|md)", {
-  //   cwd: path.resolve(process.cwd(), root),
-  // });
-  // const routesToPrerender = docs.map((path) => {
-  //   const name = path.match(/\/(.*)\.mdx?$/)![1];
-  //   return `/${name}`;
-  // });
-  // for (const url of routesToPrerender) {
-  //   const context = {};
-  //   const appHtml = await render(url, context);
-  //   const html = template.replace(`<!--app-html-->`, appHtml);
-  //   const filePath = `./.docit/static${url === "/" ? "/index" : url}.html`;
-  //   await fsx.outputFile(path.resolve(process.cwd(), filePath), html);
-  // }
+  await generateStatics(root);
 };
