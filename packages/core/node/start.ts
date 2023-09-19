@@ -7,14 +7,13 @@ import { getDirname } from "@blizzbolts/docit-shared/node";
 import fsx from "fs-extra";
 
 const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
-const ENTRY_CLIENT = r("./client/entry-client.js");
 const ENTRY_SERVER = r("./client/entry-server.js");
 
 export const start = async (root: string) => {
   const app = express();
 
   const vite = await createViteServer({
-    root: path.resolve(process.cwd(), "./", root),
+    root: r("./client"),
     server: {
       middlewareMode: true,
       watch: {
@@ -45,14 +44,10 @@ export const start = async (root: string) => {
         return res.redirect(301, context.url);
       }
 
-      const html = template
-        // .replace(`<!--entry-point-->`, `/@fs/${ENTRY_CLIENT}`)
-        .replace(`<!--ssr-outlet-->`, appHtml);
+      const html = template.replace(`<!--app-html-->`, appHtml);
       res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
       if (e instanceof Error) {
-        // 如果捕获到了一个错误，让 Vite 来修复该堆栈，这样它就可以映射回
-        // 你的实际源码中。
         vite.ssrFixStacktrace(e);
         coreLogger.error(e.stack);
         res.status(500).end(e.stack);

@@ -11,13 +11,15 @@ const docs = import.meta.glob("doc-root/**/*.(md|mdx)", {
   eager: true,
 });
 
-logger.debug("Docs:", docs);
+logger.info("Docs:", docs);
 
 const docsRoutes = Object.keys(docs).map((path) => {
-  const name = path.match(/\/(.*)\.mdx?$/)![1];
+  const pattern = /^(?:\.\.\/)+|\/?docs\/?|\.mdx?$/g;
+  const routePath = "/" + path.replace(pattern, "");
+  const name = routePath.split("/")[routePath.split("/").length - 1];
   return {
     name: name,
-    path: `/${name}`,
+    path: routePath,
     component: docs[path].default,
   };
 });
