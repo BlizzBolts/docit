@@ -5,9 +5,9 @@ export const zSocialEnum = z.enum(["github", "twitter"]);
 
 export const zSiteConfig = z.object({
   title: z.string().optional().default("Docit"),
-  descrption: z.string().optional().default("Site Description"),
+  description: z.string().optional().default("Site Description"),
   theme: z.nativeEnum(zThemeType.Enum).optional().default(zThemeType.Enum.Default),
-  socials: z.array(zSocialEnum),
+  socials: z.array(zSocialEnum).optional(),
 });
 
 /**

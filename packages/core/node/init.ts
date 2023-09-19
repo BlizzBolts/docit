@@ -16,6 +16,7 @@ export const defaultScaffoldOptions: ScaffoldOptions = {
   root: "./",
   theme: ThemeType.Default,
   title: "Docit",
+  socials: []
 };
 
 export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<string> => {
