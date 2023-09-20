@@ -13,8 +13,12 @@ const zNavItem: z.ZodType<NavItem> = zBaseNavItem.extend({
   items: z.lazy(() => zNavItem.array()),
 });
 
-export const zThemeConfig = z.object({
+const zThemeConfig = z.object({
   nav: z.array(zNavItem).optional(),
 });
 
+export { zThemeConfig };
 export type ThemeConfig = Partial<z.infer<typeof zThemeConfig>>;
+export const defineThemeConfig = (config: ThemeConfig): ThemeConfig => {
+  return zThemeConfig.parse(config);
+};

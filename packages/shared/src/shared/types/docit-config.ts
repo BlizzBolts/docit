@@ -1,7 +1,7 @@
 import { z } from "zod";
 import type { AliasOptions } from "vite";
 import { zSiteConfig } from "./site-config";
-import { zDocitServerConfig } from "./server-config";
+import { zServerConfig } from "./server-config";
 import { zThemeConfig } from "./theme-config";
 
 const zDocitConfig = z.object({
@@ -11,9 +11,12 @@ const zDocitConfig = z.object({
   base: z.string().default("/"),
   site: zSiteConfig.partial().default(zSiteConfig.parse({})),
   alias: z.any().optional() as z.ZodOptional<z.ZodType<AliasOptions>>,
-  server: zDocitServerConfig.partial().optional(),
+  server: zServerConfig.partial().optional(),
   themeConfig: zThemeConfig.partial().optional(),
 });
 
 export { zDocitConfig };
 export type DocitConfig = Partial<z.infer<typeof zDocitConfig>>;
+export const defineConfig = (config: DocitConfig): DocitConfig => {
+  return zDocitConfig.parse(config);
+};

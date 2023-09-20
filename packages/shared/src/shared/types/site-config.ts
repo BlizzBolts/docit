@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { zThemeConfig } from "./theme-config";
 
 enum SocialEnum {
   github = "github",
@@ -33,3 +32,6 @@ const zSiteConfig = z.object({
 
 export { zSiteConfig, SocialEnum, ThemeType };
 export type SiteConfig = Partial<z.infer<typeof zSiteConfig>>;
+export const defineSiteConfig = (config: SiteConfig): SiteConfig => {
+  return zSiteConfig.parse(config);
+};
