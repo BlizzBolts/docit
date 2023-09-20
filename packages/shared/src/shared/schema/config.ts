@@ -16,7 +16,7 @@ export const zSiteConfig = z.object({
 export const zDocitConfig = z.object({
   root: z.string().optional().default("./"),
   docRoot: z.string().optional().default("./docs"),
-  siteConfig: zSiteConfig.optional(),
+  siteConfig: zSiteConfig.optional().default(zSiteConfig.parse({})),
 });
 
 /**
