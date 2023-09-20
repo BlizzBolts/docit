@@ -10,11 +10,19 @@ describe("node/utils", () => {
         "../../docs/test/aaa.mdx",
         "../../docs/test/bbb.mdx",
         "../../../../../../vitejs/vite-plugin-react/docs/index.md",
+        "../../../../../../vitejs/vite-plugin-react/docs/ddd/index.md",
       ];
 
       const results = paths.map((o) => markdownPathToRoutePath(o));
 
-      expect(results).toEqual([["123123/ggg/ssss", "index", "test/aaa", "test/bbb", "index"]]);
+      expect(results).toEqual([
+        "/123123/ggg/ssss",
+        "/",
+        "/test/aaa",
+        "/test/bbb",
+        "/",
+        "/ddd/index",
+      ]);
     });
   });
 });

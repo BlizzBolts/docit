@@ -14,8 +14,7 @@
   "scripts": {
     "dev": "npm run build -- --sourcemap --watch ./src --watch ../shared/build",
     "build": "tsup",
-    "prepublishOnly": "npm run build",
-    "test": "CONSOLA_LEVEL=4 vitest"
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
   "author": "",
