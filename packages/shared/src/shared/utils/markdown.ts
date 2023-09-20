@@ -1,13 +1,4 @@
 /**
- * FIXME:
- * @examples
- * const paths = [
- *   '../docs/123123/ggg/ssss.mdx',
- *   '../../docs/index.md',
- *   '../../docs/test/aaa.mdx',
- *   '../../docs/test/bbb.mdx',
- *   "../../../../../../vitejs/vite-plugin-react/docs/index.md",
- * ];
  * @param p
  * @returns
  */

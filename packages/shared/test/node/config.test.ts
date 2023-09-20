@@ -1,21 +1,20 @@
 import { describe, it, expect } from "vitest";
 import { ZodError } from "zod";
-import { zDocitConfig, zSiteConfig } from "@/shared/schema/config";
-import type { DocitConfig } from "@/shared";
-import { ThemeType, type SiteConfig } from "@/shared";
+import type { SiteConfig } from "@/shared";
+import { zSiteConfig, type DocitConfig, ThemeType, zDocitConfig } from "@/shared";
 
 describe("shared/schema", () => {
   describe("zod", () => {
     it("should generate correcly", async () => {
-      const initialValue = {
-        description: "site description",
-        theme: "Default",
-        title: "Docit",
-      };
+      const initialValue = {};
 
       const result: SiteConfig = zSiteConfig.parse(initialValue);
 
-      expect(result).toEqual(initialValue);
+      expect(result).toEqual({
+        title: "Docit",
+        description: "Site Description",
+        theme: "default",
+      });
     });
   });
 
@@ -23,7 +22,7 @@ describe("shared/schema", () => {
     it("should fill the optional value with default", async () => {
       const initialValue = {
         description: "site description",
-        theme: "Default",
+        theme: "default",
       };
 
       const result: SiteConfig = zSiteConfig.parse(initialValue);
@@ -42,12 +41,40 @@ describe("shared/schema", () => {
       expect(result).toEqual({
         title: "Docit",
         description: "Site Description",
-        theme: ThemeType.Default,
+        theme: ThemeType.default,
       });
     });
   });
 
   describe("zDocitConfig", () => {
+    it("full list of docit config", () => {
+      const docitConfig: DocitConfig = {
+        alias: [{ find: "@", replacement: "src/*" }],
+        base: "/",
+        docRoot: "./documents",
+        outDir: "./docs-dist",
+        root: "./",
+        site: {
+          description: "my description",
+          theme: "default",
+          title: "Docit",
+          head: [["link", { rel: "icon", href: "/favicon.ico" }]],
+          socials: [
+            {
+              icon: "github",
+              link: "https://github.com/citrus327",
+            },
+            {
+              icon: "twitter",
+              link: "https://twitter.com/_citrus327",
+            },
+          ],
+        },
+      };
+
+      expect(zDocitConfig.parse(docitConfig)).toEqual(docitConfig);
+    });
+
     it("should fill everything with default", () => {
       const initialValue = {};
 
@@ -55,19 +82,21 @@ describe("shared/schema", () => {
 
       expect(result).toEqual({
         root: "./",
+        base: "/",
+        outDir: "./docit/build",
         docRoot: "./docs",
-        siteConfig: {
+        site: {
           title: "Docit",
           description: "Site Description",
-          theme: ThemeType.Default,
+          theme: ThemeType.default,
         },
       });
     });
 
     it("should fill optional with default", () => {
-      const initialValue = {
+      const initialValue: DocitConfig = {
         docRoot: "./docs",
-        siteConfig: {
+        site: {
           description: "Site Description",
         },
       };
@@ -76,13 +105,13 @@ describe("shared/schema", () => {
 
       expect(result).toEqual({
         root: "./",
+        base: "/",
+        outDir: "./docit/build",
         docRoot: "./docs",
-        siteConfig: {
-          title: "Docit",
+        site: {
           description: "Site Description",
-          theme: ThemeType.Default,
         },
-      });
+      } as DocitConfig);
     });
 
     it("should throw error when value is incorrect type", () => {
@@ -102,7 +131,7 @@ describe("shared/schema", () => {
           siteConfig: {
             title: "Docit",
             description: "Site Description",
-            theme: ThemeType.Default,
+            theme: ThemeType.default,
           },
         });
       } catch (e) {
