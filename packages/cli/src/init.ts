@@ -5,7 +5,6 @@ import { init as docitInit } from "@blizzbolts/docit-core";
 export const init = async (destination: string) => {
   intro(colors.bold(colors.cyan(`Welcome to Docit!`)));
 
-  // FIXME: if destination has conflict, read package.json for title and description
   const options: ScaffoldOptions = await group(
     {
       root: () =>
