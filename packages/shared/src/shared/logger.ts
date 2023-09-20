@@ -1,5 +1,7 @@
+import type { ConsolaInstance } from "consola";
 import { createConsola } from "consola";
 import { colors } from "consola/utils";
+export type Logger = ConsolaInstance;
 
 export const logger = createConsola({
   fancy: true,
@@ -11,5 +13,6 @@ export const logger = createConsola({
 
 export const cliLogger = logger.withTag("cli");
 export const coreLogger = logger.withTag("core");
+export const validateLogger = logger.withTag("validate");
 
 export { colors };
