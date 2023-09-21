@@ -15,6 +15,8 @@ interface PreflightCache {
     path: string;
   };
   esm: boolean;
+
+  update: typeof preFlight;
 }
 
 const preflightLogger = coreLogger.withTag("preflight");
@@ -35,6 +37,7 @@ export const preFlight = async (cwd = process.cwd()) => {
 
   preflightConfig["tsconfig.json"] = loadTsConfig(cwd);
 
+  preflightConfig.update = () => preFlight(cwd);
   return getPreflightConfig();
 };
 
