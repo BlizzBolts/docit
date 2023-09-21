@@ -8,11 +8,12 @@ export const getUserPackageJson = async (
   cwd: string = process.cwd(),
 ): Promise<PackageJson | undefined> => {
   const userPkgPath = path.resolve(cwd, "./package.json");
+  let content = "";
   try {
-    const content = await fsx.readFile(userPkgPath, { encoding: "utf-8" });
-    return safeParse<PackageJson>(content);
+    content = await fsx.readFile(userPkgPath, { encoding: "utf-8" });
   } catch (e) {
     logger.debug("Failed to get package.json from", userPkgPath);
-    return undefined;
   }
+
+  return safeParse<PackageJson>(content);
 };

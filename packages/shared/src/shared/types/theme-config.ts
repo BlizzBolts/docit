@@ -9,13 +9,17 @@ const zBaseNavItem = z.object({
   path: z.string(),
 });
 
-const zNavItem: z.ZodType<NavItem> = zBaseNavItem.extend({
-  items: z.lazy(() => zNavItem.array()),
-});
+const zNavItem: z.ZodType<NavItem> = zBaseNavItem
+  .extend({
+    items: z.lazy(() => zNavItem.array()),
+  })
+  .strict();
 
-const zThemeConfig = z.object({
-  nav: z.array(zNavItem).optional(),
-});
+const zThemeConfig = z
+  .object({
+    nav: z.array(zNavItem).optional(),
+  })
+  .strict();
 
 export { zThemeConfig };
 export type ThemeConfig = Partial<z.infer<typeof zThemeConfig>>;
