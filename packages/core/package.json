@@ -28,9 +28,17 @@
   "dependencies": {
     "@blizzbolts/docit-shared": "workspace:^",
     "@blizzbolts/vite-plugin-docit": "workspace:^",
+    "load-tsconfig": "^0.2.5",
     "vite": "^4.4.9"
   },
   "devDependencies": {
+    "@types/compression": "^1.7.3",
+    "@types/express": "^4.17.17",
+    "@types/fs-extra": "^11.0.1",
+    "@types/lodash.defaultsdeep": "^4.6.7",
+    "@types/lodash.template": "^4.5.1",
+    "@types/react": "^18.2.17",
+    "@types/react-dom": "^18.2.7",
     "bundle-require": "^4.0.1",
     "compression": "^1.7.4",
     "esbuild": "^0.18.20",
@@ -39,19 +47,10 @@
     "glob": "^10.3.4",
     "lodash.defaultsdeep": "^4.6.1",
     "lodash.template": "^4.5.0",
-    "serve-static": "^1.15.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hydration-provider": "^2.0.0",
     "react-router-dom": "^6.7.0",
-    "@types/react": "^18.2.17",
-    "@types/react-dom": "^18.2.7",
-    "@types/compression": "^1.7.3",
-    "@types/express": "^4.17.17",
-    "@types/fs-extra": "^11.0.1",
-    "@types/lodash.defaultsdeep": "^4.6.7",
-    "@types/lodash.template": "^4.5.1",
-    "@types/serve-static": "^1.15.2",
     "type-fest": "^4.3.1"
   },
   "engines": {

@@ -14,9 +14,7 @@ import fsx from "fs-extra";
 export const defaultScaffoldOptions: ScaffoldOptions = {
   description: "Docit",
   root: "./",
-  theme: ThemeType.default,
   title: "Docit",
-  socials: [],
 };
 
 export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<string> => {

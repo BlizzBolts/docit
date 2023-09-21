@@ -13,6 +13,7 @@ export const getUserPackageJson = async (
     content = await fsx.readFile(userPkgPath, { encoding: "utf-8" });
   } catch (e) {
     logger.debug("Failed to get package.json from", userPkgPath);
+    return undefined;
   }
 
   return safeParse<PackageJson>(content);

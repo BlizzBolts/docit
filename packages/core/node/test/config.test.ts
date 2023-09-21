@@ -1,4 +1,3 @@
-import path from "node:path";
 import { describe, it, vi } from "vitest";
 import fsx from "fs-extra";
 import { coreLogger } from "@blizzbolts/docit-shared";

@@ -1,4 +1,3 @@
-export type { PackageJson } from "type-fest";
 export * from "./docit-config";
 export * from "./scaffold-options";
 export * from "./server-config";
