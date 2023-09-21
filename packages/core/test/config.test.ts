@@ -3,7 +3,7 @@ import fsx from "fs-extra";
 import { coreLogger } from "@blizzbolts/docit-shared";
 import type { TmpDirContext } from "@workspace/test/context/tmp-dir";
 import { setupTmpDir } from "@workspace/test/context/tmp-dir";
-import { findConfigFile, readConfigFromFile } from "../config";
+import { findConfigFile, readConfigFromFile } from "../node/config";
 
 describe.concurrent("config", () => {
   describe.concurrent("readConfigFromFile", async () => {
