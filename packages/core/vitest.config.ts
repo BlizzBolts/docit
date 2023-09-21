@@ -7,6 +7,8 @@ export default defineConfig({
     typecheck: {
       tsconfig: path.resolve("./tsconfig.json"),
     },
-    alias: [{ find: "@", replacement: path.join(path.dirname(import.meta.url), "src") }],
+    alias: [
+      { find: "@workspace", replacement: path.join(path.dirname(import.meta.url), "../../") },
+    ],
   },
 });

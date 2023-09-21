@@ -1,44 +1,30 @@
 import path from "node:path";
 import fsx from "fs-extra";
-import { describe, it, beforeEach, afterEach, expect, vi } from "vitest";
+import { describe, it, vi } from "vitest";
 import type { ScaffoldOptions } from "@blizzbolts/docit-shared";
 import { DEFAULT_DOCIT_CONFIG_FILE_LOCATION, coreLogger } from "@blizzbolts/docit-shared";
+import type { TmpDirContext } from "@workspace/test/context/tmp-dir";
+import { setupTmpDir } from "@workspace/test/context/tmp-dir";
 import { init, defaultScaffoldOptions } from "../../build/node";
 
-interface TmpDir {
-  dir: string;
-}
-
-beforeEach<TmpDir>(async (ctx) => {
-  const tmpPath = path.resolve(process.cwd(), `./${Date.now()}`);
-  await fsx.ensureDir(tmpPath);
-  ctx.dir = tmpPath;
-});
-
-afterEach<TmpDir>(async (ctx) => {
-  await fsx.emptyDir(ctx.dir);
-  await fsx.remove(ctx.dir);
-});
-
-describe("init", () => {
-  it<TmpDir>("should init successfully", async (ctx) => {
+describe.concurrent("init", () => {
+  setupTmpDir();
+  it<TmpDirContext>("should init successfully", async ({ tmp, expect }) => {
     await init({
-      root: ctx.dir,
+      root: tmp.path,
     });
 
     expect(
-      await fsx.readFile(path.resolve(ctx.dir, DEFAULT_DOCIT_CONFIG_FILE_LOCATION)),
+      await fsx.readFile(path.resolve(tmp.path, DEFAULT_DOCIT_CONFIG_FILE_LOCATION)),
     ).toBeTruthy();
-    const mod = await import(path.resolve(ctx.dir, DEFAULT_DOCIT_CONFIG_FILE_LOCATION));
+    const mod = await import(path.resolve(tmp.path, DEFAULT_DOCIT_CONFIG_FILE_LOCATION));
     expect(mod.default.title).toBe(defaultScaffoldOptions.title);
-    expect(mod.default.theme).toBe(defaultScaffoldOptions.theme);
     expect(mod.default.description).toBe(defaultScaffoldOptions.description);
   });
 
-  it<TmpDir>("should init correctly with option set", async (ctx) => {
+  it<TmpDirContext>("should init correctly with option set", async ({ tmp, expect }) => {
     const options: ScaffoldOptions = {
-      root: ctx.dir,
-      theme: "my-custom-theme",
+      root: tmp.path,
       description: "my description",
       title: "my title",
     };
@@ -46,24 +32,23 @@ describe("init", () => {
     await init(options);
 
     expect(
-      await fsx.readFile(path.resolve(ctx.dir, DEFAULT_DOCIT_CONFIG_FILE_LOCATION)),
+      await fsx.readFile(path.resolve(tmp.path, DEFAULT_DOCIT_CONFIG_FILE_LOCATION)),
     ).toBeTruthy();
-    const mod = await import(path.resolve(ctx.dir, DEFAULT_DOCIT_CONFIG_FILE_LOCATION));
+    const mod = await import(path.resolve(tmp.path, DEFAULT_DOCIT_CONFIG_FILE_LOCATION));
 
     expect(mod.default.title).toBe(options.title);
-    expect(mod.default.theme).toBe(options.theme);
     expect(mod.default.description).toBe(options.description);
   });
 
-  it<TmpDir>("should warn about a non-empty folder", async (ctx) => {
+  it<TmpDirContext>("should warn about a non-empty folder", async ({ tmp, expect }) => {
     try {
       const spy = vi.spyOn(coreLogger, "error");
       await fsx.outputFile(
-        path.resolve(ctx.dir, DEFAULT_DOCIT_CONFIG_FILE_LOCATION),
+        path.resolve(tmp.path, DEFAULT_DOCIT_CONFIG_FILE_LOCATION),
         `export default {}`,
       );
       await init({
-        root: ctx.dir,
+        root: tmp.path,
       });
       expect(spy).toBeCalled();
     } catch (e) {
@@ -71,10 +56,10 @@ describe("init", () => {
     }
   });
 
-  it<TmpDir>("should init correctly with option set", async (ctx) => {
-    await fsx.outputFile(path.resolve(ctx.dir, "./package.json"), `{ "type": "module"}`);
-    await init({ root: ctx.dir });
-    const files = fsx.readdirSync(path.resolve(ctx.dir, ".docit"));
+  it<TmpDirContext>("should init correctly with option set", async ({ tmp, expect }) => {
+    await fsx.outputFile(path.resolve(tmp.path, "./package.json"), `{ "type": "module"}`);
+    await init({ root: tmp.path });
+    const files = fsx.readdirSync(path.resolve(tmp.path, ".docit"));
     expect(files).toContain("docit.config.js");
   });
 });
