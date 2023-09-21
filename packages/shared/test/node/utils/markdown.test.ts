@@ -1,9 +1,9 @@
-import { describe, expect, it } from "vitest";
+import { describe, it } from "vitest";
 import { markdownPathToRoutePath } from "@/index";
 
-describe("node/utils", () => {
-  describe("markdownPathToRoutePath", () => {
-    it("parse successfully", async () => {
+describe.concurrent("node/utils", () => {
+  describe.concurrent("markdownPathToRoutePath", () => {
+    it("parse successfully", async ({ expect }) => {
       const paths = [
         "../docs/123123/ggg/ssss.mdx",
         "../../docs/index.md",

@@ -3,8 +3,8 @@ import { ZodError } from "zod";
 import type { SiteConfig } from "@/shared";
 import { zSiteConfig, type DocitConfig, ThemeType, zDocitConfig } from "@/shared";
 
-describe("shared/schema", () => {
-  describe("zod", () => {
+describe.concurrent("shared/types", () => {
+  describe.concurrent("zod", () => {
     it("should generate correcly", async () => {
       const initialValue = {};
 
@@ -18,7 +18,7 @@ describe("shared/schema", () => {
     });
   });
 
-  describe("zSiteConfig", () => {
+  describe.concurrent("zSiteConfig", () => {
     it("should fill the optional value with default", async () => {
       const initialValue = {
         description: "site description",
@@ -46,7 +46,7 @@ describe("shared/schema", () => {
     });
   });
 
-  describe("zDocitConfig", () => {
+  describe.concurrent("zDocitConfig", () => {
     it("full list of docit config", () => {
       const docitConfig: DocitConfig = {
         alias: [{ find: "@", replacement: "src/*" }],

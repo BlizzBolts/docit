@@ -1,30 +1,24 @@
-// import { getUserPackageJson } from "@/node";
 import path from "node:path";
-import { describe, expect, it } from "vitest";
+import { describe, it } from "vitest";
 import fsx from "fs-extra";
+import type { TmpDirContext } from "@workspace/test/context/tmp-dir";
+import { setupTmpDir } from "@workspace/test/context/tmp-dir";
 import { getUserPackageJson } from "@/node";
 
-describe("node/utils/package", () => {
-  describe("getUserPackage", () => {
-    it("read package.json correctly", async () => {
-      const tmpDir = path.resolve(process.cwd(), "./tmp");
-      fsx.ensureDirSync(tmpDir);
-
-      const userPkgPath = path.resolve(tmpDir, "./package.json");
+describe.concurrent("node/utils/package", () => {
+  describe.concurrent("getUserPackage", () => {
+    setupTmpDir();
+    it<TmpDirContext>("read package.json correctly", async ({ tmp, expect }) => {
+      const userPkgPath = path.resolve(tmp.path, "./package.json");
       fsx.outputFileSync(userPkgPath, `{"name": "a package" }`);
 
-      const pkg = await getUserPackageJson(tmpDir);
+      const pkg = await getUserPackageJson(tmp.path);
       expect(pkg!.name).toBe("a package");
-      fsx.removeSync(tmpDir);
     });
 
-    it("should be undefined when has no package.json", async () => {
-      const tmpDir = path.resolve(process.cwd(), "./tmp");
-      fsx.ensureDirSync(tmpDir);
-
-      const pkg = await getUserPackageJson(tmpDir);
+    it<TmpDirContext>("should be undefined when has no package.json", async ({ tmp, expect }) => {
+      const pkg = await getUserPackageJson(tmp.path);
       expect(pkg).toBe(undefined);
-      fsx.removeSync(tmpDir);
     });
   });
 });
