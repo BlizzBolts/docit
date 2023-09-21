@@ -13,11 +13,12 @@ import { glob } from "glob";
 import { preFlight } from "./pre-flight";
 
 export const build = async (root: string) => {
-  await preFlight();
+  await preFlight(root);
   coreLogger.start(colors.cyan(`Start building`));
 
   await buildForSSR(root);
   await generateStatics(root);
+
   coreLogger.ready(
     colors.cyan(
       `Static files generated at ${path.resolve(process.cwd(), "./.docit/build/static")}`,

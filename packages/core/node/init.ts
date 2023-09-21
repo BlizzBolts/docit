@@ -1,7 +1,6 @@
 import path from "node:path";
 import {
   coreLogger,
-  ThemeType,
   type ScaffoldOptions,
   DEFAULT_DOCIT_CONFIG_FILE_LOCATION,
   DEFAULT_CONFIG_FILE_NAME,
@@ -10,6 +9,7 @@ import { getDirname, getUserPackageJson, isWritable } from "@blizzbolts/docit-sh
 import defaultsDeep from "lodash.defaultsdeep";
 import template from "lodash.template";
 import fsx from "fs-extra";
+import { preFlight } from "./pre-flight";
 
 export const defaultScaffoldOptions: ScaffoldOptions = {
   description: "Docit",
@@ -21,9 +21,10 @@ export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<string> =
   const templateDir = path.resolve(getDirname(import.meta.url), "../../template");
   const { root, title, description, theme } = defaultsDeep(scaffoldOptions, defaultScaffoldOptions);
   const destination = path.resolve(root!);
-
   const docitFolder = path.resolve(destination, "./.docit");
   const docsFolder = path.resolve(destination, "./docs");
+
+  await preFlight(destination);
 
   if (!isWritable(docitFolder)) {
     const message = `${docitFolder} is not empty. Please remove the folder or choose another one.`;

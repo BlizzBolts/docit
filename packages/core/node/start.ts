@@ -11,7 +11,7 @@ const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p
 const ENTRY_SERVER = r("./client/entry-server.js");
 
 export const start = async (root: string) => {
-  await preFlight();
+  await preFlight(root);
   const app = express();
 
   const vite = await createViteServer({

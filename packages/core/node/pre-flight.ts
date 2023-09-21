@@ -1,3 +1,4 @@
+import path from "node:path";
 import { coreLogger, getUserPackageJson } from "@blizzbolts/docit-shared/node";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
@@ -19,7 +20,7 @@ interface PreflightCache {
 const preflightLogger = coreLogger.withTag("preflight");
 
 export const preFlight = async (cwd = process.cwd()) => {
-  const pkg = await getUserPackageJson(cwd);
+  const pkg = await getUserPackageJson(path.resolve(cwd));
   if (!pkg) {
     preflightLogger.debug("Failed to read user package.json file");
   }
