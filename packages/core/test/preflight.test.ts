@@ -2,7 +2,7 @@ import { describe, it } from "vitest";
 import type { TmpDirContext } from "@workspace/test/context/tmp-dir";
 import { setupTmpDir } from "@workspace/test/context/tmp-dir";
 import { outputJson } from "fs-extra";
-import { preFlight } from "../pre-flight";
+import { preFlight } from "../node/pre-flight";
 
 describe.concurrent("pre-flight", () => {
   setupTmpDir();
@@ -16,7 +16,7 @@ describe.concurrent("pre-flight", () => {
     expect(config["package.json"]).toEqual({
       type: "module",
     });
-    expect(config.esm).toEqual(true);
+    expect(config.isEsm).toEqual(true);
     expect(config["tsconfig.json"]).toEqual(null);
   });
 
@@ -30,7 +30,7 @@ describe.concurrent("pre-flight", () => {
     const config = await preFlight(tmp.path);
 
     expect(config["package.json"]).toEqual(undefined);
-    expect(config.esm).toEqual(false);
+    expect(config.isEsm).toEqual(false);
     expect(config["tsconfig.json"]?.data).toEqual({
       baseUrl: ".",
       paths: {

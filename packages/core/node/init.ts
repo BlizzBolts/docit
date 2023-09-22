@@ -18,6 +18,8 @@ export const defaultScaffoldOptions: ScaffoldOptions = {
 };
 
 export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<string> => {
+  // zScaffoldOptions.parse(scaffoldOptions);
+  // FIXME:
   const templateDir = path.resolve(getDirname(import.meta.url), "../../template");
   const { root, title, description, theme } = defaultsDeep(scaffoldOptions, defaultScaffoldOptions);
   const destination = path.resolve(root!);

@@ -5,30 +5,30 @@ import { coreLogger, getUserPackageJson } from "@blizzbolts/docit-shared/node";
 import { loadTsConfig } from "load-tsconfig";
 import type { TsConfigJson, PackageJson } from "type-fest";
 
-const preflightConfig: Partial<PreflightCache> = {};
+let preflightConfig: PreflightCache = {} as PreflightCache;
 
-interface PreflightCache {
+export interface PreflightCache {
   "package.json": PackageJson;
   "tsconfig.json": {
     data: TsConfigJson;
     files: string[];
     path: string;
   };
-  esm: boolean;
+  isEsm: boolean;
 
   update: typeof preFlight;
 }
 
 const preflightLogger = coreLogger.withTag("preflight");
 
-export const preFlight = async (cwd = process.cwd()) => {
+export const preFlight = async (cwd = process.cwd()): Promise<PreflightCache> => {
   const pkg = await getUserPackageJson(path.resolve(cwd));
   if (!pkg) {
     preflightLogger.debug("Failed to read user package.json file");
   }
 
-  preflightConfig["package.json"] = pkg;
-  preflightConfig.esm = pkg?.type === "module";
+  preflightConfig["package.json"] = pkg!;
+  preflightConfig.isEsm = pkg?.type === "module";
   const tsconfig = loadTsConfig(cwd);
 
   if (!tsconfig) {
@@ -38,9 +38,16 @@ export const preFlight = async (cwd = process.cwd()) => {
   preflightConfig["tsconfig.json"] = loadTsConfig(cwd);
 
   preflightConfig.update = () => preFlight(cwd);
-  return getPreflightConfig();
+  return preflightConfig;
 };
 
-export const getPreflightConfig = () => {
+export const getPreflightConfig = async (cwd = process.cwd()): Promise<PreflightCache> => {
+  if (Object.keys(preflightConfig).length === 0) {
+    return await preFlight(cwd);
+  }
   return preflightConfig;
+};
+
+export const resetPreflightConfig = () => {
+  preflightConfig = {} as PreflightCache;
 };

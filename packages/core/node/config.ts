@@ -1,19 +1,26 @@
 import path from "node:path";
 import { glob } from "glob";
 import { bundleRequire } from "bundle-require";
-import { coreLogger, isZodError, zDocitConfig, zPrintErr } from "@blizzbolts/docit-shared";
+import type { DocitConfig } from "@blizzbolts/docit-shared";
+import { coreLogger, zDocitConfig, zPrintErr } from "@blizzbolts/docit-shared";
 
 export interface ConfigFromFile {}
 
-const readConfig = async () => {
-  const configFromFile = await readConfigFromFile();
+const readConfig = async () => {};
 
-  return configFromFile;
-};
+export const findConfigFile = async (
+  cwd: string = process.cwd(),
+  options?: {
+    isEsm?: boolean;
+  },
+): Promise<string | null> => {
+  const globString = options?.isEsm
+    ? "./.docit/docit.config.{js,cjs,ts}"
+    : "./.docit/docit.config.{mjs,js,ts}";
 
-export const findConfigFile = async (cwd: string = process.cwd()): Promise<string | null> => {
-  const matches = await glob("./.docit/docit.config.{js,mjs,cjs,ts,mts,cts}", {
+  const matches = await glob(globString, {
     cwd,
+    nodir: true,
   });
   if (matches.length === 0) {
     return null;
@@ -22,9 +29,14 @@ export const findConfigFile = async (cwd: string = process.cwd()): Promise<strin
   }
 };
 
-export const readConfigFromFile = async (cwd: string = process.cwd()) => {
-  const configFile = await findConfigFile(cwd);
-
+export const readConfigFromFile = async (
+  cwd: string = process.cwd(),
+  options?: {
+    isEsm?: boolean;
+  },
+): Promise<DocitConfig> => {
+  const configFile = await findConfigFile(cwd, options);
+  coreLogger.info("Locate docit.config file at", configFile);
   if (!configFile) {
     return {};
   }
@@ -32,12 +44,14 @@ export const readConfigFromFile = async (cwd: string = process.cwd()) => {
   try {
     const { mod } = await bundleRequire({
       cwd,
-      filepath: configFile,
+      filepath: path.resolve(cwd, "./", configFile),
       getOutputFile: (filePath) => {
         return path.resolve(cwd, filePath);
       },
+      tsconfig: "./tsconfig.json",
     });
-    return zDocitConfig.parse(mod.default);
+    // I mean ... it works in both .cjs and .mjs situations
+    return zDocitConfig.parse(mod.default ? mod.default : mod);
   } catch (e) {
     coreLogger.warn(`Failed to load config at ${configFile}, resolved as default\n`, e);
     zPrintErr(e);
