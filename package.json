@@ -21,9 +21,7 @@
     "lint": "eslint packages/*/**/*.{ts,tsx} --fix",
     "format": "prettier packages/*/src/**/* -w",
     "test": "vitest",
-    "test-ui": "run-p vitest-ui coverage-ui",
-    "vitest-ui": "vitest --ui --coverage.enabled=true --coverage.provider=v8 --coverage.clean",
-    "coverage-ui": "serve coverage"
+    "test-ui": "vitest --ui --coverage.enabled=true --coverage.provider=v8 --coverage.clean"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",
