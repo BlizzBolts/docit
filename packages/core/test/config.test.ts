@@ -168,48 +168,48 @@ describe.concurrent("readConfigFromFile", async () => {
         });
       });
 
-      // it<TmpDirContext>("parse ts", async ({ tmp, r, expect, preflight }) => {
-      //   // FIXME:
-      //   // await fsx.outputJson(r("./tsconfig.json"), {
-      //   //   compilerOptions: {
-      //   //     module: "ESNext",
-      //   //     target: "ESNext",
-      //   //     moduleResolution: "Node",
-      //   //     resolveJsonModule: true,
-      //   //     esModuleInterop: true,
-      //   //     // stricts
-      //   //     strict: true,
-      //   //     strictNullChecks: true,
-      //   //     skipLibCheck: true,
-      //   //   },
-      //   // });
-      //   await fsx.outputFile(
-      //     r(".docit/docit.config.ts"),
-      //     `module.exports = {
-      //       "base": "/",
-      //       "docRoot": "./docs",
-      //       "outDir": "./docit/build",
-      //       "root": "./",
-      //       "site": {
-      //         "description": "Site Description",
-      //         "theme": "default",
-      //         "title": "Vitest",
-      //       },
-      //     }`,
-      //   );
-      //   const config = await readConfigFromFile(tmp.path, { isEsm: preflight.isEsm });
-      //   expect(config).toEqual({
-      //     base: "/",
-      //     docRoot: "./docs",
-      //     outDir: "./docit/build",
-      //     root: "./",
-      //     site: {
-      //       description: "Site Description",
-      //       theme: "default",
-      //       title: "Vitest",
-      //     },
-      //   });
-      // });
+      it.todo<TmpDirContext>("parse ts", async ({ tmp, r, expect, preflight }) => {
+        // FIXME:
+        // await fsx.outputJson(r("./tsconfig.json"), {
+        //   compilerOptions: {
+        //     module: "ESNext",
+        //     target: "ESNext",
+        //     moduleResolution: "Node",
+        //     resolveJsonModule: true,
+        //     esModuleInterop: true,
+        //     // stricts
+        //     strict: true,
+        //     strictNullChecks: true,
+        //     skipLibCheck: true,
+        //   },
+        // });
+        await fsx.outputFile(
+          r(".docit/docit.config.ts"),
+          `module.exports = {
+            "base": "/",
+            "docRoot": "./docs",
+            "outDir": "./docit/build",
+            "root": "./",
+            "site": {
+              "description": "Site Description",
+              "theme": "default",
+              "title": "Vitest",
+            },
+          }`,
+        );
+        const config = await readConfigFromFile(tmp.path, { isEsm: preflight.isEsm });
+        expect(config).toEqual({
+          base: "/",
+          docRoot: "./docs",
+          outDir: "./docit/build",
+          root: "./",
+          site: {
+            description: "Site Description",
+            theme: "default",
+            title: "Vitest",
+          },
+        });
+      });
     });
   });
 });
