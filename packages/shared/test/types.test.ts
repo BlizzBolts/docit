@@ -8,6 +8,8 @@ import {
   zDocitConfig,
   defineConfig,
   defineSiteConfig,
+  defineScaffoldOptions,
+  zScaffoldOptions,
 } from "@/shared";
 
 describe.concurrent("zSiteConfig", () => {
@@ -140,5 +142,11 @@ describe.concurrent("zDocitConfig", () => {
         expect(e.issues[0].code).toEqual("invalid_type");
       }
     }
+  });
+});
+
+describe.concurrent("zScaffoldOptions", () => {
+  it("should defineScaffoldOptions", () => {
+    expect(defineScaffoldOptions({})).toEqual(zScaffoldOptions.parse({}));
   });
 });
