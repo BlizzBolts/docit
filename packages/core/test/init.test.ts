@@ -5,7 +5,7 @@ import type { ScaffoldOptions } from "@blizzbolts/docit-shared";
 import { DEFAULT_DOCIT_CONFIG_FILE_LOCATION, coreLogger } from "@blizzbolts/docit-shared";
 import type { TmpDirContext } from "@workspace/test/context/tmp-dir";
 import { setupTmpDir } from "@workspace/test/context/tmp-dir";
-import { init, defaultScaffoldOptions } from "../node";
+import { init, defaultScaffoldOptions } from "../dist/node";
 
 describe.concurrent("init", () => {
   setupTmpDir();
