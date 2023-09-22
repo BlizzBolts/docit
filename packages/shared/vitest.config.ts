@@ -11,6 +11,7 @@ export default defineConfig({
     coverage: {
       include: ["src/**"],
       exclude: ["build/**", "node_modules/**"],
+      reportsDirectory: "./coverage",
     },
   },
   plugins: [tsconfigPaths()],

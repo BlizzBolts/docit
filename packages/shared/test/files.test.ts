@@ -1,7 +1,7 @@
 import { describe, it } from "vitest";
 import fsx from "fs-extra";
-import type { TmpDirContext } from "../../../../../test/context/tmp-dir";
-import { setupTmpDir } from "../../../../../test/context/tmp-dir";
+import type { TmpDirContext } from "@workspace/test/context/tmp-dir";
+import { setupTmpDir } from "@workspace/test/context/tmp-dir";
 import { isWritable } from "@/node";
 
 describe("node/utils/files", () => {

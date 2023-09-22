@@ -33,7 +33,8 @@
     "dev": "npm run build -- --sourcemap --watch",
     "build": "tsup",
     "prepublishOnly": "npm run build",
-    "test": "CONSOLA_LEVEL=4 vitest"
+    "test": "CONSOLA_LEVEL=4 vitest",
+    "coverage": "vitest run --coverage && serve ./coverage"
   },
   "keywords": [],
   "author": "",
