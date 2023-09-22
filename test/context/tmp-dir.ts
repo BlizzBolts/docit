@@ -4,8 +4,8 @@ import type { TestContext } from "vitest";
 import { beforeEach, afterEach } from "vitest";
 import { dir } from "tmp-promise";
 import fsx from "fs-extra";
-import type { PreflightCache } from "node/pre-flight";
-import { preFlight, resetPreflightConfig } from "node/pre-flight";
+import type { PreflightCache } from "../../packages/core/node/pre-flight";
+import { preFlight, resetPreflightConfig } from "../../packages/core/node/pre-flight";
 
 export interface TmpDirContext {
   tmp: DirectoryResult;
