@@ -6,7 +6,7 @@ export default defineConfig({
   dts: true,
   splitting: false,
   shims: true,
-  outDir: "build/node",
+  outDir: "dist/node",
   format: ["cjs", "esm"],
   banner: ({ format }) => {
     if (format === "esm") {
@@ -22,7 +22,7 @@ export default defineConfig({
     process.env.NODE_ENV === "development" && [
       "./node",
       "./client",
-      "../shared/build",
-      "../plugin-docit/build",
+      "../shared/dist",
+      "../plugin-docit/dist",
     ],
 });

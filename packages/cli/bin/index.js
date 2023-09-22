@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 function start() {
-  import("../build/index.js");
+  import("../dist/index.js");
 }
 
 start();

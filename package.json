@@ -12,7 +12,7 @@
     "app": "docit-cli start",
     "build": "pnpm run clean && pnpm -r run build",
     "dev": "pnpm run build && run-p -l -n -c dev:*",
-    "clean": "rimraf -g ./packages/*/build",
+    "clean": "rimraf -g ./packages/*/dist",
     "dev:shared": "pnpm --filter @blizzbolts/docit-shared dev",
     "dev:core": "pnpm --filter @blizzbolts/docit-core dev",
     "dev:app": "pnpm --filter docit-app dev",

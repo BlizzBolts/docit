@@ -10,7 +10,7 @@ export default defineConfig({
     },
     coverage: {
       include: ["src/**"],
-      exclude: ["build/**", "node_modules/**"],
+      exclude: ["dist/**", "node_modules/**"],
       reporter: [["html", { subdir: "./coverage" }]],
       reportsDirectory: "./coverage",
     },

@@ -2,30 +2,30 @@
   "name": "@blizzbolts/docit-shared",
   "version": "1.0.0",
   "description": "",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
-      "require": "./build/index.cjs",
-      "import": "./build/index.js"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
     },
     "./node": {
-      "require": "./build/index.node.cjs",
-      "import": "./build/index.node.js"
+      "require": "./dist/index.node.cjs",
+      "import": "./dist/index.node.js"
     },
     "./client": {
-      "require": "./build/index.client.cjs",
-      "import": "./build/index.client.js"
+      "require": "./dist/index.client.cjs",
+      "import": "./dist/index.client.js"
     }
   },
   "typesVersions": {
     "*": {
       "node": [
-        "./build/index.node.d.ts"
+        "./dist/index.node.d.ts"
       ],
       "client": [
-        "./build/index.client.d.ts"
+        "./dist/index.client.d.ts"
       ]
     }
   },
@@ -63,7 +63,7 @@
     "dts": true,
     "splitting": false,
     "shims": true,
-    "outDir": "build",
+    "outDir": "dist",
     "format": [
       "cjs",
       "esm"

@@ -3,16 +3,16 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "./build/index.js",
-  "types": "./build/index.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./build/index.js",
-      "default": "./build/index.cjs"
+      "import": "./dist/index.js",
+      "default": "./dist/index.cjs"
     }
   },
   "scripts": {
-    "dev": "npm run build -- --sourcemap --watch ./src --watch ../shared/build",
+    "dev": "npm run dist -- --sourcemap --watch ./src --watch ../shared/dist",
     "build": "tsup",
     "prepublishOnly": "npm run build"
   },
@@ -26,7 +26,7 @@
     "dts": true,
     "splitting": false,
     "shims": true,
-    "outDir": "build",
+    "outDir": "dist",
     "format": [
       "cjs",
       "esm"

@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "description": "",
   "type": "module",
-  "main": "./build/node/index.js",
-  "types": "./build/node/index.d.ts",
+  "main": "./dist/node/index.js",
+  "types": "./dist/node/index.d.ts",
   "exports": {
     ".": {
-      "import": "./build/node/index.js",
-      "default": "./build/node/index.cjs"
+      "import": "./dist/node/index.js",
+      "default": "./dist/node/index.cjs"
     }
   },
   "scripts": {
@@ -17,8 +17,8 @@
     "dev:node": "NODE_ENV=development tsup",
     "build": "run-s build:* copy:*",
     "build:node": "NODE_ENV=production tsup",
-    "build:client": "tsc -p ./client/tsconfig.json --outDir ./build/client",
-    "copy:entry": "cp client/index.html build/client/index.html",
+    "build:client": "tsc -p ./client/tsconfig.json --outDir ./dist/client",
+    "copy:entry": "cp client/index.html dist/client/index.html",
     "prepublishOnly": "npm run build",
     "test": "CONSOLA_LEVEL=4 vitest"
   },
