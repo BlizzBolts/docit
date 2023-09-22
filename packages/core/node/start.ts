@@ -5,13 +5,13 @@ import { createServer as createViteServer } from "vite";
 import { coreLogger } from "@blizzbolts/docit-shared";
 import { getDirname } from "@blizzbolts/docit-shared/node";
 import fsx from "fs-extra";
-import { preFlight } from "./pre-flight";
+import { preflight } from "./preflight";
 
 const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
 const ENTRY_SERVER = r("./client/entry-server.js");
 
 export const start = async (root: string) => {
-  await preFlight(root);
+  await preflight(root);
   const app = express();
 
   const vite = await createViteServer({

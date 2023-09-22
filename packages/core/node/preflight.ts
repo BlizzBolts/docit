@@ -16,12 +16,12 @@ export interface PreflightCache {
   };
   isEsm: boolean;
 
-  update: typeof preFlight;
+  update: typeof preflight;
 }
 
-const preflightLogger = coreLogger.withTag("preflight");
+export const preflightLogger = coreLogger.withTag("preflight");
 
-export const preFlight = async (cwd = process.cwd()): Promise<PreflightCache> => {
+export const preflight = async (cwd = process.cwd()): Promise<PreflightCache> => {
   const pkg = await getUserPackageJson(path.resolve(cwd));
   if (!pkg) {
     preflightLogger.debug("Failed to read user package.json file");
@@ -37,17 +37,17 @@ export const preFlight = async (cwd = process.cwd()): Promise<PreflightCache> =>
 
   preflightConfig["tsconfig.json"] = loadTsConfig(cwd);
 
-  preflightConfig.update = () => preFlight(cwd);
+  preflightConfig.update = () => preflight(cwd);
   return preflightConfig;
 };
 
 export const getPreflightConfig = async (cwd = process.cwd()): Promise<PreflightCache> => {
   if (Object.keys(preflightConfig).length === 0) {
-    return await preFlight(cwd);
+    return await preflight(cwd);
   }
   return preflightConfig;
 };
 
-export const resetPreflightConfig = () => {
+export const resetpreflightConfig = () => {
   preflightConfig = {} as PreflightCache;
 };

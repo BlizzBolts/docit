@@ -10,10 +10,10 @@ import type { InlineConfig } from "vite";
 import { build as viteBuild } from "vite";
 import { createDocitPlugin } from "@blizzbolts/vite-plugin-docit";
 import { glob } from "glob";
-import { preFlight } from "./pre-flight";
+import { preflight } from "./preflight";
 
 export const build = async (root: string) => {
-  await preFlight(root);
+  await preflight(root);
   coreLogger.start(colors.cyan(`Start building`));
 
   await buildForSSR(root);

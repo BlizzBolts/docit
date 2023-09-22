@@ -1,11 +1,11 @@
 import path from "node:path";
 import type { DirectoryResult } from "tmp-promise";
 import type { TestContext } from "vitest";
-import { beforeEach, afterEach } from "vitest";
+import { beforeEach, afterEach, vi } from "vitest";
 import { dir } from "tmp-promise";
 import fsx from "fs-extra";
-import type { PreflightCache } from "../../packages/core/node/pre-flight";
-import { preFlight, resetPreflightConfig } from "../../packages/core/node/pre-flight";
+import type { PreflightCache } from "../../packages/core/node/preflight";
+import { preflight, resetpreflightConfig } from "../../packages/core/node/preflight";
 
 export interface TmpDirContext {
   tmp: DirectoryResult;
@@ -24,7 +24,7 @@ export const setupTmpDir = (options?: {
     context.r = (p: string) => path.resolve(result.path, p);
     await options?.before?.(context);
     if (options?.preflight) {
-      context.preflight = await preFlight(result.path);
+      context.preflight = await preflight(result.path);
     }
   });
 
@@ -34,7 +34,7 @@ export const setupTmpDir = (options?: {
     context.r = () => "";
     await options?.after?.(context);
     if (options?.preflight) {
-      resetPreflightConfig();
+      resetpreflightConfig();
     }
   });
 };

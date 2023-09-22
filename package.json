@@ -21,7 +21,7 @@
     "lint": "eslint packages/*/**/*.{ts,tsx} --fix",
     "format": "prettier packages/*/src/**/* -w",
     "test": "vitest",
-    "test-ui": "vitest --ui --coverage.enabled=true --coverage.provider=v8"
+    "test-ui": "vitest --ui --coverage.enabled=true --coverage.provider=istanbul"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org",

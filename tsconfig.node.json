@@ -9,5 +9,6 @@
     "strict": true,
     "strictNullChecks": true,
     "skipLibCheck": true,
+    "noImplicitAny": true,
   },
 }
