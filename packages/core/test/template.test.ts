@@ -21,7 +21,7 @@ describe.concurrent("make correct template file", () => {
     expect({
       base: "/",
       docRoot: "./docs",
-      outDir: "./docit/build",
+      outDir: "./docs/dist",
       root: "./",
       site: {},
     }).toEqual(readConfig);

@@ -1,9 +1,9 @@
 import path from "node:path";
-import { coreLogger, getUserPackageJson } from "@blizzbolts/docit-shared/node";
+import { preflightLogger, getUserPackageJson } from "@blizzbolts/docit-shared/node";
+import type { TsConfigJson, PackageJson } from "type-fest";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import { loadTsConfig } from "load-tsconfig";
-import type { TsConfigJson, PackageJson } from "type-fest";
 
 let preflightConfig: PreflightCache = {} as PreflightCache;
 
@@ -18,8 +18,6 @@ export interface PreflightCache {
 
   update: typeof preflight;
 }
-
-export const preflightLogger = coreLogger.withTag("preflight");
 
 export const preflight = async (cwd = process.cwd()): Promise<PreflightCache> => {
   const pkg = await getUserPackageJson(path.resolve(cwd));
