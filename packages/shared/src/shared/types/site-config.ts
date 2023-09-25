@@ -33,7 +33,7 @@ const zSiteConfig = z
   .strict();
 
 export { zSiteConfig, SocialEnum, ThemeType };
-export type SiteConfig = Partial<z.infer<typeof zSiteConfig>>;
+export type SiteConfig = z.input<typeof zSiteConfig>;
 export const defineSiteConfig = (config: SiteConfig): SiteConfig => {
   return zSiteConfig.parse(config);
 };

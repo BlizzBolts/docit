@@ -4,11 +4,12 @@ import { zSiteConfig } from "./site-config";
 
 const zScaffoldOptions = zSiteConfig
   .pick({ title: true, description: true })
-  .merge(zDocitConfig.pick({ root: true }))
   .partial()
+  .merge(zDocitConfig.pick({ root: true }).required())
   .strict();
 
 export { zScaffoldOptions };
+
 export type ScaffoldOptions = z.infer<typeof zScaffoldOptions>;
 export const defineScaffoldOptions = (config: ScaffoldOptions): ScaffoldOptions => {
   return zScaffoldOptions.parse(config);

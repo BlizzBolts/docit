@@ -13,7 +13,7 @@ const zServerConfig = z
   .strict();
 
 export { zServerConfig };
-export type ServerConfig = Partial<z.infer<typeof zServerConfig>>;
+export type ServerConfig = z.input<typeof zServerConfig>;
 export const defineDocitServerConfig = (config: ServerConfig): ServerConfig => {
   return zServerConfig.parse(config);
 };

@@ -8,7 +8,7 @@ const zDocitConfig = z
   .object({
     root: z.string().default("./"),
     docRoot: z.string().default("./docs"),
-    outDir: z.string().default("./docit/build"),
+    outDir: z.string().default("./docs/dist"),
     base: z.string().default("/"),
     site: zSiteConfig.partial().default(zSiteConfig.parse({})),
     alias: z.any().optional() as z.ZodOptional<z.ZodType<AliasOptions>>,
@@ -19,7 +19,7 @@ const zDocitConfig = z
   .strip();
 
 export { zDocitConfig };
-export type DocitConfig = Partial<z.infer<typeof zDocitConfig>>;
+export type DocitConfig = z.input<typeof zDocitConfig>;
 export const defineConfig = (config: DocitConfig): DocitConfig => {
   return zDocitConfig.parse(config);
 };

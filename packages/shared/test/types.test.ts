@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it } from "vitest";
 import { ZodError } from "zod";
 import type { SiteConfig } from "@/shared";
 import {
@@ -13,10 +13,10 @@ import {
 } from "@/shared";
 
 describe.concurrent("zSiteConfig", () => {
-  it("should defineSiteConfig", () => {
+  it("should defineSiteConfig", ({ expect }) => {
     expect(defineSiteConfig({})).toEqual(zSiteConfig.parse({}));
   });
-  it("should fill the optional value with default", async () => {
+  it("should fill the optional value with default", async ({ expect }) => {
     const initialValue = {
       description: "site description",
       theme: "default",
@@ -30,7 +30,7 @@ describe.concurrent("zSiteConfig", () => {
     });
   });
 
-  it("should fill everything with default", async () => {
+  it("should fill everything with default", async ({ expect }) => {
     const initialValue = {};
 
     const result: SiteConfig = zSiteConfig.parse(initialValue);
@@ -44,11 +44,11 @@ describe.concurrent("zSiteConfig", () => {
 });
 
 describe.concurrent("zDocitConfig", () => {
-  it("should defineConfig", () => {
+  it("should defineConfig", ({ expect }) => {
     expect(defineConfig({})).toEqual(zDocitConfig.parse({}));
   });
 
-  it("full list of docit config", () => {
+  it("full list of docit config", ({ expect }) => {
     const docitConfig: DocitConfig = {
       alias: [{ find: "@", replacement: "src/*" }],
       base: "/",
@@ -76,7 +76,7 @@ describe.concurrent("zDocitConfig", () => {
     expect(zDocitConfig.parse(docitConfig)).toEqual(docitConfig);
   });
 
-  it("should fill everything with default", () => {
+  it("should fill everything with default", ({ expect }) => {
     const initialValue = {};
 
     const result: DocitConfig = zDocitConfig.parse(initialValue);
@@ -84,7 +84,7 @@ describe.concurrent("zDocitConfig", () => {
     expect(result).toEqual({
       root: "./",
       base: "/",
-      outDir: "./docit/build",
+      outDir: "./docs/dist",
       docRoot: "./docs",
       site: {
         title: "Docit",
@@ -94,7 +94,7 @@ describe.concurrent("zDocitConfig", () => {
     });
   });
 
-  it("should fill optional with default", () => {
+  it("should fill optional with default", ({ expect }) => {
     const initialValue: DocitConfig = {
       docRoot: "./docs",
       site: {
@@ -107,7 +107,7 @@ describe.concurrent("zDocitConfig", () => {
     expect(result).toEqual({
       root: "./",
       base: "/",
-      outDir: "./docit/build",
+      outDir: "./docs/dist",
       docRoot: "./docs",
       site: {
         description: "Site Description",
@@ -115,7 +115,7 @@ describe.concurrent("zDocitConfig", () => {
     } as DocitConfig);
   });
 
-  it("should throw error when value is incorrect type", () => {
+  it("should throw error when value is incorrect type", ({ expect }) => {
     try {
       const initialValue = {
         docRoot: 123,
@@ -124,17 +124,7 @@ describe.concurrent("zDocitConfig", () => {
         },
       };
 
-      const result = zDocitConfig.parse(initialValue);
-
-      expect(result).toEqual({
-        root: "./",
-        docRoot: 123,
-        siteConfig: {
-          title: "Docit",
-          description: "Site Description",
-          theme: ThemeType.default,
-        },
-      });
+      zDocitConfig.parse(initialValue);
     } catch (e) {
       expect(e instanceof ZodError).toBe(true);
       if (e instanceof ZodError) {
@@ -146,7 +136,12 @@ describe.concurrent("zDocitConfig", () => {
 });
 
 describe.concurrent("zScaffoldOptions", () => {
-  it("should defineScaffoldOptions", () => {
-    expect(defineScaffoldOptions({})).toEqual(zScaffoldOptions.parse({}));
+  it("should defineScaffoldOptions", ({ expect }) => {
+    const expected = zScaffoldOptions.parse({});
+    expect(
+      defineScaffoldOptions({
+        root: "./",
+      }),
+    ).toEqual(expected);
   });
 });

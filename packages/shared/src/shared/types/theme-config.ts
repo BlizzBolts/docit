@@ -22,7 +22,7 @@ const zThemeConfig = z
   .strict();
 
 export { zThemeConfig };
-export type ThemeConfig = Partial<z.infer<typeof zThemeConfig>>;
+export type ThemeConfig = z.infer<typeof zThemeConfig>;
 export const defineThemeConfig = (config: ThemeConfig): ThemeConfig => {
   return zThemeConfig.parse(config);
 };
