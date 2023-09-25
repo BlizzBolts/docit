@@ -1,5 +1,5 @@
-import { type ScaffoldOptions, colors, ThemeType } from "@blizzbolts/docit-shared";
-import { intro, outro, group, text, select, cancel } from "@clack/prompts";
+import { type ScaffoldOptions, colors } from "@blizzbolts/docit-shared";
+import { intro, outro, group, text, cancel } from "@clack/prompts";
 import { init as docitInit } from "@blizzbolts/docit-core";
 
 export const init = async (destination: string) => {
@@ -28,18 +28,19 @@ export const init = async (destination: string) => {
           defaultValue: "Docit",
         }),
 
-      theme: () =>
-        select({
-          message: "Theme:",
-          options: [
-            {
-              label: "Default Theme",
-              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-              // @ts-ignore
-              value: ThemeType.Default,
-            },
-          ],
-        }),
+      // FIXME: implement later
+      // theme: () =>
+      //   select({
+      //     message: "Theme:",
+      //     options: [
+      //       {
+      //         label: "Default Theme",
+      //         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      //         // @ts-ignore
+      //         value: ThemeType.default,
+      //       },
+      //     ],
+      //   }),
     },
     {
       onCancel: () => {

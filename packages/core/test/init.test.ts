@@ -11,12 +11,14 @@ describe.concurrent("init", () => {
 
   it<TmpDirContext>("should init successfully", async ({ r, expect, maker }) => {
     await maker.makePackageJson({ type: "module", name: "my-package" });
-    await init({
+
+    const result = await init({
       root: r(),
       title: "My Blog Title",
       description: "My description title",
     });
 
+    expect(result).toBe(true);
     const config = await readConfigFromFile(r());
     expect(config.site?.title).toBe("My Blog Title");
     expect(config.site?.description).toBe("My description title");
