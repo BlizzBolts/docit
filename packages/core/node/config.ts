@@ -14,9 +14,7 @@ export const findConfigFile = async (
     isEsm?: boolean;
   },
 ): Promise<string | null> => {
-  const globString = options?.isEsm
-    ? "./.docit/docit.config.{js,cjs,ts}"
-    : "./.docit/docit.config.{mjs,js,ts}";
+  const globString = options?.isEsm ? "./docit.config.{js,cjs,ts}" : "./docit.config.{mjs,js,ts}";
 
   const matches = await glob(globString, {
     cwd,
