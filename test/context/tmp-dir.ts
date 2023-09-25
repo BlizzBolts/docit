@@ -4,13 +4,18 @@ import type { TestContext } from "vitest";
 import { beforeEach, afterEach, vi } from "vitest";
 import { dir } from "tmp-promise";
 import fsx from "fs-extra";
+import type { PackageJson, TsConfigJson } from "type-fest";
 import type { PreflightCache } from "../../packages/core/node/preflight";
 import { preflight, resetpreflightConfig } from "../../packages/core/node/preflight";
 
 export interface TmpDirContext {
   tmp: DirectoryResult;
-  r: (p: string) => string;
+  r: (p?: string) => string;
   preflight: PreflightCache;
+  maker: {
+    makePackageJson: (options: PackageJson) => Promise<void>;
+    makeTsConfig: (options: TsConfigJson) => Promise<void>;
+  };
 }
 
 export const setupTmpDir = (options?: {
@@ -21,7 +26,24 @@ export const setupTmpDir = (options?: {
   beforeEach<TmpDirContext>(async (context) => {
     const result = await dir();
     context.tmp = result;
-    context.r = (p: string) => path.resolve(result.path, p);
+    context.r = (p?: string) => (p ? path.resolve(result.path, p) : result.path);
+    context.maker = {} as TmpDirContext["maker"];
+    context.maker.makePackageJson = async (options) => {
+      const filename = context.r("./package.json");
+      await fsx.outputJSON(filename, options);
+    };
+    context.maker.makeTsConfig = async (
+      options: TsConfigJson = {
+        compilerOptions: {
+          module: "ESNext",
+          target: "ESNext",
+          moduleResolution: "Node",
+        },
+      },
+    ) => {
+      const filename = context.r("./tsconfig.json");
+      await fsx.outputJSON(filename, options);
+    };
     await options?.before?.(context);
     if (options?.preflight) {
       context.preflight = await preflight(result.path);
