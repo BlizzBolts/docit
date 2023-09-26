@@ -9,7 +9,7 @@ program.name("docit-cli").description("CLI for docit").version(pkg.version, "-v,
 
 const configOption = program
   .createOption("-c, --config <config>", "specify config file location")
-  .default("./docs/.docit/docit.config.js");
+  .default("./docit.config.js");
 
 program
   .command("start [source]")

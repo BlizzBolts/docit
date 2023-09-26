@@ -36,9 +36,6 @@ export const readConfigFromFile = async (
   if (!isValidFile) {
     return null;
   }
-
-  coreLogger.info("Locate docit.config file at", configFile);
-
   try {
     const { mod } = await bundleRequire({
       filepath: path.resolve(cwd, "./", configFile),

@@ -17,7 +17,7 @@ import { dts } from "rollup-plugin-dts";
 const pkg = JSON.parse(
   fs.readFileSync(path.resolve(process.cwd(), "./package.json"), {
     encoding: "utf-8",
-  })
+  }),
 );
 
 const isDev = process.env.NODE_ENV === "development";
@@ -47,7 +47,7 @@ const plugins = [
   swc(
     defineRollupSwcOption({
       tsconfig: "./tsconfig.json",
-    })
+    }),
   ),
   external({
     includeDependencies: true,
@@ -56,7 +56,7 @@ const plugins = [
   postcss({
     plugins: [panda(), cascade()],
     minimize: true,
-    extract: "index.css",
+    inject: true,
   }),
 ];
 

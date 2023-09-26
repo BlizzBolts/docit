@@ -1,5 +1,7 @@
+import path from "node:path";
+
 export default {
-  root: "./",
+  root: path.resolve("./"),
   docRoot: "./docs",
   outDir: "./docs/dist",
   base: "/",

@@ -3,7 +3,7 @@ import { createDocitPlugin } from "@blizzbolts/vite-plugin-docit";
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import { colors, coreLogger } from "@blizzbolts/docit-shared";
-import { getDirname } from "@blizzbolts/docit-shared/node";
+import { getDirname, resolveConfig } from "@blizzbolts/docit-shared/node";
 import fsx from "fs-extra";
 import getPort from "get-port";
 import { preflight } from "./preflight";
@@ -11,8 +11,10 @@ import { preflight } from "./preflight";
 const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
 const ENTRY_SERVER = r("./client/entry-server.js");
 
-export const start = async (root: string) => {
-  await preflight(root);
+export const start = async (cwd: string) => {
+  await preflight(cwd);
+
+  const config = await resolveConfig(path.resolve(cwd));
 
   const app = express();
 
@@ -27,11 +29,11 @@ export const start = async (root: string) => {
     },
     resolve: {
       alias: {
-        "doc-root": path.resolve(process.cwd(), "./", root),
+        "doc-root": path.resolve(process.cwd(), "./", config.docRoot),
       },
     },
     appType: "custom",
-    plugins: [createDocitPlugin()],
+    plugins: [await createDocitPlugin(cwd)],
   });
 
   app.use(vite.middlewares);

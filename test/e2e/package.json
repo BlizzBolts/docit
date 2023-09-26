@@ -1,5 +1,6 @@
 {
   "name": "my-package",
+  "type": "module",
   "scripts": {
     "init": "docit-cli init",
     "site:dev": "docit-cli start",

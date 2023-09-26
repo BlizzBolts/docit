@@ -1,7 +1,9 @@
-import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import { logger, markdownPathToRoutePath } from "@blizzbolts/docit-shared/client";
+import { Box, Layout } from "@blizzbolts/docit-theme-default";
+import appConfig from "@docit/config";
 
+console.log(appConfig);
 const docs = import.meta.glob("doc-root/**/*.(md|mdx)", {
   eager: true,
 });
@@ -22,6 +24,7 @@ export const App = () => {
   return (
     <>
       <nav>
+        {appConfig.site?.title}
         <ul>
           {routes.map(({ name, path }) => {
             return (

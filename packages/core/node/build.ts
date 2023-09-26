@@ -1,32 +1,33 @@
 import path from "node:path";
+import type { DocitConfig } from "@blizzbolts/docit-shared/node";
 import {
   colors,
   coreLogger,
   getDirname,
   markdownPathToRoutePath,
+  resolveConfig,
 } from "@blizzbolts/docit-shared/node";
 import fsx from "fs-extra";
 import type { InlineConfig } from "vite";
 import { build as viteBuild } from "vite";
 import { createDocitPlugin } from "@blizzbolts/vite-plugin-docit";
 import { glob } from "glob";
-import { preflight } from "./preflight";
+import { getPreflightConfig } from "./preflight";
 
-export const build = async (root: string) => {
-  await preflight(root);
-  coreLogger.start(colors.cyan(`Start building`));
+export const build = async (cwd: string) => {
+  const config = await resolveConfig(path.resolve(cwd));
+  coreLogger.start(colors.cyan(`Start building for production...`));
 
-  await buildForSSR(root);
-  await generateStatics(root);
+  await buildForSSR(cwd, config);
+  await buildForStatic(cwd, config);
 
   coreLogger.ready(
-    colors.cyan(
-      `Static files generated at ${path.resolve(process.cwd(), "./.docit/build/static")}`,
-    ),
+    colors.cyan(`Static files generated at [${path.resolve(cwd, config.docRoot, "./dist")}]`),
   );
 };
 
-const buildForSSR = async (root: string) => {
+const buildForSSR = async (cwd: string, config: DocitConfig) => {
+  const preflightConfig = await getPreflightConfig(cwd);
   const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
   const ENTRY_SERVER = r("./client/entry-server.js");
 
@@ -34,50 +35,64 @@ const buildForSSR = async (root: string) => {
     root: r("./client"),
     resolve: {
       alias: {
-        "doc-root": path.resolve(process.cwd(), "./", root),
+        "doc-root": path.resolve(process.cwd(), "./", config.docRoot!),
       },
     },
-    plugins: [createDocitPlugin()],
+    plugins: [await createDocitPlugin(cwd)],
   };
   // build client
   await viteBuild({
     ...viteConfig,
     build: {
       emptyOutDir: true,
-      outDir: path.resolve(process.cwd(), "./.docit", "./build/static"),
+      outDir: path.resolve(cwd, config.docRoot!, "./dist"),
     },
   });
 
   // build server
+  // FIXME: should build into a cache folder, only output html to user path, currently using r(./dist/server)
   await viteBuild({
     ...viteConfig,
+    ssr: {
+      format: preflightConfig.isEsm ? "esm" : "cjs",
+    },
     build: {
       emptyOutDir: true,
       ssr: ENTRY_SERVER,
-      outDir: path.resolve(process.cwd(), "./.docit", "./build/server"),
+      // outDir: path.resolve(cwd, config.docRoot!, "./dist/server"),
+      outDir: r("./dist/server"),
     },
   });
 };
 
-const generateStatics = async (root: string) => {
-  const r = (p: string = "") => path.resolve(process.cwd(), "./.docit/build", p);
+const buildForStatic = async (cwd: string, config: DocitConfig) => {
+  const preflightConfig = await getPreflightConfig(cwd);
+  const r = (p: string = "") => path.resolve(cwd, config.docRoot!, "./dist", p);
 
   coreLogger.log("");
   coreLogger.box(colors.cyan("Generating Static HTMLs..."));
 
-  const templatePath = r("./static/index.html");
+  const templatePath = r("./index.html");
 
   const template = await fsx.readFile(templatePath, "utf-8");
-  const { render } = await import(r("./server/entry-server.js"));
+  const productionEntryServerFile = path.resolve(
+    getDirname(import.meta.url),
+    "../",
+    "./dist/server/entry-server.js",
+  );
+  const { render } = await import(
+    productionEntryServerFile
+    // r(`./server/entry-server.${preflightConfig.isEsm ? "js" : "cjs"}`)
+  );
   const docs = await glob("./**/*.{md,mdx}", {
-    cwd: path.resolve(process.cwd(), root),
+    cwd: path.resolve(cwd, config.docRoot!),
   });
   const routesToPrerender = docs.map((path) => markdownPathToRoutePath(path));
   for (const url of routesToPrerender) {
     const context = {};
     const appHtml = await render(url, context);
     const html = template.replace(`<!--app-html-->`, appHtml);
-    const filePath = `./.docit/build/static${url === "/" ? "/index" : url}.html`;
+    const filePath = path.join(config.docRoot!, `./dist/${url === "/" ? "/index" : url}.html`);
     await fsx.outputFile(path.resolve(process.cwd(), filePath), html);
   }
 };

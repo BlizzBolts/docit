@@ -1,7 +1,16 @@
 import type { PluginOption } from "vite";
+import { resolveConfig } from "@blizzbolts/docit-shared/node";
 
-export const virtual = (): PluginOption => {
+const makeExportDefault = (o: Record<string, unknown>) => {
+  return `export default ${JSON.stringify(o, null, 2)}`;
+};
+
+export const virtual = async (cwd: string): Promise<PluginOption> => {
   const cache = new Map<string, string>();
+  const config = await resolveConfig(cwd);
+
+  cache.set("@docit/config", makeExportDefault(config));
+
   return {
     name: "vite-plugin-docit-virtual",
     resolveId(id) {
