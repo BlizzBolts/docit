@@ -114,3 +114,6 @@ stats.html
 # temp folder
 tmp
 temp
+
+# playwright
+playwright-report/

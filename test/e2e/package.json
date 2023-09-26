@@ -1,0 +1,10 @@
+{
+  "name": "my-package",
+  "scripts": {
+    "init": "docit-cli init",
+    "site:dev": "docit-cli start"
+  },
+  "devDependencies": {
+    "@blizzbolts/docit-cli": "workspace:*"
+  }
+}
