@@ -41,7 +41,7 @@ describe.concurrent("make correct template file", () => {
     expect({
       title: "My Site",
       description: "My Site Description",
-    }).toEqual(readConfig.site);
+    }).toEqual(readConfig?.site);
     expect(result.location).toEqual(r(result.location));
   });
 });

@@ -81,13 +81,13 @@ describe.concurrent("findConfigFile", () => {
 describe.concurrent("readConfigFromFile", async () => {
   describe.concurrent("general", () => {
     setupTmpDir();
-    it<TmpDirContext>("should return empty object when no config file", async ({ tmp, expect }) => {
+    it<TmpDirContext>("should return null when no config file", async ({ tmp, expect }) => {
       const spy = vi.spyOn(coreLogger, "warn");
       const config = await readConfigFromFile(tmp.path);
-      expect(config).toEqual({});
+      expect(config).toEqual(null);
       expect(spy).toBeCalledTimes(0);
     });
-    it<TmpDirContext>("should return empty object and log when failed to parse config file", async ({
+    it<TmpDirContext>("should return null and log when failed to parse config file", async ({
       tmp,
       r,
       expect,
@@ -95,7 +95,7 @@ describe.concurrent("readConfigFromFile", async () => {
       await fsx.outputFile(r("./docit.config.mjs"), `export default {from: `);
       const spy = vi.spyOn(coreLogger, "warn");
       const config = await readConfigFromFile(tmp.path);
-      expect(config).toEqual({});
+      expect(config).toEqual(null);
       expect(spy).toBeCalledTimes(1);
     });
   });
@@ -185,7 +185,7 @@ describe.concurrent("readConfigFromFile", async () => {
         // });
         await fsx.outputFile(
           r("./docit.config.ts"),
-          `module.exports = {
+          `export default {
             "base": "/",
             "docRoot": "./docs",
             "outDir": "./docit/build",

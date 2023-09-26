@@ -13,8 +13,8 @@ export interface TmpDirContext {
   r: (p?: string) => string;
   preflight: PreflightCache;
   maker: {
-    makePackageJson: (options: PackageJson) => Promise<void>;
-    makeTsConfig: (options: TsConfigJson) => Promise<void>;
+    makePackageJson: (options: PackageJson) => Promise<string>;
+    makeTsConfig: (options: TsConfigJson) => Promise<string>;
   };
 }
 
@@ -31,6 +31,7 @@ export const setupTmpDir = (options?: {
     context.maker.makePackageJson = async (options) => {
       const filename = context.r("./package.json");
       await fsx.outputJSON(filename, options);
+      return filename;
     };
     context.maker.makeTsConfig = async (
       options: TsConfigJson = {
@@ -43,6 +44,7 @@ export const setupTmpDir = (options?: {
     ) => {
       const filename = context.r("./tsconfig.json");
       await fsx.outputJSON(filename, options);
+      return filename;
     };
     await options?.before?.(context);
     if (options?.preflight) {

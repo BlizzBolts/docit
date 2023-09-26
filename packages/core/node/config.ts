@@ -3,6 +3,7 @@ import { glob } from "glob";
 import { bundleRequire } from "bundle-require";
 import type { DocitConfig } from "@blizzbolts/docit-shared";
 import { coreLogger, zDocitConfig, zPrintErr } from "@blizzbolts/docit-shared";
+import { isFileReadable } from "@blizzbolts/docit-shared/node";
 
 export interface ConfigFromFile {}
 
@@ -32,16 +33,21 @@ export const readConfigFromFile = async (
   options?: {
     isEsm?: boolean;
   },
-): Promise<DocitConfig> => {
+): Promise<DocitConfig | null> => {
   const configFile = await findConfigFile(cwd, options);
   coreLogger.info("Locate docit.config file at", configFile);
   if (!configFile) {
-    return {};
+    return null;
+  }
+
+  const isValidFile = isFileReadable(path.resolve(cwd, "./", configFile));
+
+  if (!isValidFile) {
+    return null;
   }
 
   try {
     const { mod } = await bundleRequire({
-      cwd,
       filepath: path.resolve(cwd, "./", configFile),
       getOutputFile: (filePath) => {
         return path.resolve(cwd, filePath);
@@ -53,7 +59,7 @@ export const readConfigFromFile = async (
   } catch (e) {
     coreLogger.warn(`Failed to load config at ${configFile}, resolved as default\n`, e);
     zPrintErr(e);
-    return {};
+    return null;
   }
 };
 
