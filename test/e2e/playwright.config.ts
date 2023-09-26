@@ -12,7 +12,7 @@ import { defineConfig, devices } from "@playwright/test";
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: "./test/e2e",
+  testDir: "./",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -75,6 +75,5 @@ export default defineConfig({
     command: "pnpm run site:dev",
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
-    cwd: path.resolve(path.dirname(url.fileURLToPath(import.meta.url)), "./test/e2e"),
   },
 });

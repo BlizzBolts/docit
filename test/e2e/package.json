@@ -2,7 +2,8 @@
   "name": "my-package",
   "scripts": {
     "init": "docit-cli init",
-    "site:dev": "docit-cli start"
+    "site:dev": "docit-cli start",
+    "test": "playwright test"
   },
   "devDependencies": {
     "@blizzbolts/docit-cli": "workspace:*",
