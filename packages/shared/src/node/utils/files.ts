@@ -23,3 +23,12 @@ export const isWritable = (folderPath: string): boolean => {
     return false;
   }
 };
+
+export const isFileReadable = (filePath: string): boolean => {
+  try {
+    const stat = fsx.statSync(filePath);
+    return stat.isFile();
+  } catch (e) {
+    return false;
+  }
+};
