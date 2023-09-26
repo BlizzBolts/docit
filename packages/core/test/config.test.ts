@@ -6,7 +6,7 @@ import { setupTmpDir } from "@workspace/test/context/tmp-dir";
 import { findConfigFile, readConfigFromFile } from "../node/config";
 
 describe.concurrent("findConfigFile", () => {
-  describe.sequential("ESM env", () => {
+  describe.concurrent("ESM env", () => {
     setupTmpDir({
       before: async ({ r }) => {
         await fsx.outputJson(r("./package.json"), { type: "module" });
@@ -41,7 +41,7 @@ describe.concurrent("findConfigFile", () => {
       expect(config).toBe(null);
     });
   });
-  describe.sequential("CJS env", () => {
+  describe.concurrent("CJS env", () => {
     setupTmpDir({
       before: async ({ r }) => {
         await fsx.outputJson(r("./package.json"), { type: "commonjs" });
