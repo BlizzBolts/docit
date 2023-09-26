@@ -5,6 +5,7 @@
     "site:dev": "docit-cli start"
   },
   "devDependencies": {
-    "@blizzbolts/docit-cli": "workspace:*"
+    "@blizzbolts/docit-cli": "workspace:*",
+    "@blizzbolts/docit-core": "workspace:*"
   }
 }
