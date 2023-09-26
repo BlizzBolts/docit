@@ -28,6 +28,7 @@
   "dependencies": {
     "@blizzbolts/docit-shared": "workspace:^",
     "@blizzbolts/vite-plugin-docit": "workspace:^",
+    "get-port": "^7.0.0",
     "load-tsconfig": "^0.2.5",
     "vite": "^4.4.9"
   },

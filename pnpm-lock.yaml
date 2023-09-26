@@ -50,12 +50,18 @@ importers:
       fs-extra:
         specifier: ^11.1.1
         version: 11.1.1
+      get-port:
+        specifier: ^7.0.0
+        version: 7.0.0
       lodash.isempty:
         specifier: ^4.4.0
         version: 4.4.0
       npm-run-all:
         specifier: ^4.1.5
         version: registry.npmmirror.com/npm-run-all@4.1.5
+      playwright-chromium:
+        specifier: ^1.38.1
+        version: 1.38.1
       prettier:
         specifier: ^3.0.3
         version: registry.npmmirror.com/prettier@3.0.3
@@ -123,6 +129,9 @@ importers:
       '@blizzbolts/vite-plugin-docit':
         specifier: workspace:^
         version: link:../plugin-docit
+      get-port:
+        specifier: ^7.0.0
+        version: 7.0.0
       load-tsconfig:
         specifier: ^0.2.5
         version: 0.2.5
@@ -356,6 +365,9 @@ importers:
       '@blizzbolts/docit-cli':
         specifier: workspace:*
         version: link:../../packages/cli
+      '@blizzbolts/docit-core':
+        specifier: workspace:*
+        version: link:../../packages/core
 
 packages:
 
@@ -1414,6 +1426,7 @@ packages:
 
   /@types/node@20.6.2:
     resolution: {integrity: sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==}
+    dev: true
 
   /@typescript/vfs@1.5.0:
     resolution: {integrity: sha512-AJS307bPgbsZZ9ggCT3wwpg3VbTKMFNHfaY/uF0ahSkYYrPF2dSSKDNIDIQAHm9qJqbLvCsSJH7yN4Vs/CsMMg==}
@@ -1875,6 +1888,10 @@ packages:
     resolution: {integrity: sha512-Hm0ixYtaSZ/V7C8FJrtZIuBBI+iSgL+1Aq82zSu8VQNB4S3Gk8e7Qs3VwBDJAhmRZcFqkl3tQu36g/Foh5I5ig==}
     dev: true
 
+  /get-port@7.0.0:
+    resolution: {integrity: sha512-mDHFgApoQd+azgMdwylJrv2DX47ywGq1i5VFJE7fZ0dttNq3iQMfsU4IvEgBHojA3KqEudyu7Vq+oN8kNaNkWw==}
+    engines: {node: '>=16'}
+
   /glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
     engines: {node: '>= 6'}
@@ -2272,6 +2289,15 @@ packages:
   /picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
+    dev: true
+
+  /playwright-chromium@1.38.1:
+    resolution: {integrity: sha512-97Y6+lN3yOETy/yPQK+LqSCBdldLu5Rkm+Tnj2oGQfcbC5P8R3eWund7GxWqiYFnq0GLwZZ8EnhiBShKnCiVjg==}
+    engines: {node: '>=16'}
+    hasBin: true
+    requiresBuild: true
+    dependencies:
+      playwright-core: 1.38.1
     dev: true
 
   /playwright-core@1.38.1:
@@ -4323,7 +4349,7 @@ packages:
       '@types/estree': registry.npmmirror.com/@types/estree@1.0.1
       estree-walker: registry.npmmirror.com/estree-walker@2.0.2
       picomatch: registry.npmmirror.com/picomatch@2.3.1
-      rollup: 3.29.2
+      rollup: registry.npmmirror.com/rollup@3.29.2
 
   registry.npmmirror.com/@sideway/address@4.1.4:
     resolution: {integrity: sha512-7vwq+rOHVWjyXxVlR76Agnvhy8I9rpzjosTESvmhNeXOXdZZB15Fl+TI9x1SiHZH5Jv2wTGduSxFDIaq0m3DUw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@sideway/address/-/address-4.1.4.tgz}
@@ -4757,7 +4783,6 @@ packages:
     resolution: {integrity: sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-20.6.2.tgz}
     name: '@types/node'
     version: 20.6.2
-    dev: true
 
   registry.npmmirror.com/@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz}
@@ -14635,7 +14660,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.6.2
+      '@types/node': registry.npmmirror.com/@types/node@20.6.2
       esbuild: registry.npmmirror.com/esbuild@0.18.20
       postcss: registry.npmmirror.com/postcss@8.4.30
       rollup: registry.npmmirror.com/rollup@3.29.2

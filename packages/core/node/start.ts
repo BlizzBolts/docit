@@ -2,9 +2,10 @@ import path from "node:path";
 import { createDocitPlugin } from "@blizzbolts/vite-plugin-docit";
 import express from "express";
 import { createServer as createViteServer } from "vite";
-import { coreLogger } from "@blizzbolts/docit-shared";
+import { colors, coreLogger } from "@blizzbolts/docit-shared";
 import { getDirname } from "@blizzbolts/docit-shared/node";
 import fsx from "fs-extra";
+import getPort from "get-port";
 import { preflight } from "./preflight";
 
 const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
@@ -12,6 +13,7 @@ const ENTRY_SERVER = r("./client/entry-server.js");
 
 export const start = async (root: string) => {
   await preflight(root);
+
   const app = express();
 
   const vite = await createViteServer({
@@ -57,12 +59,28 @@ export const start = async (root: string) => {
     }
   });
 
-  const server = app.listen(3000, () => {
+  const port = await getPort({ port: 3000 });
+
+  const server = app.listen(port, () => {
     const address = server.address();
+    if (!address) {
+      coreLogger.fail("Server starts failed. Please Try again");
+      return;
+    }
+
     if (typeof address === "string") {
-      coreLogger.success("Docit dev server started at: ", address);
+      coreLogger.success(colors.bold(colors.green(`Docit server listening at http://${address}`)));
     } else {
-      coreLogger.success("Docit dev server started at: ", address?.port);
+      let host = address.address;
+      const port = address.port;
+      if (host === "::") {
+        host = "localhost";
+      }
+      coreLogger.success(
+        colors.bold(colors.green(`Docit server listening at http://${host}:${port}`)),
+      );
     }
   });
+
+  return server;
 };
