@@ -7,19 +7,15 @@ import { zPrintErr } from "../shared/zod";
 import { coreLogger } from "../shared/logger";
 import { isFileReadable } from "../node/utils/files";
 
-export const findConfigFile = async (
-  cwd: string = process.cwd(),
-  options?: {
-    isEsm?: boolean;
-  },
-): Promise<string | null> => {
-  const globString = options?.isEsm ? "./docit.config.{js,cjs,ts}" : "./docit.config.{mjs,js,ts}";
+export const findConfigFile = async (cwd: string = process.cwd()): Promise<string | null> => {
+  const globString = "./docit.config.{mjs,cjs,js}";
 
   const matches = await glob(globString, {
     cwd,
     nodir: true,
   });
   if (matches.length === 0) {
+    coreLogger.info("Docit config not found, fallback to default");
     return null;
   } else {
     return matches[0];
@@ -28,12 +24,9 @@ export const findConfigFile = async (
 
 export const readConfigFromFile = async (
   cwd: string = process.cwd(),
-  options?: {
-    isEsm?: boolean;
-  },
 ): Promise<DocitConfig | null> => {
-  const configFile = await findConfigFile(cwd, options);
-  coreLogger.info("Locate docit.config file at", configFile);
+  const configFile = await findConfigFile(cwd);
+
   if (!configFile) {
     return null;
   }
@@ -44,16 +37,14 @@ export const readConfigFromFile = async (
     return null;
   }
 
+  coreLogger.info("Locate docit.config file at", configFile);
+
   try {
     const { mod } = await bundleRequire({
       filepath: path.resolve(cwd, "./", configFile),
-      getOutputFile: (filePath) => {
-        return path.resolve(cwd, filePath);
-      },
-      tsconfig: "./tsconfig.json",
     });
     // I mean ... it works in both .cjs and .mjs situations
-    return zDocitConfig.parse(mod.default ? mod.default : mod);
+    return mod.default ? mod.default : mod;
   } catch (e) {
     coreLogger.warn(`Failed to load config at ${configFile}, resolved as default\n`, e);
     zPrintErr(e);
@@ -61,34 +52,24 @@ export const readConfigFromFile = async (
   }
 };
 
-const readConfigFromPackageJson = async (
-  cwd: string = process.cwd(),
-  options?: {
-    isEsm?: boolean;
-  },
-) => {
+const readConfigFromPackageJson = async (cwd: string = process.cwd()) => {
   return null;
 };
 
-const readConfig = async (
-  cwd: string = process.cwd(),
-  options?: {
-    isEsm?: boolean;
-  },
-) => {
+const readConfig = async (cwd: string = process.cwd()) => {
   let config = null;
-  const hasConfigFile = await findConfigFile(cwd, options);
+  const hasConfigFile = await findConfigFile(cwd);
 
   if (hasConfigFile) {
-    config = await readConfigFromFile(cwd, options);
+    config = await readConfigFromFile(cwd);
   } else {
-    config = await readConfigFromPackageJson(cwd, options);
+    config = await readConfigFromPackageJson(cwd);
   }
   return config;
 };
 
-export const resolveConfig = () => {
-  const config = readConfig();
+export const resolveConfig = async (cwd: string = process.cwd()) => {
+  const config = await readConfig(cwd);
 
-  return config;
+  return zDocitConfig.parse(config || {});
 };

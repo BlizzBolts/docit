@@ -17,28 +17,16 @@ describe.concurrent("findConfigFile", () => {
       preflight: true,
     });
 
-    it<TmpDirContext>("find js", async ({ tmp, r, expect, preflight }) => {
+    it<TmpDirContext>("find js", async ({ tmp, r, expect }) => {
       await fsx.outputFile(r("./docit.config.js"), `export default {from: "js"}`);
-      const config = await findConfigFile(tmp.path, { isEsm: preflight.isEsm });
+      const config = await findConfigFile(tmp.path);
       expect(config).toBe("docit.config.js");
     });
 
-    it<TmpDirContext>("find ts", async ({ tmp, r, expect, preflight }) => {
-      await fsx.outputFile(r("./docit.config.ts"), `export default {from: "js"}`);
-      const config = await findConfigFile(tmp.path, { isEsm: preflight.isEsm });
-      expect(config).toBe("docit.config.ts");
-    });
-
-    it<TmpDirContext>("find cjs", async ({ tmp, r, expect, preflight }) => {
+    it<TmpDirContext>("find cjs", async ({ tmp, r, expect }) => {
       await fsx.outputFile(r("./docit.config.cjs"), `export default {from: "js"}`);
-      const config = await findConfigFile(tmp.path, { isEsm: preflight.isEsm });
+      const config = await findConfigFile(tmp.path);
       expect(config).toBe("docit.config.cjs");
-    });
-
-    it<TmpDirContext>("should not find mjs", async ({ tmp, r, expect, preflight }) => {
-      await fsx.outputFile(r("./docit.config.mjs"), `export default {from: "js"}`);
-      const config = await findConfigFile(tmp.path, { isEsm: preflight.isEsm });
-      expect(config).toBe(null);
     });
   });
   describe.concurrent("CJS env", () => {
@@ -52,28 +40,16 @@ describe.concurrent("findConfigFile", () => {
       preflight: true,
     });
 
-    it<TmpDirContext>("find js", async ({ tmp, r, expect, preflight }) => {
+    it<TmpDirContext>("find js", async ({ tmp, r, expect }) => {
       await fsx.outputFile(r("./docit.config.js"), `module.exports = {from: "js"}`);
-      const config = await findConfigFile(tmp.path, { isEsm: preflight.isEsm });
+      const config = await findConfigFile(tmp.path);
       expect(config).toBe("docit.config.js");
     });
 
-    it<TmpDirContext>("find ts", async ({ tmp, r, expect, preflight }) => {
-      await fsx.outputFile(r("./docit.config.ts"), `export default {from: "js"}`);
-      const config = await findConfigFile(tmp.path, { isEsm: preflight.isEsm });
-      expect(config).toBe("docit.config.ts");
-    });
-
-    it<TmpDirContext>("find mjs", async ({ tmp, r, expect, preflight }) => {
+    it<TmpDirContext>("find mjs", async ({ tmp, r, expect }) => {
       await fsx.outputFile(r("./docit.config.mjs"), `export default {from: "js"}`);
-      const config = await findConfigFile(tmp.path, { isEsm: preflight.isEsm });
+      const config = await findConfigFile(tmp.path);
       expect(config).toBe("docit.config.mjs");
-    });
-
-    it<TmpDirContext>("should not find cjs", async ({ tmp, r, expect, preflight }) => {
-      await fsx.outputFile(r("./docit.config.cjs"), `export default {from: "js"}`);
-      const config = await findConfigFile(tmp.path, { isEsm: preflight.isEsm });
-      expect(config).toBe(null);
     });
   });
 });
@@ -111,7 +87,7 @@ describe.concurrent("readConfigFromFile", async () => {
         },
         preflight: true,
       });
-      it<TmpDirContext>("parse js", async ({ tmp, r, expect, preflight }) => {
+      it<TmpDirContext>("parse js", async ({ tmp, r, expect }) => {
         await fsx.outputFile(
           r("./docit.config.js"),
           `export default {
@@ -126,7 +102,7 @@ describe.concurrent("readConfigFromFile", async () => {
             },
           }`,
         );
-        const config = await readConfigFromFile(tmp.path, { isEsm: preflight.isEsm });
+        const config = await readConfigFromFile(tmp.path);
         expect(config).toEqual({
           base: "/",
           docRoot: "./docs",
@@ -139,7 +115,7 @@ describe.concurrent("readConfigFromFile", async () => {
           },
         });
       });
-      it<TmpDirContext>("parse cjs", async ({ tmp, r, expect, preflight }) => {
+      it<TmpDirContext>("parse cjs", async ({ tmp, r, expect }) => {
         await fsx.outputFile(
           r("./docit.config.cjs"),
           `module.exports = {
@@ -154,7 +130,7 @@ describe.concurrent("readConfigFromFile", async () => {
             },
           }`,
         );
-        const config = await readConfigFromFile(tmp.path, { isEsm: preflight.isEsm });
+        const config = await readConfigFromFile(tmp.path);
         expect(config).toEqual({
           base: "/",
           docRoot: "./docs",
@@ -168,7 +144,7 @@ describe.concurrent("readConfigFromFile", async () => {
         });
       });
 
-      it.todo<TmpDirContext>("parse ts", async ({ tmp, r, expect, preflight }) => {
+      it.todo<TmpDirContext>("parse ts", async ({ tmp, r, expect }) => {
         // FIXME:
         // await fsx.outputJson(r("./tsconfig.json"), {
         //   compilerOptions: {
@@ -197,7 +173,7 @@ describe.concurrent("readConfigFromFile", async () => {
             },
           }`,
         );
-        const config = await readConfigFromFile(tmp.path, { isEsm: preflight.isEsm });
+        const config = await readConfigFromFile(tmp.path);
         expect(config).toEqual({
           base: "/",
           docRoot: "./docs",
