@@ -1,13 +1,11 @@
 import path from "node:path";
 import { glob } from "glob";
 import { bundleRequire } from "bundle-require";
-import type { DocitConfig } from "@blizzbolts/docit-shared";
-import { coreLogger, zDocitConfig, zPrintErr } from "@blizzbolts/docit-shared";
-import { isFileReadable } from "@blizzbolts/docit-shared/node";
-
-export interface ConfigFromFile {}
-
-const readConfig = async () => {};
+import type { DocitConfig } from "../shared/types";
+import { zDocitConfig } from "../shared/types";
+import { zPrintErr } from "../shared/zod";
+import { coreLogger } from "../shared/logger";
+import { isFileReadable } from "../node/utils/files";
 
 export const findConfigFile = async (
   cwd: string = process.cwd(),
@@ -63,11 +61,31 @@ export const readConfigFromFile = async (
   }
 };
 
-const readConfigFromPackageJson = () => {};
+const readConfigFromPackageJson = async (
+  cwd: string = process.cwd(),
+  options?: {
+    isEsm?: boolean;
+  },
+) => {
+  return null;
+};
 
-const mergeConfig = () => {};
+const readConfig = async (
+  cwd: string = process.cwd(),
+  options?: {
+    isEsm?: boolean;
+  },
+) => {
+  let config = null;
+  const hasConfigFile = await findConfigFile(cwd, options);
 
-export const defaultConfig = {};
+  if (hasConfigFile) {
+    config = await readConfigFromFile(cwd, options);
+  } else {
+    config = await readConfigFromPackageJson(cwd, options);
+  }
+  return config;
+};
 
 export const resolveConfig = () => {
   const config = readConfig();

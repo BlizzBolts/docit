@@ -24,5 +24,6 @@ export default defineConfig({
       "./client",
       "../shared/dist",
       "../plugin-docit/dist",
+      "../theme-default/dist",
     ],
 });

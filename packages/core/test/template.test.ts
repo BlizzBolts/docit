@@ -1,7 +1,7 @@
 import { setupTmpDir, type TmpDirContext } from "@workspace/test/context/tmp-dir";
 import { describe, it } from "vitest";
 import fsx from "fs-extra";
-import { readConfigFromFile } from "../node/config";
+import { readConfigFromFile } from "@blizzbolts/docit-shared/node";
 import { makeDocitConfigFile } from "../node/init/template";
 
 describe.concurrent("make correct template file", () => {

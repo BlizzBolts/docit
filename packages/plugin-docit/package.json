@@ -12,7 +12,7 @@
     }
   },
   "scripts": {
-    "dev": "npm run dist -- --sourcemap --watch ./src --watch ../shared/dist",
+    "dev": "npm run build -- --sourcemap --watch ./src --watch ../shared/dist",
     "build": "tsup",
     "prepublishOnly": "npm run build"
   },
@@ -37,8 +37,10 @@
   },
   "dependencies": {
     "@blizzbolts/docit-shared": "workspace:^",
+    "vite": "^4.4.9"
+  },
+  "devDependencies": {
     "@vitejs/plugin-react-swc": "^3.3.2",
-    "vite": "^4.4.9",
     "@mdx-js/rollup": "^2.3.0"
   }
 }

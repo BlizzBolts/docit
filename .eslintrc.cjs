@@ -15,6 +15,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "prettier",
+    "plugin:react/jsx-runtime",
   ],
   overrides: [
     {
@@ -41,5 +42,6 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "warn",
     "@typescript-eslint/no-explicit-any": "warn",
     "import/order": "warn",
+    "react/prop-types": 0,
   },
 };

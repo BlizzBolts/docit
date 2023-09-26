@@ -1,9 +1,9 @@
 import { describe, it, vi } from "vitest";
 import fsx from "fs-extra";
-import { coreLogger } from "@blizzbolts/docit-shared";
 import type { TmpDirContext } from "@workspace/test/context/tmp-dir";
 import { setupTmpDir } from "@workspace/test/context/tmp-dir";
-import { findConfigFile, readConfigFromFile } from "../node/config";
+import { coreLogger } from "../src/shared/logger";
+import { findConfigFile, readConfigFromFile } from "../src/node/config";
 
 describe.concurrent("findConfigFile", () => {
   describe.concurrent("ESM env", () => {

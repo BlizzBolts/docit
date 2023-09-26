@@ -1,9 +1,8 @@
-import path from "node:path";
 import type { TmpDirContext } from "@workspace/test/context/tmp-dir";
 import { setupTmpDir } from "@workspace/test/context/tmp-dir";
 import { describe, it, vi } from "vitest";
 import fsx from "fs-extra";
-import { readConfigFromFile } from "node/config";
+import { readConfigFromFile } from "@blizzbolts/docit-shared/node";
 import { coreLogger } from "@blizzbolts/docit-shared";
 import { init } from "../node/init";
 
@@ -21,8 +20,8 @@ describe.concurrent("init", () => {
 
     expect(result).toBe(true);
     const config = await readConfigFromFile(r());
-    expect(config.site?.title).toBe("My Blog Title");
-    expect(config.site?.description).toBe("My description title");
+    expect(config?.site?.title).toBe("My Blog Title");
+    expect(config?.site?.description).toBe("My description title");
 
     const content = await fsx.readFile(r("./docs/index.mdx"), "utf-8");
     expect(content).toBeTruthy();
