@@ -50,7 +50,7 @@ const buildForSSR = async (cwd: string, config: DocitConfig) => {
   });
 
   // build server
-  // FIXME: should build into a cache folder, only output html to user path, currently using r(./dist/server)
+  // FIXME: should build into a cache folder, only output html to user path, currently using r
   await viteBuild({
     ...viteConfig,
     ssr: {
@@ -78,12 +78,9 @@ const buildForStatic = async (cwd: string, config: DocitConfig) => {
   const productionEntryServerFile = path.resolve(
     getDirname(import.meta.url),
     "../",
-    "./dist/server/entry-server.js",
+    `./dist/server/entry-server.${preflightConfig.isEsm ? "js" : "cjs"}`,
   );
-  const { render } = await import(
-    productionEntryServerFile
-    // r(`./server/entry-server.${preflightConfig.isEsm ? "js" : "cjs"}`)
-  );
+  const { render } = await import(productionEntryServerFile);
   const docs = await glob("./**/*.{md,mdx}", {
     cwd: path.resolve(cwd, config.docRoot!),
   });
