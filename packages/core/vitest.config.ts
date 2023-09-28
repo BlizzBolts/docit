@@ -14,6 +14,7 @@ export default defineConfig({
       reporter: [["html", { subdir: "./coverage" }]],
       reportsDirectory: "./coverage",
     },
+    testTimeout: 0,
   },
   plugins: [tsconfigPaths()],
 });

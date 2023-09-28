@@ -6,13 +6,16 @@ import {
   getDirname,
   markdownPathToRoutePath,
   resolveConfig,
+  retrieveUserEnv,
 } from "@blizzbolts/docit-shared/node";
+import { pkgUpSync } from "pkg-up";
 import fsx from "fs-extra";
 import type { InlineConfig } from "vite";
 import { build as viteBuild } from "vite";
 import { createDocitPlugin } from "@blizzbolts/vite-plugin-docit";
 import { glob } from "glob";
-import { getPreflightConfig } from "./preflight";
+
+const CORE_PKG_DIST_DIR = path.dirname(pkgUpSync({ cwd: getDirname(import.meta.url) })!);
 
 export const build = async (cwd: string) => {
   const config = await resolveConfig(path.resolve(cwd));
@@ -27,17 +30,12 @@ export const build = async (cwd: string) => {
 };
 
 const buildForSSR = async (cwd: string, config: DocitConfig) => {
-  const preflightConfig = await getPreflightConfig(cwd);
-  const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
+  const userEnv = await retrieveUserEnv(cwd);
+  const r = (p: string = "") => path.resolve(CORE_PKG_DIST_DIR, "./dist", p);
   const ENTRY_SERVER = r("./client/entry-server.js");
 
   const viteConfig: InlineConfig = {
     root: r("./client"),
-    resolve: {
-      alias: {
-        "doc-root": path.resolve(process.cwd(), "./", config.docRoot!),
-      },
-    },
     plugins: [await createDocitPlugin(cwd)],
   };
   // build client
@@ -54,19 +52,19 @@ const buildForSSR = async (cwd: string, config: DocitConfig) => {
   await viteBuild({
     ...viteConfig,
     ssr: {
-      format: preflightConfig.isEsm ? "esm" : "cjs",
+      format: userEnv.isEsm ? "esm" : "cjs",
     },
     build: {
       emptyOutDir: true,
       ssr: ENTRY_SERVER,
       // outDir: path.resolve(cwd, config.docRoot!, "./dist/server"),
-      outDir: r("./dist/server"),
+      outDir: r("./tmp/server"),
     },
   });
 };
 
 const buildForStatic = async (cwd: string, config: DocitConfig) => {
-  const preflightConfig = await getPreflightConfig(cwd);
+  const userEnv = await retrieveUserEnv(cwd);
   const r = (p: string = "") => path.resolve(cwd, config.docRoot!, "./dist", p);
 
   coreLogger.log("");
@@ -75,14 +73,14 @@ const buildForStatic = async (cwd: string, config: DocitConfig) => {
   const templatePath = r("./index.html");
 
   const template = await fsx.readFile(templatePath, "utf-8");
-  const productionEntryServerFile = path.resolve(
-    getDirname(import.meta.url),
-    "../",
-    `./dist/server/entry-server.${preflightConfig.isEsm ? "js" : "cjs"}`,
+  const { render } = await import(
+    path.resolve(
+      CORE_PKG_DIST_DIR,
+      `./dist/tmp/server/entry-server.${userEnv.isEsm ? "js" : "cjs"}`,
+    )
   );
-  const { render } = await import(productionEntryServerFile);
   const docs = await glob("./**/*.{md,mdx}", {
-    cwd: path.resolve(cwd, config.docRoot!),
+    cwd,
   });
   const routesToPrerender = docs.map((path) => markdownPathToRoutePath(path));
   for (const url of routesToPrerender) {

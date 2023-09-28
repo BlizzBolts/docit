@@ -2,11 +2,9 @@ import path from "node:path";
 import { zScaffoldOptions, type ScaffoldOptions, coreLogger } from "@blizzbolts/docit-shared";
 import fsx from "fs-extra";
 import { isWritable } from "@blizzbolts/docit-shared/node";
-import { preflight } from "../preflight";
 import { makeDocitConfigFile } from "./template";
 
 export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<boolean> => {
-  await preflight();
   scaffoldOptions = scaffoldOptions ?? zScaffoldOptions.parse({});
 
   const docsFolderLocation = path.resolve(scaffoldOptions.root, "./docs");
@@ -26,7 +24,8 @@ Duis excepteur proident enim irure laboris consequat velit consequat est elit oc
   `;
 
   await fsx.outputFile(path.resolve(docsFolderLocation, "./index.mdx"), markdown);
+  await fsx.outputFile(path.resolve(docsFolderLocation, "./folder/index.mdx"), markdown);
 
-  coreLogger.debug(`copying template to ${scaffoldOptions.root}`);
+  coreLogger.debug(`Writing template to ${scaffoldOptions.root}`);
   return true;
 };

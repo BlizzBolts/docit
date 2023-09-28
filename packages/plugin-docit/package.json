@@ -37,10 +37,10 @@
   },
   "dependencies": {
     "@blizzbolts/docit-shared": "workspace:^",
-    "vite": "^4.4.9"
-  },
-  "devDependencies": {
     "@vitejs/plugin-react-swc": "^3.3.2",
     "@mdx-js/rollup": "^2.3.0"
+  },
+  "devDependencies": {
+    "vite": "^4.4.9"
   }
 }

@@ -47,13 +47,14 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
-    "zod": "^3.22.2",
-    "glob": "^10.3.4",
     "bundle-require": "^4.0.1",
     "consola": "^3.2.3",
     "find-package-json": "^1.2.0",
     "fs-extra": "^11.1.1",
-    "pkg-up": "^4.0.0"
+    "glob": "^10.3.4",
+    "load-tsconfig": "^0.2.5",
+    "pkg-up": "^4.0.0",
+    "zod": "^3.22.2"
   },
   "tsup": {
     "entry": {

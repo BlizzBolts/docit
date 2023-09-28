@@ -14,6 +14,5 @@ export const logger = createConsola({
 export const cliLogger = logger.withTag("cli");
 export const coreLogger = logger.withTag("core");
 export const validateLogger = logger.withTag("validate");
-export const preflightLogger = coreLogger.withTag("preflight");
 
 export { colors };
