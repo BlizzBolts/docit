@@ -14,7 +14,6 @@ describe.concurrent("findConfigFile", () => {
       after: async ({ r }) => {
         await fsx.remove(r("./package.json"));
       },
-      preflight: true,
     });
 
     it<TmpDirContext>("find js", async ({ tmp, r, expect }) => {
@@ -37,7 +36,6 @@ describe.concurrent("findConfigFile", () => {
       after: async ({ r }) => {
         await fsx.remove(r("./package.json"));
       },
-      preflight: true,
     });
 
     it<TmpDirContext>("find js", async ({ tmp, r, expect }) => {

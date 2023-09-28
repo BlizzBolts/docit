@@ -1,17 +1,14 @@
 import path from "node:path";
 import type { DirectoryResult } from "tmp-promise";
 import type { TestContext } from "vitest";
-import { beforeEach, afterEach, vi } from "vitest";
+import { beforeEach, afterEach } from "vitest";
 import { dir } from "tmp-promise";
 import fsx from "fs-extra";
 import type { PackageJson, TsConfigJson } from "type-fest";
-import type { PreflightCache } from "../../packages/core/node/preflight";
-import { preflight, resetpreflightConfig } from "../../packages/core/node/preflight";
 
 export interface TmpDirContext {
   tmp: DirectoryResult;
   r: (p?: string) => string;
-  preflight: PreflightCache;
   maker: {
     makePackageJson: (options: PackageJson) => Promise<string>;
     makeTsConfig: (options: TsConfigJson) => Promise<string>;
@@ -21,7 +18,6 @@ export interface TmpDirContext {
 export const setupTmpDir = (options?: {
   before?: (ctx: TestContext & TmpDirContext) => Promise<void>;
   after?: (ctx: TestContext & TmpDirContext) => Promise<void>;
-  preflight?: boolean;
 }) => {
   beforeEach<TmpDirContext>(async (context) => {
     const result = await dir();
@@ -47,9 +43,6 @@ export const setupTmpDir = (options?: {
       return filename;
     };
     await options?.before?.(context);
-    if (options?.preflight) {
-      context.preflight = await preflight(result.path);
-    }
   });
 
   afterEach<TmpDirContext>(async (context) => {
@@ -57,8 +50,5 @@ export const setupTmpDir = (options?: {
     context.tmp.cleanup();
     context.r = () => "";
     await options?.after?.(context);
-    if (options?.preflight) {
-      resetpreflightConfig();
-    }
   });
 };
