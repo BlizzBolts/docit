@@ -83,14 +83,18 @@ const buildForStatic = async (cwd: string, config: DocitConfig) => {
   const docs = await glob("./**/*.{md,mdx}", {
     cwd: config.docRoot!,
   });
-  const routesToPrerender = docs.map((p) => {
+  const routePaths = docs.map((p) => {
     return markdownPathToRoutePath(path.resolve(config.docRoot!, "./", p), config.docRoot!);
   });
-  for (const url of routesToPrerender) {
+  for (const routePath of routePaths) {
     const context = {};
-    const appHtml = await render(url, context);
+    const appHtml = await render(routePath, context);
     const html = template.replace(`<!--app-html-->`, appHtml);
-    const filePath = path.join(config.docRoot!, `./dist/${url === "/" ? "/index" : url}.html`);
+
+    const filePath = path.join(
+      config.docRoot!,
+      `./dist/${routePath.endsWith("/") ? `${routePath}index` : routePath}.html`,
+    );
     await fsx.outputFile(path.resolve(process.cwd(), filePath), html);
   }
 };

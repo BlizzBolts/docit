@@ -2,36 +2,38 @@ import type { TmpDirContext } from "@workspace/test/context/tmp-dir";
 import { setupTmpDir } from "@workspace/test/context/tmp-dir";
 import { describe, it } from "vitest";
 import fsx from "fs-extra";
+import { glob } from "glob";
 import { init } from "../node/init";
 import { build } from "../node/build";
 
 describe("build", () => {
   setupTmpDir();
-  // Rollup failed to resolve import "react/jsx-runtime" from "/private/var/folders/75/tx2cn3_j62gc2h8hmbg9b84w0000gp/T/tmp-72917-3YOM0QtCU3aq/docs/index.mdx".
-  it.todo<TmpDirContext>("should build", async ({ r, maker, expect }) => {
+  it<TmpDirContext>("should build", async ({ r, maker, expect }) => {
     await maker.makePackageJson({ type: "module" });
+
     const result = await init({
       root: r(),
       docRoot: r("./docs"),
     });
     expect(result).toBe(true);
 
+    await maker.rawFile(r("./docs/abc.mdx"), `# abc.mdx!`);
+    await maker.rawFile(r("./docs/opq.mdx"), `# opq.mdx!`);
+    await maker.rawFile(r("./docs/xyz.md"), `# xyz.mdx!`);
+
     await build(r());
 
-    const contents = await fsx.readdir(r("./docs/dist"));
-    console.log(contents);
-    expect(contents).toBeTruthy();
+    const contents = await glob("./**/*.html", {
+      cwd: r("./docs/dist"),
+    });
+    expect(contents).toContain("index.html");
+    expect(contents).toContain("folder/index.html");
+    expect(contents).toContain("abc.html");
+    expect(contents).toContain("opq.html");
+    expect(contents).toContain("xyz.html");
+
+    expect(await fsx.readFile(r("./docs/dist/abc.html"), "utf-8")).toContain("abc.mdx!");
+    expect(await fsx.readFile(r("./docs/dist/opq.html"), "utf-8")).toContain("opq.mdx!");
+    expect(await fsx.readFile(r("./docs/dist/xyz.html"), "utf-8")).toContain("xyz.mdx!");
   });
-  // it<TmpDirContext>("should build", async ({ r, maker, expect }) => {
-  //   await maker.makePackageJson({ type: "commonjs" });
-  //   const result = await init({
-  //     root: r(),
-  //   });
-  //   expect(result).toBe(true);
-
-  //   await build(r());
-
-  //   const contents = await fsx.readdir(r("./docs/dist"));
-  //   expect(contents).toBeTruthy();
-  // });
 });

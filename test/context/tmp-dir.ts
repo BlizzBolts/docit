@@ -12,6 +12,7 @@ export interface TmpDirContext {
   maker: {
     makePackageJson: (options: PackageJson) => Promise<string>;
     makeTsConfig: (options: TsConfigJson) => Promise<string>;
+    rawFile: (p: string, content: string) => Promise<string>;
   };
 }
 
@@ -23,25 +24,30 @@ export const setupTmpDir = (options?: {
     const result = await dir();
     context.tmp = result;
     context.r = (p?: string) => (p ? path.resolve(result.path, p) : result.path);
-    context.maker = {} as TmpDirContext["maker"];
-    context.maker.makePackageJson = async (options) => {
-      const filename = context.r("./package.json");
-      await fsx.outputJSON(filename, options);
-      return filename;
-    };
-    context.maker.makeTsConfig = async (
-      options: TsConfigJson = {
-        compilerOptions: {
-          module: "ESNext",
-          target: "ESNext",
-          moduleResolution: "Node",
-        },
+    context.maker = {
+      makePackageJson: async (options) => {
+        const filename = context.r("./package.json");
+        await fsx.outputJSON(filename, options);
+        return filename;
       },
-    ) => {
-      const filename = context.r("./tsconfig.json");
-      await fsx.outputJSON(filename, options);
-      return filename;
-    };
+      makeTsConfig: async (
+        options: TsConfigJson = {
+          compilerOptions: {
+            module: "ESNext",
+            target: "ESNext",
+            moduleResolution: "Node",
+          },
+        },
+      ) => {
+        const filename = context.r("./tsconfig.json");
+        await fsx.outputJSON(filename, options);
+        return filename;
+      },
+      rawFile: async (p, content) => {
+        await fsx.outputFile(p, content, "utf-8");
+        return p;
+      },
+    } as TmpDirContext["maker"];
     await options?.before?.(context);
   });
 
