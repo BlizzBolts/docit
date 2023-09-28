@@ -22,6 +22,7 @@ export const build = async (cwd: string) => {
   const config = await resolveConfig(cwd);
   coreLogger.start(colors.cyan(`Start building for production...`));
 
+  await fsx.remove(config.outDir!);
   await buildForSSR(cwd, config);
   await buildForStatic(cwd, config);
 
@@ -44,7 +45,7 @@ const buildForSSR = async (cwd: string, config: DocitConfig) => {
     ...viteConfig,
     build: {
       emptyOutDir: true,
-      outDir: path.resolve(cwd, config.docRoot!, "./dist"),
+      outDir: config.outDir!,
     },
   });
 
@@ -92,8 +93,8 @@ const buildForStatic = async (cwd: string, config: DocitConfig) => {
     const html = template.replace(`<!--app-html-->`, appHtml);
 
     const filePath = path.join(
-      config.docRoot!,
-      `./dist/${routePath.endsWith("/") ? `${routePath}index` : routePath}.html`,
+      config.outDir!,
+      `./${routePath.endsWith("/") ? `${routePath}index` : routePath}.html`,
     );
     await fsx.outputFile(path.resolve(process.cwd(), filePath), html);
   }

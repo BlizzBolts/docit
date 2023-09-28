@@ -7,20 +7,17 @@ import {
 } from "@blizzbolts/docit-shared/client";
 import appConfig from "@docit/config";
 import viteConfig from "@vite/config";
+import { Suspense, lazy } from "react";
 
 interface DocumentItem {
   name: string;
   routePath: string;
-  component: React.ComponentType;
+  component: () => Promise<{ default: React.ComponentType }>;
 }
 
-const docComponents: Record<string, React.ComponentType> = import.meta.glob(
-  "doc-root/**/*.(md|mdx)",
-  {
-    eager: true,
-    import: "default",
-  },
-);
+const docComponents = import.meta.glob("doc-root/**/*.(md|mdx)", {
+  eager: false,
+}) as Record<string, () => Promise<{ default: React.ComponentType }>>;
 
 const docs: DocumentItem[] = Object.entries(docComponents).map((entry) => {
   const [key, component] = entry;
@@ -32,7 +29,7 @@ const docs: DocumentItem[] = Object.entries(docComponents).map((entry) => {
   return {
     routePath,
     name: parts[parts.length - 1] || "index",
-    component,
+    component: component,
   };
 });
 
@@ -55,8 +52,19 @@ export const App = () => {
           })}
         </ul>
         <Routes>
-          {docs.map(({ routePath, component: Document }) => {
-            return <Route key={routePath} path={routePath} element={<Document />} />;
+          {docs.map(({ routePath, component }) => {
+            const Component = lazy(component);
+            return (
+              <Route
+                key={routePath}
+                path={routePath}
+                element={
+                  <Suspense fallback={<div>loading...</div>}>
+                    <Component />
+                  </Suspense>
+                }
+              />
+            );
           })}
         </Routes>
       </nav>
