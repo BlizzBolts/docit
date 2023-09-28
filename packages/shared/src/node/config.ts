@@ -67,19 +67,20 @@ const readConfig = async (cwd: string = process.cwd()) => {
 };
 
 export const resolveConfig = async (cwd: string = process.cwd()): Promise<DocitConfig> => {
+  cwd = path.resolve(cwd);
   const config = await readConfig(cwd);
   const resolvedConfig: DocitConfig = zDocitConfig.parse(config || {});
 
-  if (config?.docRoot) {
-    resolvedConfig.docRoot = path.resolve(cwd, config?.docRoot);
+  if (resolvedConfig?.docRoot) {
+    resolvedConfig.docRoot = path.resolve(cwd, resolvedConfig?.docRoot);
   }
 
-  if (config?.outDir) {
-    resolvedConfig.outDir = path.resolve(cwd, config?.outDir);
+  if (resolvedConfig?.outDir) {
+    resolvedConfig.outDir = path.resolve(cwd, resolvedConfig?.outDir);
   }
 
-  if (config?.root) {
-    resolvedConfig.root = path.resolve(cwd, config.root);
+  if (resolvedConfig?.root) {
+    resolvedConfig.root = path.resolve(cwd, resolvedConfig.root);
   }
   return resolvedConfig;
 };

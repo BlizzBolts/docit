@@ -1,28 +1,19 @@
 import { describe, it } from "vitest";
 import { markdownPathToRoutePath } from "@/index";
 
+const paths = [
+  "/@fs/Users/hao/spaces/projj/github.com/BlizzBolts/docit/docs/config/cli-commands.mdx",
+  "/@fs/Users/hao/spaces/projj/github.com/BlizzBolts/docit/docs/index.md",
+  "/@fs/Users/hao/spaces/projj/github.com/BlizzBolts/docit/docs/config/index.md",
+  "/@fs/Users/hao/spaces/projj/github.com/BlizzBolts/docit/docs/ReadMe.md",
+];
+const docRoot = "/Users/hao/spaces/projj/github.com/BlizzBolts/docit/docs";
+
 describe.concurrent("node/utils", () => {
   describe.concurrent("markdownPathToRoutePath", () => {
     it("parse successfully", async ({ expect }) => {
-      const paths = [
-        "../docs/123123/ggg/ssss.mdx",
-        "../../docs/index.md",
-        "../../docs/test/aaa.mdx",
-        "../../docs/test/bbb.mdx",
-        "../../../../../../vitejs/vite-plugin-react/docs/index.md",
-        "../../../../../../vitejs/vite-plugin-react/docs/ddd/index.md",
-      ];
-
-      const results = paths.map((o) => markdownPathToRoutePath(o));
-
-      expect(results).toEqual([
-        "/123123/ggg/ssss",
-        "/",
-        "/test/aaa",
-        "/test/bbb",
-        "/",
-        "/ddd/index",
-      ]);
+      const r1 = paths.map((o) => markdownPathToRoutePath(o, docRoot));
+      expect(r1).toEqual(["/config/cli-commands", "/", "/config/", "/readme"]);
     });
   });
 });

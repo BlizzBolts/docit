@@ -18,14 +18,15 @@ import { glob } from "glob";
 const CORE_PKG_DIST_DIR = path.dirname(pkgUpSync({ cwd: getDirname(import.meta.url) })!);
 
 export const build = async (cwd: string) => {
-  const config = await resolveConfig(path.resolve(cwd));
+  cwd = path.resolve(cwd);
+  const config = await resolveConfig(cwd);
   coreLogger.start(colors.cyan(`Start building for production...`));
 
   await buildForSSR(cwd, config);
   await buildForStatic(cwd, config);
 
   coreLogger.ready(
-    colors.cyan(`Static files generated at [${path.resolve(cwd, config.docRoot, "./dist")}]`),
+    colors.cyan(`Static files generated at [${path.resolve(cwd, config.docRoot!, "./dist")}]`),
   );
 };
 
@@ -80,9 +81,11 @@ const buildForStatic = async (cwd: string, config: DocitConfig) => {
     )
   );
   const docs = await glob("./**/*.{md,mdx}", {
-    cwd,
+    cwd: config.docRoot!,
   });
-  const routesToPrerender = docs.map((path) => markdownPathToRoutePath(path));
+  const routesToPrerender = docs.map((p) => {
+    return markdownPathToRoutePath(path.resolve(config.docRoot!, "./", p), config.docRoot!);
+  });
   for (const url of routesToPrerender) {
     const context = {};
     const appHtml = await render(url, context);

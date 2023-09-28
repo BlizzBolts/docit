@@ -15,7 +15,7 @@ export const createDocitPlugin = async (cwd: string): Promise<PluginOption[]> =>
         resolve: {
           dedupe: ["react", "react-dom"],
           alias: {
-            "doc-root": path.resolve(cwd, "./", config.docRoot),
+            "doc-root": path.resolve(cwd, "./", config.docRoot!),
           },
         },
       };

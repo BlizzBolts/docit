@@ -1,14 +1,15 @@
-/**
- * @param p
- * @returns
- */
-export const markdownPathToRoutePath = (p: string) => {
-  const pattern = /.*docs\/(.*)(\.md|\.mdx)/;
-  const parsed = p.match(pattern)?.[1];
+export const markdownPathToRoutePath = (absFilePath: string, absDocRoot: string) => {
+  let result = absFilePath.replace("/@fs", "").replace(absDocRoot, "");
 
-  if (parsed === "index" || parsed === "readme") {
-    return "/";
-  } else {
-    return "/" + parsed;
+  if (result.endsWith(".mdx")) {
+    result = result.substring(0, result.length - ".mdx".length);
   }
+  if (result.endsWith(".md")) {
+    result = result.substring(0, result.length - ".md".length);
+  }
+  if (result.endsWith("/index")) {
+    result = result.substring(0, result.length - "index".length);
+  }
+
+  return result.toLowerCase();
 };

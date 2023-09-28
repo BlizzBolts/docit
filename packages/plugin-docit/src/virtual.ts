@@ -8,11 +8,13 @@ const makeExportDefault = (o: Record<string, unknown>) => {
 export const virtual = async (cwd: string): Promise<PluginOption> => {
   const cache = new Map<string, string>();
   const config = await resolveConfig(cwd);
-
   cache.set("@docit/config", makeExportDefault(config));
 
   return {
     name: "vite-plugin-docit-virtual",
+    configResolved(config) {
+      cache.set("@vite/config", makeExportDefault(config));
+    },
     resolveId(id) {
       if (cache.has(id)) {
         return "\0" + id;

@@ -8,3 +8,9 @@ declare module "@docit/config" {
   let config: DocitConfig;
   export default config;
 }
+
+declare module "@vite/config" {
+  import type { ResolvedConfig } from "vite";
+  let config: ResolvedConfig;
+  export default config;
+}
