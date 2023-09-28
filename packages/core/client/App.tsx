@@ -1,5 +1,10 @@
 import { Link, Route, Routes } from "react-router-dom";
-import { logger, markdownPathToRoutePath, resolvePath } from "@blizzbolts/docit-shared/client";
+import {
+  isInBrowser,
+  logger,
+  markdownPathToRoutePath,
+  resolvePath,
+} from "@blizzbolts/docit-shared/client";
 import appConfig from "@docit/config";
 import viteConfig from "@vite/config";
 
@@ -19,6 +24,7 @@ const docComponents: Record<string, React.ComponentType> = import.meta.glob(
 
 const docs: DocumentItem[] = Object.entries(docComponents).map((entry) => {
   const [key, component] = entry;
+
   // key is relative path to vite root, using resolveFrom to make it abs path
   const absFilePath = resolvePath(viteConfig.root, key);
   const routePath = markdownPathToRoutePath(absFilePath, appConfig.docRoot!);
@@ -30,8 +36,10 @@ const docs: DocumentItem[] = Object.entries(docComponents).map((entry) => {
   };
 });
 
-logger.info("Docs:", docs);
-logger.info("AppConfig from @docit/config:", appConfig);
+if (isInBrowser()) {
+  logger.info("Docs:", docs);
+  logger.info("AppConfig from @docit/config:", appConfig);
+}
 
 export const App = () => {
   return (

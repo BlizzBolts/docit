@@ -1,8 +1,8 @@
 import path from "node:path";
 import { glob } from "glob";
 import { bundleRequire } from "bundle-require";
-import type { DocitConfig } from "../shared/types";
-import { zDocitConfig } from "../shared/types";
+import type { DocitConfig } from "../shared/zod";
+import { zDocitConfig } from "../shared/zod";
 import { zPrintErr } from "../shared/zod";
 import { coreLogger } from "../shared/logger";
 import { isFileReadable } from "../node/utils/files";
