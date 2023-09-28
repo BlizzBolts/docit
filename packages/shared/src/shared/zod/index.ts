@@ -1,5 +1,11 @@
+export * from "./docit-config";
+export * from "./scaffold-options";
+export * from "./server-config";
+export * from "./site-config";
+export * from "./theme-config";
+
 import { ZodError } from "zod";
-import { validateLogger } from "./logger";
+import { validateLogger } from "../logger";
 
 export const isZodError = (e: unknown | Error) => {
   if (e instanceof ZodError) {
