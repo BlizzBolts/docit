@@ -5,7 +5,7 @@ import { zSiteConfig } from "./site-config";
 const zScaffoldOptions = zSiteConfig
   .pick({ title: true, description: true })
   .partial()
-  .merge(zDocitConfig.pick({ root: true }).required())
+  .merge(zDocitConfig.pick({ root: true, docRoot: true }).required())
   .strict();
 
 export { zScaffoldOptions };

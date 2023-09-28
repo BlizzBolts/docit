@@ -14,6 +14,7 @@ describe.concurrent("init", () => {
 
     const result = await init({
       root: r(),
+      docRoot: r("./docs"),
       title: "My Blog Title",
       description: "My description title",
     });
@@ -36,6 +37,7 @@ describe.concurrent("init", () => {
       const spy = vi.spyOn(coreLogger, "error");
       result = await init({
         root: r(),
+        docRoot: r("./docs"),
       });
       expect(spy).toBeCalled();
     } catch (e) {

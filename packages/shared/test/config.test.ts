@@ -3,7 +3,8 @@ import fsx from "fs-extra";
 import type { TmpDirContext } from "@workspace/test/context/tmp-dir";
 import { setupTmpDir } from "@workspace/test/context/tmp-dir";
 import { coreLogger } from "../src/shared/logger";
-import { findConfigFile, readConfigFromFile } from "../src/node/config";
+import { findConfigFile, readConfigFromFile, resolveConfig } from "../src/node/config";
+import { init } from "../../core/node/init";
 
 describe.concurrent("findConfigFile", () => {
   describe.concurrent("ESM env", () => {
@@ -184,5 +185,21 @@ describe.concurrent("readConfigFromFile", async () => {
         });
       });
     });
+  });
+});
+
+describe.concurrent("resolveConfig", () => {
+  setupTmpDir();
+  it<TmpDirContext>("should resolve all path related path", async ({ expect, r }) => {
+    await init({
+      root: r(),
+      docRoot: r("./docs"),
+    });
+
+    const config = await resolveConfig(r());
+
+    expect(config.docRoot).toBe(r("./docs"));
+    expect(config.root).toBe(r());
+    expect(config.outDir).toBe(r("./docs/dist"));
   });
 });

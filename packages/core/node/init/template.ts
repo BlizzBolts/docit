@@ -23,11 +23,12 @@ export const makeDocitConfigFile = async (
   const fileLocation = path.resolve(scaffoldOptions.root, "./", filename);
 
   const docitConfig: DocitConfig = zDocitConfig.parse({
+    docRoot: scaffoldOptions.docRoot,
     site: {
       title: options.title,
       description: options.description,
     },
-  });
+  } as DocitConfig);
 
   return {
     content: `export default ${JSON.stringify(docitConfig, null, 2)}`,

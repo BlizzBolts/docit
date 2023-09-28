@@ -14,6 +14,13 @@ export const init = async (destination: string) => {
           initialValue: destination || "./",
         }),
 
+      docRoot: () =>
+        text({
+          message: "Where do you want to place your markdowns?",
+          placeholder: "./docs",
+          initialValue: "./docs",
+        }),
+
       title: () =>
         text({
           message: "Title:",

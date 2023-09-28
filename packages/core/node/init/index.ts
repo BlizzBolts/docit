@@ -1,31 +1,34 @@
 import path from "node:path";
 import { zScaffoldOptions, type ScaffoldOptions, coreLogger } from "@blizzbolts/docit-shared";
 import fsx from "fs-extra";
-import { isWritable } from "@blizzbolts/docit-shared/node";
+import { isWritable, resolveConfig } from "@blizzbolts/docit-shared/node";
 import { makeDocitConfigFile } from "./template";
 
 export const init = async (scaffoldOptions?: ScaffoldOptions): Promise<boolean> => {
-  scaffoldOptions = scaffoldOptions ?? zScaffoldOptions.parse({});
-
-  const docsFolderLocation = path.resolve(scaffoldOptions.root, "./docs");
-  if (!isWritable(docsFolderLocation)) {
-    const message = `${docsFolderLocation} is not empty. Please remove the folder or choose another one.`;
-    coreLogger.error(message);
-    return false;
-  }
+  scaffoldOptions = zScaffoldOptions.parse(scaffoldOptions || {});
 
   const configFileTemplate = await makeDocitConfigFile(scaffoldOptions);
   await fsx.outputFile(configFileTemplate.location, configFileTemplate.content);
 
-  const markdown = `# Hello Docit
+  const config = await resolveConfig(scaffoldOptions.root);
+  if (!isWritable(config.docRoot!)) {
+    const message = `${config.docRoot} is not empty. Please remove the folder or choose another one.`;
+    coreLogger.error(message);
+    return false;
+  }
+
+  const markdown = (s: string) => `# ${s}
 
 Dolore ullamco ea proident pariatur magna.
 Duis excepteur proident enim irure laboris consequat velit consequat est elit occaecat.
   `;
 
-  await fsx.outputFile(path.resolve(docsFolderLocation, "./index.mdx"), markdown);
-  await fsx.outputFile(path.resolve(docsFolderLocation, "./folder/index.mdx"), markdown);
+  await fsx.outputFile(path.resolve(config.docRoot!, "./index.mdx"), markdown("Docit"));
+  await fsx.outputFile(
+    path.resolve(config.docRoot!, "./folder/index.mdx"),
+    markdown("Another Doc"),
+  );
 
-  coreLogger.debug(`Writing template to ${scaffoldOptions.root}`);
+  coreLogger.debug(`Writing template to ${config.root}`);
   return true;
 };

@@ -10,6 +10,7 @@ describe("node/start", () => {
     await maker.makePackageJson({ type: "module" });
     await init({
       root: r(),
+      docRoot: r("./docs"),
     });
 
     const server = await start(r());

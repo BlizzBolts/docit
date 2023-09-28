@@ -8,6 +8,7 @@ import { coreLogger } from "../shared/logger";
 import { isFileReadable } from "../node/utils/files";
 
 export const findConfigFile = async (cwd: string = process.cwd()): Promise<string | null> => {
+  // FIXME: ts config file support
   const globString = "./docit.config.{mjs,cjs,js}";
 
   const matches = await glob(globString, {
@@ -65,8 +66,20 @@ const readConfig = async (cwd: string = process.cwd()) => {
   return config;
 };
 
-export const resolveConfig = async (cwd: string = process.cwd()) => {
+export const resolveConfig = async (cwd: string = process.cwd()): Promise<DocitConfig> => {
   const config = await readConfig(cwd);
+  const resolvedConfig: DocitConfig = zDocitConfig.parse(config || {});
 
-  return zDocitConfig.parse(config || {});
+  if (config?.docRoot) {
+    resolvedConfig.docRoot = path.resolve(cwd, config?.docRoot);
+  }
+
+  if (config?.outDir) {
+    resolvedConfig.outDir = path.resolve(cwd, config?.outDir);
+  }
+
+  if (config?.root) {
+    resolvedConfig.root = path.resolve(cwd, config.root);
+  }
+  return resolvedConfig;
 };

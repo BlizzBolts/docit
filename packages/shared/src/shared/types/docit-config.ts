@@ -6,9 +6,21 @@ import { zThemeConfig } from "./theme-config";
 
 const zDocitConfig = z
   .object({
+    /**
+     * current working directory
+     */
     root: z.string().default("./"),
+    /**
+     * a relative path to root or an absolute path
+     */
     docRoot: z.string().default("./docs"),
+    /**
+     * a relative path to root or an absolute path
+     */
     outDir: z.string().default("./docs/dist"),
+    /**
+     * public path
+     */
     base: z.string().default("/"),
     site: zSiteConfig.partial().default(zSiteConfig.parse({})),
     alias: z.any().optional() as z.ZodOptional<z.ZodType<AliasOptions>>,
