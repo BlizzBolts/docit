@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import {
   isInBrowser,
   logger,
@@ -39,25 +39,22 @@ if (isInBrowser()) {
 }
 
 export const App = () => {
+  const navigate = useNavigate();
+
   return (
     <Layout>
-      <Header title={appConfig.site?.title || ""} />
-      <nav>
-        <ul>
-          {docs.map(({ name, routePath }) => {
-            return (
-              <li key={routePath}>
-                <Link to={routePath}>{name}</Link>
-              </li>
-            );
-          })}
-        </ul>
-        <Routes>
-          {docs.map(({ routePath, component: Component }) => {
-            return <Route key={routePath} path={routePath} element={<Component />} />;
-          })}
-        </Routes>
-      </nav>
+      <Header
+        title={appConfig.site?.title || ""}
+        navs={appConfig.themeConfig?.nav}
+        onNavigate={(o) => {
+          navigate(o.url);
+        }}
+      />
+      <Routes>
+        {docs.map(({ routePath, component: Component }) => {
+          return <Route key={routePath} path={routePath} element={<Component />} />;
+        })}
+      </Routes>
     </Layout>
   );
 };

@@ -23,6 +23,7 @@ const zThemeConfig = z
 
 export { zThemeConfig };
 export type ThemeConfig = z.infer<typeof zThemeConfig>;
+export type { NavItem };
 export const defineThemeConfig = (config: ThemeConfig): ThemeConfig => {
   return zThemeConfig.parse(config);
 };

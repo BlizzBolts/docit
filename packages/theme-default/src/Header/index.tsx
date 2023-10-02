@@ -1,16 +1,19 @@
 import type { HeaderProps } from "./types";
 import { Button } from "@/components/button";
+
 const Header: React.FC<HeaderProps> = (props) => {
-  const { title } = props;
+  const { title, navs, onNavigate } = props;
   return (
-    <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
-      <div className="shrink-0">
-        <img className="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo" />
-      </div>
-      <Button>123123</Button>
-      <div>
-        <div className="text-xl font-medium text-black">ChitChat</div>
-        <p className="text-slate-500">You have a new message!</p>
+    <div className="px-4 md:px-8 lg:px-12 xl:px-16 flex items-center h-12 justify-between shadow-sm">
+      <h3 className="scroll-m-20 text-xl font-semibold tracking-tight font-mono">{title} </h3>
+      <div className="flex items-center">
+        {navs?.map((o) => {
+          return (
+            <Button variant="link" key={o.url} onClick={() => onNavigate(o)}>
+              {o.title}
+            </Button>
+          );
+        })}
       </div>
     </div>
   );

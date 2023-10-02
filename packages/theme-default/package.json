@@ -69,7 +69,8 @@
     "tailwindcss": "^3.3.3",
     "tsc-alias": "^1.8.7",
     "typescript": "5.2.2",
-    "vitest": "^0.34.4"
+    "vitest": "^0.34.4",
+    "@blizzbolts/docit-shared": "workspace:*"
   },
   "publishConfig": {
     "access": "public"

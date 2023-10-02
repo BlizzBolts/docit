@@ -277,6 +277,9 @@ importers:
         specifier: ^1.0.7
         version: 1.0.7(tailwindcss@3.3.3)
     devDependencies:
+      '@blizzbolts/docit-shared':
+        specifier: workspace:*
+        version: link:../shared
       '@changesets/cli':
         specifier: ^2.26.2
         version: registry.npmmirror.com/@changesets/cli@2.26.2
@@ -1126,7 +1129,6 @@ packages:
 
   /@types/node@20.6.2:
     resolution: {integrity: sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==}
-    dev: true
 
   /@vitest/coverage-istanbul@0.34.5(vitest@0.34.4):
     resolution: {integrity: sha512-t07VrdRSRKw7QgOZ20i1bmstv9seUm7Fay8wVtswKHBlMmAAW3K5x+0u18O50mLuVl208Lx21tH/6O7W4BWR9Q==}
@@ -3631,6 +3633,7 @@ packages:
     resolution: {integrity: sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-20.6.2.tgz}
     name: '@types/node'
     version: 20.6.2
+    dev: true
 
   registry.npmmirror.com/@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz}
@@ -11101,7 +11104,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': registry.npmmirror.com/@types/node@20.6.2
+      '@types/node': 20.6.2
       esbuild: registry.npmmirror.com/esbuild@0.18.20
       postcss: registry.npmmirror.com/postcss@8.4.30
       rollup: registry.npmmirror.com/rollup@3.29.2
