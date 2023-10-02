@@ -34,6 +34,7 @@
     "react-dom": ">=18.2.0"
   },
   "devDependencies": {
+    "@blizzbolts/docit-shared": "workspace:*",
     "@changesets/cli": "^2.26.2",
     "@csstools/postcss-cascade-layers": "^4.0.0",
     "@rollup/plugin-alias": "^5.0.0",
@@ -69,14 +70,14 @@
     "tailwindcss": "^3.3.3",
     "tsc-alias": "^1.8.7",
     "typescript": "5.2.2",
-    "vitest": "^0.34.4",
-    "@blizzbolts/docit-shared": "workspace:*"
+    "vitest": "^0.34.4"
   },
   "publishConfig": {
     "access": "public"
   },
   "packageManager": "pnpm@8.7.5",
   "dependencies": {
+    "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.0.0",
