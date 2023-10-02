@@ -6,12 +6,12 @@ type NavItem = z.infer<typeof zBaseNavItem> & {
 
 const zBaseNavItem = z.object({
   title: z.string(),
-  path: z.string(),
+  url: z.string(),
 });
 
 const zNavItem: z.ZodType<NavItem> = zBaseNavItem
   .extend({
-    items: z.lazy(() => zNavItem.array()),
+    items: z.lazy(() => zNavItem.array()).optional(),
   })
   .strict();
 
