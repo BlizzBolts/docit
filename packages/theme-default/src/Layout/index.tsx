@@ -1,9 +1,10 @@
-import { Header } from "@/Header";
+import type { BaseProps } from "@/types";
 
-const Layout = () => {
+const Layout: React.FC<BaseProps> = (props) => {
+  const { children, className, style } = props;
   return (
-    <div>
-      <Header>This is Header222</Header>
+    <div className={className} style={style}>
+      {children}
     </div>
   );
 };

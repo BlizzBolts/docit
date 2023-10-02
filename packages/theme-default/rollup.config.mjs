@@ -10,9 +10,8 @@ import postcss from "rollup-plugin-postcss";
 import terser from "@rollup/plugin-terser";
 import json from "@rollup/plugin-json";
 import alias from "@rollup/plugin-alias";
-import panda from "@pandacss/dev/postcss";
-import cascade from "@csstools/postcss-cascade-layers";
 import { dts } from "rollup-plugin-dts";
+import tailwindcss from "tailwindcss";
 
 const pkg = JSON.parse(
   fs.readFileSync(path.resolve(process.cwd(), "./package.json"), {
@@ -54,7 +53,7 @@ const plugins = [
   }),
   url(),
   postcss({
-    plugins: [panda(), cascade()],
+    plugins: [tailwindcss()],
     minimize: true,
     inject: true,
   }),

@@ -1,4 +1,4 @@
 import "./index.css";
 
-export * from "./Box";
 export * from "./Layout";
+export * from "./Header";

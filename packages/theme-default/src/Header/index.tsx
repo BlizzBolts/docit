@@ -1,17 +1,18 @@
-import { css } from "@styled-system/css";
 import type { HeaderProps } from "./types";
 
-const styles = css({
-  backgroundColor: "gainsboro",
-  borderRadius: "9999px",
-  fontSize: "13px",
-  padding: "10px 15px",
-});
-
 const Header: React.FC<HeaderProps> = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const { children } = props;
-  return <div className={styles}>{children}</div>;
+  const { title } = props;
+  return (
+    <div className="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4">
+      <div className="shrink-0">
+        <img className="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo" />
+      </div>
+      <div>
+        <div className="text-xl font-medium text-black">ChitChat</div>
+        <p className="text-slate-500">You have a new message!</p>
+      </div>
+    </div>
+  );
 };
 
 export { Header };
