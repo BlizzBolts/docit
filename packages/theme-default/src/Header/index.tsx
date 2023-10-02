@@ -1,5 +1,5 @@
 import type { HeaderProps } from "./types";
-
+import { Button } from "@/components/button";
 const Header: React.FC<HeaderProps> = (props) => {
   const { title } = props;
   return (
@@ -7,6 +7,7 @@ const Header: React.FC<HeaderProps> = (props) => {
       <div className="shrink-0">
         <img className="h-12 w-12" src="/img/logo.svg" alt="ChitChat Logo" />
       </div>
+      <Button>123123</Button>
       <div>
         <div className="text-xl font-medium text-black">ChitChat</div>
         <p className="text-slate-500">You have a new message!</p>
