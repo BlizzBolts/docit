@@ -73,4 +73,5 @@ export default {
       },
     },
   },
+  plugins: [animate],
 };
