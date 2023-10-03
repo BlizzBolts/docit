@@ -3,6 +3,7 @@ import type { PluginOption } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import mdx from "@mdx-js/rollup";
 import { resolveConfig } from "@blizzbolts/docit-shared/node";
+import gfm from "remark-gfm";
 import { virtual } from "./virtual";
 
 export const createDocitPlugin = async (cwd: string): Promise<PluginOption[]> => {
@@ -27,5 +28,12 @@ export const createDocitPlugin = async (cwd: string): Promise<PluginOption[]> =>
     },
   };
 
-  return [docitPlugin, mdx(), react(), await virtual(cwd)];
+  return [
+    docitPlugin,
+    mdx({
+      remarkPlugins: [gfm],
+    }),
+    react(),
+    await virtual(cwd),
+  ];
 };

@@ -6,6 +6,7 @@ export default defineConfig({
     nav: [
       { title: "Guide", url: "/" },
       { title: "Config", url: "/config/cli-commands" },
+      { title: "GFM", url: "/config/GFM" },
     ],
   },
 });
