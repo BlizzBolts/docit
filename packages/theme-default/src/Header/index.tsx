@@ -1,15 +1,6 @@
 import { useState } from "react";
 import type { HeaderProps } from "./types";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/select";
-import { Button } from "@/components/button";
+import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/shadcnui";
 
 const Header: React.FC<HeaderProps> = (props) => {
   const { title, navs, onNavigate } = props;
@@ -20,7 +11,7 @@ const Header: React.FC<HeaderProps> = (props) => {
         {title}
       </h3>
       <Select value={version} onValueChange={setVersion}>
-        <SelectTrigger className="w-auto outline-none h-6 mr-auto ml-2 bg-primary/5">
+        <SelectTrigger className="w-auto outline-none h-6 mr-auto ml-2">
           <SelectValue placeholder="Select Version" />
         </SelectTrigger>
         <SelectContent>

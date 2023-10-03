@@ -12,6 +12,7 @@ import json from "@rollup/plugin-json";
 import alias from "@rollup/plugin-alias";
 import { dts } from "rollup-plugin-dts";
 import tailwindcss from "tailwindcss";
+import cascade from "@csstools/postcss-cascade-layers";
 
 const pkg = JSON.parse(
   fs.readFileSync(path.resolve(process.cwd(), "./package.json"), {
@@ -53,7 +54,7 @@ const plugins = [
   }),
   url(),
   postcss({
-    plugins: [tailwindcss()],
+    plugins: [cascade(), tailwindcss()],
     minimize: true,
     inject: true,
   }),

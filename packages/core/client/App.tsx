@@ -7,7 +7,7 @@ import {
 } from "@blizzbolts/docit-shared/client";
 import appConfig from "@docit/config";
 import viteConfig from "@vite/config";
-import { Header, Layout } from "@blizzbolts/docit-theme-default";
+import { Header, Layout, Document } from "@blizzbolts/docit-theme-default";
 
 interface DocumentItem {
   name: string;
@@ -50,11 +50,13 @@ export const App = () => {
           navigate(o.url);
         }}
       />
-      <Routes>
-        {docs.map(({ routePath, component: Component }) => {
-          return <Route key={routePath} path={routePath} element={<Component />} />;
-        })}
-      </Routes>
+      <Document>
+        <Routes>
+          {docs.map(({ routePath, component: Component }) => {
+            return <Route key={routePath} path={routePath} element={<Component />} />;
+          })}
+        </Routes>
+      </Document>
     </Layout>
   );
 };
