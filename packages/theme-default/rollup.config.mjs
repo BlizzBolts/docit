@@ -54,7 +54,7 @@ const plugins = [
   }),
   url(),
   postcss({
-    plugins: [cascade(), tailwindcss()],
+    plugins: [tailwindcss()],
     minimize: true,
     inject: true,
   }),

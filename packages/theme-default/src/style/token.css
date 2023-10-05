@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer base {
+  :root {
+    --docit-font-sans: "Readex Pro","Noto Sans SC";
+    --docit-background: 0 0% 100%;
+    --docit-foreground: 224 71.4% 4.1%;
+    --docit-card: 0 0% 100%;
+    --docit-card-foreground: 224 71.4% 4.1%;
+    --docit-popover: 0 0% 100%;
+    --docit-popover-foreground: 224 71.4% 4.1%;
+    --docit-primary: 195 95% 64%;
+    --docit-primary-foreground: 210 20% 98%;
+    --docit-secondary: 220 14.3% 95.9%;
+    --docit-secondary-foreground: 220.9 39.3% 11%;
+    --docit-muted: 220 14.3% 95.9%;
+    --docit-muted-foreground: 220 8.9% 46.1%;
+    --docit-accent: 220 14.3% 95.9%;
+    --docit-accent-foreground: 220.9 39.3% 11%;
+    --docit-destructive: 0 84.2% 60.2%;
+    --docit-destructive-foreground: 210 20% 98%;
+    --docit-border: 220 13% 91%;
+    --docit-input: 220 13% 91%;
+    --docit-ring: 262.1 83.3% 57.8%;
+    --docit-radius: 0.5rem;
+  }
+
+  .dark {
+    --docit-background: 224 71.4% 4.1%;
+    --docit-foreground: 210 20% 98%;
+    --docit-card: 224 71.4% 4.1%;
+    --docit-card-foreground: 210 20% 98%;
+    --docit-popover: 224 71.4% 4.1%;
+    --docit-popover-foreground: 210 20% 98%;
+    --docit-primary: 263.4 70% 50.4%;
+    --docit-primary-foreground: 210 20% 98%;
+    --docit-secondary: 215 27.9% 16.9%;
+    --docit-secondary-foreground: 210 20% 98%;
+    --docit-muted: 215 27.9% 16.9%;
+    --docit-muted-foreground: 217.9 10.6% 64.9%;
+    --docit-accent: 215 27.9% 16.9%;
+    --docit-accent-foreground: 210 20% 98%;
+    --docit-destructive: 0 62.8% 30.6%;
+    --docit-destructive-foreground: 210 20% 98%;
+    --docit-border: 215 27.9% 16.9%;
+    --docit-input: 215 27.9% 16.9%;
+    --docit-ring: 263.4 70% 50.4%;
+  }
+}

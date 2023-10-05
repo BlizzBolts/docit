@@ -6,6 +6,8 @@
 
 .markdown {
   @apply text-gray-900 leading-normal break-words;
+  letter-spacing: 0.03em;
+  font-weight: 300;
 }
 
 .markdown>*+* {
@@ -25,11 +27,11 @@
 }
 
 .markdown a {
-  @apply text-blue-600 font-semibold;
+  @apply text-primary font-semibold;
 }
 
 .markdown strong a {
-  @apply font-bold;
+  @apply font-semibold;
 }
 
 .markdown h1 {
@@ -61,15 +63,15 @@
 }
 
 .markdown code {
-  @apply font-mono text-sm inline bg-gray-200 rounded px-1 py-05;
+  @apply font-mono font-thin text-sm inline bg-gray-200 rounded px-1 py-05;
 }
 
 .markdown pre {
-  @apply bg-gray-100 rounded p-4;
+  @apply bg-gray-100 rounded p-4 mt-2 mb-6;
 }
 
 .markdown pre code {
-  @apply block bg-transparent p-0 overflow-visible rounded-none;
+  @apply block bg-transparent p-0 overflow-visible rounded-none py-2;
 }
 
 .markdown ul {

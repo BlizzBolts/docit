@@ -5,7 +5,7 @@ import { ScrollArea } from "@/shadcnui";
 const Document: React.FC<DocumentProps> = (props) => {
   const { children, className, style } = props;
   return (
-    <ScrollArea className={clsx(className, "markdown")} style={style}>
+    <ScrollArea className={clsx("markdown max-w-8xl px-8", className)} style={style}>
       {children}
     </ScrollArea>
   );

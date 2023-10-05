@@ -6,10 +6,8 @@ const Header: React.FC<HeaderProps> = (props) => {
   const { title, navs, onNavigate } = props;
   const [version, setVersion] = useState("1.0.0");
   return (
-    <div className="px-8 md:px-12 flex items-center h-12 justify-between shadow-sm">
-      <h3 className="scroll-m-20 text-xl font-semibold tracking-tight font-mono text-primary/100">
-        {title}
-      </h3>
+    <div className="px-8 md:px-12 flex items-center h-12 justify-between shadow-sm w-full bg-white">
+      <h3 className="scroll-m-20 text-xl font-bold tracking-tight text-primary">{title}</h3>
       <Select value={version} onValueChange={setVersion}>
         <SelectTrigger className="w-auto outline-none h-6 mr-auto ml-2">
           <SelectValue placeholder="Select Version" />
@@ -24,7 +22,12 @@ const Header: React.FC<HeaderProps> = (props) => {
       <div className="flex items-center">
         {navs?.map((o) => {
           return (
-            <Button variant="link" key={o.url} onClick={() => onNavigate(o)} className="text-black">
+            <Button
+              variant="link"
+              key={o.url}
+              onClick={() => onNavigate(o)}
+              className="text-primary  font-bold"
+            >
               {o.title}
             </Button>
           );
