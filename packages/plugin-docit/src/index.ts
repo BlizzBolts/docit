@@ -2,13 +2,14 @@ import path from "node:path";
 import type { PluginOption } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import mdx from "@mdx-js/rollup";
-import { resolveConfig } from "@blizzbolts/docit-shared/node";
+import type { DocitConfig } from "@blizzbolts/docit-shared/node";
 import gfm from "remark-gfm";
 import { virtual } from "./virtual";
 
-export const createDocitPlugin = async (cwd: string): Promise<PluginOption[]> => {
-  const config = await resolveConfig(path.resolve(cwd));
-
+export const createDocitPlugin = async (
+  cwd: string,
+  config: DocitConfig,
+): Promise<PluginOption[]> => {
   const docitPlugin: PluginOption = {
     name: "vite-plugin-docit",
     config() {
@@ -34,6 +35,6 @@ export const createDocitPlugin = async (cwd: string): Promise<PluginOption[]> =>
       remarkPlugins: [gfm],
     }),
     react(),
-    await virtual(cwd),
+    await virtual(config),
   ];
 };

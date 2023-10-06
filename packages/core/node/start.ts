@@ -29,8 +29,7 @@ export const start = async (
       },
     },
     appType: "custom",
-    // FIXME: Config should pass in
-    plugins: [await createDocitPlugin(cwd)],
+    plugins: [await createDocitPlugin(cwd, config)],
   });
 
   app.use(vite.middlewares);

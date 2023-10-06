@@ -37,7 +37,7 @@ const buildForSSR = async (cwd: string, config: DocitConfig) => {
 
   const viteConfig: InlineConfig = {
     root: r("./client"),
-    plugins: [await createDocitPlugin(cwd)],
+    plugins: [await createDocitPlugin(cwd, config)],
   };
   // build client
   await viteBuild({
