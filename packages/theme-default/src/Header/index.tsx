@@ -9,7 +9,7 @@ const Header: React.FC<HeaderProps> = (props) => {
     <div className="px-8 md:px-12 flex items-center h-12 justify-between shadow-sm w-full bg-white">
       <h3 className="scroll-m-20 text-xl font-bold tracking-tight text-primary">{title}</h3>
       <Select value={version} onValueChange={setVersion}>
-        <SelectTrigger className="w-auto outline-none h-6 mr-auto ml-2">
+        <SelectTrigger className="w-auto outline-none h-6 mr-auto ml-2 tracking-wider">
           <SelectValue placeholder="Select Version" />
         </SelectTrigger>
         <SelectContent>

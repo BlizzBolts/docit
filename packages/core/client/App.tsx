@@ -1,4 +1,4 @@
-import { Link, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import {
   isInBrowser,
   logger,
@@ -7,6 +7,7 @@ import {
 } from "@blizzbolts/docit-shared/client";
 import appConfig from "@docit/config";
 import viteConfig from "@vite/config";
+import type React from "react";
 import { Header, Layout, Document, SideBar, Page } from "@blizzbolts/docit-theme-default";
 
 interface DocumentItem {
@@ -50,12 +51,9 @@ export const App = () => {
           navigate(o.url);
         }}
       />
-      {/* <div className="max-w-8xl mx-auto px-4 sm:px-6 md:px-8 align-top">
-        
-      </div> */}
       <Layout>
-        <SideBar className="flex-auto">1231</SideBar>
-        <Document className="flex-1">
+        <SideBar>1231</SideBar>
+        <Document>
           <Routes>
             {docs.map(({ routePath, component: Component }) => {
               return <Route key={routePath} path={routePath} element={<Component />} />;
