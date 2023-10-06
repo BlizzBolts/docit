@@ -6,6 +6,7 @@ import { colors, coreLogger } from "@blizzbolts/docit-shared";
 import { getDirname } from "@blizzbolts/docit-shared/node";
 import fsx from "fs-extra";
 import getPort from "get-port";
+import { createHttpTerminator } from "http-terminator";
 
 const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
 const ENTRY_SERVER = r("./client/entry-server.js");
@@ -53,7 +54,7 @@ export const start = async (cwd: string) => {
 
   const port = await getPort({ port: 3000 });
 
-  const server = app.listen(port, () => {
+  const onListen = () => {
     const address = server.address();
     if (!address) {
       coreLogger.fail("Server starts failed. Please Try again");
@@ -72,7 +73,28 @@ export const start = async (cwd: string) => {
         colors.bold(colors.green(`Docit server listening at http://${host}:${port}`)),
       );
     }
+  };
+
+  const server = app.listen(port, onListen);
+
+  const httpTerminator = createHttpTerminator({
+    server,
+    gracefulTerminationTimeout: 2000,
   });
 
+  server.on("close", async () => {
+    coreLogger.info("");
+    coreLogger.info("Server is gracefully shutting down");
+  });
+
+  const shutDown = async () => {
+    if (server.listening) {
+      await httpTerminator.terminate();
+      process.exit(0);
+    }
+  };
+
+  process.on("SIGTERM", shutDown);
+  process.on("SIGINT", shutDown);
   return server;
 };
