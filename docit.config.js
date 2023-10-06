@@ -9,4 +9,7 @@ export default defineConfig({
       { title: "GFM", url: "/config/GFM" },
     ],
   },
+  server: {
+    port: 8000,
+  },
 });

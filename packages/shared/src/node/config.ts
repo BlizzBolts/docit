@@ -82,5 +82,11 @@ export const resolveConfig = async (cwd: string = process.cwd()): Promise<DocitC
   if (resolvedConfig?.root) {
     resolvedConfig.root = path.resolve(cwd, resolvedConfig.root);
   }
+
+  resolvedConfig.server = {
+    port: 3000,
+    ...(resolvedConfig.server || {}),
+  };
+
   return resolvedConfig;
 };

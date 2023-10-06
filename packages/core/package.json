@@ -29,7 +29,7 @@
     "@blizzbolts/docit-shared": "workspace:^",
     "@blizzbolts/docit-theme-default": "workspace:^",
     "@blizzbolts/vite-plugin-docit": "workspace:^",
-    "vite": "^4.4.9"
+    "vite": "^4.4.11"
   },
   "devDependencies": {
     "http-terminator": "^3.2.0",

@@ -1,7 +1,9 @@
 import path from "node:path";
+import type { Server } from "node:http";
 import { createDocitPlugin } from "@blizzbolts/vite-plugin-docit";
 import express from "express";
 import { createServer as createViteServer } from "vite";
+import type { DocitConfig } from "@blizzbolts/docit-shared";
 import { colors, coreLogger } from "@blizzbolts/docit-shared";
 import { getDirname } from "@blizzbolts/docit-shared/node";
 import fsx from "fs-extra";
@@ -11,7 +13,10 @@ import { createHttpTerminator } from "http-terminator";
 const r = (p: string = "") => path.resolve(getDirname(import.meta.url), "../", p);
 const ENTRY_SERVER = r("./client/entry-server.js");
 
-export const start = async (cwd: string) => {
+export const start = async (
+  cwd: string,
+  config: DocitConfig,
+): Promise<{ server: Server; shutDown: () => Promise<void> }> => {
   const app = express();
 
   const vite = await createViteServer({
@@ -24,6 +29,7 @@ export const start = async (cwd: string) => {
       },
     },
     appType: "custom",
+    // FIXME: Config should pass in
     plugins: [await createDocitPlugin(cwd)],
   });
 
@@ -52,7 +58,7 @@ export const start = async (cwd: string) => {
     }
   });
 
-  const port = await getPort({ port: 3000 });
+  const port = await getPort({ port: config.server?.port });
 
   const onListen = () => {
     const address = server.address();
@@ -96,5 +102,11 @@ export const start = async (cwd: string) => {
 
   process.on("SIGTERM", shutDown);
   process.on("SIGINT", shutDown);
-  return server;
+
+  return {
+    server,
+    shutDown: async () => {
+      await httpTerminator.terminate();
+    },
+  };
 };

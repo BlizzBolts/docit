@@ -3,6 +3,7 @@ import { setupTmpDir } from "@workspace/test/context/tmp-dir";
 import { describe, it } from "vitest";
 import fsx from "fs-extra";
 import { glob } from "glob";
+import { resolveConfig } from "@blizzbolts/docit-shared/node";
 import { init } from "../node/init";
 import { build } from "../node/build";
 
@@ -21,7 +22,7 @@ describe("build", () => {
     await maker.rawFile(r("./docs/opq.mdx"), `# opq.mdx!`);
     await maker.rawFile(r("./docs/xyz.md"), `# xyz.mdx!`);
 
-    await build(r());
+    await build(r(), await resolveConfig(r()));
 
     const contents = await glob("./**/*.html", {
       cwd: r("./docs/dist"),

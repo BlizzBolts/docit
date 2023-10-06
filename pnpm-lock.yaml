@@ -114,8 +114,8 @@ importers:
         specifier: ^11.0.0
         version: registry.npmmirror.com/commander@11.0.0
       vite:
-        specifier: ^4.4.9
-        version: registry.npmmirror.com/vite@4.4.9(@types/node@20.6.2)
+        specifier: ^4.4.11
+        version: 4.4.11(@types/node@20.6.2)
     devDependencies:
       '@types/node':
         specifier: ^20.4.5
@@ -133,8 +133,8 @@ importers:
         specifier: workspace:^
         version: link:../plugin-docit
       vite:
-        specifier: ^4.4.9
-        version: registry.npmmirror.com/vite@4.4.9(@types/node@20.6.2)
+        specifier: ^4.4.11
+        version: 4.4.11(@types/node@20.6.2)
     devDependencies:
       '@types/express':
         specifier: ^4.17.17
@@ -210,7 +210,7 @@ importers:
         version: registry.npmmirror.com/@mdx-js/rollup@2.3.0(rollup@3.29.2)
       '@vitejs/plugin-react-swc':
         specifier: ^3.3.2
-        version: registry.npmmirror.com/@vitejs/plugin-react-swc@3.3.2(vite@4.4.9)
+        version: registry.npmmirror.com/@vitejs/plugin-react-swc@3.3.2(vite@4.4.11)
       remark-gfm:
         specifier: ^3.0.1
         version: 3.0.1
@@ -219,8 +219,8 @@ importers:
         specifier: ^2.3.0
         version: 2.3.0
       vite:
-        specifier: ^4.4.9
-        version: registry.npmmirror.com/vite@4.4.9(@types/node@20.6.2)
+        specifier: ^4.4.11
+        version: 4.4.11(@types/node@20.6.2)
 
   packages/shared:
     dependencies:
@@ -262,8 +262,8 @@ importers:
         specifier: ^4.3.1
         version: registry.npmmirror.com/type-fest@4.3.1
       vite:
-        specifier: ^4.4.9
-        version: 4.4.9(@types/node@20.6.2)
+        specifier: ^4.4.11
+        version: 4.4.11(@types/node@20.6.2)
 
   packages/theme-default:
     dependencies:
@@ -4109,8 +4109,8 @@ packages:
       - typescript
     dev: true
 
-  /vite@4.4.9(@types/node@20.6.2):
-    resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
+  /vite@4.4.11(@types/node@20.6.2):
+    resolution: {integrity: sha512-ksNZJlkcU9b0lBwAGZGGaZHCMqHsc8OpgtoYhsQ4/I2v5cnpmmmqe5pM4nv/4Hn6G/2GhTdj0DhZh2e+Er1q5A==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
@@ -4143,7 +4143,6 @@ packages:
       rollup: 3.29.2
     optionalDependencies:
       fsevents: 2.3.3
-    dev: true
 
   /which@2.0.2:
     resolution: {integrity: sha512-BLI3Tl1TW3Pvl70l3yq3Y64i+awpwXqsGBYWkkqMtnbXgrMD+yj7rhW0kuEDxzJaYXGjEW5ogapKNMEKNMjibA==}
@@ -5480,7 +5479,7 @@ packages:
       eslint-visitor-keys: registry.npmmirror.com/eslint-visitor-keys@3.4.3
     dev: true
 
-  registry.npmmirror.com/@vitejs/plugin-react-swc@3.3.2(vite@4.4.9):
+  registry.npmmirror.com/@vitejs/plugin-react-swc@3.3.2(vite@4.4.11):
     resolution: {integrity: sha512-VJFWY5sfoZerQRvJrh518h3AcQt6f/yTuWn4/TRB+dqmYU0NX1qz7qM5Wfd+gOQqUzQW4gxKqKN3KpE/P3+zrA==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@vitejs/plugin-react-swc/-/plugin-react-swc-3.3.2.tgz}
     id: registry.npmmirror.com/@vitejs/plugin-react-swc/3.3.2
     name: '@vitejs/plugin-react-swc'
@@ -5489,7 +5488,7 @@ packages:
       vite: ^4
     dependencies:
       '@swc/core': registry.npmmirror.com/@swc/core@1.3.86
-      vite: registry.npmmirror.com/vite@4.4.9(@types/node@20.6.2)
+      vite: 4.4.11(@types/node@20.6.2)
     transitivePeerDependencies:
       - '@swc/helpers'
     dev: false
@@ -7036,6 +7035,7 @@ packages:
       '@esbuild/win32-arm64': 0.18.20
       '@esbuild/win32-ia32': 0.18.20
       '@esbuild/win32-x64': 0.18.20
+    dev: true
 
   registry.npmmirror.com/escalade@3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/escalade/-/escalade-3.1.1.tgz}
@@ -9091,6 +9091,7 @@ packages:
     version: 3.3.6
     engines: {node: ^10 || ^12 || ^13.7 || ^14 || >=15.0.1}
     hasBin: true
+    dev: true
 
   registry.npmmirror.com/natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/natural-compare/-/natural-compare-1.4.0.tgz}
@@ -10161,6 +10162,7 @@ packages:
       nanoid: registry.npmmirror.com/nanoid@3.3.6
       picocolors: registry.npmmirror.com/picocolors@1.0.0
       source-map-js: registry.npmmirror.com/source-map-js@1.0.2
+    dev: true
 
   registry.npmmirror.com/preferred-pm@3.1.2:
     resolution: {integrity: sha512-nk7dKrcW8hfCZ4H6klWcdRknBOXWzNQByJ0oJyX97BOupsYD+FzLS4hflgEu/uPUEHZCuRfMxzCBsuWd7OzT8Q==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/preferred-pm/-/preferred-pm-3.1.2.tgz}
@@ -10697,6 +10699,7 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.3
+    dev: true
 
   registry.npmmirror.com/rrweb-cssom@0.6.0:
     resolution: {integrity: sha512-APM0Gt1KoXBz0iIkkdB/kfvGOwC4UuJFeG/c+yV7wSc7q96cG/kJ0HiYCnzivD9SB53cLV1MlHFNfOuPaadYSw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/rrweb-cssom/-/rrweb-cssom-0.6.0.tgz}
@@ -10981,6 +10984,7 @@ packages:
     name: source-map-js
     version: 1.0.2
     engines: {node: '>=0.10.0'}
+    dev: true
 
   registry.npmmirror.com/source-map-support@0.5.21:
     resolution: {integrity: sha512-uBHU3L3czsIyYXKX88fdrGovxdSCoTGDRZ6SYXtSRxLZUzHg5P/66Ht6uoUlHu9EZod+inXhKo3qQgwXUT/y1w==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/source-map-support/-/source-map-support-0.5.21.tgz}
@@ -11806,7 +11810,7 @@ packages:
       mlly: registry.npmmirror.com/mlly@1.4.2
       pathe: registry.npmmirror.com/pathe@1.1.1
       picocolors: registry.npmmirror.com/picocolors@1.0.0
-      vite: 4.4.9(@types/node@20.6.2)
+      vite: 4.4.11(@types/node@20.6.2)
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -11849,12 +11853,13 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': registry.npmmirror.com/@types/node@20.6.2
+      '@types/node': 20.6.2
       esbuild: registry.npmmirror.com/esbuild@0.18.20
       postcss: registry.npmmirror.com/postcss@8.4.30
       rollup: registry.npmmirror.com/rollup@3.29.2
     optionalDependencies:
       fsevents: 2.3.3
+    dev: true
 
   registry.npmmirror.com/vitest@0.34.4(@vitest/ui@0.34.5)(jsdom@22.1.0):
     resolution: {integrity: sha512-SE/laOsB6995QlbSE6BtkpXDeVNLJc1u2LHRG/OpnN4RsRzM3GQm4nm3PQCK5OBtrsUqnhzLdnT7se3aeNGdlw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/vitest/-/vitest-0.34.4.tgz}

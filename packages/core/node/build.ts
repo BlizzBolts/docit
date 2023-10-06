@@ -5,7 +5,6 @@ import {
   coreLogger,
   getDirname,
   markdownPathToRoutePath,
-  resolveConfig,
   retrieveUserEnv,
 } from "@blizzbolts/docit-shared/node";
 import { pkgUpSync } from "pkg-up";
@@ -17,12 +16,12 @@ import { glob } from "glob";
 
 const CORE_PKG_DIST_DIR = path.dirname(pkgUpSync({ cwd: getDirname(import.meta.url) })!);
 
-export const build = async (cwd: string) => {
+export const build = async (cwd: string, config: DocitConfig) => {
   cwd = path.resolve(cwd);
-  const config = await resolveConfig(cwd);
   coreLogger.start(colors.cyan(`Start building for production...`));
 
   await fsx.remove(config.outDir!);
+
   await buildForSSR(cwd, config);
   await buildForStatic(cwd, config);
 
