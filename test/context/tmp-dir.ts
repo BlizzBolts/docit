@@ -5,6 +5,8 @@ import { beforeEach, afterEach } from "vitest";
 import { dir } from "tmp-promise";
 import fsx from "fs-extra";
 import type { PackageJson, TsConfigJson } from "type-fest";
+import type { DocitConfig } from "../../packages/shared/src/shared/zod/docit-config";
+import { zDocitConfig } from "../../packages/shared/src/shared/zod/docit-config";
 
 export interface TmpDirContext {
   tmp: DirectoryResult;
@@ -12,9 +14,22 @@ export interface TmpDirContext {
   maker: {
     makePackageJson: (options: PackageJson) => Promise<string>;
     makeTsConfig: (options: TsConfigJson) => Promise<string>;
-    rawFile: (p: string, content: string) => Promise<string>;
+    makeFile: (p: string, content: string) => Promise<string>;
+    makeDocitConfigFile: (
+      p: string,
+      config: DocitConfig,
+      format?: "esm" | "cjs",
+    ) => Promise<string>;
   };
 }
+
+const makeExportDefault = (o: Record<string, unknown>, format: "esm" | "cjs" = "esm") => {
+  if (format === "esm") {
+    return `export default ${JSON.stringify(o, null, 2)}`;
+  } else {
+    return `module.exports =  ${JSON.stringify(o, null, 2)}`;
+  }
+};
 
 export const setupTmpDir = (options?: {
   before?: (ctx: TestContext & TmpDirContext) => Promise<void>;
@@ -43,8 +58,12 @@ export const setupTmpDir = (options?: {
         await fsx.outputJSON(filename, options);
         return filename;
       },
-      rawFile: async (p, content) => {
+      makeFile: async (p, content) => {
         await fsx.outputFile(p, content, "utf-8");
+        return p;
+      },
+      makeDocitConfigFile: async (p, config = zDocitConfig.parse({}), format = "esm") => {
+        await fsx.outputFile(p, makeExportDefault(config, format));
         return p;
       },
     } as TmpDirContext["maker"];

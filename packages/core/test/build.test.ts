@@ -18,9 +18,9 @@ describe("build", () => {
     });
     expect(result).toBe(true);
 
-    await maker.rawFile(r("./docs/abc.mdx"), `# abc.mdx!`);
-    await maker.rawFile(r("./docs/opq.mdx"), `# opq.mdx!`);
-    await maker.rawFile(r("./docs/xyz.md"), `# xyz.mdx!`);
+    await maker.makeFile(r("./docs/abc.mdx"), `# abc.mdx!`);
+    await maker.makeFile(r("./docs/opq.mdx"), `# opq.mdx!`);
+    await maker.makeFile(r("./docs/xyz.md"), `# xyz.mdx!`);
 
     await build(r(), await resolveConfig(r()));
 

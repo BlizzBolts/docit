@@ -2,14 +2,14 @@ import path from "node:path";
 import { glob } from "glob";
 import { bundleRequire } from "bundle-require";
 import type { DocitConfig } from "../shared/zod";
-import { zDocitConfig } from "../shared/zod";
+import { zDocitConfig, zServerConfig } from "../shared/zod";
 import { zPrintErr } from "../shared/zod";
 import { coreLogger } from "../shared/logger";
 import { isFileReadable } from "../node/utils/files";
 
 export const findConfigFile = async (cwd: string = process.cwd()): Promise<string | null> => {
   // FIXME: ts config file support
-  const globString = "./docit.config.{mjs,cjs,js}";
+  const globString = "./docit.config.{ts,mjs,cjs,js}";
 
   const matches = await glob(globString, {
     cwd,
@@ -83,10 +83,7 @@ export const resolveConfig = async (cwd: string = process.cwd()): Promise<DocitC
     resolvedConfig.root = path.resolve(cwd, resolvedConfig.root);
   }
 
-  resolvedConfig.server = {
-    port: 3000,
-    ...(resolvedConfig.server || {}),
-  };
+  resolvedConfig.server = zServerConfig.parse(resolvedConfig.server || {});
 
   return resolvedConfig;
 };

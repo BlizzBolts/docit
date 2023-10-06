@@ -1,21 +1,9 @@
 import { describe, it } from "vitest";
 import { ZodError } from "zod";
 import type { SiteConfig } from "@/shared";
-import {
-  zSiteConfig,
-  type DocitConfig,
-  ThemeType,
-  zDocitConfig,
-  defineConfig,
-  defineSiteConfig,
-  defineScaffoldOptions,
-  zScaffoldOptions,
-} from "@/shared";
+import { zSiteConfig, type DocitConfig, ThemeType, zDocitConfig, defineConfig } from "@/shared";
 
 describe.concurrent("zSiteConfig", () => {
-  it("should defineSiteConfig", ({ expect }) => {
-    expect(defineSiteConfig({})).toEqual(zSiteConfig.parse({}));
-  });
   it("should fill the optional value with default", async ({ expect }) => {
     const initialValue = {
       description: "site description",
@@ -132,16 +120,5 @@ describe.concurrent("zDocitConfig", () => {
         expect(e.issues[0].code).toEqual("invalid_type");
       }
     }
-  });
-});
-
-describe.concurrent("zScaffoldOptions", () => {
-  it("should defineScaffoldOptions", ({ expect }) => {
-    const expected = zScaffoldOptions.parse({});
-    expect(
-      defineScaffoldOptions({
-        root: "./",
-      }),
-    ).toEqual(expected);
   });
 });

@@ -34,6 +34,3 @@ const zSiteConfig = z
 
 export { zSiteConfig, SocialEnum, ThemeType };
 export type SiteConfig = z.input<typeof zSiteConfig>;
-export const defineSiteConfig = (config: SiteConfig): SiteConfig => {
-  return zSiteConfig.parse(config);
-};

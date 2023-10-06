@@ -11,6 +11,3 @@ const zScaffoldOptions = zSiteConfig
 export { zScaffoldOptions };
 
 export type ScaffoldOptions = z.infer<typeof zScaffoldOptions>;
-export const defineScaffoldOptions = (config: ScaffoldOptions): ScaffoldOptions => {
-  return zScaffoldOptions.parse(config);
-};
