@@ -2,14 +2,6 @@
 
 # Docit
 
-大中国
-
-Nostrud consectetur adipisicing incididunt pariatur in laborum excepteur id sint sunt. Aliqua consectetur non nostrud minim esse ullamco Lorem pariatur veniam ipsum. Lorem quis Lorem sit irure ea.
-
-Consequat exercitation do excepteur labore ullamco proident. Ex fugiat duis Lorem sint. Cupidatat ea eiusmod excepteur anim amet. Irure nulla sunt cillum sint esse ullamco velit ea sit excepteur dolore duis et.
-
-Excepteur non esse pariatur occaecat. Magna anim id culpa sunt officia ullamco do ad quis ullamco exercitation est. Eu ullamco ex sit enim voluptate.
-
 ![Download](https://img.shields.io/npm/dw/@blizzbolts/docit)
 ![Node](https://img.shields.io/node/v/@blizzbolts/docit)
 ![Version](https://img.shields.io/npm/v/@blizzbolts/docit)
