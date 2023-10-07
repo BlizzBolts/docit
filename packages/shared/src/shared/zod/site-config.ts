@@ -30,7 +30,8 @@ const zSiteConfig = z
       .optional(),
     theme: z.nativeEnum(ThemeType).default(ThemeType.default).or(z.string()),
   })
-  .strict();
+  .strict()
+  .strip();
 
 export { zSiteConfig, SocialEnum, ThemeType };
 export type SiteConfig = z.input<typeof zSiteConfig>;

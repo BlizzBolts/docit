@@ -88,56 +88,54 @@ describe.concurrent("readConfigFromFile", async () => {
     });
   });
 
-  describe("parse various format of files", () => {
-    describe("ESM env", () => {
-      setupTmpDir({
-        before: async ({ r }) => {
-          await fsx.outputJson(r("./package.json"), { type: "module" });
-        },
-        after: async ({ r }) => {
-          await fsx.remove(r("./package.json"));
-        },
-      });
-      it<TmpDirContext>("parse js", async ({ tmp, r, expect, maker }) => {
-        await maker.makeDocitConfigFile(r("./docit.config.js"), { base: "./js" }, "esm");
-        const config = await readConfigFromFile(tmp.path);
-        expect(config).toStrictEqual({ base: "./js" });
-      });
-      it<TmpDirContext>("parse cjs", async ({ tmp, r, expect, maker }) => {
-        await maker.makeDocitConfigFile(r("./docit.config.cjs"), { base: "./cjs" }, "cjs");
-        const config = await readConfigFromFile(tmp.path);
-        expect(config).toStrictEqual({ base: "./cjs" });
-      });
-      it<TmpDirContext>("parse ts", async ({ tmp, r, expect, maker }) => {
-        await maker.makeDocitConfigFile(r("./docit.config.ts"), { base: "./ts" }, "esm");
-        const config = await readConfigFromFile(tmp.path);
-        expect(config).toStrictEqual({ base: "./ts" });
-      });
+  describe("ESM env", () => {
+    setupTmpDir({
+      before: async ({ r }) => {
+        await fsx.outputJson(r("./package.json"), { type: "module" });
+      },
+      after: async ({ r }) => {
+        await fsx.remove(r("./package.json"));
+      },
     });
-    describe("CJS env", () => {
-      setupTmpDir({
-        before: async ({ r }) => {
-          await fsx.outputJson(r("./package.json"), { type: "commonjs" });
-        },
-        after: async ({ r }) => {
-          await fsx.remove(r("./package.json"));
-        },
-      });
-      it<TmpDirContext>("parse js", async ({ tmp, r, expect, maker }) => {
-        await maker.makeDocitConfigFile(r("./docit.config.js"), { base: "./js" }, "cjs");
-        const config = await readConfigFromFile(tmp.path);
-        expect(config).toStrictEqual({ base: "./js" });
-      });
-      it<TmpDirContext>("parse mjs", async ({ tmp, r, expect, maker }) => {
-        await maker.makeDocitConfigFile(r("./docit.config.cjs"), { base: "./mjs" }, "esm");
-        const config = await readConfigFromFile(tmp.path);
-        expect(config).toStrictEqual({ base: "./mjs" });
-      });
-      it<TmpDirContext>("parse ts", async ({ tmp, r, expect, maker }) => {
-        await maker.makeDocitConfigFile(r("./docit.config.ts"), { base: "./ts" }, "esm");
-        const config = await readConfigFromFile(tmp.path);
-        expect(config).toStrictEqual({ base: "./ts" });
-      });
+    it<TmpDirContext>("parse js", async ({ tmp, r, expect, maker }) => {
+      await maker.makeDocitConfigFile(r("./docit.config.js"), { base: "./js" }, "esm");
+      const config = await readConfigFromFile(tmp.path);
+      expect(config).toStrictEqual({ base: "./js" });
+    });
+    it<TmpDirContext>("parse cjs", async ({ tmp, r, expect, maker }) => {
+      await maker.makeDocitConfigFile(r("./docit.config.cjs"), { base: "./cjs" }, "cjs");
+      const config = await readConfigFromFile(tmp.path);
+      expect(config).toStrictEqual({ base: "./cjs" });
+    });
+    it<TmpDirContext>("parse ts", async ({ tmp, r, expect, maker }) => {
+      await maker.makeDocitConfigFile(r("./docit.config.ts"), { base: "./ts" }, "esm");
+      const config = await readConfigFromFile(tmp.path);
+      expect(config).toStrictEqual({ base: "./ts" });
+    });
+  });
+  describe("CJS env", () => {
+    setupTmpDir({
+      before: async ({ r }) => {
+        await fsx.outputJson(r("./package.json"), { type: "commonjs" });
+      },
+      after: async ({ r }) => {
+        await fsx.remove(r("./package.json"));
+      },
+    });
+    it<TmpDirContext>("parse js", async ({ tmp, r, expect, maker }) => {
+      await maker.makeDocitConfigFile(r("./docit.config.js"), { base: "./js" }, "cjs");
+      const config = await readConfigFromFile(tmp.path);
+      expect(config).toStrictEqual({ base: "./js" });
+    });
+    it<TmpDirContext>("parse mjs", async ({ tmp, r, expect, maker }) => {
+      await maker.makeDocitConfigFile(r("./docit.config.cjs"), { base: "./mjs" }, "esm");
+      const config = await readConfigFromFile(tmp.path);
+      expect(config).toStrictEqual({ base: "./mjs" });
+    });
+    it<TmpDirContext>("parse ts", async ({ tmp, r, expect, maker }) => {
+      await maker.makeDocitConfigFile(r("./docit.config.ts"), { base: "./ts" }, "esm");
+      const config = await readConfigFromFile(tmp.path);
+      expect(config).toStrictEqual({ base: "./ts" });
     });
   });
 });
@@ -153,6 +151,7 @@ describe.concurrent("resolveConfig", () => {
     const config = await resolveConfig(r());
 
     expect(config).toStrictEqual({
+      base: "/",
       docRoot: r("./docs"),
       root: r(),
       outDir: r("./docs/dist"),

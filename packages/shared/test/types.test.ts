@@ -74,11 +74,6 @@ describe.concurrent("zDocitConfig", () => {
       base: "/",
       outDir: "./docs/dist",
       docRoot: "./docs",
-      site: {
-        title: "Docit",
-        description: "Site Description",
-        theme: ThemeType.default,
-      },
     });
   });
 

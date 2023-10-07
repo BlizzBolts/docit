@@ -22,7 +22,7 @@ const zDocitConfig = z
      * public path
      */
     base: z.string().default("/"),
-    site: zSiteConfig.partial().default(zSiteConfig.parse({})),
+    site: zSiteConfig.partial().optional(),
     alias: z.any().optional() as z.ZodOptional<z.ZodType<AliasOptions>>,
     server: zServerConfig.partial().optional(),
     themeConfig: zThemeConfig.partial().optional(),
