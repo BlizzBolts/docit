@@ -24,10 +24,13 @@ export const makeDocitConfigFile = async (
 
   const docitConfig: DocitConfig = zDocitConfig.parse({
     docRoot: scaffoldOptions.docRoot,
-    site: {
-      title: options.title,
-      description: options.description,
-    },
+    site:
+      options.title || options.description
+        ? {
+            title: options.title,
+            description: options.description,
+          }
+        : undefined,
   } as DocitConfig);
 
   return {
