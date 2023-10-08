@@ -1,5 +1,3 @@
-import path from "node:path";
-import url from "node:url";
 import { defineConfig, devices } from "@playwright/test";
 
 /**

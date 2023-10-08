@@ -4,10 +4,12 @@
   "scripts": {
     "init": "docit-cli init",
     "site:dev": "docit-cli start",
-    "test": "playwright test"
+    "//test": "playwright test",
+    "test": "vitest"
   },
   "devDependencies": {
     "@blizzbolts/docit-cli": "workspace:*",
-    "@blizzbolts/docit-core": "workspace:*"
+    "@blizzbolts/docit-core": "workspace:*",
+    "@blizzbolts/docit-shared": "workspace:*"
   }
 }
