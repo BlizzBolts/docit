@@ -16,7 +16,7 @@
 
 @layer base {
   :root {
-    --docit-font-sans: "Readex Pro","Noto Sans SC";
+    --docit-font-sans: "Readex Pro", "PingFang SC";
     --docit-background: 0 0% 100%;
     --docit-foreground: 224 71.4% 4.1%;
     --docit-card: 0 0% 100%;

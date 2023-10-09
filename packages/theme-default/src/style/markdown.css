@@ -7,7 +7,7 @@
 .markdown {
   @apply text-gray-900 leading-normal break-words;
   letter-spacing: 0.03em;
-  font-weight: 300;
+  font-weight: 400;
 }
 
 .markdown>*+* {
@@ -20,6 +20,10 @@
 
 .markdown li>p+p {
   @apply mt-6;
+}
+
+.markdown p+p{
+  @apply mt-2;
 }
 
 .markdown strong {

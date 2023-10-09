@@ -9,6 +9,10 @@ export default defineConfig({
       { title: "GFM", url: "/config/GFM" },
     ],
   },
+  site: {
+    title: "Docit",
+    description: "A Breif Description",
+  },
   server: {
     port: 8000,
   },

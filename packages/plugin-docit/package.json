@@ -39,6 +39,7 @@
     "@blizzbolts/docit-shared": "workspace:^",
     "@mdx-js/rollup": "^2.3.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "remark-emoji": "^4.0.0",
     "remark-gfm": "^3.0.1"
   },
   "devDependencies": {

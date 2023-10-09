@@ -56,7 +56,7 @@ export default {
       },
       fontFamily: {
         // sans: ["var(--docit-font-sans)", ...defaultTheme.fontFamily.sans],
-        sans: ["var(--docit-font-sans)"],
+        sans: ["var(--docit-font-sans)", ...defaultTheme.fontFamily.sans],
       },
       keyframes: {
         "accordion-down": {

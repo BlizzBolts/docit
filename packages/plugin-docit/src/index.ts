@@ -2,7 +2,7 @@ import path from "node:path";
 import type { PluginOption } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import mdx from "@mdx-js/rollup";
-import type { DocitConfig } from "@blizzbolts/docit-shared/node";
+import { type DocitConfig } from "@blizzbolts/docit-shared/node";
 import gfm from "remark-gfm";
 import { virtual } from "./virtual";
 
@@ -21,10 +21,17 @@ export const createDocitPlugin = async (
         // },
         resolve: {
           dedupe: ["react", "react-dom"],
-          alias: {
-            "doc-root": path.resolve(cwd, "./", config.docRoot!),
-          },
+          alias: [
+            {
+              find: "doc-root",
+              replacement: path.resolve(cwd, "./", config.docRoot!),
+            },
+          ],
         },
+        // define: {
+        //   // FIXME: all process.env.NODE_ENV will not be processed
+        //   "process.env.NODE_ENV": `process.env.NODE_ENV`,
+        // },
       };
     },
   };

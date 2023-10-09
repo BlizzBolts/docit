@@ -65,19 +65,21 @@ export const start = async (
       coreLogger.fail("Server starts failed. Please Try again");
       return;
     }
-
+    let url = "";
     if (typeof address === "string") {
-      coreLogger.success(colors.bold(colors.green(`Docit server listening at http://${address}`)));
+      url = `http://${address}`;
     } else {
       let host = address.address;
       const port = address.port;
       if (host === "::") {
         host = "localhost";
       }
-      coreLogger.success(
-        colors.bold(colors.green(`Docit server listening at http://${host}:${port}`)),
-      );
+      url = `http://${host}:${port}`;
     }
+    coreLogger.box(
+      `${colors.bold(colors.green(`Docit server listening at ${url}`))}
+Serving docs at ${path.resolve(cwd, "./", config.docRoot!)}`,
+    );
   };
 
   const server = app.listen(port, onListen);
