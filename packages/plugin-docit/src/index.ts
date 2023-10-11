@@ -4,6 +4,7 @@ import react from "@vitejs/plugin-react-swc";
 import mdx from "@mdx-js/rollup";
 import { type DocitConfig } from "@blizzbolts/docit-shared/node";
 import gfm from "remark-gfm";
+import emoji from "remark-emoji";
 import { virtual } from "./virtual";
 
 export const createDocitPlugin = async (
@@ -39,7 +40,7 @@ export const createDocitPlugin = async (
   return [
     docitPlugin,
     mdx({
-      remarkPlugins: [gfm],
+      remarkPlugins: [gfm, emoji],
     }),
     react(),
     await virtual(config),
