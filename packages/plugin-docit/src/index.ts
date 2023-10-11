@@ -5,6 +5,8 @@ import mdx from "@mdx-js/rollup";
 import { type DocitConfig } from "@blizzbolts/docit-shared/node";
 import gfm from "remark-gfm";
 import emoji from "remark-emoji";
+import frontmatter from "remark-frontmatter";
+import mdxFrontmatter from "remark-mdx-frontmatter";
 import { virtual } from "./virtual";
 
 export const createDocitPlugin = async (
@@ -15,11 +17,6 @@ export const createDocitPlugin = async (
     name: "vite-plugin-docit",
     config() {
       return {
-        // FIXME: process.env.NODE_ENV in markdown file will be replaced with actual variable
-        // should find a way to fix it.
-        // define: {
-        //   "process.env.NODE_ENV": undefined,
-        // },
         resolve: {
           dedupe: ["react", "react-dom"],
           alias: [
@@ -29,6 +26,14 @@ export const createDocitPlugin = async (
             },
           ],
         },
+        // FIXME:
+        // process.env.NODE_ENV in markdown file will be replaced with actual variable
+        // should find a way to fix it.
+        // define: {
+        //   "process.env.NODE_ENV": undefined,
+        // },
+        // or
+        //
         // define: {
         //   // FIXME: all process.env.NODE_ENV will not be processed
         //   "process.env.NODE_ENV": `process.env.NODE_ENV`,
@@ -40,7 +45,7 @@ export const createDocitPlugin = async (
   return [
     docitPlugin,
     mdx({
-      remarkPlugins: [gfm, emoji],
+      remarkPlugins: [gfm, emoji, frontmatter, mdxFrontmatter],
     }),
     react(),
     await virtual(config),

@@ -18,7 +18,10 @@ interface DocumentItem {
 
 const docComponents = import.meta.glob("doc-root/**/*.(md|mdx)", {
   eager: true,
-}) as Record<string, { default: React.ComponentType }>;
+}) as Record<
+  string,
+  { default: React.ComponentType; frontmatter: Record<string, string | boolean | number> }
+>;
 
 const docs: DocumentItem[] = Object.entries(docComponents).map((entry) => {
   const [key, component] = entry;
@@ -31,6 +34,7 @@ const docs: DocumentItem[] = Object.entries(docComponents).map((entry) => {
     routePath,
     name: parts[parts.length - 1] || "index",
     component: component.default,
+    frontmatter: component.frontmatter,
   };
 });
 
