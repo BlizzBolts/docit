@@ -67,13 +67,11 @@ export const App = () => {
           <div style={{ height: "200vh" }}>123123</div>
         </SideBar>
         <Document>
-          <ScrollArea>
-            <Routes>
-              {docs.map(({ routePath, component: Component }) => {
-                return <Route key={routePath} path={routePath} element={<Component />} />;
-              })}
-            </Routes>
-          </ScrollArea>
+          <Routes>
+            {docs.map(({ routePath, component: Component }) => {
+              return <Route key={routePath} path={routePath} element={<Component />} />;
+            })}
+          </Routes>
         </Document>
       </Layout>
     </Page>

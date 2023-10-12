@@ -5,6 +5,9 @@
 }
 
 .markdown {
+  > div{
+    padding: 1em 0 4em;
+  }
 }
 
 .markdown>*+* {
