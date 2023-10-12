@@ -11,8 +11,8 @@ export const virtual = async (config: DocitConfig): Promise<PluginOption> => {
 
   return {
     name: "vite-plugin-docit-virtual",
-    configResolved(config) {
-      cache.set("@vite/config", makeExportDefault(config));
+    configResolved(viteConfig) {
+      cache.set("@vite/config", makeExportDefault(viteConfig));
     },
     resolveId(id) {
       if (cache.has(id)) {

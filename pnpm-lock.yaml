@@ -257,6 +257,27 @@ importers:
       pkg-up:
         specifier: ^4.0.0
         version: registry.npmmirror.com/pkg-up@4.0.0
+      remark-frontmatter:
+        specifier: ^5.0.0
+        version: 5.0.0
+      remark-parse:
+        specifier: ^11.0.0
+        version: 11.0.0
+      remark-stringify:
+        specifier: ^11.0.0
+        version: 11.0.0
+      to-vfile:
+        specifier: ^8.0.0
+        version: 8.0.0
+      unified:
+        specifier: ^11.0.3
+        version: 11.0.3
+      vfile:
+        specifier: ^6.0.1
+        version: 6.0.1
+      vfile-matter:
+        specifier: ^5.0.0
+        version: 5.0.0
       zod:
         specifier: ^3.22.2
         version: registry.npmmirror.com/zod@3.22.2
@@ -1714,6 +1735,7 @@ packages:
 
   /@types/node@20.6.2:
     resolution: {integrity: sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==}
+    dev: true
 
   /@types/unist@2.0.8:
     resolution: {integrity: sha512-d0XxK3YTObnWVp6rZuev3c49+j4Lo8g4L1ZRm9z5L0xpoZycUPshHgczK5gsUMaZOstjVYYi09p5gYvUtfChYw==}
@@ -3942,6 +3964,17 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
+  /remark-parse@11.0.0:
+    resolution: {integrity: sha512-FCxlKLNGknS5ba/1lmpYijMUzX2esxW5xQqjWxw2eHFfS2MSdaHVINFmhjo+qN1WhZhNimq0dZATN9pH0IDrpA==}
+    dependencies:
+      '@types/mdast': 4.0.1
+      mdast-util-from-markdown: 2.0.0
+      micromark-util-types: 2.0.0
+      unified: 11.0.3
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /remark-rehype@10.1.0:
     resolution: {integrity: sha512-EFmR5zppdBp0WQeDVZ/b66CWJipB2q2VLNFMabzDSGR66Z2fQii83G5gTBbgGEnEEA0QRussvrFHxk1HWGJskw==}
     dependencies:
@@ -3949,6 +3982,14 @@ packages:
       '@types/mdast': 3.0.12
       mdast-util-to-hast: 12.3.0
       unified: 10.1.2
+
+  /remark-stringify@11.0.0:
+    resolution: {integrity: sha512-1OSmLd3awB/t8qdoEOMazZkNsfVTeY4fTsgzcQFdXNq8ToTN4ZGwrMnlda4K6smTFKD+GRV6O48i6Z4iKgPPpw==}
+    dependencies:
+      '@types/mdast': 4.0.1
+      mdast-util-to-markdown: 2.1.0
+      unified: 11.0.3
+    dev: false
 
   /require-from-string@2.0.2:
     resolution: {integrity: sha512-Xf0nWe6RseziFMu+Ap9biiUbmplq6S9/p+7w7YXP/JBHhrUDDUhwa+vANyubuqfZWTveU//DYVGsDG7RKL/vEw==}
@@ -4251,6 +4292,12 @@ packages:
     dependencies:
       is-number: 7.0.0
 
+  /to-vfile@8.0.0:
+    resolution: {integrity: sha512-IcmH1xB5576MJc9qcfEC/m/nQCFt3fzMHz45sSlgJyTWjRbKW1HAkJpuf3DgE57YzIlZcwcBZA5ENQbBo4aLkg==}
+    dependencies:
+      vfile: 6.0.1
+    dev: false
+
   /toml@3.0.0:
     resolution: {integrity: sha512-y/mWCZinnvxjTKYhJ+pYxwD0mRLVvOtdS2Awbgxln6iEnt4rk0yBxeSBHkGJcPucRiG0e55mwWp+g/05rsrd6w==}
     dev: false
@@ -4493,6 +4540,13 @@ packages:
       convert-source-map: 1.9.0
     dev: true
 
+  /vfile-matter@5.0.0:
+    resolution: {integrity: sha512-jhPSqlj8hTSkTXOqyxbUeZAFFVq/iwu/jukcApEqc/7DOidaAth6rDc0Zgg0vWpzUnWkwFP7aK28l6nBmxMqdQ==}
+    dependencies:
+      vfile: 6.0.1
+      yaml: 2.3.2
+    dev: false
+
   /vfile-message@3.1.4:
     resolution: {integrity: sha512-fa0Z6P8HUrQN4BZaX05SIVXic+7kE3b05PWAtPuYP9QLHsLKYR7/AlLW3NtOrpXRLeawpDLMsVkmk5DG0NXgWw==}
     dependencies:
@@ -4566,7 +4620,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.6.2
+      '@types/node': registry.npmmirror.com/@types/node@20.6.2
       esbuild: 0.18.20
       postcss: 8.4.30
       rollup: 3.29.2
@@ -5160,7 +5214,7 @@ packages:
       '@rollup/pluginutils': registry.npmmirror.com/@rollup/pluginutils@5.0.4(rollup@3.29.2)
       rollup: 3.29.2
       source-map: registry.npmmirror.com/source-map@0.7.4
-      vfile: registry.npmmirror.com/vfile@5.3.7
+      vfile: 5.3.7
     transitivePeerDependencies:
       - supports-color
     dev: false
@@ -5674,7 +5728,6 @@ packages:
     resolution: {integrity: sha512-Y+/1vGBHV/cYk6OI1Na/LHzwnlNCAfU3ZNGrc1LdRe/LAIbdDPTTv/HU3M7yXN448aTVDq3eKRm2cg7iKLb8gw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/node/-/node-20.6.2.tgz}
     name: '@types/node'
     version: 20.6.2
-    dev: true
 
   registry.npmmirror.com/@types/normalize-package-data@2.4.1:
     resolution: {integrity: sha512-Gj7cI7z+98M282Tqmp2K5EIsoouUEzbBJhQQzDE3jSIRk6r9gsz0oUokqIUR4u1R3dMHo0pDHM7sNOHyhulypw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/normalize-package-data/-/normalize-package-data-2.4.1.tgz}
@@ -5750,12 +5803,6 @@ packages:
       '@types/mime': registry.npmmirror.com/@types/mime@3.0.1
       '@types/node': 20.6.2
     dev: true
-
-  registry.npmmirror.com/@types/unist@2.0.8:
-    resolution: {integrity: sha512-d0XxK3YTObnWVp6rZuev3c49+j4Lo8g4L1ZRm9z5L0xpoZycUPshHgczK5gsUMaZOstjVYYi09p5gYvUtfChYw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@types/unist/-/unist-2.0.8.tgz}
-    name: '@types/unist'
-    version: 2.0.8
-    dev: false
 
   registry.npmmirror.com/@typescript-eslint/eslint-plugin@6.7.2(@typescript-eslint/parser@6.7.2)(eslint@8.49.0)(typescript@5.2.2):
     resolution: {integrity: sha512-ooaHxlmSgZTM6CHYAFRlifqh1OAr3PAQEwi7lhYhaegbnXrnh7CDcHmc3+ihhbQC7H0i4JF0psI5ehzkF6Yl6Q==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-6.7.2.tgz}
@@ -8513,13 +8560,6 @@ packages:
       call-bind: registry.npmmirror.com/call-bind@1.0.2
       has-tostringtag: registry.npmmirror.com/has-tostringtag@1.0.0
     dev: true
-
-  registry.npmmirror.com/is-buffer@2.0.5:
-    resolution: {integrity: sha512-i2R6zNFDwgEHJyQUtJEk0XFi1i0dPFn/oqjK3/vPCcDeJvW5NQ83V8QbicfF1SupOaB0h8ntgBC2YiE7dfyctQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/is-buffer/-/is-buffer-2.0.5.tgz}
-    name: is-buffer
-    version: 2.0.5
-    engines: {node: '>=4'}
-    dev: false
 
   registry.npmmirror.com/is-builtin-module@3.2.1:
     resolution: {integrity: sha512-BSLE3HnV2syZ0FK0iMA/yUGplUeMmNz4AW5fnTunbCIqZi4vG3WjJT9FHMy5D69xmAYBHXQhJdALdpwVxV501A==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/is-builtin-module/-/is-builtin-module-3.2.1.tgz}
@@ -12101,14 +12141,6 @@ packages:
       which-boxed-primitive: registry.npmmirror.com/which-boxed-primitive@1.0.2
     dev: true
 
-  registry.npmmirror.com/unist-util-stringify-position@3.0.3:
-    resolution: {integrity: sha512-k5GzIBZ/QatR8N5X2y+drfpWG8IDBzdnVj6OInRNWm1oXrzydiaAT2OQiA8DPRRZyAKb9b6I2a6PxYklZD0gKg==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/unist-util-stringify-position/-/unist-util-stringify-position-3.0.3.tgz}
-    name: unist-util-stringify-position
-    version: 3.0.3
-    dependencies:
-      '@types/unist': registry.npmmirror.com/@types/unist@2.0.8
-    dev: false
-
   registry.npmmirror.com/universalify@0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/universalify/-/universalify-0.1.2.tgz}
     name: universalify
@@ -12206,26 +12238,6 @@ packages:
     version: 1.1.2
     engines: {node: '>= 0.8'}
     dev: true
-
-  registry.npmmirror.com/vfile-message@3.1.4:
-    resolution: {integrity: sha512-fa0Z6P8HUrQN4BZaX05SIVXic+7kE3b05PWAtPuYP9QLHsLKYR7/AlLW3NtOrpXRLeawpDLMsVkmk5DG0NXgWw==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/vfile-message/-/vfile-message-3.1.4.tgz}
-    name: vfile-message
-    version: 3.1.4
-    dependencies:
-      '@types/unist': registry.npmmirror.com/@types/unist@2.0.8
-      unist-util-stringify-position: registry.npmmirror.com/unist-util-stringify-position@3.0.3
-    dev: false
-
-  registry.npmmirror.com/vfile@5.3.7:
-    resolution: {integrity: sha512-r7qlzkgErKjobAmyNIkkSpizsFPYiUPuJb5pNW1RB4JcYVZhs4lIbVqk8XPk033CV/1z8ss5pkax8SuhGpcG8g==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/vfile/-/vfile-5.3.7.tgz}
-    name: vfile
-    version: 5.3.7
-    dependencies:
-      '@types/unist': registry.npmmirror.com/@types/unist@2.0.8
-      is-buffer: registry.npmmirror.com/is-buffer@2.0.5
-      unist-util-stringify-position: registry.npmmirror.com/unist-util-stringify-position@3.0.3
-      vfile-message: registry.npmmirror.com/vfile-message@3.1.4
-    dev: false
 
   registry.npmmirror.com/vite-node@0.34.4(@types/node@20.6.2):
     resolution: {integrity: sha512-ho8HtiLc+nsmbwZMw8SlghESEE3KxJNp04F/jPUCLVvaURwt0d+r9LxEqCX5hvrrOQ0GSyxbYr5ZfRYhQ0yVKQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/vite-node/-/vite-node-0.34.4.tgz}

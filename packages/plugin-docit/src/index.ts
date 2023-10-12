@@ -1,13 +1,9 @@
 import path from "node:path";
 import type { PluginOption } from "vite";
 import react from "@vitejs/plugin-react-swc";
-import mdx from "@mdx-js/rollup";
 import { type DocitConfig } from "@blizzbolts/docit-shared/node";
-import gfm from "remark-gfm";
-import emoji from "remark-emoji";
-import frontmatter from "remark-frontmatter";
-import mdxFrontmatter from "remark-mdx-frontmatter";
 import { virtual } from "./virtual";
+import { createMdxPlugin } from "./mdx";
 
 export const createDocitPlugin = async (
   cwd: string,
@@ -42,12 +38,5 @@ export const createDocitPlugin = async (
     },
   };
 
-  return [
-    docitPlugin,
-    mdx({
-      remarkPlugins: [gfm, emoji, frontmatter, mdxFrontmatter],
-    }),
-    react(),
-    await virtual(config),
-  ];
+  return [docitPlugin, createMdxPlugin(config), react(), await virtual(config)];
 };
