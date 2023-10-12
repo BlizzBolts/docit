@@ -4,3 +4,4 @@ export * from "./Header";
 export * from "./Document";
 export * from "./SideBar";
 export * from "./Page";
+export { ScrollArea } from "./shadcnui";

@@ -8,7 +8,14 @@ import {
 import appConfig from "@docit/config";
 import viteConfig from "@vite/config";
 import type React from "react";
-import { Header, Layout, Document, SideBar, Page } from "@blizzbolts/docit-theme-default";
+import {
+  Header,
+  Layout,
+  Document,
+  SideBar,
+  Page,
+  ScrollArea,
+} from "@blizzbolts/docit-theme-default";
 
 interface DocumentItem {
   name: string;
@@ -56,13 +63,17 @@ export const App = () => {
         }}
       />
       <Layout>
-        <SideBar>1231</SideBar>
+        <SideBar>
+          <div style={{ height: "200vh" }}>123123</div>
+        </SideBar>
         <Document>
-          <Routes>
-            {docs.map(({ routePath, component: Component }) => {
-              return <Route key={routePath} path={routePath} element={<Component />} />;
-            })}
-          </Routes>
+          <ScrollArea>
+            <Routes>
+              {docs.map(({ routePath, component: Component }) => {
+                return <Route key={routePath} path={routePath} element={<Component />} />;
+              })}
+            </Routes>
+          </ScrollArea>
         </Document>
       </Layout>
     </Page>

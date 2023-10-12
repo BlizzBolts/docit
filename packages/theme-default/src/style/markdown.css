@@ -5,9 +5,6 @@
 }
 
 .markdown {
-  @apply text-gray-900 leading-normal break-words;
-  letter-spacing: 0.03em;
-  font-weight: 400;
 }
 
 .markdown>*+* {

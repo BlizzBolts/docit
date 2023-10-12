@@ -6,5 +6,7 @@ export default defineConfig({
     environment: "jsdom",
     exclude: ["styled-system/**", "node_modules/**"],
   },
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   plugins: [tsconfigPaths()],
 });
