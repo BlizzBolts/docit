@@ -67,4 +67,4 @@ This project is inspired by [Vitepress](https://vitepress.vuejs.org/) and [Story
 
 ## Screenshot
 
-<img width="1858" alt="image" src="https://user-images.githubusercontent.com/17166940/161921716-c48f8cf4-6d0a-4553-867a-2b1fd1abb9ec.png">
+![Screenshot](https://user-images.githubusercontent.com/17166940/161921716-c48f8cf4-6d0a-4553-867a-2b1fd1abb9ec.png)
