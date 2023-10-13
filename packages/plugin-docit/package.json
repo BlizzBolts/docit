@@ -36,6 +36,7 @@
     "node": ">=16"
   },
   "dependencies": {
+    "@mdx-js/react": "^2.3.0",
     "@blizzbolts/docit-shared": "workspace:^",
     "@mdx-js/rollup": "^2.3.0",
     "@vitejs/plugin-react-swc": "^3.3.2",

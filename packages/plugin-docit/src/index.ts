@@ -14,7 +14,7 @@ export const createDocitPlugin = async (
     config() {
       return {
         resolve: {
-          dedupe: ["react", "react-dom"],
+          dedupe: ["react", "react-dom", "@mdx-js/react"],
           alias: [
             {
               find: "doc-root",

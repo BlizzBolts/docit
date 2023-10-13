@@ -18,6 +18,7 @@ export const createMdxPlugin = async (config: DocitConfig): Promise<PluginOption
   return [
     // mdxPlugin,
     mdx({
+      providerImportSource: "@mdx-js/react",
       remarkPlugins: [
         gfm,
         // FIXME: after install some remark related lib, ts error happens
