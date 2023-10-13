@@ -1,5 +1,5 @@
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { tomorrow as codeStyle } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { tomorrow as codeStyle } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import type { BaseProps } from "@/types";
 
 interface CodeChildren {
