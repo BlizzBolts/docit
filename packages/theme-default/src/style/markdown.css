@@ -67,7 +67,7 @@
 }
 
 .markdown code {
-  @apply font-mono font-thin text-sm inline bg-gray-200 rounded px-1 py-05;
+  @apply font-mono font-thin text-sm inline bg-gray-200 rounded px-1 py-05 text-primary;
 }
 
 .markdown pre {
@@ -79,7 +79,7 @@
 }
 
 .markdown ul {
-  @apply text-base pl-8 list-disc;
+  @apply text-base pl-8 list-disc my-3;
 }
 
 .markdown ol {
