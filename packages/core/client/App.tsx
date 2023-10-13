@@ -11,6 +11,7 @@ import viteConfig from "@vite/config";
 import type React from "react";
 import { Header, Layout, Document, SideBar, Page } from "@blizzbolts/docit-theme-default";
 import { MDXProvider } from "@mdx-js/react";
+import { Pre } from "@blizzbolts/docit-theme-default";
 
 interface DocumentItem {
   name: string;
@@ -75,9 +76,7 @@ export const App = () => {
         </SideBar>
         <MDXProvider
           components={{
-            use: () => {
-              return <div>this is hi1</div>;
-            },
+            pre: Pre,
           }}
         >
           <Document>

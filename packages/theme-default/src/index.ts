@@ -1,6 +1,3 @@
 import "./style/index";
-export * from "./Layout";
-export * from "./Header";
-export * from "./Document";
-export * from "./SideBar";
-export * from "./Page";
+export * from "./layouts";
+export * from "./md";

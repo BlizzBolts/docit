@@ -1,0 +1,305 @@
+# Syntax Highlighting
+
+## Javascript
+
+```js
+import path from "node:path";
+
+export default {
+  root: path.resolve("./"),
+  docRoot: "./docs",
+  outDir: "./docs/dist",
+  base: "/",
+  site: {
+    title: "Docit",
+    description: "Docit",
+  },
+};
+```
+
+## Jsx
+
+```jsx
+import React from "react";
+import highlight from "./highlight";
+
+export default (options) => {
+  const {
+    loader,
+    isLanguageRegistered,
+    registerLanguage,
+    languageLoaders,
+    noAsyncLoadingLanguages,
+  } = options;
+
+  class ReactAsyncHighlighter extends React.PureComponent {
+    static astGenerator = null;
+    static highlightInstance = highlight(null, {});
+    static astGeneratorPromise = null;
+    static languages = new Map();
+    static supportedLanguages = options.supportedLanguages || Object.keys(languageLoaders || {});
+
+    static preload() {
+      return ReactAsyncHighlighter.loadAstGenerator();
+    }
+
+    static async loadLanguage(language) {
+      const languageLoader = languageLoaders[language];
+
+      if (typeof languageLoader === "function") {
+        return languageLoader(ReactAsyncHighlighter.registerLanguage);
+      } else {
+        throw new Error(`Language ${language} not supported`);
+      }
+    }
+
+    static isSupportedLanguage(language) {
+      return (
+        ReactAsyncHighlighter.isRegistered(language) ||
+        typeof languageLoaders[language] === "function"
+      );
+    }
+
+    static isRegistered = (language) => {
+      if (noAsyncLoadingLanguages) {
+        return true;
+      }
+
+      if (!registerLanguage) {
+        throw new Error("Current syntax highlighter doesn't support registration of languages");
+      }
+
+      if (!ReactAsyncHighlighter.astGenerator) {
+        // Ast generator not available yet, but language will be registered once it is.
+        return ReactAsyncHighlighter.languages.has(language);
+      }
+
+      return isLanguageRegistered(ReactAsyncHighlighter.astGenerator, language);
+    };
+
+    static registerLanguage = (name, language) => {
+      if (!registerLanguage) {
+        throw new Error("Current syntax highlighter doesn't support registration of languages");
+      }
+
+      if (ReactAsyncHighlighter.astGenerator) {
+        return registerLanguage(ReactAsyncHighlighter.astGenerator, name, language);
+      } else {
+        ReactAsyncHighlighter.languages.set(name, language);
+      }
+    };
+
+    static loadAstGenerator() {
+      ReactAsyncHighlighter.astGeneratorPromise = loader().then((astGenerator) => {
+        ReactAsyncHighlighter.astGenerator = astGenerator;
+
+        if (registerLanguage) {
+          ReactAsyncHighlighter.languages.forEach((language, name) =>
+            registerLanguage(astGenerator, name, language),
+          );
+        }
+      });
+
+      return ReactAsyncHighlighter.astGeneratorPromise;
+    }
+
+    componentDidUpdate() {
+      if (!ReactAsyncHighlighter.isRegistered(this.props.language) && languageLoaders) {
+        this.loadLanguage();
+      }
+    }
+
+    componentDidMount() {
+      if (!ReactAsyncHighlighter.astGeneratorPromise) {
+        ReactAsyncHighlighter.loadAstGenerator();
+      }
+
+      if (!ReactAsyncHighlighter.astGenerator) {
+        ReactAsyncHighlighter.astGeneratorPromise.then(() => {
+          this.forceUpdate();
+        });
+      }
+
+      if (!ReactAsyncHighlighter.isRegistered(this.props.language) && languageLoaders) {
+        this.loadLanguage();
+      }
+    }
+
+    loadLanguage() {
+      const { language } = this.props;
+
+      if (language === "text") {
+        return;
+      }
+
+      ReactAsyncHighlighter.loadLanguage(language)
+        .then(() => {
+          return this.forceUpdate();
+        })
+        .catch(() => {});
+    }
+
+    normalizeLanguage(language) {
+      return ReactAsyncHighlighter.isSupportedLanguage(language) ? language : "text";
+    }
+
+    render() {
+      return (
+        <ReactAsyncHighlighter.highlightInstance
+          {...this.props}
+          language={this.normalizeLanguage(this.props.language)}
+          astGenerator={ReactAsyncHighlighter.astGenerator}
+        />
+      );
+    }
+  }
+
+  return ReactAsyncHighlighter;
+};
+```
+
+## TypeScript
+
+```ts
+import type { UserFileConfig } from "./types";
+export const defineConfig = (config: UserFileConfig) => config;
+
+export * from "./start";
+export * from "./build";
+export type { UserConfig } from "./types";
+```
+
+## Tsx
+
+```tsx
+import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+
+import { cn } from "@/lib/utils";
+
+const buttonVariants = cva(
+  "inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
+  {
+    variants: {
+      variant: {
+        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
+      },
+      size: {
+        default: "h-10 px-4 py-2",
+        sm: "h-9 rounded-md px-3",
+        lg: "h-11 rounded-md px-8",
+        icon: "h-10 w-10",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
+      size: "default",
+    },
+  },
+);
+
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+}
+
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, asChild = false, ...props }, ref) => {
+    const Comp = asChild ? Slot : "button";
+    return (
+      <Comp className={cn(buttonVariants({ variant, size, className }))} ref={ref} {...props} />
+    );
+  },
+);
+Button.displayName = "Button";
+
+export { Button, buttonVariants };
+```
+
+## Rust
+
+```rust
+use crate::Position;
+use std::io::{self, stdout, Write};
+use termion::color;
+use termion::event::Key;
+use termion::input::TermRead;
+use termion::raw::{IntoRawMode, RawTerminal};
+
+pub struct Size {
+    pub width: u16,
+    pub height: u16,
+}
+pub struct Terminal {
+    size: Size,
+    _stdout: RawTerminal<std::io::Stdout>,
+}
+
+impl Terminal {
+    pub fn default() -> Result<Self, std::io::Error> {
+        let size = termion::terminal_size()?;
+        Ok(Self {
+            size: Size {
+                width: size.0,
+                height: size.1.saturating_sub(2),
+            },
+            _stdout: stdout().into_raw_mode()?,
+        })
+    }
+    pub fn size(&self) -> &Size {
+        &self.size
+    }
+    pub fn clear_screen() {
+        print!("{}", termion::clear::All);
+    }
+
+    #[allow(clippy::cast_possible_truncation)]
+    pub fn cursor_position(position: &Position) {
+        let Position { mut x, mut y } = position;
+        x = x.saturating_add(1);
+        y = y.saturating_add(1);
+        let x = x as u16;
+        let y = y as u16;
+        print!("{}", termion::cursor::Goto(x, y));
+    }
+    pub fn flush() -> Result<(), std::io::Error> {
+        io::stdout().flush()
+    }
+    pub fn read_key() -> Result<Key, std::io::Error> {
+        loop {
+            if let Some(key) = io::stdin().lock().keys().next() {
+                return key;
+            }
+        }
+    }
+    pub fn cursor_hide() {
+        print!("{}", termion::cursor::Hide);
+    }
+    pub fn cursor_show() {
+        print!("{}", termion::cursor::Show);
+    }
+    pub fn clear_current_line() {
+        print!("{}", termion::clear::CurrentLine);
+    }
+    pub fn set_bg_color(color: color::Rgb) {
+        print!("{}", color::Bg(color));
+    }
+    pub fn reset_bg_color() {
+        print!("{}", color::Bg(color::Reset));
+    }
+    pub fn set_fg_color(color: color::Rgb) {
+        print!("{}", color::Fg(color));
+    }
+    pub fn reset_fg_color() {
+        print!("{}", color::Fg(color::Reset));
+    }
+}
+
+```
