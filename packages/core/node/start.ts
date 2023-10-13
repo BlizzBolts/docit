@@ -4,7 +4,7 @@ import { createDocitPlugin } from "@blizzbolts/vite-plugin-docit";
 import express from "express";
 import { createServer as createViteServer } from "vite";
 import type { DocitConfig } from "@blizzbolts/docit-shared";
-import { colors, coreLogger } from "@blizzbolts/docit-shared";
+import { colors, coreLogger, makeHtmlHeads } from "@blizzbolts/docit-shared";
 import { getDirname } from "@blizzbolts/docit-shared/node";
 import fsx from "fs-extra";
 import getPort from "get-port";
@@ -46,7 +46,10 @@ export const start = async (
         return res.redirect(301, context.url);
       }
 
-      const html = template.replace(`<!--app-html-->`, appHtml);
+      const html = template
+        .replace(`<!--app-html-->`, appHtml)
+        .replace("<!--user-custom-head-->", makeHtmlHeads(config.site?.head));
+
       res.status(200).set({ "Content-Type": "text/html" }).end(html);
     } catch (e) {
       if (e instanceof Error) {

@@ -1,5 +1,6 @@
 import { describe, it, vi } from "vitest";
-import { logger, safeParse } from "@/shared";
+import type { SiteConfig } from "@/shared";
+import { logger, makeHtmlHeads, safeParse } from "@/shared";
 
 describe("common", () => {
   describe("safeParse", () => {
@@ -16,6 +17,34 @@ describe("common", () => {
       const result = safeParse("{asdasd}");
       expect(result).toEqual(undefined);
       expect(spy).toBeCalledTimes(1);
+    });
+  });
+
+  describe("head", () => {
+    it("should parse head structure to html tags", ({ expect }) => {
+      const heads: SiteConfig["head"] = [
+        [
+          "link",
+          {
+            rel: "stylesheet",
+            href: "https://static-production.npmjs.com/styles.cb65339e823461fa6d91.css",
+          },
+        ],
+        [
+          "script",
+          {
+            type: "module",
+          },
+          `console.log('user injected')`,
+        ],
+      ];
+
+      expect(makeHtmlHeads(heads).trim()).toBe(
+        [
+          `<link rel="stylesheet" href="https://static-production.npmjs.com/styles.cb65339e823461fa6d91.css"/>`,
+          `<script type="module">console.log('user injected')</script>`,
+        ].join("\n"),
+      );
     });
   });
 });

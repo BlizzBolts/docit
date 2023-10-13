@@ -12,6 +12,22 @@ export default defineConfig({
   site: {
     title: "Docit",
     description: "A Breif Description",
+    head: [
+      [
+        "link",
+        {
+          rel: "stylesheet",
+          href: "https://static-production.npmjs.com/styles.cb65339e823461fa6d91.css",
+        },
+      ],
+      [
+        "script",
+        {
+          type: "module",
+        },
+        `console.log('user injected')`,
+      ],
+    ],
   },
   server: {
     port: 8000,
