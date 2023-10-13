@@ -4,11 +4,6 @@
   padding-bottom: 0.125rem;
 }
 
-.markdown {
-  > div{
-    padding: 1em 0 4em;
-  }
-}
 
 .markdown>*+* {
   @apply mt-0 mb-4;
@@ -63,27 +58,36 @@
 }
 
 .markdown blockquote {
-  @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600;
+  @apply text-base border-l-4 border-gray-300 pl-4 pr-4 text-gray-600 mb-6 mt-4;
+}
+
+.markdown blockquote blockquote {
+  @apply mb-2 mt-2;
 }
 
 .markdown code {
-  @apply font-mono font-thin text-sm inline bg-gray-200 rounded px-1 py-05 text-primary;
+  @apply text-sm !important;
+  @apply font-mono font-thin inline bg-gray-200 rounded px-1 py-05 text-primary;
 }
 
 .markdown pre {
-  @apply rounded mt-2 mb-6;
+  @apply w-full rounded mt-2 mb-6;
 }
 
 .markdown pre code {
-  @apply block bg-transparent p-0 overflow-visible rounded-none py-2;
+  @apply block bg-transparent p-0 rounded py-2 !important;
+}
+
+.markdown pre code span {
+  @apply mt-1;
 }
 
 .markdown ul {
-  @apply text-base pl-8 list-disc my-3;
+  @apply text-base pl-8 list-disc mt-2 mb-4;
 }
 
 .markdown ol {
-  @apply text-base pl-8 list-decimal;
+  @apply text-base pl-8 list-decimal mt-2 mb-4;
 }
 
 .markdown kbd {
@@ -91,7 +95,7 @@
 }
 
 .markdown table {
-  @apply text-base border-gray-600;
+  @apply text-base border-gray-600 mt-2 mb-4;
 }
 
 .markdown th {
@@ -100,9 +104,4 @@
 
 .markdown td {
   @apply border py-1 px-3;
-}
-
-/* Override pygments style background color. */
-.markdown .highlight pre {
-  @apply bg-gray-100 !important;
 }

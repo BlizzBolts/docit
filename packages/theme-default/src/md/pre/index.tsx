@@ -13,6 +13,7 @@ const fixLang = (lang: string) => {
   if (SyntaxHighlighter.supportedLanguages.includes(lang)) {
     return lang;
   }
+
   if (lang === "sh") {
     return "bash";
   }
@@ -32,18 +33,16 @@ const fixLang = (lang: string) => {
 
 export const Pre: React.FC<BaseProps> = (props) => {
   const { children } = props;
-
+  console.log(props);
   const codeChild = children as CodeChildren;
   const codeString = codeChild?.props?.children;
   const language = (codeChild?.props?.className || "").replace("language-", "");
 
   return (
-    <pre>
-      <code {...codeChild.props}>
-        <SyntaxHighlighter language={fixLang(language)} style={codeStyle}>
-          {codeString}
-        </SyntaxHighlighter>
-      </code>
-    </pre>
+    codeString?.trim() && (
+      <SyntaxHighlighter language={fixLang(language)} style={codeStyle} showLineNumbers wrapLines>
+        {codeString?.trim()}
+      </SyntaxHighlighter>
+    )
   );
 };

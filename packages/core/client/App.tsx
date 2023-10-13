@@ -77,6 +77,10 @@ export const App = () => {
         <MDXProvider
           components={{
             pre: Pre,
+            wrapper: (props) => {
+              const { children } = props;
+              return <div style={{ padding: "1em 0px 4em 0px" }}>{children}</div>;
+            },
           }}
         >
           <Document>
