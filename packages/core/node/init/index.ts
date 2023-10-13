@@ -25,7 +25,7 @@ Duis excepteur proident enim irure laboris consequat velit consequat est elit oc
 
   await fsx.outputFile(path.resolve(config.docRoot!, "./index.mdx"), markdown("Docit"));
   await fsx.outputFile(
-    path.resolve(config.docRoot!, "./folder/index.mdx"),
+    path.resolve(config.docRoot!, "./folder/another.mdx"),
     markdown("Another Doc"),
   );
 

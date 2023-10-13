@@ -28,7 +28,7 @@ describe("build", () => {
       cwd: r("./docs/dist"),
     });
     expect(contents).toContain("index.html");
-    expect(contents).toContain("folder/index.html");
+    expect(contents).toContain("folder/another.html");
     expect(contents).toContain("abc.html");
     expect(contents).toContain("opq.html");
     expect(contents).toContain("xyz.html");

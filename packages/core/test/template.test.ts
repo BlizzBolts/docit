@@ -14,6 +14,7 @@ describe.concurrent("make correct template file", () => {
     await maker.makePackageJson({ type: "module" });
     const result = await makeDocitConfigFile({
       root: r(),
+      docRoot: "./docs",
     });
 
     await fsx.outputFile(result.location, result.content);
@@ -34,6 +35,7 @@ describe.concurrent("make correct template file", () => {
       title: "My Site",
       description: "My Site Description",
       root: r(),
+      docRoot: r("./docs"),
     });
 
     await fsx.outputFile(result.location, result.content);
