@@ -9,6 +9,11 @@ declare module "@docit/config" {
   export default config;
 }
 
+declare module "@docit/sidebar" {
+  let sidebar: Array<{ name: string; routePath: string }>;
+  export default sidebar;
+}
+
 declare module "@vite/config" {
   import type { ResolvedConfig } from "vite";
   let config: ResolvedConfig;

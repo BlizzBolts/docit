@@ -6,16 +6,11 @@ import {
   resolvePath,
 } from "@blizzbolts/docit-shared/client";
 import appConfig from "@docit/config";
+import sidebar from "@docit/sidebar";
 import viteConfig from "@vite/config";
 import type React from "react";
-import {
-  Header,
-  Layout,
-  Document,
-  SideBar,
-  Page,
-  ScrollArea,
-} from "@blizzbolts/docit-theme-default";
+import { Header, Layout, Document, SideBar, Page } from "@blizzbolts/docit-theme-default";
+import { MDXProvider } from "@mdx-js/react";
 
 interface DocumentItem {
   name: string;
@@ -23,7 +18,7 @@ interface DocumentItem {
   component: React.ComponentType;
 }
 
-const docComponents = import.meta.glob("doc-root/**/*.(md|mdx)", {
+const docComponents = import.meta.glob("doc-root/**/*.{md,mdx}", {
   eager: true,
 }) as Record<
   string,
@@ -64,15 +59,35 @@ export const App = () => {
       />
       <Layout>
         <SideBar>
-          <div style={{ height: "200vh" }}>123123</div>
-        </SideBar>
-        <Document>
-          <Routes>
-            {docs.map(({ routePath, component: Component }) => {
-              return <Route key={routePath} path={routePath} element={<Component />} />;
+          <div style={{ height: "200vh" }}>
+            {sidebar.map((o) => {
+              return (
+                <div
+                  onClick={() => navigate(o.routePath)}
+                  key={o.routePath}
+                  className="font-semibold text-primary"
+                >
+                  {o.name}
+                </div>
+              );
             })}
-          </Routes>
-        </Document>
+          </div>
+        </SideBar>
+        <MDXProvider
+          components={{
+            use: () => {
+              return <div>this is hi1</div>;
+            },
+          }}
+        >
+          <Document>
+            <Routes>
+              {docs.map(({ routePath, component: Component }) => {
+                return <Route key={routePath} path={routePath} element={<Component />} />;
+              })}
+            </Routes>
+          </Document>
+        </MDXProvider>
       </Layout>
     </Page>
   );

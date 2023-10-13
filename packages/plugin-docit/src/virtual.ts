@@ -1,13 +1,19 @@
 import type { PluginOption } from "vite";
-import type { DocitConfig } from "@blizzbolts/docit-shared/node";
+import { scanMarkdowns, type DocitConfig } from "@blizzbolts/docit-shared/node";
 
-const makeExportDefault = (o: Record<string, unknown>) => {
+const makeExportDefault = (o: Record<string, unknown> | Array<any>) => {
   return `export default ${JSON.stringify(o, null, 2)}`;
 };
 
 export const virtual = async (config: DocitConfig): Promise<PluginOption> => {
   const cache = new Map<string, string>();
   cache.set("@docit/config", makeExportDefault(config));
+  cache.set(
+    "@docit/sidebar",
+    makeExportDefault(
+      (await scanMarkdowns(config.docRoot!)).map((o) => ({ routePath: o.routePath, name: o.name })),
+    ),
+  );
 
   return {
     name: "vite-plugin-docit-virtual",
