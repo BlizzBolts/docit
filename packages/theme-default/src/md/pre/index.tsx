@@ -33,7 +33,6 @@ const fixLang = (lang: string) => {
 
 export const Pre: React.FC<BaseProps> = (props) => {
   const { children } = props;
-  console.log(props);
   const codeChild = children as CodeChildren;
   const codeString = codeChild?.props?.children;
   const language = (codeChild?.props?.className || "").replace("language-", "");

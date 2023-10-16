@@ -79,7 +79,7 @@
 }
 
 .markdown pre code span {
-  @apply mt-1;
+  @apply mt-0.5;
 }
 
 .markdown ul {
