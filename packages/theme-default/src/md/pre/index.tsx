@@ -28,7 +28,7 @@ const fixLang = (lang: string) => {
   }
 
   // Fallback to javascript
-  return "javascript";
+  return "";
 };
 
 export const Pre: React.FC<BaseProps> = (props) => {
