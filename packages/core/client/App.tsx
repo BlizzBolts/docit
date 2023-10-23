@@ -7,7 +7,7 @@ import {
 } from "@blizzbolts/docit-shared/client";
 import appConfig from "@docit/config";
 import sidebar from "@docit/sidebar";
-import viteConfig from "@vite/config";
+import viteConfig from "@docit/vite-config";
 import type React from "react";
 import { Header, Layout, Document, SideBar, Page } from "@blizzbolts/docit-theme-default";
 import { MDXProvider } from "@mdx-js/react";

@@ -14,7 +14,7 @@ declare module "@docit/sidebar" {
   export default sidebar;
 }
 
-declare module "@vite/config" {
+declare module "@docit/vite-config" {
   import type { ResolvedConfig } from "vite";
   let config: ResolvedConfig;
   export default config;
