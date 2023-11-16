@@ -1,4 +1,4 @@
-> This Project is still under development. Use with caution.
+> This Project is still under development. Use with caution. For future plans, see https://github.com/BlizzBolts/docit/discussions/38
 
 # Docit 
 
