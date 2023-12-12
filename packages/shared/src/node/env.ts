@@ -7,30 +7,30 @@ import { logger } from "../shared/logger";
 import { getUserPackageJson } from "./utils";
 
 export interface UserEnv {
-  "package.json": PackageJson;
-  "tsconfig.json": {
-    data: TsConfigJson;
-    files: string[];
-    path: string;
-  };
-  isEsm: boolean;
+	"package.json": PackageJson;
+	"tsconfig.json": {
+		data: TsConfigJson;
+		files: string[];
+		path: string;
+	};
+	isEsm: boolean;
 }
 
 export const retrieveUserEnv = async (cwd: string): Promise<UserEnv> => {
-  const env: UserEnv = {} as UserEnv;
-  const pkg = await getUserPackageJson(path.resolve(cwd));
-  if (!pkg) {
-    logger.debug("Failed to read user package.json file");
-  }
+	const env: UserEnv = {} as UserEnv;
+	const pkg = await getUserPackageJson(path.resolve(cwd));
+	if (!pkg) {
+		logger.debug("Failed to read user package.json file");
+	}
 
-  env["package.json"] = pkg!;
-  env.isEsm = pkg?.type === "module";
-  const tsconfig = loadTsConfig(cwd);
+	env["package.json"] = pkg!;
+	env.isEsm = pkg?.type === "module";
+	const tsconfig = loadTsConfig(cwd);
 
-  if (!tsconfig) {
-    logger.debug("Failed to read user tsconfig.json file");
-  }
+	if (!tsconfig) {
+		logger.debug("Failed to read user tsconfig.json file");
+	}
 
-  env["tsconfig.json"] = loadTsConfig(cwd);
-  return env;
+	env["tsconfig.json"] = loadTsConfig(cwd);
+	return env;
 };
