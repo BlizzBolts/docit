@@ -27,7 +27,7 @@ let getCWD: () => string;
 if (typeof process !== "undefined" && typeof process.cwd !== "undefined") {
   getCWD = process.cwd;
 } else {
-  getCWD = function () {
+  getCWD = () => {
     const pathname: string = window.location.pathname;
     return pathname.slice(0, pathname.lastIndexOf("/") + 1);
   };
@@ -97,7 +97,7 @@ function normalizeStringPosix(path: string, allowAboveRoot: boolean): string {
       } else {
         const slice = path.slice(lastSlash + 1, i);
         if (res.length > 0) {
-          res += "/" + slice;
+          res += `/${slice}`;
         } else {
           res = slice;
         }
@@ -120,8 +120,8 @@ function normalizeStringPosix(path: string, allowAboveRoot: boolean): string {
  * @return {string}
  */
 export function resolvePath(...paths: string[]): string {
-  let resolvedPath: string = "";
-  let resolvedAbsolute: boolean = false;
+  let resolvedPath = "";
+  let resolvedAbsolute = false;
   let cwd: string | undefined = void 0;
 
   for (let i = paths.length - 1; i >= -1 && !resolvedAbsolute; i--) {
@@ -138,7 +138,7 @@ export function resolvePath(...paths: string[]): string {
     if (path.length === 0) {
       continue;
     }
-    resolvedPath = path + "/" + resolvedPath;
+    resolvedPath = `${path}/${resolvedPath}`;
     resolvedAbsolute = path.charCodeAt(0) === SLASH;
   }
   // At this point the path should be resolved to a full absolute path, but
@@ -146,10 +146,10 @@ export function resolvePath(...paths: string[]): string {
   // Normalize the path (removes leading slash)
   resolvedPath = normalizeStringPosix(resolvedPath, !resolvedAbsolute);
   if (resolvedAbsolute) {
-    return "/" + resolvedPath;
-  } else if (resolvedPath.length > 0) {
-    return resolvedPath;
-  } else {
-    return ".";
+    return `/${resolvedPath}`;
   }
+  if (resolvedPath.length > 0) {
+    return resolvedPath;
+  }
+  return ".";
 }

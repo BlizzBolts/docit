@@ -10,7 +10,7 @@ import fsx from "fs-extra";
 import { markdownPathToRoutePath } from "../shared/utils/markdown";
 
 const matterParser = () => {
-  return function (tree: Node, file: VFile) {
+  return (tree: Node, file: VFile) => {
     matter(file);
   };
 };

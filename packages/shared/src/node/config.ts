@@ -18,14 +18,11 @@ export const findConfigFile = async (cwd: string = process.cwd()): Promise<strin
   if (matches.length === 0) {
     coreLogger.info("Docit config not found, fallback to default");
     return null;
-  } else {
-    return matches[0];
   }
+  return matches[0];
 };
 
-export const readConfigFromFile = async (
-  cwd: string = process.cwd(),
-): Promise<DocitConfig | null> => {
+export const readConfigFromFile = async (cwd: string = process.cwd()): Promise<DocitConfig | null> => {
   const configFile = await findConfigFile(cwd);
 
   if (!configFile) {
@@ -67,20 +64,20 @@ const readConfig = async (cwd: string = process.cwd()) => {
 };
 
 export const resolveConfig = async (cwd: string = process.cwd()): Promise<DocitConfig> => {
-  cwd = path.resolve(cwd);
-  const config = await readConfig(cwd);
+  const _cwd = path.resolve(cwd);
+  const config = await readConfig(_cwd);
   const resolvedConfig: DocitConfig = zDocitConfig.parse(config || {});
 
   if (resolvedConfig?.docRoot) {
-    resolvedConfig.docRoot = path.resolve(cwd, resolvedConfig?.docRoot);
+    resolvedConfig.docRoot = path.resolve(_cwd, resolvedConfig?.docRoot);
   }
 
   if (resolvedConfig?.outDir) {
-    resolvedConfig.outDir = path.resolve(cwd, resolvedConfig?.outDir);
+    resolvedConfig.outDir = path.resolve(_cwd, resolvedConfig?.outDir);
   }
 
   if (resolvedConfig?.root) {
-    resolvedConfig.root = path.resolve(cwd, resolvedConfig.root);
+    resolvedConfig.root = path.resolve(_cwd, resolvedConfig.root);
   }
 
   resolvedConfig.server = zServerConfig.parse(resolvedConfig.server || {});

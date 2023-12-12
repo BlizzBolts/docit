@@ -30,10 +30,9 @@ export const makeHtmlHeads = (heads?: SiteConfig["head"]): string => {
       if (o.length === 2) {
         const [tagName, props] = o;
         return `<${tagName} ${makeAttributes(props)}/>`;
-      } else {
-        const [tagName, props, content] = o;
-        return `<${tagName} ${makeAttributes(props)}>${content}</${tagName}>`;
       }
+      const [tagName, props, content] = o;
+      return `<${tagName} ${makeAttributes(props)}>${content}</${tagName}>`;
     })
     .join("\n");
 };

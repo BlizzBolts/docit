@@ -22,12 +22,7 @@ const Header: React.FC<HeaderProps> = (props) => {
       <div className="flex items-center">
         {navs?.map((o) => {
           return (
-            <Button
-              variant="link"
-              key={o.url}
-              onClick={() => onNavigate(o)}
-              className="text-primary  font-bold"
-            >
+            <Button variant="link" key={o.url} onClick={() => onNavigate(o)} className="text-primary  font-bold">
               {o.title}
             </Button>
           );

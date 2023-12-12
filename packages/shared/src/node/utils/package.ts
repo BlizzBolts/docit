@@ -1,12 +1,10 @@
 import path from "node:path";
-import type { PackageJson } from "type-fest";
 import fsx from "fs-extra";
-import { safeParse } from "../../shared/utils";
+import type { PackageJson } from "type-fest";
 import { logger } from "../../shared/logger";
+import { safeParse } from "../../shared/utils";
 
-export const getUserPackageJson = async (
-  cwd: string = process.cwd(),
-): Promise<PackageJson | undefined> => {
+export const getUserPackageJson = async (cwd: string = process.cwd()): Promise<PackageJson | undefined> => {
   const userPkgPath = path.resolve(cwd, "./package.json");
   let content = "";
   try {

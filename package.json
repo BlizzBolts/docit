@@ -19,7 +19,9 @@
     "dev:app": "pnpm --filter docit-app dev",
     "dev:cli": "pnpm --filter @blizzbolts/docit-cli dev",
     "dev:plugin-docit": "pnpm --filter @blizzbolts/vite-plugin-docit dev",
-    "format": "prettier packages/*/src/**/* -w",
+    "lint": "biome lint packages/*/src/**/* --apply",
+    "format": "biome format packages/*/src/**/* --write",
+    "lf": "pnpm run lint && pnpm run format",
     "test": "vitest",
     "test-ui": "vitest --ui --coverage.enabled=true --coverage.provider=istanbul"
   },
