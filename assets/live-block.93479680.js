@@ -1,4 +1,4 @@
-import{u as c,R as e}from"./index.f975152f.js";function t(l){const n=Object.assign({h1:"h1",p:"p",code:"code",blockquote:"blockquote",h3:"h3",pre:"pre",span:"span",h2:"h2"},c(),l.components),{ShowCode:o}=n;return o||a("ShowCode",!0),e.createElement(e.Fragment,null,e.createElement(n.h1,{id:"live-block"},"Live Block"),`
+import{u as c,R as e}from"./index.b0548d52.js";function t(l){const n=Object.assign({h1:"h1",p:"p",code:"code",blockquote:"blockquote",h3:"h3",pre:"pre",span:"span",h2:"h2"},c(),l.components),{ShowCode:o}=n;return o||a("ShowCode",!0),e.createElement(e.Fragment,null,e.createElement(n.h1,{id:"live-block"},"Live Block"),`
 `,e.createElement(n.p,null,"Live Block is a way to speed up your doc writing by rendering and showing code at the same time."),`
 `,e.createElement(n.p,null,"Just add ",e.createElement(n.code,null,"live")," keyword after code block language"),`
 `,e.createElement(n.p,null,"Docit only respect ",e.createElement(n.code,null,"live")," keyword for ",e.createElement(n.code,null,"js")," ",e.createElement(n.code,null,"jsx")," ",e.createElement(n.code,null,"ts")," and ",e.createElement(n.code,null,"tsx")," languages"),`
@@ -9,7 +9,7 @@ import{u as c,R as e}from"./index.f975152f.js";function t(l){const n=Object.assi
 `,e.createElement(n.pre,null,e.createElement(n.code,{className:"hljs language-md"},e.createElement(n.span,{className:"hljs-code"},'```jsx live\nimport { DemoBlock } from "../components/DemoBlock";\n<DemoBlock />;\n```'),`
 `)),`
 `,e.createElement(n.p,null,"This will render as"),`
-`,e.createElement(e.Fragment,null,e.createElement(o,{moduleId:"/Users/hao/local/projj/github.com/BlizzBolts/docit/docs/document/live-block.mdx?SandBox@0",lang:"jsx",code:`import { DemoBlock } from "../components/DemoBlock"
+`,e.createElement(e.Fragment,null,e.createElement(o,{moduleId:"/Users/admin/spaces/github.com/BlizzBolts/docit/docs/document/live-block.mdx?SandBox@0",lang:"jsx",code:`import { DemoBlock } from "../components/DemoBlock"
 
 <DemoBlock />`,mobileView:!1})),`
 `,e.createElement(n.h3,{id:"why"},"Why?"),`
@@ -31,7 +31,7 @@ import{u as c,R as e}from"./index.f975152f.js";function t(l){const n=Object.assi
 `,e.createElement(n.pre,null,e.createElement(n.code,{className:"hljs language-md"},e.createElement(n.span,{className:"hljs-code"},'```jsx live mobile\nimport { DemoBlock } from "../components/DemoBlock";\n<DemoBlock />;\n```'),`
 `)),`
 `,e.createElement(n.p,null,"Docit also support live mobile block. Add a ",e.createElement(n.code,null,"mobile")," keyword after ",e.createElement(n.code,null,"live")," to enable it."),`
-`,e.createElement(e.Fragment,null,e.createElement(o,{moduleId:"/Users/hao/local/projj/github.com/BlizzBolts/docit/docs/document/live-block.mdx?SandBox@1",lang:"jsx",code:`import { DemoBlock } from "../components/DemoBlock"
+`,e.createElement(e.Fragment,null,e.createElement(o,{moduleId:"/Users/admin/spaces/github.com/BlizzBolts/docit/docs/document/live-block.mdx?SandBox@1",lang:"jsx",code:`import { DemoBlock } from "../components/DemoBlock"
 
 
 
