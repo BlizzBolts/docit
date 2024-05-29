@@ -15,11 +15,11 @@
   "types": "./build/node/index.d.ts",
   "exports": "./build/node/index.js",
   "scripts": {
-    "dev": "rimraf -rf build && run-p dev-node entry-prepare dev-client",
+    "dev": "rimraf -rf build && run-p dev:node entry-prepare dev:client",
     "dev:node": "tsc -w -p src/node",
     "dev:client": "tsc -w -p src/client",
     "entry-prepare": "node scripts/cpEntryFile.js",
-    "build": "run-s build-prepare entry-prepare build-client build-node docs-build",
+    "build": "run-s build:prepare entry-prepare build:client build:node docs:build",
     "build:prepare": "rimraf -rf build",
     "build:client": "tsc -p src/client",
     "build:node": "tsc -p src/node",
