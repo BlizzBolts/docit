@@ -1,15 +1,24 @@
 # Docit 
 
-> Simple and Rapid React Documentation https://blizzbolts.github.io/docit
+**A markdown first react documentation solution https://blizzbolts.github.io/docit**
 
-- :stuck_out_tongue: MDX & MD Syntax oriented.
+- :stuck_out_tongue: MDX & MD Syntax oriented. No Noisy JSX!
 - :tornado: Fast HMR
 - :chart: Out of the Box Api & Component Props Table Generation
 - :heart: Emoji Support and Responsive Designs
 
+## Examples
+
+Current site is powered by Docit!.
+
+
 ## Get Started
 
 > This package is ESM only: Node 12+ is needed to use it and it must be imported instead of required.
+
+
+## Installation
+
 
 ```sh
 yarn add @blizzbolts/docit -D

@@ -16,4 +16,4 @@ Docit will use system file structure as sidebars.
 
 ## Custom Sidebars
 
-Checkout [Configs](#/Configs)
+Checkout [Configs](#/configure/config-file)

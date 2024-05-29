@@ -24,10 +24,6 @@ const config = defineConfig({
           path: "/document/MDX",
         },
         {
-          title: "中文测试",
-          path: "/configure/中文标题测试",
-        },
-        {
           title: "Live Block",
           path: "/document/live-block",
         },
@@ -35,25 +31,25 @@ const config = defineConfig({
           title: "API Generation",
           path: "/document/api-generation",
         },
-        {
-          title: "Front Matter",
-          path: "/document/front-matter",
-        },
+        // {
+        //   title: "Front Matter",
+        //   path: "/document/front-matter",
+        // },
       ],
     },
-    {
-      title: "Explaination",
-      children: [
-        {
-          title: "Routes",
-          path: "/explaination/routes",
-        },
-        {
-          title: "Title",
-          path: "/explaination/title",
-        },
-      ],
-    },
+    // {
+    //   title: "Explaination",
+    //   children: [
+    //     {
+    //       title: "Routes",
+    //       path: "/explaination/routes",
+    //     },
+    //     {
+    //       title: "Title",
+    //       path: "/explaination/title",
+    //     },
+    //   ],
+    // },
     {
       title: "Configure",
       children: [
