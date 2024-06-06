@@ -29,7 +29,7 @@
     "@blizzbolts/docit-shared": "workspace:^",
     "@blizzbolts/docit-theme-default": "workspace:^",
     "@blizzbolts/vite-plugin-docit": "workspace:^",
-    "@mdx-js/react": "^2.3.0",
+    "@mdx-js/react": "^3.0.1",
     "vite": "^4.4.11"
   },
   "devDependencies": {

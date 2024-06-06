@@ -10,6 +10,7 @@
   },
   "scripts": {
     "app": "docit-cli start",
+    "app:build": "docit-cli build",
     "build": "pnpm run clean && pnpm -r run build",
     "dev": "pnpm run build && run-p -l -n -c dev:*",
     "clean": "rimraf -g ./packages/*/dist",
@@ -29,9 +30,12 @@
     "registry": "https://registry.npmjs.org",
     "access": "public"
   },
+  "dependencies": {
+    "@blizzbolts/docit-cli": "workspace:*",
+    "@blizzbolts/docit-core": "workspace:*"
+  },
   "devDependencies": {
     "@biomejs/biome": "1.4.1",
-    "@blizzbolts/docit-core": "workspace:*",
     "@playwright/test": "^1.39.0",
     "@types/fs-extra": "^11.0.3",
     "@types/lodash.isempty": "^4.4.8",

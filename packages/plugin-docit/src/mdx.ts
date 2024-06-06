@@ -21,9 +21,6 @@ export const createMdxPlugin = async (config: DocitConfig): Promise<PluginOption
       providerImportSource: "@mdx-js/react",
       remarkPlugins: [
         gfm,
-        // FIXME: after install some remark related lib, ts error happens
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
         emoji,
         frontmatter,
         mdxFrontmatter,
