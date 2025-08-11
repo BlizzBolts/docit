@@ -30,7 +30,7 @@ yarn add @blizzbolts/docit -D
 ```sh
 mkdir docs
 
-echo "# Introudction" > docs/index.md
+echo "# Introduction" > docs/index.md
 ```
 
 2. Start your doc local dev server by
